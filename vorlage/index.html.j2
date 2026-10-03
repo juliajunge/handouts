@@ -29,7 +29,10 @@
   {% for h in handouts %}
     <li>
       <span><a class="titel" href="{{ h.slug }}/">{{ h.titel }}</a><small>Stand: {{ h.stand }}</small></span>
-      <a class="knopf" href="{{ h.slug }}/{{ h.pdf_datei }}" download>&gt; PDF</a>
+      <span class="aktionen">
+        <a class="knopf knopf--leise" href="{{ h.slug }}/">&gt; Webansicht</a>
+        <a class="knopf" href="{{ h.slug }}/{{ h.pdf_datei }}" download>&gt; PDF herunterladen</a>
+      </span>
     </li>
   {% endfor %}
   </ul>
