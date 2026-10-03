@@ -122,7 +122,9 @@ def baue_pdfs(alle):
     from playwright.sync_api import sync_playwright
 
     with sync_playwright() as p:
-        optionen = {}
+        # Ohne diese Option rundet Chrome unter Linux Buchstabenbreiten auf ganze Pixel:
+        # im PDF entstehen dann ungleichmäßige Abstände zwischen den Buchstaben.
+        optionen = {"args": ["--font-render-hinting=none"]}
         if os.environ.get("CHROMIUM_PATH"):
             optionen["executable_path"] = os.environ["CHROMIUM_PATH"]
         browser = p.chromium.launch(**optionen)
