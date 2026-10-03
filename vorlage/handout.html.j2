@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ titel }} – Handout von Julia Junge</title>
+{% if beschreibung %}<meta name="description" content="{{ beschreibung }}">{% endif %}
+<link rel="stylesheet" href="../vorlage/handout.css">
+</head>
+<body>
+<main class="handout">
+
+  <header class="kopf">
+    <a href="https://juliajunge.de"><img class="logo" src="../vorlage/bilder/logo-julia-junge.svg" alt="Julia Junge"></a>
+    <div class="aktionen nur-web">
+      <a class="knopf" href="{{ pdf_datei }}" download>&gt; PDF herunterladen</a>
+      <button class="knopf knopf--leise" type="button" onclick="window.print()">Drucken</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <span class="label">{{ label }}</span>
+      <h1>{{ titel }}</h1>
+      <div class="strich"></div>
+    </div>
+    {% if bild %}<img class="hero-bild" src="{{ bild }}" alt="{{ bild_alt }}">{% endif %}
+  </section>
+
+  <div class="inhalt">
+{{ inhalt }}
+  </div>
+
+  {% macro fuss(klasse) %}
+  <footer class="fuss {{ klasse }}">
+    <span><a href="https://juliajunge.de">&gt; juliajunge.de</a>{% if kurzlink %} · Online: {{ kurzlink }}{% endif %}</span>
+    <span class="fuss-rechts"><span>Autorin: Julia Junge · Stand: {{ stand }} · keine Gewähr</span><img src="../vorlage/bilder/cc-by-sa.png" alt="Lizenz CC BY-SA"></span>
+  </footer>
+  {% endmacro %}
+
+  {{ fuss("fuss--druck") }}
+
+  {% if anhang %}<div class="inhalt">
+{{ anhang }}
+  </div>{% endif %}
+
+  {{ fuss("fuss--web") }}
+</main>
+</body>
+</html>

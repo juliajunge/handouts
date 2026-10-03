@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Handouts – Julia Junge</title>
+<link rel="stylesheet" href="vorlage/handout.css">
+<style>
+  .liste { list-style: none; padding: 0; margin: 0 0 48px; display: grid; gap: 12px; }
+  .liste li { background: var(--jj-offwhite); border-radius: 16px; padding: 14px 20px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 16px; }
+  .liste a.titel { font-family: var(--font-display); font-weight: 700; font-size: 1.3em; color: var(--jj-green-dark); text-decoration: none; }
+  .liste a.titel:hover { text-decoration: underline; }
+  .liste small { display: block; color: #333; }
+</style>
+</head>
+<body>
+<main class="handout">
+  <header class="kopf">
+    <a href="https://juliajunge.de"><img class="logo" src="vorlage/bilder/logo-julia-junge.svg" alt="Julia Junge"></a>
+  </header>
+  <section class="hero">
+    <div class="hero-text">
+      <span class="label">Material</span>
+      <h1>Handouts</h1>
+      <div class="strich"></div>
+    </div>
+  </section>
+  <ul class="liste">
+  {% for h in handouts %}
+    <li>
+      <span><a class="titel" href="{{ h.slug }}/">{{ h.titel }}</a><small>Stand: {{ h.stand }}</small></span>
+      <a class="knopf" href="{{ h.slug }}/{{ h.pdf_datei }}" download>&gt; PDF</a>
+    </li>
+  {% endfor %}
+  </ul>
+  <footer class="fuss">
+    <span><a href="https://juliajunge.de">&gt; juliajunge.de</a></span>
+    <span class="fuss-rechts"><span>Autorin: Julia Junge</span><img src="vorlage/bilder/cc-by-sa.png" alt="Lizenz CC BY-SA"></span>
+  </footer>
+</main>
+</body>
+</html>
