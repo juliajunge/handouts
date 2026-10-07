@@ -267,31 +267,52 @@ mark { background: var(--jj-marker); color: var(--jj-black); padding: 0 3px; }
 }
 
 @media print {
-  .leitfaden { font-size: 10.5pt; line-height: 1.3; }
-  .leitfaden > p, .leitfaden > ul { margin: 0 0 16px; }
-.leitfaden .unterzeile { margin: -8px 0 14px; }
-  .leitfaden .kernsatz { padding: 18px 22px; }
-  .leitfaden .kernsatz p { font-size: 18pt; }
-  .leitfaden .transparenz { margin-bottom: 0; }
+  /* Titelseite: Label, Strich und großes Bild wie in der Webansicht */
+  .handout:has(.leitfaden) .hero { padding-bottom: 20px; }
+  .handout:has(.leitfaden) .hero-text { gap: 14px; }
+  .handout:has(.leitfaden) .hero .label, .handout:has(.leitfaden) .hero .strich { display: block; }
+  .handout:has(.leitfaden) .hero h1 { font-size: 28pt; }
+  .handout:has(.leitfaden) .hero-bild { width: 55mm; }
+  .handout:has(.leitfaden) .kopf .logo { height: 20px; }
+
+  .leitfaden { font-size: 11pt; line-height: 1.45; }
+  .leitfaden > p, .leitfaden > ul { margin: 0 0 10pt; }
+  .leitfaden > ul:not(.quellen) { gap: 5pt; }
+  .leitfaden .unterzeile { font-size: 13pt; margin: -10pt 0 16pt; }
+  .leitfaden .kernsatz { padding: 22px 26px; margin-bottom: 18pt; }
+  .leitfaden .kernsatz p { font-size: 20pt; }
+  .leitfaden .transparenz { font-size: 9.5pt; margin-bottom: 0; }
+
   .leitfaden .toc, .leitfaden #einleitung, .leitfaden .phase, .leitfaden .zeitplan-kopf, .leitfaden .neue-seite, .leitfaden .kontakt { break-before: page; }
   .leitfaden .toc, .leitfaden .abschnitt-kopf, .leitfaden .phase { margin-top: 0; }
-  .leitfaden .toc h2, .leitfaden .abschnitt-text h2, .leitfaden .kontakt-text h2 { font-size: 22pt; }
-  .leitfaden .phase-band { padding: 20px 24px; }
-  .leitfaden .phase-band h2 { font-size: 26pt; }
-  .leitfaden .phase--bonus .phase-band h2 { font-size: 20pt; }
-  .leitfaden .abschnitt-bild, .leitfaden .phase-bild { width: 34mm; }
-  .leitfaden .schritt-kopf { margin: 22px 0 8px; gap: 14px; }
+  .leitfaden .toc h2, .leitfaden .abschnitt-text h2, .leitfaden .kontakt-text h2 { font-size: 24pt; }
+  .leitfaden .toc > ol > li { padding: 8pt 0; }
+  .leitfaden .toc li ol { gap: 3pt; }
+
+  .leitfaden .abschnitt-kopf, .leitfaden .phase { gap: 18px; margin-bottom: 16pt; }
+  .leitfaden .phase-band { padding: 26px 28px; }
+  .leitfaden .phase-band h2 { font-size: 28pt; }
+  .leitfaden .phase--bonus .phase-band h2 { font-size: 21pt; }
+  .leitfaden .abschnitt-bild, .leitfaden .phase-bild { width: 48mm; }
+
+  .leitfaden .schritt-kopf { margin: 26pt 0 10pt; gap: 16px; }
   .leitfaden .schritt-kopf.neue-seite { margin-top: 0; }
-  .leitfaden .ziffer { width: 16mm; height: 16mm; font-size: 30pt; border-radius: 8px; }
-  .leitfaden .schritt-kopf h2 { font-size: 16pt; }
-  .leitfaden h3 { margin: 12px 0 3px; }
-  .leitfaden .checkliste { padding: 12px 16px; margin: 12px 0; }
-  .leitfaden .checkliste .kleinlabel { margin-bottom: 8px; }
-  .leitfaden .checkliste ul { gap: 6px; }
-  .leitfaden .toc a::after, .leitfaden .phasen-uebersicht a::after, .leitfaden .verweis a::after, .leitfaden .kleinlabel a::after { content: none !important; }
-  .leitfaden .zeitplan td { padding: 8px 12px; }
+  .leitfaden .ziffer { width: 20mm; height: 20mm; font-size: 40pt; border-radius: 12px; }
+  .leitfaden .schritt-kopf h2 { font-size: 18pt; }
+  .leitfaden h3 { font-size: 11.5pt; margin: 14pt 0 4pt; }
+
+  .leitfaden .checkliste { padding: 16px 20px; margin: 14pt 0; }
+  .leitfaden .checkliste .kleinlabel { margin-bottom: 10px; }
+  .leitfaden .checkliste ul { gap: 7pt; }
+  .leitfaden .zeitplan { font-size: 10pt; }
+  .leitfaden .zeitplan td { padding: 9px 12px; }
+
+  .leitfaden .text-bild { grid-template-columns: minmax(0, 1fr) 72mm; gap: 18px; }
+  .leitfaden .text-bild img { max-width: 72mm; }
+  .leitfaden .gruss { font-size: 18pt; }
+  .leitfaden .quellen { gap: 9pt; }
   .leitfaden .kontakt { margin-top: 0; }
-  .leitfaden .kontakt img { max-width: 60mm; }
-  .leitfaden .text-bild { grid-template-columns: minmax(0, 1fr) 62mm; }
-  .leitfaden .text-bild img { max-width: 62mm; }
+  .leitfaden .kontakt img { max-width: 70mm; }
+
+  .leitfaden .toc a::after, .leitfaden .phasen-uebersicht a::after, .leitfaden .verweis a::after, .leitfaden .kleinlabel a::after { content: none !important; }
 }
