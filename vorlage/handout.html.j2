@@ -7,7 +7,7 @@
 {% if beschreibung %}<meta name="description" content="{{ beschreibung }}">{% endif %}
 <link rel="stylesheet" href="../vorlage/handout.css">
 </head>
-<body>
+<body{% if format == "quer" %} class="quer"{% endif %}>
 <main class="handout">
 <div class="seite">
 
@@ -34,7 +34,7 @@
   {% macro fuss(klasse) %}
   <footer class="fuss {{ klasse }}">
     <span><a href="https://juliajunge.de">&gt; juliajunge.de</a>{% if kurzlink %} · Online: {{ kurzlink }}{% endif %}</span>
-    <span class="fuss-rechts"><span>Autorin: Julia Junge · Stand: {{ stand }} · keine Gewähr</span><img src="../vorlage/bilder/cc-by-sa.png" alt="Lizenz CC BY-SA"></span>
+    <span class="fuss-rechts"><span>{% if quelle %}{{ quelle }}{% else %}Autorin: Julia Junge · Stand: {{ stand }} · keine Gewähr{% endif %}</span><img src="../vorlage/bilder/cc-by-sa.png" alt="Lizenz CC BY-SA"></span>
   </footer>
   {% endmacro %}
 

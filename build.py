@@ -77,6 +77,8 @@ def lies_handout(ordner):
     daten.setdefault("bild_alt", "")
     daten.setdefault("kurzlink", "")
     daten.setdefault("beschreibung", "")
+    daten.setdefault("format", "")
+    daten.setdefault("quelle", "")
     daten["slug"] = ordner.name
     daten["pdf_datei"] = (daten.get("pdf_name") or ordner.name) + ".pdf"
     return daten, m.group(2)

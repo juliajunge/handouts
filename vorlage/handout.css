@@ -316,3 +316,45 @@ mark { background: var(--jj-marker); color: var(--jj-black); padding: 0 3px; }
 
   .leitfaden .toc a::after, .leitfaden .phasen-uebersicht a::after, .leitfaden .verweis a::after, .leitfaden .kleinlabel a::after { content: none !important; }
 }
+
+/* ---------- Querformat (format: quer im Kopfbereich) ---------- */
+body.quer .handout { max-width: 1200px; }
+
+@media print {
+  body.quer .handout { page: querformat; }
+  body.quer .seite { min-height: 190mm; }
+}
+
+/* ---------- Reifegradmodell (Matrix mit sechs Spalten) ---------- */
+.reifegrad .unterzeile { font-weight: 700; margin: -24px 0 24px; max-width: 60em; }
+.reifegrad h2 { margin: 0; }
+.reifegrad-kopf { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; margin: 40px 0 12px; }
+.reifegrad-kopf img { width: 90px; height: auto; display: block; }
+.matrix-rahmen { overflow-x: auto; margin-bottom: 16px; }
+.matrix { width: 100%; min-width: 900px; border-collapse: separate; border-spacing: 0; table-layout: fixed; font-size: .82em; line-height: 1.3; hyphens: auto; }
+.matrix thead th { background: var(--jj-green-dark); color: var(--jj-white); text-align: left; padding: 8px 10px; font-size: .78em; letter-spacing: .1em; text-transform: uppercase; vertical-align: middle; }
+.matrix thead th:first-child { border-top-left-radius: 8px; width: 13%; }
+.matrix thead th:last-child { border-top-right-radius: 8px; }
+.matrix thead th.stufe-5 { background: var(--jj-green-light); color: var(--jj-black); }
+.matrix .ziffer { font-family: var(--font-display); font-weight: 700; font-size: 2.2em; line-height: 1; letter-spacing: 0; vertical-align: middle; margin-right: 4px; }
+.matrix tbody th { text-align: left; color: var(--jj-green-dark); font-weight: 700; vertical-align: top; padding: 8px 10px; hyphens: manual; }
+.matrix tbody td { vertical-align: top; padding: 8px 10px; }
+.matrix tbody tr:nth-child(odd) > * { background: var(--jj-offwhite); }
+.matrix tbody tr:nth-child(even) > * { background: #F7F7F1; }
+.matrix tr { break-inside: avoid; }
+.ankreuzen { display: inline-block; width: .95em; height: .95em; border: 1.5px solid var(--jj-green-dark); border-radius: 999px; background: var(--jj-white); box-sizing: border-box; vertical-align: -.15em; }
+.matrix td .ankreuzen { float: left; margin: .15em 6px 0 0; }
+
+@media print {
+  .reifegrad .unterzeile { margin: 0 0 8px; font-size: 10pt; }
+  .reifegrad-kopf { break-before: page; margin: 0 0 6px; }
+  .reifegrad-kopf img { width: 16mm; }
+  .reifegrad h2 { font-size: 21pt; }
+  .matrix-rahmen { overflow: visible; margin-bottom: 8px; }
+  .matrix { min-width: 0; font-size: 9.5pt; line-height: 1.2; }
+  .matrix thead th { padding: 1.5mm 2.2mm; font-size: 8.5pt; }
+  .matrix thead th:first-child { width: 34mm; }
+  .matrix .ziffer { font-size: 21pt; }
+  .matrix tbody th { font-size: 10pt; padding: 1.3mm 2.2mm; }
+  .matrix tbody td { padding: 1.3mm 2.2mm; }
+}
