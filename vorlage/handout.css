@@ -119,10 +119,14 @@ mark { background: var(--jj-marker); color: var(--jj-black); padding: 0 3px; }
 .canvas img { width: 100%; height: auto; display: block; break-inside: avoid; }
 
 /* Fuß */
-.fuss { border-top: 3px solid var(--jj-green-dark); padding-top: 12px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: .8em; }
+.fuss { padding-top: 12px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: .8em; }
 .fuss a { color: var(--jj-black); font-weight: 700; text-decoration: none; }
 .fuss-rechts { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .fuss img { height: 20px; width: auto; display: block; }
+/* Drachenlinie: Strich läuft in die Schwanzspitze des Logo-Drachen (Maße aus dem CD, H = Drachenhöhe) */
+.drachenlinie { --h: 30px; position: relative; height: var(--h); flex: 0 0 100%; margin-bottom: 4px; }
+.drachenlinie span { position: absolute; left: 0; right: calc(var(--h) * 5.781); top: calc(var(--h) * .859); height: calc(var(--h) * .1156); background: var(--jj-green-dark); }
+.fuss .drachenlinie img { position: absolute; right: 0; top: 0; height: var(--h); width: auto; }
 .fuss--druck { display: none; margin-top: 12px; }
 
 @media (max-width: 560px) {
@@ -162,6 +166,8 @@ mark { background: var(--jj-marker); color: var(--jj-black); padding: 0 3px; }
 
   .fuss--web { display: none; }
   .fuss--druck { display: flex; }
+  .fuss--druck { padding-top: 0; }
+  .drachenlinie { --h: 6mm; margin-bottom: 0; }
 
   /* Seite 1 füllt die Seitenhöhe, die Fußzeile sitzt unten (A4 297 mm − 28 mm Rand) */
   .seite { min-height: 268mm; display: flex; flex-direction: column; }

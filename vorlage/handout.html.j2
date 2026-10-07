@@ -33,6 +33,7 @@
 
   {% macro fuss(klasse) %}
   <footer class="fuss {{ klasse }}">
+    <div class="drachenlinie" aria-hidden="true"><span></span><img src="../vorlage/bilder/logo-julia-junge.svg" alt=""></div>
     <span><a href="https://juliajunge.de">&gt; juliajunge.de</a>{% if kurzlink %} · Online: {{ kurzlink }}{% endif %}</span>
     <span class="fuss-rechts"><span>{% if quelle %}{{ quelle }}{% else %}Autorin: Julia Junge · Stand: {{ stand }} · keine Gewähr{% endif %}</span><img src="../vorlage/bilder/cc-by-sa.png" alt="Lizenz CC BY-SA"></span>
   </footer>
