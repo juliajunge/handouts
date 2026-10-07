@@ -329,6 +329,7 @@ body.quer .handout { max-width: 1200px; }
 @media print {
   body.quer .handout { page: querformat; }
   body.quer .seite { min-height: 190mm; }
+  body.quer .kopf { display: none; }  /* Logo steckt schon in der Drachenlinie, spart Höhe */
 }
 
 /* ---------- Reifegradmodell (Matrix mit sechs Spalten) ---------- */
@@ -354,13 +355,16 @@ body.quer .handout { max-width: 1200px; }
 @media print {
   .reifegrad .unterzeile { margin: 0 0 8px; font-size: 10pt; }
   .reifegrad-kopf { break-before: page; margin: 0 0 6px; }
-  .reifegrad-kopf img { width: 16mm; }
+  .reifegrad-kopf img { width: 11mm; }
   .reifegrad h2 { font-size: 21pt; }
   .matrix-rahmen { overflow: visible; margin-bottom: 8px; }
-  .matrix { min-width: 0; font-size: 9.5pt; line-height: 1.2; }
+  .matrix { min-width: 0; font-size: 9.5pt; line-height: 1.25; }
   .matrix thead th { padding: 1.5mm 2.2mm; font-size: 8.5pt; }
   .matrix thead th:first-child { width: 34mm; }
   .matrix .ziffer { font-size: 21pt; }
-  .matrix tbody th { font-size: 10pt; padding: 1.3mm 2.2mm; }
-  .matrix tbody td { padding: 1.3mm 2.2mm; }
+  .matrix tbody th { font-size: 10pt; padding: 1.8mm 2.6mm; }
+  .matrix tbody td { padding: 1.8mm 2.6mm; }
+  /* Seite 1 hat keinen Fuß: Tabelle bis zum unteren Rand ziehen, die Zeilen bekommen den Platz */
+  .unterzeile + .matrix-rahmen .matrix { height: 156mm; }
+  .matrix thead th { padding: 2mm 2.6mm; }
 }
