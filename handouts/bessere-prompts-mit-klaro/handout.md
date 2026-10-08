@@ -5,6 +5,7 @@ stand: 8. Oktober 2026
 bild: dragon-zielscheibe.png
 bild_alt: Drache mit Zielscheibe
 pdf_name: bessere-prompts-mit-klaro
+mehrseitig: ja
 beschreibung: Das KLARO-Schema in fünf Elementen für klare, strukturierte Prompts, mit Tipps zu Regeln, Stil und zwei Experimenten.
 ---
 
@@ -62,7 +63,9 @@ Beschreibe, was der Bot tun soll, und formuliere positiv: Sag, was du willst, st
 - Hilf mir, auf ungewöhnliche Ideen zu kommen, um …
 - Generiere einen Post zu xy, der …
 
-Für mehr Steuerung kommen Regeln (R) und Output (O) dazu.
+<!--seitenumbruch-->
+
+## Für mehr Steuerung: Regeln (R) und Output (O)
 
 ## Regeln (R)
 

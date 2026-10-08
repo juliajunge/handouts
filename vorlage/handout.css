@@ -368,3 +368,12 @@ body.quer .handout { max-width: 1200px; }
   .unterzeile + .matrix-rahmen .matrix { height: 156mm; }
   .matrix thead th { padding: 2mm 2.6mm; }
 }
+
+/* ---------- Mehrseitige Handouts (mehrseitig: ja, Seitenwechsel mit <!--seitenumbruch-->): Fußzeile auf jeder Seite, luftigere Überschriften ---------- */
+@media print {
+  .seite--folge { break-before: page; }
+  body.mehrseitig .inhalt h2 { margin-top: 20px; margin-bottom: 8px; }
+  body.mehrseitig .inhalt > h2:first-child { margin-top: 0; }
+  body.mehrseitig .hero-bild { width: 28mm; }
+  body.mehrseitig .hero { padding-bottom: 6px; }
+}

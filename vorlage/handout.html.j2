@@ -7,7 +7,7 @@
 {% if beschreibung %}<meta name="description" content="{{ beschreibung }}">{% endif %}
 <link rel="stylesheet" href="../vorlage/handout.css">
 </head>
-<body{% if format == "quer" %} class="quer"{% endif %}>
+<body class="{% if format == 'quer' %}quer {% endif %}{% if mehrseitig %}mehrseitig{% endif %}">
 <main class="handout">
 <div class="seite">
 
@@ -27,8 +27,9 @@
     {% if bild %}<img class="hero-bild" src="{{ bild }}" alt="{{ bild_alt }}">{% endif %}
   </section>
 
+  {% set teile = inhalt.split('<!--seitenumbruch-->') %}
   <div class="inhalt">
-{{ inhalt }}
+{{ teile[0]|safe }}
   </div>
 
   {% macro fuss(klasse) %}
@@ -41,6 +42,14 @@
 
   {{ fuss("fuss--druck") }}
 </div>
+{% for teil in teile[1:] %}
+<div class="seite seite--folge">
+  <div class="inhalt">
+{{ teil|safe }}
+  </div>
+  {{ fuss("fuss--druck") }}
+</div>
+{% endfor %}
 
   {% if anhang %}<div class="inhalt">
 {{ anhang }}
