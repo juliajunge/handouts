@@ -136,13 +136,14 @@ Bei großen Organisationen müssen (noch) nicht alle mitmachen. Es kann auch ein
 <table class="zeitplan">
 <thead><tr><th>Schritt · Zeitraum</th><th>Aufgaben</th></tr></thead>
 <tbody>
-<tr><td><strong>Schritt 1: Generative KI verstehen lernen</strong><span class="zeit">Monat 1</span></td><td><ul><li>KI-Grundlagen-Workshops organisieren</li><li>Einführungen ins Prompting durchführen</li></ul></td></tr>
-<tr><td><strong>Schritt 2: KI ausprobieren und sich austauschen</strong><span class="zeit">Monat 2–4</span></td><td><ul><li>Orientierungshilfe für den experimentellen Einsatz erstellen</li><li>Erste Experimente mit KI-Tools durchführen</li><li>Regelmäßige Austauschtreffen etablieren</li></ul></td></tr>
-<tr><td><strong>Schritt 3: Bedarfe erkennen, Ziele setzen, Entscheidungen treffen</strong><span class="zeit">Monate 4–5</span></td><td><ul><li>KI-Bedarfs-Workshops durchführen</li><li>Entscheidungen über Fokus-Bereiche treffen</li></ul></td></tr>
-<tr><td><strong>Schritt 4: Technik, Daten, Datenschutz sichern</strong><span class="zeit">Monat 6</span></td><td><ul><li>KI-Tool-Übersicht erstellen, Lizenzen beschaffen</li><li>Daten aufbereiten</li><li>Datenschutz-Richtlinien anpassen, Sicherheits-Checks durchführen</li></ul></td></tr>
+<tr><td><strong>Schritt 1: Generative KI verstehen lernen</strong><span class="zeit">Monat 1</span></td><td><ul><li>KI-Grundlagen-Workshops organisieren</li><li>Einführungen ins Prompting organisieren</li><li>Whitelist mit KI-Tools zum Ausprobieren erstellen</li><li>Leitlinien für die KI-Nutzung entwerfen</li><li>Groben Zeitplan (wie diesen) entwerfen</li><li>Ein klares Ja der Leitung zu KI einholen</li></ul></td></tr>
+<tr><td><strong>Schritt 2: KI ausprobieren und sich austauschen</strong><span class="zeit">Monate 2–4</span></td><td><ul><li>Mit KI-Tools experimentieren</li><li>Austauschtreffen oder Austausch zu KI in Treffen</li><li>Ansprechpersonen oder KI-Teams benennen</li><li>KI-Infoecken, Kanäle und Ablagen einrichten</li><li>Early Adopters unterstützen, z. B. mit Bezahl-Lizenzen</li></ul></td></tr>
+<tr><td><strong>Schritt 3: Bedarfe erkennen, Ziele setzen, Entscheidungen treffen</strong><span class="zeit">Monate 4–5</span></td><td><ul><li>KI-Bedarfs-Workshops durchführen</li><li>Über Fokus-Bereiche entscheiden</li><li>Was ist leicht und bringt großen Nutzen?</li></ul></td></tr>
+<tr><td><strong>Schritt 4: Technik, Daten, Datenschutz sichern</strong><span class="zeit">Monat 6</span></td><td><ul><li>KI-Tool-Landkarte erstellen, Lizenzen beschaffen</li><li>Daten aufbereiten</li><li>Leitlinien anpassen, Sicherheits-Checks durchführen</li></ul></td></tr>
 <tr><td><strong>Schritt 5: KI produktiv in ersten Arbeitsfeldern nutzen</strong><span class="zeit">Monate 7–9</span></td><td><ul><li>Vertiefte KI-Technik-Schulungen durchführen</li><li>KI in ausgewählten Bereichen implementieren</li></ul></td></tr>
 <tr><td><strong>Schritt 6: Erfolge und Misserfolge unter die Lupe nehmen</strong><span class="zeit">Monat 10</span></td><td><ul><li>Auswertungs-Workshops organisieren</li><li>Entscheidungen über Ausweitung treffen</li></ul></td></tr>
 <tr><td><strong>Schritt 7: Nutzung ausweiten und neue Standards setzen</strong><span class="zeit">Monate 11–12</span></td><td><ul><li>Organisationsweite Anpassungen vornehmen</li><li>KI-Nutzung als Standard für alle etablieren</li><li>Austausch verstetigen</li></ul></td></tr>
+<tr><td><strong>Bonus: Vernetzen und verbünden</strong><span class="zeit">jederzeit</span></td><td><ul><li>Wissen teilen, sich vernetzen und verbünden</li></ul></td></tr>
 </tbody>
 </table>
 
