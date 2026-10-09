@@ -35,12 +35,17 @@ def container(md, name, oeffnen, schliessen="</div>\n"):
     md.use(container_plugin, name, render=render)
 
 
+def karten_label(titel):
+    """Etikett über der Karte; ohne Titel (nur ::: karte) gibt es keins."""
+    return f'<div class="karte-label">{titel}</div>\n' if titel else ""
+
+
 def markdown():
     md = MarkdownIt("commonmark", {"typographer": False})
     container(md, "karten", lambda _: '<div class="karten">\n')
-    container(md, "karte", lambda t: f'<div class="karte">\n<div class="karte-label">{t}</div>\n')
-    container(md, "rahmenkarte", lambda t: f'<div class="karte karte--rahmen">\n<div class="karte-label">{t}</div>\n')
-    container(md, "schritte", lambda _: '<div class="schritte">\n')
+    container(md, "karte", lambda t: f'<div class="karte">\n{karten_label(t)}')
+    container(md, "rahmenkarte", lambda t: f'<div class="karte karte--rahmen">\n{karten_label(t)}')
+    container(md, "schritte", lambda t: '<div class="schritte schritte--untereinander">\n' if t == "untereinander" else '<div class="schritte">\n')
     container(
         md, "tipp",
         lambda _: '<aside class="tipp"><img class="tipp-icon" src="../vorlage/bilder/icon-tipp.svg" alt="">\n<div class="tipp-text">\n',

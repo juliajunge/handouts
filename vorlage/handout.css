@@ -188,7 +188,7 @@ mark { background: var(--jj-marker); color: var(--jj-black); padding: 0 3px; }
   a { color: var(--jj-black); }
   .inhalt a[href^="http"]:not(.url-sichtbar)::after { content: " (" attr(href) ")"; font-size: 8pt; word-break: break-all; }
 
-  .hero { padding-bottom: 12px; }
+  .hero { padding-bottom: 8px; margin-top: -4mm; }
   .hero-text { gap: 0; }
   .hero .label, .hero .strich { display: none; }
   .hero h1 { font-size: 26pt; }
@@ -206,6 +206,7 @@ mark { background: var(--jj-marker); color: var(--jj-black); padding: 0 3px; }
   .schritte li { grid-template-columns: 28px minmax(0, 1fr); gap: 0 10px; }
   .schritte li::before { width: 28px; height: 28px; font-size: 1.2em; }
   .schritte li p, .schritte li h3 { margin-bottom: 2px; }
+  .schritte--untereinander ol { grid-template-columns: 1fr; gap: 10px; }
 
   .tipp { padding: 10px 16px; margin-bottom: 0; }
 
@@ -319,7 +320,7 @@ mark { background: var(--jj-marker); color: var(--jj-black); padding: 0 3px; }
 
 @media print {
   /* Titelseite: Label, Strich und großes Bild wie in der Webansicht */
-  .handout:has(.leitfaden) .hero { padding-bottom: 20px; }
+  .handout:has(.leitfaden) .hero { padding-bottom: 20px; margin-top: 0; }
   .handout:has(.leitfaden) .hero-text { gap: 14px; }
   .handout:has(.leitfaden) .hero .label, .handout:has(.leitfaden) .hero .strich { display: block; }
   .handout:has(.leitfaden) .hero h1 { font-size: 28pt; }
@@ -377,6 +378,7 @@ body.quer .handout { max-width: 1200px; }
   body.quer .seite { min-height: 190mm; }
   body.quer .kopf { display: none; }  /* Logo steckt schon in der Drachenlinie, spart Höhe */
   body.quer .hero-bild { width: 18mm; }  /* Matrix braucht die Höhe */
+  body.quer .hero { margin-top: 0; }
 }
 
 /* ---------- Reifegradmodell (Matrix mit sechs Spalten) ---------- */
@@ -422,5 +424,5 @@ body.quer .handout { max-width: 1200px; }
   body.mehrseitig .inhalt h2 { margin-top: 16px; margin-bottom: 6px; }
   body.mehrseitig .inhalt > h2:first-child { margin-top: 0; }
   body.mehrseitig .hero-bild { width: 32mm; }
-  body.mehrseitig .hero { padding-bottom: 2px; margin-top: -4mm; }
+  body.mehrseitig .hero { padding-bottom: 2px; }
 }

@@ -73,6 +73,8 @@ Karte nur mit Rahmen statt Hintergrundfarbe
 ::::
 ```
 
+Ohne Titel hinter `karte` bzw. `rahmenkarte` bekommt die Karte kein Etikett.
+
 **Nummerierte Schritte** (orange Kreise):
 
 ```markdown
@@ -84,6 +86,8 @@ Karte nur mit Rahmen statt Hintergrundfarbe
    Erklärung …
 :::
 ```
+
+Im Druck stehen die Schritte zweispaltig. Mit `::: schritte untereinander` stehen sie in einer Spalte.
 
 **Tipp-Kasten** (grüner Rahmen mit Sternchen):
 
