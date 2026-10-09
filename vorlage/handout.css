@@ -179,25 +179,27 @@ mark { background: var(--jj-marker); color: var(--jj-black); padding: 0 3px; }
 }
 
 /* ---------- Druck ---------- */
-@page { size: A4; margin: 14mm 16mm 14mm; }
+@page { size: A4; margin: 14mm 20mm 14mm; }
 @page querformat { size: A4 landscape; margin: 10mm; }
 
 @media print {
   .nur-web { display: none !important; }
-  .handout { font-size: 9pt; line-height: 1.32; max-width: none; padding: 0; }
+  .handout { font-size: 10pt; line-height: 1.35; max-width: none; padding: 0; }
   a { color: var(--jj-black); }
-  .inhalt a[href^="http"]:not(.url-sichtbar)::after { content: " (" attr(href) ")"; font-size: .85em; word-break: break-all; }
+  .inhalt a[href^="http"]:not(.url-sichtbar)::after { content: " (" attr(href) ")"; font-size: 8pt; word-break: break-all; }
 
   .hero { padding-bottom: 12px; }
   .hero-text { gap: 0; }
   .hero .label, .hero .strich { display: none; }
   .hero h1 { font-size: 26pt; }
-  .hero-bild { width: 70px; }
+  .hero-bild { width: 32mm; }
 
   .inhalt h2 { font-size: 15pt; margin-bottom: 6px; }
   .karten { gap: 10px; margin-bottom: 20px; }
   .karte { padding: 12px 16px; }
   .karte p { margin-bottom: 5px; }
+  .karte-label { font-size: 7.5pt; }
+  .karte blockquote { font-size: 9pt; }
 
   .schritte ol { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 20px; margin-bottom: 18px; }
   .schritte li { grid-template-columns: 28px minmax(0, 1fr); gap: 0 10px; }
@@ -208,7 +210,7 @@ mark { background: var(--jj-marker); color: var(--jj-black); padding: 0 3px; }
 
   .fuss--web { display: none; }
   .fuss--druck { display: flex; }
-  .fuss--druck { padding-top: 0; }
+  .fuss--druck { padding-top: 0; font-size: 7.5pt; }
   .drachenlinie { --h: 6mm; margin-bottom: 0; }
 
   /* Seite 1 füllt die Seitenhöhe, die Fußzeile sitzt unten (A4 297 mm − 28 mm Rand) */
@@ -330,6 +332,7 @@ mark { background: var(--jj-marker); color: var(--jj-black); padding: 0 3px; }
   .leitfaden .kernsatz { padding: 22px 26px; margin-bottom: 18pt; }
   .leitfaden .kernsatz p { font-size: 20pt; }
   .leitfaden .transparenz { font-size: 9.5pt; margin-bottom: 0; }
+  .leitfaden .kleinlabel { font-size: max(.75em, 7.5pt); }
 
   .leitfaden .toc, .leitfaden #einleitung, .leitfaden .phase, .leitfaden .zeitplan-kopf, .leitfaden .neue-seite, .leitfaden .kontakt { break-before: page; }
   .leitfaden .toc, .leitfaden .abschnitt-kopf, .leitfaden .phase { margin-top: 0; }
@@ -372,6 +375,7 @@ body.quer .handout { max-width: 1200px; }
   body.quer .handout { page: querformat; }
   body.quer .seite { min-height: 190mm; }
   body.quer .kopf { display: none; }  /* Logo steckt schon in der Drachenlinie, spart Höhe */
+  body.quer .hero-bild { width: 18mm; }  /* Matrix braucht die Höhe */
 }
 
 /* ---------- Reifegradmodell (Matrix mit sechs Spalten) ---------- */
@@ -416,6 +420,6 @@ body.quer .handout { max-width: 1200px; }
   .seite--folge { break-before: page; }
   body.mehrseitig .inhalt h2 { margin-top: 20px; margin-bottom: 8px; }
   body.mehrseitig .inhalt > h2:first-child { margin-top: 0; }
-  body.mehrseitig .hero-bild { width: 28mm; }
+  body.mehrseitig .hero-bild { width: 32mm; }
   body.mehrseitig .hero { padding-bottom: 6px; }
 }

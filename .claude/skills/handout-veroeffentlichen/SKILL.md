@@ -61,7 +61,8 @@ Markdown-Bausteine (Karten, Schritte, Tipp, Canvas, Marker `==…==`) stehen in 
 - **Newsletter:** Unter jeder Handout-Webseite steht automatisch die Newsletter-Anmeldung (Brevo, `vorlage/newsletter.html.j2`), oben ein Knopf „> Newsletter abonnieren“. Beides nur im Web, nie im PDF. Abschalten pro Handout mit `newsletter: nein`, z. B. bei Auftragsarbeiten. Ändert sich das Formular in Brevo, Formular-Adresse (`action`) und Feldnamen dort anpassen.
 - **Fuß:** Drachenlinie, links „> juliajunge.de“, rechts Autorin/Stand oder `quelle:` plus CC-Logo. Den Namen nicht doppelt nennen.
 - **Tabellen:** grüne Kopfzeile in Versalien, Zeilen abwechselnd #EDEDDF/#F7F7F1, erste Spalte fett. Normal max. 4 Spalten; eine Matrix (z. B. Reifegrade) darf mehr haben, dann `format: quer`.
-- **Schriftgrößen im Druck:** Text 9–11 pt, dichte Matrix 9,5 pt, Quellen-/Lizenzzeile 9 pt.
+- **Schriftgrößen im Druck:** Text 10–11 pt, dichte Matrix 9,5 pt, nichts unter 7,5 pt (Etiketten, Fußzeile).
+- **Ränder im Druck:** Hochformat 14 mm oben/unten, 20 mm links/rechts; Querformat 10 mm. Drache neben dem Titel 32 mm (Querformat 18 mm).
 - **Ankreuzfelder:** Kreis `<i class="ankreuzen"></i>` links oben in der Zelle.
 - Soll eine Zeile nicht über zwei Seiten laufen: `break-inside: avoid`; neue Seite: `break-before: page`.
 
