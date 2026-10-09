@@ -15,6 +15,7 @@
     <a href="https://juliajunge.de"><img class="logo" src="../vorlage/bilder/logo-julia-junge.svg" alt="Julia Junge"></a>
     <div class="aktionen nur-web">
       <a class="knopf" href="{{ pdf_datei }}" download>&gt; PDF herunterladen</a>
+      {% if newsletter %}<a class="knopf knopf--leise" href="#newsletter">&gt; Newsletter abonnieren</a>{% endif %}
     </div>
   </header>
 
@@ -54,6 +55,8 @@
   {% if anhang %}<div class="inhalt">
 {{ anhang }}
   </div>{% endif %}
+
+  {% if newsletter %}{% include "newsletter.html.j2" %}{% endif %}
 
   {{ fuss("fuss--web") }}
 </main>

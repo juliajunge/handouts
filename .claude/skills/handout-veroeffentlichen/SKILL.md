@@ -13,7 +13,7 @@ Gestaltungsregeln (Ton, Farben, Drachen) kommen aus dem Skill `julia-junge-desig
 
 1. **Inhalt klären:** Quelle lesen (z. B. Word: `pandoc datei.docx -t markdown`). Titel, Hoch- oder Querformat, Quellenangabe bei adaptierten Inhalten.
 2. **Ordner anlegen:** `handouts/<name>/` – kleine Buchstaben, Bindestriche, keine Umlaute. Der Name wird Teil der Adresse und bleibt danach gleich.
-3. **`handout.md` schreiben** (Aufbau unten), passende Drachen aus `julia-junge-design/assets/` in den Ordner kopieren (Pose nach Anlass, ein Drache pro Seite).
+3. **`handout.md` schreiben** (Aufbau unten), passende Drachen aus `julia-junge-design/assets/` in den Ordner kopieren (Pose nach Anlass). Die Regel heißt ein Drache **pro Seite, nicht pro Handout**: In mehrseitigen Handouts darf jede Seite ihren eigenen Drachen haben.
 4. **Lokal bauen und ansehen:**
    ```bash
    pip install -r requirements.txt
@@ -42,6 +42,7 @@ beschreibung: Ein Satz für Übersicht und Suchmaschinen.
 kurzlink: kurz.link/xy          # optional, erscheint im Druck im Fuß
 format: quer                    # optional: ganzes Handout im Querformat
 quelle: 2025, adaptiert nach …, erstellt von Julia Junge, CC-BY-SA 2.0   # optional: ersetzt „Autorin … Stand …“ im Fuß
+newsletter: nein                # optional: keine Newsletter-Anmeldung unter der Webseite
 ---
 ```
 
@@ -56,6 +57,8 @@ Markdown-Bausteine (Karten, Schritte, Tipp, Canvas, Marker `==…==`) stehen in 
 ## Gestaltung in diesem Repo
 
 - Du-Ansprache, keine Emojis, Chevron „>“ vor Links und Knöpfen.
+- **Drachen:** höchstens einer pro Seite, jede Seite darf einen haben – auch Folgeseiten mehrseitiger Handouts.
+- **Newsletter:** Unter jeder Handout-Webseite steht automatisch die Newsletter-Anmeldung (Brevo, `vorlage/newsletter.html.j2`), oben ein Knopf „> Newsletter abonnieren“. Beides nur im Web, nie im PDF. Abschalten pro Handout mit `newsletter: nein`, z. B. bei Auftragsarbeiten. Ändert sich das Formular in Brevo, Formular-Adresse (`action`) und Feldnamen dort anpassen.
 - **Fuß:** Drachenlinie, links „> juliajunge.de“, rechts Autorin/Stand oder `quelle:` plus CC-Logo. Den Namen nicht doppelt nennen.
 - **Tabellen:** grüne Kopfzeile in Versalien, Zeilen abwechselnd #EDEDDF/#F7F7F1, erste Spalte fett. Normal max. 4 Spalten; eine Matrix (z. B. Reifegrade) darf mehr haben, dann `format: quer`.
 - **Schriftgrößen im Druck:** Text 9–11 pt, dichte Matrix 9,5 pt, Quellen-/Lizenzzeile 9 pt.

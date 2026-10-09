@@ -1,0 +1,94 @@
+{# Newsletter-Anmeldung (Brevo), nur in der Webansicht. Feldnamen und Formular-Adresse stammen aus dem
+   HTML-Code des Brevo-Formulars und müssen dazu passen. Das Skript main.js von Brevo prüft die Felder,
+   sendet das Formular und zeigt die Erfolgs- oder Fehlermeldung an. #}
+<section class="newsletter nur-web" id="newsletter">
+  <div class="newsletter-kopf">
+    <div>
+      <span class="label">Newsletter</span>
+      <h2>Mehr davon in dein Postfach</h2>
+      <p>Höchstens alle 14 Tage: Hinweise auf meine und ähnliche Fortbildungen, neue Handouts, Publikationen, Tools und Vorlagen.</p>
+    </div>
+    <img src="../vorlage/bilder/dragon-brief.png" alt="Drache mit Brief">
+  </div>
+
+  <div class="sib-form">
+    <div id="sib-form-container" class="sib-form-container">
+      <div id="error-message" class="sib-form-message-panel newsletter-meldung newsletter-meldung--fehler">
+        <div class="sib-form-message-panel__text"><span class="sib-form-message-panel__inner-text">Deine Anmeldung konnte nicht gespeichert werden. Bitte versuch es noch einmal.</span></div>
+      </div>
+      <div id="success-message" class="sib-form-message-panel newsletter-meldung newsletter-meldung--erfolg">
+        <div class="sib-form-message-panel__text"><span class="sib-form-message-panel__inner-text">Danke, deine Anmeldung ist angekommen. Schau gleich in dein Postfach.</span></div>
+      </div>
+      <div id="sib-container">
+        <form id="sib-form" method="POST" data-type="subscription"
+              action="https://dd61c51f.sibforms.com/serve/MUIFAJ9bCJTWl4vU2fgVD0u05UKr9SFpTpU5tde-RFs0MaglkQeoTglQKh74CWllLGDzDpAWAZ4FTN5naf61_iyDI9gZTE3Cg_68PInY37UyD6MzByzDEw_GG4rxxz-c8An5vZ9fvCmWghOsnRfqlmDnc0zS23U9qIGYLKHB7uzLW24kgRmHqnhNE-Lo9WMXXg8FvshVQDkJavA6">
+          <div class="newsletter-felder">
+            <div class="sib-input sib-form-block newsletter-feld newsletter-feld--breit">
+              <div class="form__entry entry_block">
+                <div class="form__label-row">
+                  <label class="entry__label" for="EMAIL" data-required="*">E-Mail-Adresse</label>
+                  <div class="entry__field"><input class="input" type="email" id="EMAIL" name="EMAIL" autocomplete="email" value="" placeholder="name@verein.de" data-required="true" required></div>
+                </div>
+                <label class="entry__error entry__error--primary"></label>
+              </div>
+            </div>
+            <div class="sib-input sib-form-block newsletter-feld">
+              <div class="form__entry entry_block">
+                <div class="form__label-row">
+                  <label class="entry__label" for="VORNAME">Name <span class="freiwillig">(freiwillig)</span></label>
+                  <div class="entry__field"><input class="input" maxlength="200" type="text" id="VORNAME" name="VORNAME" autocomplete="name"></div>
+                </div>
+                <label class="entry__error entry__error--primary"></label>
+              </div>
+            </div>
+            <div class="sib-input sib-form-block newsletter-feld">
+              <div class="form__entry entry_block">
+                <div class="form__label-row">
+                  <label class="entry__label" for="ORGANISATION">Organisation <span class="freiwillig">(freiwillig)</span></label>
+                  <div class="entry__field"><input class="input" maxlength="200" type="text" id="ORGANISATION" name="ORGANISATION" autocomplete="organization"></div>
+                </div>
+                <label class="entry__error entry__error--primary"></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="sib-optin sib-form-block" data-required="true">
+            <div class="form__entry entry_mcq">
+              <div class="form__label-row">
+                <div class="entry__choice">
+                  <label class="newsletter-optin">
+                    <input type="checkbox" value="1" id="OPT_IN" name="OPT_IN" required>
+                    <span>Ich möchte den Newsletter erhalten und akzeptiere die <a href="https://www.juliajunge.de/datenschutzerklaerung/">Datenschutzerklärung</a>.</span>
+                  </label>
+                </div>
+              </div>
+              <label class="entry__error entry__error--primary"></label>
+            </div>
+          </div>
+
+          <div class="sib-form-block">
+            <button class="knopf sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">&gt; Newsletter abonnieren</button>
+          </div>
+
+          <p class="newsletter-klein">Abmelden kannst du dich jederzeit über den Link in jeder Ausgabe. Für den Versand nutze ich Brevo: Deine Angaben werden zur Bearbeitung an Brevo übertragen, gemäß den <a href="https://www.brevo.com/de/legal/termsofuse/" rel="nofollow">Nutzungsbedingungen</a>.</p>
+
+          <input type="text" name="email_address_check" value="" class="input--hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="hidden" name="locale" value="de">
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  window.LOCALE = 'de';
+  window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "Bitte prüf deine E-Mail-Adresse.";
+  window.REQUIRED_ERROR_MESSAGE = "Dieses Feld darf nicht leer sein.";
+  window.GENERIC_INVALID_MESSAGE = "Die Angaben sind nicht gültig. Bitte prüf das Feld und versuch es noch einmal.";
+  window.REQUIRED_CODE_ERROR_MESSAGE = 'Wähle bitte eine Ländervorwahl aus.';
+  window.INVALID_NUMBER = window.GENERIC_INVALID_MESSAGE;
+  window.INVALID_DATE = "Bitte gib ein gültiges Datum ein.";
+  window.REQUIRED_MULTISELECT_MESSAGE = 'Wähle bitte mindestens eine Option aus.';
+  window.translation = { common: { selectedList: '{quantity} Liste ausgewählt', selectedLists: '{quantity} Listen ausgewählt', selectedOption: '{quantity} ausgewählt', selectedOptions: '{quantity} ausgewählt' } };
+  var AUTOHIDE = Boolean(0);
+</script>
+<script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>

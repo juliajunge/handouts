@@ -79,6 +79,8 @@ def lies_handout(ordner):
     daten.setdefault("beschreibung", "")
     daten.setdefault("format", "")
     daten.setdefault("quelle", "")
+    # Newsletter-Anmeldung unten auf der Webseite, abschaltbar mit "newsletter: nein"
+    daten["newsletter"] = daten.get("newsletter", "ja").lower() not in ("nein", "false", "no", "aus")
     daten["slug"] = ordner.name
     daten["pdf_datei"] = (daten.get("pdf_name") or ordner.name) + ".pdf"
     return daten, m.group(2)

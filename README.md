@@ -39,6 +39,7 @@ pdf_name: ki-arbeitsprofile-bauen   # Dateiname des PDFs (optional)
 kurzlink: kurz.link/profile    # erscheint im Druck in der Fußzeile (optional)
 format: quer                   # ganzes Handout im Querformat drucken (optional)
 quelle: 2025, adaptiert nach …  # ersetzt „Autorin … Stand …“ im Fuß (optional)
+newsletter: nein               # keine Newsletter-Anmeldung unter der Webseite (optional)
 ---
 ```
 
