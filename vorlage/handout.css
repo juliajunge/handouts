@@ -137,7 +137,9 @@ mark { background: var(--jj-marker); color: var(--jj-black); padding: 0 3px; }
 }
 
 /* Newsletter-Anmeldung (Brevo), nur Webansicht – im Druck über .nur-web ausgeblendet */
-.newsletter { background: var(--jj-offwhite); border-radius: 16px; padding: 28px 28px 24px; margin: 48px 0 32px; }
+.newsletter { background: var(--jj-offwhite); border-radius: 16px; padding: 28px 28px 24px; margin: 72px 0 32px; position: relative; }
+/* dezente Trennlinie über dem Kasten, mittig im Abstand zum Inhalt */
+.newsletter::before { content: ""; position: absolute; left: 0; right: 0; top: -36px; height: 1px; background: var(--border-content); }
 .newsletter-kopf { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 20px; align-items: center; margin-bottom: 16px; }
 .newsletter-kopf .label { display: inline-block; margin-bottom: 12px; }
 .newsletter h2 { font-family: var(--font-display); font-weight: 700; font-size: 1.75em; line-height: 1.1; color: var(--jj-green-dark); margin: 0 0 8px; }
