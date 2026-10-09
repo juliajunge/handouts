@@ -17,6 +17,7 @@
 <main class="handout">
   <header class="kopf">
     <a href="https://juliajunge.de"><img class="logo" src="vorlage/bilder/logo-julia-junge.svg" alt="Julia Junge"></a>
+    <div class="aktionen"><a class="knopf knopf--leise" href="#newsletter">&gt; Newsletter abonnieren</a></div>
   </header>
   <section class="hero">
     <div class="hero-text">
@@ -36,6 +37,7 @@
     </li>
   {% endfor %}
   </ul>
+  {% set basis = "" %}{% include "newsletter.html.j2" %}
   <footer class="fuss">
     <div class="drachenlinie" aria-hidden="true"><span></span><img src="vorlage/bilder/logo-julia-junge.svg" alt=""></div>
     <span><a href="https://juliajunge.de">&gt; juliajunge.de</a></span>

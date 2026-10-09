@@ -1,6 +1,7 @@
 {# Newsletter-Anmeldung (Brevo), nur in der Webansicht. Feldnamen und Formular-Adresse stammen aus dem
    HTML-Code des Brevo-Formulars und müssen dazu passen. Das Skript main.js von Brevo prüft die Felder,
-   sendet das Formular und zeigt die Erfolgs- oder Fehlermeldung an. #}
+   sendet das Formular und zeigt die Erfolgs- oder Fehlermeldung an.
+   basis = Weg zum Hauptordner der Seite: "../" für Handouts (Standard), "" für die Übersicht. #}
 <section class="newsletter nur-web" id="newsletter">
   <div class="newsletter-kopf">
     <div>
@@ -8,7 +9,7 @@
       <h2>Mehr davon in dein Postfach</h2>
       <p>Höchstens alle 14 Tage: Hinweise auf meine und ähnliche Fortbildungen, neue Handouts, Publikationen, Tools und Vorlagen.</p>
     </div>
-    <img src="../vorlage/bilder/dragon-brief.png" alt="Drache mit Brief">
+    <img src="{{ basis|default('../') }}vorlage/bilder/dragon-brief.png" alt="Drache mit Brief">
   </div>
 
   <div class="sib-form">
