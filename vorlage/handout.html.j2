@@ -37,7 +37,7 @@
   <footer class="fuss {{ klasse }}">
     <div class="drachenlinie" aria-hidden="true"><span></span><img src="../vorlage/bilder/logo-julia-junge.svg" alt=""></div>
     {# Im Druck verweist der Fuß auf den Newsletter: die Adresse nennt die Website gleich mit, ohne zusätzliche Zeile #}
-    <span>{% if newsletter and klasse == "fuss--druck" %}<a href="https://www.juliajunge.de/newsletter/">&gt; Newsletter: juliajunge.de/newsletter</a>{% else %}<a href="https://juliajunge.de">&gt; juliajunge.de</a>{% endif %}{% if kurzlink %} · Online: {{ kurzlink }}{% endif %}</span>
+    <span>{% if newsletter and klasse == "fuss--druck" %}<a href="https://www.juliajunge.de/newsletter/">&gt; Newsletter: juliajunge.de/newsletter</a>{% else %}<a href="https://juliajunge.de">&gt; juliajunge.de</a>{% endif %}{% if kurzlink %} · Online: {{ kurzlink }}{% endif %}{% if klasse == "fuss--web" %}<a class="fuss-impressum" href="https://www.juliajunge.de/kontakt-und-impressum/">&gt; Impressum und Datenschutz</a>{% endif %}</span>
     <span class="fuss-rechts"><span>{% if quelle %}{{ quelle }}{% else %}Autorin: Julia Junge · Stand: {{ stand }} · keine Gewähr{% endif %}</span><img src="../vorlage/bilder/cc-by-sa.png" alt="Lizenz CC BY-SA"></span>
   </footer>
   {% endmacro %}

@@ -11,6 +11,18 @@
   .liste a.titel { font-family: var(--font-display); font-weight: 700; font-size: 1.3em; color: var(--jj-green-dark); text-decoration: none; }
   .liste a.titel:hover { text-decoration: underline; }
   .liste small { display: block; color: #333; }
+  /* Online-Werkzeuge: bewusst anders als die Handout-Liste – Rahmen statt Fläche, kein PDF */
+  .werkzeuge { margin: 0 0 48px; }
+  .werkzeuge > h2 { font-family: var(--font-display); font-weight: 700; font-size: 1.75em; line-height: 1.1; color: var(--jj-green-dark); margin: 0 0 6px; }
+  .werkzeuge > p { margin: 0 0 16px; }
+  .werkzeug { border: 2px solid var(--jj-green-dark); border-radius: 16px; padding: 20px 24px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 12px; }
+  .werkzeug .label { background: var(--jj-orange); }
+  .werkzeug a.titel { font-family: var(--font-display); font-weight: 700; font-size: 1.6em; line-height: 1.1; color: var(--jj-green-dark); text-decoration: none; }
+  .werkzeug a.titel:hover { text-decoration: underline; }
+  .werkzeug p { margin: 0; }
+  .werkzeug small { color: #333; }
+  .werkzeug .knopf { background: var(--jj-orange); margin-top: 4px; }
+  .werkzeug .knopf:hover { background: var(--jj-green-light); }
 </style>
 </head>
 <body>
@@ -37,10 +49,25 @@
     </li>
   {% endfor %}
   </ul>
+  {% if werkzeuge %}
+  <section class="werkzeuge">
+    <h2>Außerdem: zum Online-Ausfüllen</h2>
+    <p>Keine Handouts zum Herunterladen, sondern interaktive Seiten. Du beantwortest Fragen und bekommst direkt eine Auswertung.</p>
+    {% for w in werkzeuge %}
+    <div class="werkzeug">
+      <span class="label">Online-Werkzeug</span>
+      <a class="titel" href="{{ w.link }}">{{ w.titel }}</a>
+      <p>{{ w.beschreibung }}</p>
+      {% if w.hinweis %}<small>{{ w.hinweis }}</small>{% endif %}
+      <a class="knopf" href="{{ w.link }}">&gt; {{ w.knopf }}</a>
+    </div>
+    {% endfor %}
+  </section>
+  {% endif %}
   {% set basis = "" %}{% include "newsletter.html.j2" %}
   <footer class="fuss">
     <div class="drachenlinie" aria-hidden="true"><span></span><img src="vorlage/bilder/logo-julia-junge.svg" alt=""></div>
-    <span><a href="https://juliajunge.de">&gt; juliajunge.de</a></span>
+    <span><a href="https://juliajunge.de">&gt; juliajunge.de</a><a class="fuss-impressum" href="https://www.juliajunge.de/kontakt-und-impressum/">&gt; Impressum und Datenschutz</a></span>
     <span class="fuss-rechts"><span>Autorin: Julia Junge</span><img src="vorlage/bilder/cc-by-sa.png" alt="Lizenz CC BY-SA"></span>
   </footer>
 </main>

@@ -121,6 +121,7 @@ mark { background: var(--jj-marker); color: var(--jj-black); padding: 0 3px; }
 /* Fuß */
 .fuss { padding-top: 12px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: .8em; }
 .fuss a { color: var(--jj-black); font-weight: 700; text-decoration: none; }
+.fuss-impressum { margin-left: 16px; }
 .fuss-rechts { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .fuss img { height: 20px; width: auto; display: block; }
 /* Drachenlinie: Strich läuft in die Schwanzspitze des Logo-Drachen (Maße aus dem CD, H = Drachenhöhe) */

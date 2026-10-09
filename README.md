@@ -123,3 +123,9 @@ python build.py --ohne-pdf # nur Webseiten
 ```
 
 Einmalig nötig: unter **Settings → Pages → Build and deployment → Source** „GitHub Actions“ auswählen.
+
+## Online-Werkzeuge auf der Übersicht
+
+Interaktive Seiten wie die [KI-Standortbestimmung](https://juliajunge.github.io/KI-Standortbestimmung/) liegen in eigenen Repos. Auf der Übersichtsseite stehen sie in einem eigenen Bereich „Außerdem: zum Online-Ausfüllen“ unter den Handouts. Sie haben einen Rahmen statt einer Fläche und keinen PDF-Knopf.
+Ein neues Werkzeug kommt mit einem weiteren Eintrag in `werkzeuge.yml` dazu: `titel`, `beschreibung`, `link`, `knopf` und optional `hinweis`.
+

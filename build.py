@@ -120,8 +120,10 @@ def baue_seiten():
         alle.append(daten)
         print(f"Seite: {ziel / 'index.html'}")
 
+    werkzeuge_datei = ROOT / "werkzeuge.yml"
+    werkzeuge = yaml.safe_load(werkzeuge_datei.read_text(encoding="utf-8")) if werkzeuge_datei.exists() else []
     (SITE / "index.html").write_text(
-        env.get_template("index.html.j2").render(handouts=alle), encoding="utf-8"
+        env.get_template("index.html.j2").render(handouts=alle, werkzeuge=werkzeuge or []), encoding="utf-8"
     )
     (SITE / ".nojekyll").write_text("")
     return alle
