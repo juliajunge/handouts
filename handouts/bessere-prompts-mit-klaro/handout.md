@@ -46,10 +46,10 @@ Welches Format, welchen Stil und welchen Umfang soll das Ergebnis haben?
 
 ## Kontext (K)
 
-Erkläre dem Bot, wer du bist, für wen du arbeitest und was ihr tut. Gib Beispiele für deine Arbeit, nenne deine Werte oder teile deine Mission. Tools mit Webzugang kannst du zum Recherchieren kurz auf deine Website schicken.
+Erkläre dem Bot, wer du bist, für wen du arbeitest und was ihr tut. Nenne deine Werte und gib Beispiele für deine Arbeit oder schick Tools mit Webzugang auf deine Website.
 
 ::: tipp
-**Bonus-Tipp:** Speichere diese Infos in den Custom Instructions deines Tools. Dann musst du sie nicht jedes Mal neu schreiben. > [So richtest du Custom Instructions ein](https://www.juliajunge.de/custom-instructions/)
+**Bonus-Tipp:** Speichere diese Infos in den Custom Instructions deines Tools. Das spart dir Wiederholungen. > [So richtest du Custom Instructions ein](https://www.juliajunge.de/custom-instructions/)
 :::
 
 ## Leitziel (L)
@@ -84,9 +84,7 @@ Mit Regeln sagst du dem Bot, **wie** er die Aufgabe erledigen soll.
 
 ## Output (O)
 
-Bei der Ideenfindung ist der Schreibstil des Bots nebensächlich, du nutzt nur die hilfreichen Gedanken. Willst du generierte Texte weiterverwenden, statt sie komplett neu zu schreiben, muss die KI deinen Stil treffen. Ohne Stilanweisungen landest du schnell beim generischen Marketing-Sprech.
-
-So bekommst du passende Ergebnisse:
+Bei der Ideenfindung ist der Schreibstil des Bots nebensächlich, du nutzt nur die hilfreichen Gedanken. Willst du generierte Texte weiterverwenden, statt sie komplett neu zu schreiben, muss die KI deinen Stil treffen. Ohne Stilanweisungen landest du schnell beim generischen Marketing-Sprech. So bekommst du passende Ergebnisse:
 
 - Beschreibe deinen Stil präzise („kollegial für Ehrenamtliche um die 40").
 - Lege Format und gewünschte Länge fest.
@@ -113,7 +111,7 @@ Formuliere daraus zum Schluss eine Stilanweisung, die ich einer KI geben kann, d
    Stelle dieselbe Aufgabe einmal ohne und einmal mit KLARO-Schema und vergleiche die Antworten.
 
 2. ### Die KI fragen lassen
-   Du bist unsicher, welche Infos die KI braucht? Beschreibe die Aufgabe gut und frag, welche 3 bis 5 Infos sie noch benötigt. Entscheide dann, welche du liefern kannst und welche relevant sind.
+   Du bist unsicher, welche Infos die KI braucht? Beschreibe die Aufgabe gut und frag, welche 3 bis 5 Infos sie noch benötigt.
 :::
 
 ==Ein guter Prompt ist wie eine klare Wegbeschreibung: Je präziser, desto höher die Wahrscheinlichkeit, gut anzukommen.==

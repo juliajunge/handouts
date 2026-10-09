@@ -195,6 +195,7 @@ mark { background: var(--jj-marker); color: var(--jj-black); padding: 0 3px; }
   .hero-bild { width: 32mm; }
 
   .inhalt h2 { font-size: 15pt; margin-bottom: 6px; }
+  .inhalt > p, .inhalt > ul, .inhalt > ol { margin-bottom: 8pt; }
   .karten { gap: 10px; margin-bottom: 20px; }
   .karte { padding: 12px 16px; }
   .karte p { margin-bottom: 5px; }
@@ -418,8 +419,8 @@ body.quer .handout { max-width: 1200px; }
 /* ---------- Mehrseitige Handouts (mehrseitig: ja, Seitenwechsel mit <!--seitenumbruch-->): Fußzeile auf jeder Seite, luftigere Überschriften ---------- */
 @media print {
   .seite--folge { break-before: page; }
-  body.mehrseitig .inhalt h2 { margin-top: 20px; margin-bottom: 8px; }
+  body.mehrseitig .inhalt h2 { margin-top: 16px; margin-bottom: 6px; }
   body.mehrseitig .inhalt > h2:first-child { margin-top: 0; }
   body.mehrseitig .hero-bild { width: 32mm; }
-  body.mehrseitig .hero { padding-bottom: 6px; }
+  body.mehrseitig .hero { padding-bottom: 2px; margin-top: -4mm; }
 }
