@@ -1,7 +1,7 @@
 ---
 titel: Bessere Prompts mit KLARO
 label: Handout
-stand: 8. Oktober 2026
+stand: 9. Oktober 2026
 bild: dragon-zielscheibe.png
 bild_alt: Drache mit Zielscheibe
 pdf_name: bessere-prompts-mit-klaro
@@ -92,6 +92,19 @@ So bekommst du passende Ergebnisse:
 - Lege Format und gewünschte Länge fest.
 - Teile Beispiele guter Texte (alte Mails, Newsletter, Blogbeiträge) und bitte die KI, diesen Stil zu imitieren (Few-Shot-Prompting).
 - Weise dem Bot eine Rolle zu, um die Tonalität zu steuern: Ein Lehrer formuliert anders als ein Jurist. Genaue Stilvorgaben sind aber präziser.
+
+::: tipp
+**Beispiel-Prompt: Lass die KI deinen Stil beschreiben.** Füge drei bis fünf eigene Texte an.
+
+„Analysiere meinen Schreibstil anhand der folgenden Texte. Sie stammen alle von mir. Beschreibe:
+
+1. Tonfall und Haltung: Wie klinge ich, wie spreche ich meine Lesenden an?
+2. Satzbau und Rhythmus: kurz oder lang, einfach oder verschachtelt?
+3. Wortwahl: typische Begriffe, Bilder, Wörter, die ich nutze oder meide?
+4. Was mich unverwechselbar macht: Was würde fehlen, wenn jemand anderes denselben Inhalt schreibt?
+
+Formuliere daraus zum Schluss eine Stilanweisung, die ich einer KI geben kann, damit sie in meinem Ton schreibt. Schreibe sie als direkte Anweisung, die ich kopieren und dauerhaft hinterlegen kann."
+:::
 
 ## Probier es aus
 
