@@ -15,12 +15,12 @@
   <div class="sib-form">
     <div id="sib-form-container" class="sib-form-container">
       <div id="error-message" class="sib-form-message-panel newsletter-meldung newsletter-meldung--fehler">
-        <div class="sib-form-message-panel__text"><span class="sib-form-message-panel__inner-text">Deine Anmeldung konnte nicht gespeichert werden. Bitte versuch es noch einmal.</span></div>
+        <div class="sib-form-message-panel__text sib-form-message-panel__text--center"><span class="sib-form-message-panel__inner-text">Deine Anmeldung konnte nicht gespeichert werden. Bitte versuch es noch einmal.</span></div>
       </div>
       <div id="success-message" class="sib-form-message-panel newsletter-meldung newsletter-meldung--erfolg">
-        <div class="sib-form-message-panel__text"><span class="sib-form-message-panel__inner-text">Danke, deine Anmeldung ist angekommen. Schau gleich in dein Postfach.</span></div>
+        <div class="sib-form-message-panel__text sib-form-message-panel__text--center"><span class="sib-form-message-panel__inner-text">Danke, deine Anmeldung ist angekommen. Schau gleich in dein Postfach.</span></div>
       </div>
-      <div id="sib-container">
+      <div id="sib-container" class="sib-container--large sib-container--vertical">
         <form id="sib-form" method="POST" data-type="subscription"
               action="https://dd61c51f.sibforms.com/serve/MUIFAJ9bCJTWl4vU2fgVD0u05UKr9SFpTpU5tde-RFs0MaglkQeoTglQKh74CWllLGDzDpAWAZ4FTN5naf61_iyDI9gZTE3Cg_68PInY37UyD6MzByzDEw_GG4rxxz-c8An5vZ9fvCmWghOsnRfqlmDnc0zS23U9qIGYLKHB7uzLW24kgRmHqnhNE-Lo9WMXXg8FvshVQDkJavA6">
           <div class="newsletter-felder">
@@ -28,7 +28,7 @@
               <div class="form__entry entry_block">
                 <div class="form__label-row">
                   <label class="entry__label" for="EMAIL" data-required="*">E-Mail-Adresse</label>
-                  <div class="entry__field"><input class="input" type="email" id="EMAIL" name="EMAIL" autocomplete="email" value="" placeholder="name@verein.de" data-required="true" required></div>
+                  <div class="entry__field"><input class="input" type="text" inputmode="email" id="EMAIL" name="EMAIL" autocomplete="email" value="" placeholder="name@verein.de" data-required="true" required></div>
                 </div>
                 <label class="entry__error entry__error--primary"></label>
               </div>
@@ -58,8 +58,8 @@
               <div class="form__label-row">
                 <div class="entry__choice">
                   <label class="newsletter-optin">
-                    <input type="checkbox" value="1" id="OPT_IN" name="OPT_IN" required>
-                    <span>Ich möchte den Newsletter erhalten und akzeptiere die <a href="https://www.juliajunge.de/datenschutzerklaerung/">Datenschutzerklärung</a>.</span>
+                    <input type="checkbox" class="input_replaced" value="1" id="OPT_IN" name="OPT_IN" required>
+                    <span class="checkbox checkbox_tick_positive"></span><span>Ich möchte den Newsletter erhalten und akzeptiere die <a href="https://www.juliajunge.de/datenschutzerklaerung/" target="_blank" rel="noopener">Datenschutzerklärung</a>.</span>
                   </label>
                 </div>
               </div>
@@ -68,10 +68,13 @@
           </div>
 
           <div class="sib-form-block">
-            <button class="knopf sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">&gt; Newsletter abonnieren</button>
+            <button class="knopf sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
+              <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512" aria-hidden="true"><path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"/></svg>
+              &gt; Newsletter abonnieren
+            </button>
           </div>
 
-          <p class="newsletter-klein">Abmelden kannst du dich jederzeit über den Link in jeder Ausgabe. Für den Versand nutze ich Brevo: Deine Angaben werden zur Bearbeitung an Brevo übertragen, gemäß den <a href="https://www.brevo.com/de/legal/termsofuse/" rel="nofollow">Nutzungsbedingungen</a>.</p>
+          <p class="newsletter-klein">Abmelden kannst du dich jederzeit über den Link in jeder Ausgabe. Für den Versand nutze ich Brevo: Deine Angaben werden zur Bearbeitung an Brevo übertragen, gemäß den <a href="https://www.brevo.com/de/legal/termsofuse/" target="_blank" rel="nofollow noopener">Nutzungsbedingungen</a>.</p>
 
           <input type="text" name="email_address_check" value="" class="input--hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
           <input type="hidden" name="locale" value="de">
