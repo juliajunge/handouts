@@ -49,7 +49,7 @@ Welches Format, welchen Stil und welchen Umfang soll das Ergebnis haben?
 Erkläre dem Bot, wer du bist, für wen du arbeitest und was ihr tut. Gib Beispiele für deine Arbeit, nenne deine Werte oder teile deine Mission. Tools mit Webzugang kannst du zum Recherchieren kurz auf deine Website schicken.
 
 ::: tipp
-**Bonus-Tipp:** Speichere diese Infos in den Custom Instructions deines Tools. Dann musst du sie nicht jedes Mal neu schreiben.
+**Bonus-Tipp:** Speichere diese Infos in den Custom Instructions deines Tools. Dann musst du sie nicht jedes Mal neu schreiben. > [So richtest du Custom Instructions ein](https://www.juliajunge.de/custom-instructions/)
 :::
 
 ## Leitziel (L)
