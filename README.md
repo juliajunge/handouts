@@ -40,6 +40,9 @@ kurzlink: kurz.link/profile    # erscheint im Druck in der Fußzeile (optional)
 format: quer                   # ganzes Handout im Querformat drucken (optional)
 quelle: 2025, adaptiert nach …  # ersetzt „Autorin … Stand …“ im Fuß (optional)
 newsletter: nein               # keine Newsletter-Anmeldung unter der Webseite (optional)
+word: ja                       # zusätzlich Word-Download zum Weiterbearbeiten (optional)
+lizenz: cc0                    # CC0-Text: kein CC-BY-SA-Logo im Fuß (optional)
+stil: leitlinien               # eigene CSS-Klasse am body (optional)
 ---
 ```
 
@@ -96,6 +99,24 @@ Im Druck stehen die Schritte zweispaltig. Mit `::: schritte untereinander` stehe
 **Tipp:** Text …
 :::
 ```
+
+**Auswahl** (orange gerahmt, zum Entscheiden zwischen Varianten) – außen vier Doppelpunkte, innen drei:
+
+```markdown
+:::: wahl Entscheide dich für eine Variante
+Erklärung …
+
+::: variante Variante A · Restriktiv
+Text …
+:::
+
+::: variante Variante B · Offen
+Text …
+:::
+::::
+```
+
+**Nur Webansicht / nur PDF:** `::: weiterlesen` (leise Linksammlung, nur im Web, Anker `#weiterlesen`) und `::: nurdruck` (nur im PDF, z. B. ein Verweis auf die Webansicht). Beides fehlt in der Word-Datei.
 
 **Ganzseitiges Bild im Querformat** (kommt im PDF auf eine eigene Seite hinter die Fußzeile):
 

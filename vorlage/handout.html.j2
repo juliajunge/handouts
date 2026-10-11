@@ -7,7 +7,7 @@
 {% if beschreibung %}<meta name="description" content="{{ beschreibung }}">{% endif %}
 <link rel="stylesheet" href="../vorlage/handout.css">
 </head>
-<body class="{% if format == 'quer' %}quer {% endif %}{% if mehrseitig %}mehrseitig{% endif %}">
+<body class="{% if stil %}{{ stil }} {% endif %}{% if format == 'quer' %}quer {% endif %}{% if mehrseitig %}mehrseitig{% endif %}">
 <main class="handout">
 <div class="seite">
 
@@ -15,6 +15,7 @@
     <a href="https://juliajunge.de"><img class="logo" src="../vorlage/bilder/logo-julia-junge.svg" alt="Julia Junge"></a>
     <div class="aktionen nur-web">
       <a class="knopf" href="{{ pdf_datei }}" download>&gt; PDF herunterladen</a>
+      {% if word_datei %}<a class="knopf" href="{{ word_datei }}" download>&gt; Word zum Bearbeiten</a>{% endif %}
       {% if newsletter %}<a class="knopf knopf--leise" href="#newsletter">&gt; Newsletter abonnieren</a>{% endif %}
     </div>
   </header>
@@ -38,7 +39,7 @@
     <div class="drachenlinie" aria-hidden="true"><span></span><img src="../vorlage/bilder/logo-julia-junge.svg" alt=""></div>
     {# Im Druck verweist der Fuß auf den Newsletter: die Adresse nennt die Website gleich mit, ohne zusätzliche Zeile #}
     <span>{% if newsletter and klasse == "fuss--druck" %}<a href="https://www.juliajunge.de/newsletter/">&gt; Newsletter: juliajunge.de/newsletter</a>{% else %}<a href="https://juliajunge.de">&gt; juliajunge.de</a>{% endif %}{% if kurzlink %} · Online: {{ kurzlink }}{% endif %}{% if klasse == "fuss--web" %}<a class="fuss-impressum" href="https://www.juliajunge.de/kontakt-und-impressum/">&gt; Impressum und Datenschutz</a>{% endif %}</span>
-    <span class="fuss-rechts"><span>{% if quelle %}{{ quelle }}{% else %}Autorin: Julia Junge · Stand: {{ stand }} · keine Gewähr{% endif %}</span><img src="../vorlage/bilder/cc-by-sa.png" alt="Lizenz CC BY-SA"></span>
+    <span class="fuss-rechts"><span>{% if quelle %}{{ quelle }}{% else %}Autorin: Julia Junge · Stand: {{ stand }} · keine Gewähr{% endif %}</span>{% if lizenz != "cc0" %}<img src="../vorlage/bilder/cc-by-sa.png" alt="Lizenz CC BY-SA">{% endif %}</span>
   </footer>
   {% endmacro %}
 

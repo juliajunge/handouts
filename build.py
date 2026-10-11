@@ -16,6 +16,8 @@ from markupsafe import Markup
 from markdown_it import MarkdownIt
 from mdit_py_plugins.container import container_plugin
 
+from word import schreibe_word
+
 ROOT = Path(__file__).parent
 HANDOUTS = ROOT / "handouts"
 VORLAGE = ROOT / "vorlage"
@@ -52,6 +54,20 @@ def markdown():
         "</div></aside>\n",
     )
     container(md, "canvas", lambda _: '<section class="canvas">\n', "</section>\n")
+    # Auswahl: Leser*innen entscheiden sich für genau eine Variante (z. B. bei Leitlinien)
+    container(
+        md, "wahl",
+        lambda t: f'<div class="wahl">\n<div class="wahl-kopf"><span class="wahl-label">Entscheide dich</span><span class="wahl-titel">{t}</span></div>\n<div class="wahl-inhalt">\n',
+        "</div>\n</div>\n",
+    )
+    container(
+        md, "variante",
+        lambda t: f'<div class="variante"><i class="ankreuzen"></i>\n<div class="variante-text">\n<div class="variante-label">{t}</div>\n',
+        "</div>\n</div>\n",
+    )
+    # nur Webansicht (z. B. Linksammlung) bzw. nur PDF (z. B. Verweis auf die Webansicht)
+    container(md, "weiterlesen", lambda _: '<section class="weiterlesen nur-web" id="weiterlesen">\n', "</section>\n")
+    container(md, "nurdruck", lambda _: '<div class="nur-druck">\n')
     return md
 
 
@@ -84,10 +100,16 @@ def lies_handout(ordner):
     daten.setdefault("beschreibung", "")
     daten.setdefault("format", "")
     daten.setdefault("quelle", "")
+    daten.setdefault("lizenz", "")
+    daten.setdefault("stil", "")
+    daten.setdefault("word", "")
     # Newsletter-Anmeldung unten auf der Webseite, abschaltbar mit "newsletter: nein"
     daten["newsletter"] = daten.get("newsletter", "ja").lower() not in ("nein", "false", "no", "aus")
     daten["slug"] = ordner.name
     daten["pdf_datei"] = (daten.get("pdf_name") or ordner.name) + ".pdf"
+    # Word-Download zum Weiterbearbeiten, einschaltbar mit "word: ja"
+    ist_word = daten["word"].lower() in ("ja", "true", "yes", "an")
+    daten["word_datei"] = (daten.get("pdf_name") or ordner.name) + ".docx" if ist_word else ""
     return daten, m.group(2)
 
 
@@ -117,6 +139,9 @@ def baue_seiten():
         (ziel / "index.html").write_text(
             seite.render(**daten, inhalt=Markup(html), anhang=Markup(anhang)), encoding="utf-8"
         )
+        if daten["word_datei"]:
+            schreibe_word(md.parse(text), daten, ziel / daten["word_datei"])
+            print(f"Word:  {ziel / daten['word_datei']}")
         alle.append(daten)
         print(f"Seite: {ziel / 'index.html'}")
 

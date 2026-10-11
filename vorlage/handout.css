@@ -429,3 +429,42 @@ body.quer .handout { max-width: 1200px; }
   body.mehrseitig .hero-bild { width: 32mm; }
   body.mehrseitig .hero { padding-bottom: 2px; }
 }
+
+/* ---------- Auswahl (::: wahl): hier musst du dich entscheiden – bewusst die lauteste Stelle im Dokument ---------- */
+body.leitlinien .inhalt ol li { margin-bottom: 8px; }
+body.leitlinien .inhalt ol li::marker { color: var(--jj-green-dark); font-weight: 700; }
+.wahl { border: 3px solid var(--jj-orange); border-radius: 16px; overflow: hidden; margin: 24px 0 32px; break-inside: avoid; }
+.wahl-kopf { background: var(--jj-orange); color: var(--jj-black); padding: 10px 20px; display: flex; align-items: center; flex-wrap: wrap; gap: 6px 14px; }
+.wahl-label { font-size: .75em; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; background: var(--jj-white); border-radius: 999px; padding: 3px 14px; }
+.wahl-titel { font-weight: 700; }
+.wahl-inhalt { padding: 14px 20px 20px; display: flex; flex-direction: column; gap: 12px; }
+.wahl-inhalt > p { margin: 0; }
+.variante { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 12px; background: var(--jj-offwhite); border-radius: 12px; padding: 14px 18px; }
+.variante .ankreuzen { width: 1.2em; height: 1.2em; border-color: var(--jj-brown); border-width: 2px; margin-top: .15em; }
+.variante-label { font-weight: 700; margin-bottom: 4px; }
+.variante-text p { margin: 0 0 8px; }
+.variante-text > :last-child { margin-bottom: 0; }
+
+/* Zum Weiterlesen (::: weiterlesen): nur Webansicht, bewusst leiser als der Leitlinientext */
+.weiterlesen { margin: 48px 0 0; padding-top: 20px; border-top: 1px solid var(--border-content); font-size: .85em; line-height: 1.45; color: #555; }
+.weiterlesen h3 { font-size: .8em; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #555; margin: 18px 0 4px; }
+.weiterlesen h3:first-child { margin-top: 0; }
+.weiterlesen ul { margin: 0; padding-left: 1.1em; }
+.weiterlesen li { margin-bottom: 2px; }
+.weiterlesen a { color: #555; text-decoration-thickness: 1px; }
+.weiterlesen a:hover { color: var(--jj-green-dark); }
+
+/* Nur im PDF (::: nurdruck) */
+.nur-druck { display: none; }
+
+@media print {
+  .nur-druck { display: block; margin-top: 10pt; font-size: 9pt; }
+  .nur-druck p { margin: 0; }
+  .wahl { margin: 4pt 0 10pt; border-width: 2.5pt; }
+  .wahl-kopf { padding: 6pt 12pt; }
+  .wahl-label { font-size: 7.5pt; }
+  .wahl-inhalt { padding: 8pt 12pt 12pt; gap: 7pt; }
+  .variante { padding: 8pt 12pt; }
+  .variante-text p { margin-bottom: 4pt; }
+  body.leitlinien .inhalt ol li { margin-bottom: 5pt; }
+}

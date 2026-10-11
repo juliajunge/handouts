@@ -45,6 +45,7 @@
       <span class="aktionen">
         <a class="knopf knopf--leise" href="{{ h.slug }}/">&gt; Webansicht</a>
         <a class="knopf" href="{{ h.slug }}/{{ h.pdf_datei }}" download>&gt; PDF herunterladen</a>
+        {% if h.word_datei %}<a class="knopf" href="{{ h.slug }}/{{ h.word_datei }}" download>&gt; Word</a>{% endif %}
       </span>
     </li>
   {% endfor %}
