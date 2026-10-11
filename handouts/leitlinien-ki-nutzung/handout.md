@@ -121,9 +121,9 @@ KI-generierte Texte und Bilder genießen **kein Urheberrecht**. Dennoch gibt es 
 ### Lesetipps aus dem Blog
 
 - [Warum wir KI nicht trainieren und andere Irrtümer](https://www.juliajunge.de/2024/08/01/die-3-groessten-irrtuemer-ueber-ki/)
-- [Datensicherheit bei KI – Geht das](https://www.juliajunge.de/2024/11/19/datensicherheit/)
+- [Datenschutz und KI: 7 Merksätze](https://www.juliajunge.de/datenschutz-und-ki-7-merksatze/)
 - [Tool-Tipps für den Beginn](https://www.juliajunge.de/2025/05/05/ki-tools/)
-- [Textsammlung „Künstliche Intelligenz in der Sozialen Arbeit“ des Paritätischen Gesamtverbands (PDF)](https://www.der-paritaetische.de/fileadmin/user_upload/Schwerpunkte/Digitalisierung/doc/ki/KI_Textsammlung_Update2024_final.pdf)
+- [Leitfaden zur Einführung von Generativer KI in Non-Profit-Organisationen](https://juliajunge.github.io/handouts/leitfaden-ki-einfuehrung/)
 
 ### Ethik
 
