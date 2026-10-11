@@ -65,6 +65,8 @@ def markdown():
         lambda t: f'<div class="variante"><i class="ankreuzen"></i>\n<div class="variante-text">\n<div class="variante-label">{t}</div>\n',
         "</div>\n</div>\n",
     )
+    # Hervorgehobene Ergänzung (z. B. "Neu in Version 5") mitten in einem Listeneintrag
+    container(md, "ergaenzung", lambda t: f'<div class="ergaenzung">\n<div class="ergaenzung-label">{t}</div>\n')
     # nur Webansicht (z. B. Linksammlung) bzw. nur PDF (z. B. Verweis auf die Webansicht)
     container(md, "weiterlesen", lambda _: '<section class="weiterlesen nur-web" id="weiterlesen">\n', "</section>\n")
     container(md, "nurdruck", lambda _: '<div class="nur-druck">\n')

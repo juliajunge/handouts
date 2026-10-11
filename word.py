@@ -179,6 +179,12 @@ class WordBauer:
                 self.in_item_erster.pop()
             elif t.type == "list_item_open":
                 self.in_item_erster[-1] = True
+            elif t.type == "container_ergaenzung_open":
+                label = t.info.strip()[len("ergaenzung"):].strip()
+                absatz = self._absatz()
+                absatz.paragraph_format.left_indent = Cm(0.63)
+                absatz.paragraph_format.keep_with_next = True
+                absatz.add_run(label).bold = True
             elif t.type == "container_karte_open":
                 label = t.info.strip()[len("karte"):].strip()
                 self.ziel = self._kasten(HELL)

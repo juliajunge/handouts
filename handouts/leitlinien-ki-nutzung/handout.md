@@ -10,7 +10,7 @@ mehrseitig: ja
 lizenz: cc0
 stil: leitlinien
 beschreibung: Textvorlage für KI-Leitlinien in Vereinen und gemeinwohlorientierten Organisationen (Version 5, mit Hinweisen zu Agents) – frei kopierbar, als PDF und Word.
-quelle: "Autorin: Julia Junge, mit dem Paritätischen Gesamtverband · Version 5, Mai 2026 · CC0 / Public Domain"
+quelle: "Autorin: Julia Junge · Version 5, Mai 2026 · CC0 / Public Domain"
 newsletter: ja
 ---
 
@@ -32,16 +32,18 @@ Diese Leitlinien verstehen sich als **Arbeitspapier für den Start in Generative
 **Agentische KI im Blick behalten:** Besonders schnell entwickelt sich der Bereich der sogenannten agentischen KI, das sind Tools, die nicht nur antworten, sondern eigenständig handeln. Diese Leitlinien empfehlen für die Einstiegsphase einen bewusst vorsichtigen Umgang mit solchen Funktionen. Dieser Bereich sollte bei der regelmäßigen Überarbeitung der Leitlinien besonders beachtet werden.
 :::
 
-<!--seitenumbruch-->
-
 ## Tools und technische Basiseinstellungen
 
 1. Wir veröffentlichen eine Empfehlungsliste mit geeigneten und auf ihre Nutzungsbedingungen überprüfte Tools.
 2. Sollten Tools wie ChatGPT auf privaten oder dienstlichen Smartphones genutzt werden, erlauben wir diesen NICHT, dauerhaft im Hintergrund mitzuhören.
 3. Soweit möglich, schalten wir die Nutzung zu Trainingszwecken ab.
-4. **Toolnutzung:** *Ergänzung ab Version 5: Hinweis zu agentischen KI-Tools und Vibe-Coding.* KI-Tools können auf sehr unterschiedliche Weisen in unsere Arbeit eingebunden werden – mit sehr unterschiedlichen Risiken. Die **sicherste Form ist die Nutzung im Browser**: Wir rufen das Tool direkt über die Website auf (z. B. chatgpt.com, claude.ai, gemini.google.com) und geben dort manuell ein, was wir brauchen.
+4. **Toolnutzung:**
+
+   ::: ergaenzung Neu in Version 5 · Hinweis zu agentischen KI-Tools und Vibe-Coding
+   KI-Tools können auf sehr unterschiedliche Weisen in unsere Arbeit eingebunden werden – mit sehr unterschiedlichen Risiken. Die **sicherste Form ist die Nutzung im Browser**: Wir rufen das Tool direkt über die Website auf (z. B. chatgpt.com, claude.ai, gemini.google.com) und geben dort manuell ein, was wir brauchen.
 
    Davon zu unterscheiden sind sogenannte Desktop-Agenten, Plugins und „Bridges“ – Erweiterungen, die KI direkten und oft dauerhaften Zugriff auf unsere Arbeitsumgebung geben: Dateien, E-Mails, Kalender, Kommunikationstools. Solche Tools können eigenständig Aktionen ausführen, ohne dass wir jeden Schritt kontrollieren. Diese Fähigkeiten nennt man agentisch. Die dabei entstehenden Verbindungen zwischen KI-System und Infrastruktur sind schwer zu überblicken und bergen erhebliche Sicherheitsrisiken – etwa unbeabsichtigte Datenweitergabe, Manipulation durch eingeschleuste Inhalte (z. B. via Prompt Injection) und fehlerhaftes Handeln auf Grund von Halluzinationen. Bekannte Beispiele solcher agentischen Integrationen sind Claude Cowork, OpenClaw, Microsoft Copilot Agents oder N8N-Automatisierungen. Hinzu kommen ggf. selbstprogrammierte Programme (Vibe-Coding). All diese Integrationen sind grundsätzlich nur in expliziter Absprache mit der/dem KI-Beauftragten oder der Geschäftsführung zulässig.
+   :::
 
 :::: wahl Für die browserbasierte Tool-Nutzung gilt: Entscheide dich für eine Variante
 Übernimm die Variante, die zu euch passt, und lösche die anderen beiden.
@@ -100,7 +102,9 @@ KI-generierte Texte und Bilder genießen **kein Urheberrecht**. Dennoch gibt es 
 15. Wir nutzen generative KI **nicht zur Leistungsbewertung**, Bewerber\*innen-Auswahl, Social Scoring, Emotionsanalyse, Profiling und ähnlichen Zwecken. (Siehe dazu auch Vorgaben des EU AI ACT zu KI-Systemen mit hohem Risiko und verbotene Praktiken.)
 16. Wir lassen generative KI **keine Entscheidungen treffen** und **kontrollieren Vorschläge und Texte aktiv**, bevor wir ihnen folgen. Die jeweiligen Nutzer\*innen übernehmen immer die redaktionelle Verantwortung für einen mit KI generierten Inhalt (Text, Bild u. a.).
 
-    **Ergänzung ab Version 5:** Das gilt insbesondere für agentische KI-Funktionen, die eigenständig Aktionen ausführen – etwa Dateien anlegen, E-Mails selbstständig versenden oder externe Dienste ansprechen. Wir aktivieren solche Funktionen nicht, ohne die Abläufe und Zugriffsrechte vorab mit der KI-Beauftragten geklärt zu haben und ausreichende Qualitätsstandards implementiert zu haben.
+    ::: ergaenzung Neu in Version 5 · Ergänzung
+    Das gilt insbesondere für agentische KI-Funktionen, die eigenständig Aktionen ausführen – etwa Dateien anlegen, E-Mails selbstständig versenden oder externe Dienste ansprechen. Wir aktivieren solche Funktionen nicht, ohne die Abläufe und Zugriffsrechte vorab mit der KI-Beauftragten geklärt zu haben und ausreichende Qualitätsstandards implementiert zu haben.
+    :::
 17. Wir nutzen KI, um unsere **Arbeit zu erleichtern**. Wir gehen **selbstkritisch** mit den damit oft verbundenen erhöhten Leistungserwartungen um. Wir zwingen niemanden zum Einsatz, aber befähigen alle, die bereit sind. Wir schaffen Räume für Austausch, Wissenstransfer und gemeinsames Lernen durch: ==[… z. B. regelmäßiges Thema in Meetings, Austausch-Kanal, Wissensdatenbank, Schulungen]==
 18. Wir sind uns bewusst, dass **KI ressourcenintensiv** ist und wägen den Einsatz ab. Zugleich erlauben wir uns, beim Erlernen und Testen „spielen“ zu dürfen. Wir **setzen uns für zunehmende Transparenz** und ethische Regulierung zu Energieverbrauch, Datenherkunft und KI-Training (Stichwort Data-Worker und Lieferkette) **ein**.
 19. Wir beobachten und reflektieren aktiv, ob und wie KI unsere **Zusammenarbeit im Team** verändert. Soziale Beziehungen bleiben wichtiger als Effizienz.
