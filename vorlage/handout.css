@@ -56,6 +56,9 @@ a:hover { color: var(--jj-green-dark); }
 }
 
 /* Kopfzeile */
+.zurueck { font-size: .8em; margin-bottom: 14px; }
+.zurueck a { color: var(--jj-green-dark); text-decoration: none; }
+.zurueck a:hover { text-decoration: underline; color: var(--jj-orange); }
 .kopf { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 24px; flex-wrap: wrap; }
 .kopf .logo { height: 28px; width: auto; display: block; }
 .aktionen { display: flex; gap: 8px; flex-wrap: wrap; }

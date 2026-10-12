@@ -6,11 +6,14 @@
 <title>Handouts – Julia Junge</title>
 <link rel="stylesheet" href="vorlage/handout.css">
 <style>
-  .liste { list-style: none; padding: 0; margin: 0 0 48px; display: grid; gap: 12px; }
-  .liste li { background: var(--jj-offwhite); border-radius: 16px; padding: 14px 20px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 16px; }
-  .liste a.titel { font-family: var(--font-display); font-weight: 700; font-size: 1.3em; color: var(--jj-green-dark); text-decoration: none; }
+  /* Handout-Karten: alle gleich groß, Knöpfe immer unten in derselben Reihenfolge */
+  .liste { list-style: none; padding: 0; margin: 0 0 48px; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); grid-auto-rows: 1fr; gap: 16px; }
+  .liste li { background: var(--jj-offwhite); border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; }
+  .liste a.titel { font-family: var(--font-display); font-weight: 700; font-size: 1.3em; line-height: 1.15; color: var(--jj-green-dark); text-decoration: none; }
   .liste a.titel:hover { text-decoration: underline; }
-  .liste small { display: block; color: #333; }
+  .liste p { margin: 0; font-size: .9em; color: #333; }
+  .liste .aktionen { margin-top: auto; padding-top: 8px; flex-wrap: nowrap; gap: 6px; }
+  .liste .knopf { font-size: .8em; padding: 6px 13px; }
   /* Online-Werkzeuge: bewusst anders als die Handout-Liste – Rahmen statt Fläche, kein PDF */
   .werkzeuge { margin: 0 0 48px; }
   .werkzeuge > h2 { font-family: var(--font-display); font-weight: 700; font-size: 1.75em; line-height: 1.1; color: var(--jj-green-dark); margin: 0 0 6px; }
@@ -41,10 +44,11 @@
   <ul class="liste">
   {% for h in handouts %}
     <li>
-      <span><a class="titel" href="{{ h.slug }}/">{{ h.titel }}</a><small>Stand: {{ h.stand }}</small></span>
+      <a class="titel" href="{{ h.slug }}/">{{ h.titel }}</a>
+      {% if h.beschreibung %}<p>{{ h.beschreibung }}</p>{% endif %}
       <span class="aktionen">
         <a class="knopf knopf--leise" href="{{ h.slug }}/">&gt; Webansicht</a>
-        <a class="knopf" href="{{ h.slug }}/{{ h.pdf_datei }}" download>&gt; PDF herunterladen</a>
+        <a class="knopf" href="{{ h.slug }}/{{ h.pdf_datei }}" download>&gt; PDF</a>
         {% if h.word_datei %}<a class="knopf" href="{{ h.slug }}/{{ h.word_datei }}" download>&gt; Word</a>{% endif %}
       </span>
     </li>

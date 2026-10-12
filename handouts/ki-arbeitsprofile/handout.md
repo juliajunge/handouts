@@ -5,6 +5,7 @@ stand: 9. Oktober 2026
 bild: drache-laptop.png
 bild_alt: Drache springt mit Zauberstab aus einem Laptop
 pdf_name: ki-arbeitsprofile-bauen
+beschreibung: Assistenzen, Skills und Co. – was KI-Arbeitsprofile sind und wie du sie für wiederkehrende Aufgaben baust.
 ---
 
 ## Was sind KI-Arbeitsprofile?
