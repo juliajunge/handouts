@@ -634,3 +634,9 @@ body.bilder .kernsatz { background: var(--jj-green-light); padding: 24px 28px; m
 }
 /* Titel ohne Bild daneben: nicht an die Kopfzeile heranrücken */
 @media print { .hero:not(:has(.hero-bild)) { margin-top: 2mm; } }
+
+/* ---------- KI-Training abschalten (stil: datenschutz): mehr Luft über dem Titel ---------- */
+.datenschutz .hero { padding-top: 16px; }
+@media print {
+  .datenschutz .hero { margin-top: 0; padding-top: 10mm; }
+}
