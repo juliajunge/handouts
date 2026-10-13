@@ -55,6 +55,11 @@ Dieses Handout führt dich Schritt für Schritt durch die **Registrierung** und 
 
 3. ### Erinnerungen ausschalten
    **Kontext → Knowledge:** Ich empfehle, die Erinnerungen auszuschalten. So sammelt Le Chat keine Infos aus deinen Chats an, die du nicht im Blick hast. Wenn du sie doch nutzt: Räum sie regelmäßig auf, damit sich kein Unsinn ansammelt.
+
+4. ### Alles unter Kontext
+   Anweisungen, Knowledge, Skills und Bibliotheken findest du links im Menü unter **Kontext**.
+
+   <img class="klein" src="06-menue-kontext.png" alt="Menü links mit Kontext und den Unterpunkten Skills, Knowledge, Konnektoren, Bibliotheken und Anweisungen">
 :::
 
 ## Was Le Chat kann
@@ -69,8 +74,8 @@ Assistenzen mit eigener Rolle, eigenen Anweisungen und eigenem Wissen, z. B. fü
 Unterarbeitsbereiche, in denen du Hintergrundinfos in Dateien hinterlegen kannst. Im Gratis-Plan begrenzt.
 :::
 
-::: karte Bibliothek
-Unter **Kontext → Bibliothek** liegen Hintergrunddateien für deine Arbeit. Du kannst sie in Agents oder im normalen Chat nutzen.
+::: karte Bibliotheken
+Unter **Kontext → Bibliotheken** liegen Hintergrunddateien für deine Arbeit. Du kannst sie in Agents oder im normalen Chat nutzen.
 :::
 
 ::: karte Skills
