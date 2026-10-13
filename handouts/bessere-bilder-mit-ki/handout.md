@@ -34,6 +34,10 @@ Frag dich vor dem ersten Prompt: Wer soll danach was fühlen, wissen oder tun? G
 <p class="tabelle-stand">Stand: September 2026</p>
 </div>
 
+::: tipp
+**Magnific** bündelt zahlreiche Bild- und Video-Modelle und deine Designvorgaben an einem Ort. Das spart den ständigen Wechsel zwischen Tools: [magnific.ai](https://magnific.ai/)
+:::
+
 ## Bilder, die berühren
 
 Starte mit drei Bausteinen und ergänze dann Details wie Licht, Perspektive und Bildausschnitt:
@@ -45,11 +49,11 @@ Starte mit drei Bausteinen und ergänze dann Details wie Licht, Perspektive und 
 <div class="bildvergleich">
 <figure>
 <img src="ehrenamt-kurzer-prompt.jpg" alt="KI-Bild: Vier Ehrenamtliche geben zwei Menschen Lebensmittel aus, wirkt wie im Bioladen">
-<figcaption><span class="prompt-label">Prompt</span><em>Ehrenamtliche bei der Lebensmittelausgabe</em></figcaption>
+<figcaption><span class="prompt-label">Prompt:</span> <em>Ehrenamtliche bei der Lebensmittelausgabe</em></figcaption>
 </figure>
 <figure>
 <img src="ehrenamt-genauer-prompt.jpg" alt="KI-Bild: Eine ältere Ehrenamtliche reicht einer Mutter mit Kind eine Tüte Gemüse über den Tresen">
-<figcaption><span class="prompt-label">Prompt</span><em>Eine Ehrenamtliche Mitte 60 mit kurzen grauen Haaren reicht einer jungen Mutter eine Tüte Gemüse über den Tresen, improvisierte Essensausgabe der Tafel, Apfelkisten im Hintergrund, medium shot, soft natural light, documentary style, DSLR, shallow depth of field</em></figcaption>
+<figcaption><span class="prompt-label">Prompt:</span> <em>Eine Ehrenamtliche Mitte 60 mit kurzen grauen Haaren reicht einer jungen Mutter eine Tüte Gemüse über den Tresen, improvisierte Essensausgabe der Tafel, Apfelkisten im Hintergrund, medium shot, soft natural light, documentary style, DSLR, shallow depth of field</em></figcaption>
 </figure>
 </div>
 
@@ -74,7 +78,7 @@ Englische Fachbegriffe verstehen die meisten Tools am besten. Misch sie in deine
 </tbody>
 </table>
 
-- <a class="url-sichtbar" href="https://www.juliajunge.de/kreative-ki-bilder-mit-stil/">Mehr Stil-Ideen, z. B. aus dem ChatGPT Guide von Tianyu Xu</a> (juliajunge.de)
+- Mehr Stil-Ideen, z. B. im <a class="url-sichtbar" href="https://tianyuxu.gumroad.com/l/gptimage2">ChatGPT Guide von Tianyu Xu</a> (tianyuxu.gumroad.com)
 - <a class="url-sichtbar" href="https://photos.google.com/share/AF1QipO72Hc_lU3vBZ38lLWjgaE3prQk_pyZWgPKl31Gu9b8ue-vhH5fZS50yw93KRS0Uw?key=OTM1SGxmMkJsbkE2anRNRk9rQ1p5TUdMVU12ekdn">Über 500 Stil-Vorlagen-Bilder von Rita Rassenhövel</a> (Google-Fotos-Album)
 
 ## Die Situation bestimmt den Bildausschnitt
@@ -121,7 +125,7 @@ Wenn der Text im Bild steht (Social Media, Plakat, Einladung):
 
 ## Referenzbilder, Logos und Markenfarben
 
-Fast alle Tools können inzwischen mit Referenzbildern umgehen: Du lädst ein Bild hoch, und die KI übernimmt Stil, Komposition oder Motiv. So sehen deine Bilder über viele Beiträge hinweg einheitlich aus. Die meisten Tools verarbeiten auch hochgeladene Logos akzeptabel. Eure Markenfarben treffen sie genau, wenn du den Farbcode angibst, z. B. „Hintergrund in #2E7D32“. Welche Bilder du hochladen darfst, steht auf der letzten Seite.
+Fast alle Tools können inzwischen mit Referenzbildern umgehen: Du lädst ein Bild hoch, und die KI übernimmt Stil, Komposition oder Motiv. So sehen deine Bilder über viele Beiträge hinweg einheitlich aus. Die meisten Tools verarbeiten auch hochgeladene Logos akzeptabel. Eure Markenfarben treffen sie genau, wenn du den Farbcode angibst, z. B. „Hintergrund in #2E7D32“. Welche Bilder du hochladen darfst, steht [weiter unten](#hochladen).
 
 Zwei Workarounds, wenn Text, Logo oder Farben einfach nicht sitzen:
 
@@ -136,10 +140,6 @@ Zwei Workarounds, wenn Text, Logo oder Farben einfach nicht sitzen:
 :::
 
 ::::
-
-::: tipp
-**Magnific** bündelt zahlreiche Bild- und Video-Modelle und deine Designvorgaben an einem Ort. Das spart den ständigen Wechsel zwischen Tools: [magnific.ai](https://magnific.ai/)
-:::
 
 <!--seitenumbruch-->
 
@@ -212,6 +212,8 @@ Bei Diagrammen und Karten gilt: Bild-KI malt, sie rechnet nicht. Das gemalte Bal
 <p class="klein">Das hier ist keine Rechtsberatung – im Zweifel frag eine*n Jurist*in.</p>
 </div>
 
+<div class="vertiefen">
+
 ## Zum Vertiefen
 
 - **Mein Blogartikel:** [Bessere Bilder mit KI](https://www.juliajunge.de/bessere-bilder-mit-ki/) – alle Tipps mit mehr Beispielen
@@ -220,5 +222,7 @@ Bei Diagrammen und Karten gilt: Bild-KI malt, sie rechnet nicht. Das gemalte Bal
 - **ChatGPT Image Guide:** auf Englisch, gratis, auch für andere Tools nützlich: [tianyuxu.gumroad.com/l/gptimage2](https://tianyuxu.gumroad.com/l/gptimage2)
 - **Social Hub AI Summer School:** Gratis-Aufzeichnungen, u. a. mit Georg Neumann „Nieder mit dem KI-Look“: [socialhub.io/ai-summer-school](https://socialhub.io/ai-summer-school/)
 - **Bild-Tools im Detailvergleich:** [gradually.ai/bildmodelle-vergleich](https://www.gradually.ai/bildmodelle-vergleich/)
+
+</div>
 
 <p class="kernsatz">Die KI setzt um, was du beschreibst – nicht, was du meinst. Je klarer du vorher weißt, was dein Bild leisten soll, desto weniger Versuche brauchst du.</p>

@@ -518,15 +518,16 @@ body.bilder figure { margin: 0; break-inside: avoid; }
 body.bilder figure img { width: 100%; height: auto; display: block; border-radius: 16px; }
 body.bilder figcaption { font-size: .85em; margin-top: 8px; }
 body.bilder .prompt-label { display: block; font-size: .8em; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 2px; }
-body.bilder .bildvergleich { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; align-items: start; margin-bottom: 12px; }
+body.bilder .bildvergleich { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; max-width: 600px; margin-bottom: 12px; }
 body.bilder .fazit { font-weight: 700; margin: 0 0 40px; }
-body.bilder .bildreihe { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; align-items: end; margin-bottom: 32px; }
+body.bilder .bildreihe { display: grid; grid-template-columns: repeat(3, minmax(0, 180px)); gap: 16px; align-items: end; margin-bottom: 32px; }
 body.bilder .bildreihe figcaption { font-weight: 700; }
 body.bilder .text-bild { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; align-items: center; margin-bottom: 32px; }
 body.bilder .text-bild ul, body.bilder .text-bild p { margin: 0 0 10px; }
 body.bilder .text-bild > div > :last-child { margin-bottom: 0; }
-body.bilder .text-bild > img { width: 100%; max-width: 300px; height: auto; display: block; justify-self: center; border-radius: 16px; }
+body.bilder .text-bild > img { width: 100%; max-width: 220px; height: auto; display: block; justify-self: center; border-radius: 16px; }
 body.bilder .text-bild--breit > img { max-width: 100%; border-radius: 8px; }
+body.bilder .text-bild--breit { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
 body.bilder .inhalt .karte { margin-bottom: 24px; }
 body.bilder .karte p { margin: 0 0 8px; }
 body.bilder .karte > :last-child { margin-bottom: 0; }
@@ -541,7 +542,12 @@ body.bilder .achtung ul, body.bilder .achtung p { margin: 0 0 10px; }
 body.bilder .achtung > :last-child { margin-bottom: 0; }
 body.bilder .klein { font-size: .85em; }
 body.bilder .tipp { margin-bottom: 40px; }
-body.bilder .infografik-beispiel { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; align-items: end; margin-bottom: 32px; }
+body.bilder .infografik-beispiel { display: grid; grid-template-columns: minmax(0, 1fr) repeat(2, minmax(0, 150px)); gap: 16px; align-items: end; margin-bottom: 32px; }
+@media (max-width: 560px) {
+  body.bilder .infografik-beispiel { grid-template-columns: 1fr 1fr; }
+  body.bilder .infografik-beispiel .karte { grid-column: 1 / -1; }
+  body.bilder .bildreihe { gap: 10px; }
+}
 body.bilder .infografik-beispiel .karte { margin-bottom: 0; align-self: stretch; }
 body.bilder .infografik-beispiel figcaption { font-weight: 700; }
 body.bilder .kernsatz { background: var(--jj-green-light); padding: 24px 28px; margin: 32px 0 0; font-family: var(--font-display); font-weight: 700; font-size: 1.6em; line-height: 1.15; break-inside: avoid; }
@@ -562,10 +568,10 @@ body.bilder .kernsatz { background: var(--jj-green-light); padding: 24px 28px; m
   body.bilder figure img { border-radius: 10px; }
   body.bilder figcaption { font-size: 8.5pt; margin-top: 3pt; }
   body.bilder .prompt-label { font-size: 7.5pt; }
-  body.bilder .bildvergleich { grid-template-columns: 1fr; gap: 4pt; margin-bottom: 4pt; }
-  body.bilder .bildvergleich figure { display: grid; grid-template-columns: 44mm minmax(0, 1fr); gap: 0 12px; align-items: center; }
-  body.bilder .bildvergleich img { height: 22mm; object-fit: cover; }
-  body.bilder .bildvergleich figcaption { margin-top: 0; font-size: 9pt; }
+  body.bilder .bildvergleich { max-width: none; gap: 14px; margin-bottom: 4pt; }
+  body.bilder .bildvergleich img { height: 23mm; object-fit: cover; }
+  body.bilder .bildvergleich .prompt-label { display: inline; margin: 0; }
+  body.bilder .bildvergleich figcaption { font-size: 8.5pt; line-height: 1.3; }
   body.bilder .infografik-beispiel { grid-template-columns: minmax(0, 1fr) 33mm 33mm; gap: 12px; margin-bottom: 8pt; }
   body.bilder .fazit { margin-bottom: 0; }
   body.bilder .bildreihe { grid-template-columns: repeat(2, 48mm); justify-content: center; gap: 12mm; margin-bottom: 8pt; }
@@ -584,6 +590,9 @@ body.bilder .kernsatz { background: var(--jj-green-light); padding: 24px 28px; m
   body.bilder .achtung h2 { margin-top: 0; margin-bottom: 4pt; }
   body.bilder .achtung ul, body.bilder .achtung p { margin-bottom: 5pt; }
   body.bilder .klein { font-size: 9pt; }
+  body.bilder .vertiefen { font-size: 8.5pt; line-height: 1.3; }
+  body.bilder .vertiefen h2 { font-size: 15pt; }
+  body.bilder .vertiefen a[href^="http"]:not(.url-sichtbar)::after { font-size: 7.5pt; }
   body.bilder .kernsatz { padding: 12pt 16pt; margin-top: 12pt; font-size: 15pt; }
 }
 /* ---------- Vergleichstabelle (<table class="vergleich">): grüne Kopfzeile, Zeilen im Wechsel, erste Spalte fett ---------- */
