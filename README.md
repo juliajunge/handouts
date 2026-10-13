@@ -157,6 +157,7 @@ Die Übersicht ist in drei farbige Bereiche geteilt: **Starten mit KI** (hellgr�
   farbe: hellgruen            # hellgruen, orange oder dunkelgruen
   inhalte:
     - handout: registrierung              # Ordnername unter handouts/ (auch Gruppen)
+      kurz: Schritt für Schritt …         # Kartentext, höchstens 3 Zeilen (ca. 100 Zeichen)
     - werkzeug: KI-Standortbestimmung     # Titel aus werkzeuge.yml
     - extern: Reseller-Liste              # Karte mit Link auf eine andere Seite, ohne PDF
       link: https://www.juliajunge.de/go/reseller
@@ -166,7 +167,7 @@ Die Übersicht ist in drei farbige Bereiche geteilt: **Starten mit KI** (hellgr�
       beschreibung: Ein Satz dazu.
 ```
 
-Externe Links öffnen sich in einem neuen Tab. Ein neues Handout musst du dort mit `- handout: <ordner>` eintragen. Fehlt es, steht es unten unter „Weitere Handouts“ und der Build gibt einen Hinweis aus. Ist ein Handout fertig, das bisher als `demnaechst:` angekündigt war, ersetzt du die Zeile durch `handout:`.
+Ohne `kurz:` steht auf der Karte die `beschreibung` aus dem Handout – längere Texte werden nach drei Zeilen abgeschnitten. Externe Links öffnen sich in einem neuen Tab. Ein neues Handout musst du dort mit `- handout: <ordner>` eintragen. Fehlt es, steht es unten unter „Weitere Handouts“ und der Build gibt einen Hinweis aus. Ist ein Handout fertig, das bisher als `demnaechst:` angekündigt war, ersetzt du die Zeile durch `handout:`.
 
 ## Online-Werkzeuge auf der Übersicht
 

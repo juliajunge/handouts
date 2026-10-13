@@ -193,12 +193,16 @@ def ordne_bereiche(eintraege, werkzeuge):
                 if ziel is None:
                     sys.exit(f"bereiche.yml: Handout '{eintrag['handout']}' gibt es nicht unter handouts/")
                 karte = {"art": "gruppe" if "handouts" in ziel else "handout", **ziel}
+                if eintrag.get("kurz"):
+                    karte["beschreibung"] = eintrag["kurz"]
                 vergeben.add(("handout", eintrag["handout"]))
             elif "werkzeug" in eintrag:
                 ziel = nach_titel.get(eintrag["werkzeug"])
                 if ziel is None:
                     sys.exit(f"bereiche.yml: Werkzeug '{eintrag['werkzeug']}' steht nicht in werkzeuge.yml")
                 karte = {"art": "werkzeug", **ziel}
+                if eintrag.get("kurz"):
+                    karte["beschreibung"], karte["hinweis"] = eintrag["kurz"], ""
                 vergeben.add(("werkzeug", eintrag["werkzeug"]))
             elif "extern" in eintrag:
                 if not eintrag.get("link"):

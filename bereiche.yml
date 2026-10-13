@@ -2,7 +2,8 @@
 # farbe: hellgruen, orange oder dunkelgruen (Farbstreifen, Etikett und Sprungmarke)
 # inhalte: in dieser Reihenfolge erscheinen die Karten. Möglich sind:
 #   - handout: <ordner>        z. B. ki-arbeitsprofile oder registrierung (Gruppe mit gruppe.yml)
-#   - werkzeug: <titel>        Titel genau wie in werkzeuge.yml
+#     kurz: …                  Kartentext, höchstens 3 Zeilen (ca. 100 Zeichen); sonst die beschreibung des Handouts
+#   - werkzeug: <titel>        Titel genau wie in werkzeuge.yml (kurz: wie oben)
 #   - extern: <titel>          Karte mit Link auf eine andere Seite (z. B. juliajunge.de), ohne PDF
 #     link: https://…
 #     knopf: Zur Anleitung     (optional, sonst „Zur Seite“)
@@ -18,10 +19,15 @@
   farbe: hellgruen
   inhalte:
     - handout: registrierung
+      kurz: Schritt für Schritt zum Gratis-Konto – mit den wichtigsten Datenschutz-Einstellungen.
     - handout: ki-training-abschalten
+      kurz: Klickpfade für ChatGPT, Claude, Mistral und Gemini – damit deine Chats nicht ins Training gehen.
     - handout: warum-ki-halluziniert
+      kurz: Warum Sprachmodelle Antworten erfinden, nicht neutral sind und was dagegen hilft.
     - handout: bessere-prompts-mit-klaro
+      kurz: Fünf Elemente für klare, strukturierte Prompts – mit Tipps und zwei Experimenten.
     - handout: gratis-text-tools
+      kurz: Die bekanntesten KI-Allrounder im Vergleich – mit Hinweisen zu Gratis-Konten und Datenschutz.
 
 - id: fortgeschrittene
   titel: Für Fortgeschrittene
@@ -29,21 +35,23 @@
   farbe: orange
   inhalte:
     - handout: ki-arbeitsprofile
+      kurz: Assistenzen, Skills und Co. – wie du KI für wiederkehrende Aufgaben einrichtest.
     - extern: Mini-Lernkurs Agentische KI
       etikett: Mini-Lernkurs
       link: https://www.juliajunge.de/mini-lernkurs-agentische-ki/
       knopf: Zum Mini-Lernkurs
-      beschreibung: Bringt dich auf Stand rund um agentische KI – was das ist, was das kann und welche Risiken es birgt.
+      beschreibung: Was agentische KI ist, was sie kann und welche Risiken sie birgt.
     - handout: bessere-bilder-mit-ki
+      kurz: Welche Bild-Tools wofür taugen, wie Infografiken gelingen und wann du KI-Bilder kennzeichnen musst.
     - extern: Präsentationen mit KI erstellen
       etikett: Blog und Webinar
       link: https://www.juliajunge.de/praesentationen-mit-ki-erstellen/
       knopf: Zu Beitrag und Webinar
-      beschreibung: Von der Idee bis zur fertigen Folie – wo KI bei Entscheidungen und Gestaltung hilft und wo nicht.
+      beschreibung: Von der Idee bis zur Folie – wo KI hilft und wo du selbst entscheiden musst.
     - extern: Reseller-Liste
       link: https://www.juliajunge.de/go/reseller
       knopf: Zur Liste
-      beschreibung: Deutsche KI-Plattformen mit Auftragsverarbeitungsvertrag – für den datenschutzkonformen Einsatz im Team.
+      beschreibung: Deutsche KI-Plattformen mit Auftragsverarbeitungsvertrag für den Einsatz im Team.
 
 - id: organisationen
   titel: Für Organisationen
@@ -51,6 +59,10 @@
   farbe: dunkelgruen
   inhalte:
     - werkzeug: KI-Standortbestimmung
+      kurz: 15 Fragen, etwa 7 Minuten – wo steht eure Organisation bei KI? Mit Auswertung und nächsten Schritten.
     - handout: ki-reifegradmodell
+      kurz: Fünf Reifegrade in neun Kategorien – zum Ankreuzen, wo deine Organisation steht.
     - handout: leitfaden-ki-einfuehrung
+      kurz: In drei Phasen und sieben Schritten KI in NGOs einführen – mit Checklisten und Fragen.
     - handout: leitlinien-ki-nutzung
+      kurz: Frei kopierbare Vorlage für KI-Leitlinien in Vereinen (Version 5, mit Agents) – als PDF und Word.
