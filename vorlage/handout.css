@@ -610,6 +610,8 @@ body.bilder .kernsatz { background: var(--jj-green-light); padding: 24px 28px; m
 @media print {
   body.werkzeugliste .tipp { margin-bottom: 14px; }
   body.werkzeugliste .inhalt > .tipp:last-child { margin-bottom: 0; }
+  body.werkzeugliste .karten { margin-bottom: 0; }
+  body.werkzeugliste .vergleich li + li { margin-top: 0; }
 }
 .vergleich .vergleich-bild { display: block; width: 100%; height: auto; margin-top: 6px; border-radius: 6px; }
 /* Liste mit grünem Chevron statt Punkten (<div class="pluspunkte"> um eine Markdown-Liste) */

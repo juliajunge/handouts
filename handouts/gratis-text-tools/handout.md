@@ -32,8 +32,12 @@ Wenn du ChatGPT oder Mistral nutzt, ohne dich einzuloggen, bist du **nicht anony
 Mehr Kontrolle und mehr Funktionen hast du mit einem kostenlosen Konto. Schalte die Nutzung zu Trainingszwecken ab.
 :::
 
-::: karte Bezahl-Konto
-Ein individueller Bezahl-Account bringt dir **keinen** höheren Datenschutz, aber mehr Funktionen, zum Beispiel für Assistenzen oder Agenten. Erst ab Teams-/Business-Lizenzen gibt es eine Auftragsverarbeitung und damit eine rechtliche Grundlage für Datenschutz.
+::: karte Individueller Bezahl-Account (z. B. ChatGPT Plus)
+Ein individueller Bezahl-Account bringt dir **keinen** höheren Datenschutz, aber mehr Funktionen, zum Beispiel für Assistenzen oder Agenten, mehr Bilder und Dokumente und stärkere Modelle.
+:::
+
+::: karte Teams-/Business-Lizenz
+Ab hier gibt es eine Auftragsverarbeitung, die eine erste Grundlage für die erlaubte Verarbeitung personenbezogener Daten sein kann. Meist musst du mindestens 2 Lizenzen kaufen.
 :::
 
 ::::
