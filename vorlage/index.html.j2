@@ -80,6 +80,12 @@
       {% if h.hinweis %}<small>{{ h.hinweis }}</small>{% endif %}
       <span class="aktionen"><a class="knopf" href="{{ h.link }}">&gt; {{ h.knopf }}</a></span>
     </li>
+    {% elif h.art == "extern" %}
+    <li>
+      <a class="titel" href="{{ h.link }}">{{ h.titel }}</a>
+      {% if h.beschreibung %}<p>{{ h.beschreibung }}</p>{% endif %}
+      <span class="aktionen"><a class="knopf knopf--leise" href="{{ h.link }}">&gt; {{ h.knopf }}</a></span>
+    </li>
     {% elif h.art == "demnaechst" %}
     <li class="karte-demnaechst">
       <span class="label">In Arbeit</span>

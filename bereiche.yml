@@ -3,6 +3,10 @@
 # inhalte: in dieser Reihenfolge erscheinen die Karten. Möglich sind:
 #   - handout: <ordner>        z. B. ki-arbeitsprofile oder registrierung (Gruppe mit gruppe.yml)
 #   - werkzeug: <titel>        Titel genau wie in werkzeuge.yml
+#   - extern: <titel>          Karte mit Link auf eine andere Seite (z. B. juliajunge.de), ohne PDF
+#     link: https://…
+#     knopf: Zur Anleitung     (optional, sonst „Zur Seite“)
+#     beschreibung: …          (optional)
 #   - demnaechst: <titel>      Karte „In Arbeit“ ohne Link – einfach löschen, sobald das Handout da ist
 #     beschreibung: …          (optional)
 # Handouts, die hier fehlen, landen automatisch unten unter „Weitere Handouts“.
@@ -13,7 +17,9 @@
   farbe: hellgruen
   inhalte:
     - handout: registrierung
-    - demnaechst: Trainingsdaten abschalten
+    - extern: Trainingsdaten abschalten
+      link: https://www.juliajunge.de/ki-training-abschalten/
+      knopf: Zur Anleitung
       beschreibung: So verhinderst du, dass deine Chats zum Training der KI genutzt werden – für ChatGPT, Claude, Gemini und Co.
     - handout: warum-ki-halluziniert
     - handout: bessere-prompts-mit-klaro
@@ -26,7 +32,9 @@
   inhalte:
     - handout: ki-arbeitsprofile
     - handout: bessere-bilder-mit-ki
-    - demnaechst: Reseller-Liste
+    - extern: Reseller-Liste
+      link: https://www.juliajunge.de/go/reseller
+      knopf: Zur Liste
       beschreibung: Deutsche KI-Plattformen mit Auftragsverarbeitungsvertrag – für den datenschutzkonformen Einsatz im Team.
 
 - id: organisationen

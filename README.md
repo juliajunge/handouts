@@ -158,6 +158,9 @@ Die Übersicht ist in drei farbige Bereiche geteilt: **Starten mit KI** (hellgr�
   inhalte:
     - handout: registrierung              # Ordnername unter handouts/ (auch Gruppen)
     - werkzeug: KI-Standortbestimmung     # Titel aus werkzeuge.yml
+    - extern: Reseller-Liste              # Karte mit Link auf eine andere Seite, ohne PDF
+      link: https://www.juliajunge.de/go/reseller
+      knopf: Zur Liste                    # optional, sonst „Zur Seite“
     - demnaechst: Bilder generieren       # Karte „In Arbeit“ ohne Link
       beschreibung: Ein Satz dazu.
 ```
