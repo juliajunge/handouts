@@ -21,12 +21,12 @@ Dieses Handout führt dich Schritt für Schritt durch die **Registrierung** und 
    ![Startseite von ChatGPT mit dem Knopf Kostenlos registrieren oben rechts](01-startseite.png)
 
 2. ### E-Mail-Adresse eingeben
-   Trag deine E-Mail-Adresse ein und klicke auf **Weiter**. Möglich wäre auch ein Google-, Microsoft- oder Apple-Konto.
+   Trag deine E-Mail-Adresse ein und klicke auf **Weiter**. Danach vergibst du ein neues **Passwort**. Möglich wäre auch ein Google-, Microsoft- oder Apple-Konto.
 
    ![Fenster Anmelden oder registrieren mit Feld für die E-Mail-Adresse](02-email-eingeben.png)
 
 3. ### E-Mail-Adresse bestätigen
-   Falls ChatGPT danach fragt, vergibst du zuerst ein neues Passwort. Dann schickt dir ChatGPT eine Mail mit einem **Code**. Trag ihn ein und klicke auf **Weiter**.
+   ChatGPT schickt dir eine Mail mit einem **Code**. Trag ihn ein und klicke auf **Weiter**.
 
    ![Feld für den Verifizierungscode](03-code-eingeben.png)
 
@@ -48,17 +48,17 @@ Dieses Handout führt dich Schritt für Schritt durch die **Registrierung** und 
 
    ![Datenkontrollen und das Fenster Modellverbesserung mit ausgeschaltetem Schalter](06-training-aus.png)
 
-2. ### Individuelle Hinweise einrichten
-   **Einstellungen → Personalisierung → Individuelle Hinweise:** Wie soll ChatGPT antworten (z. B. einfache Sprache, kritisch, mit Beispielen)? Was soll es über dich wissen (z. B. Beruf, Zielgruppe)? Das spart Zeit, weil du es nicht jedes Mal neu eingeben musst.
+2. ### Erinnerungen ausschalten
+   **Einstellungen → Personalisierung**, oben unter **Erinnerung**: **Gespeicherte Erinnerungen berücksichtigen**. Ich empfehle, das auszuschalten. Wenn du die Erinnerungen doch nutzt: Räum sie unter **Erinnerungen verwalten** regelmäßig auf.
+
+   <img class="klein" src="08-erinnerungen.png" alt="Einstellungen, Bereich Personalisierung mit ausgeschalteten Erinnerungen">
+
+3. ### Benutzerdefinierte Anweisungen einrichten
+   **Einstellungen → Personalisierung**, weiter unten **Benutzerdefinierte Anweisungen**: Wie soll ChatGPT antworten (z. B. einfache Sprache, kritisch, mit Beispielen)? Was soll es über dich wissen (z. B. Beruf, Zielgruppe)? Das spart Zeit, weil du es nicht jedes Mal neu eingeben musst.
 
    Ausführliche Anleitung: [juliajunge.de/custom-instruction](https://www.juliajunge.de/custom-instruction)
 
-   ![Fenster ChatGPT individuell konfigurieren](07-individuelle-hinweise.png)
-
-3. ### Erinnerungen ausschalten
-   **Einstellungen → Personalisierung → Gespeicherte Erinnerungen berücksichtigen:** Ich empfehle, das auszuschalten. Wenn du die Erinnerungen doch nutzt: Räum sie unter **Erinnerungen verwalten** regelmäßig auf.
-
-   <img class="klein" src="08-erinnerungen.png" alt="Einstellungen, Bereich Personalisierung mit ausgeschalteten Erinnerungen">
+   <img class="klein" src="07-individuelle-hinweise.png" alt="Fenster ChatGPT individuell konfigurieren">
 :::
 
 ## Was ChatGPT kann
