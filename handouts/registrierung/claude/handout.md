@@ -24,29 +24,37 @@ Dieses Handout führt dich Schritt für Schritt durch die **Registrierung** und 
 
    ![Mail von Claude mit dem Knopf Anmelden](02-bestaetigungsmail.png)
 
-3. ### Konto erstellen
-   Nutzungsbedingungen akzeptieren. Werbe-Mails kannst du abwählen. Dann **Konto erstellen**.
+3. ### Nutzungsbedingungen zustimmen
+   Setze **beide Haken** – auch den bei den Werbe-Mails, sonst geht es nicht weiter. Abbestellen kannst du sie später jederzeit. Dann **Konto erstellen**.
 
    ![Häkchen bei den Nutzungsbedingungen und bei Werbe-Mails](03-konto-erstellen.png)
 
-4. ### Name und Geburtsdatum
-   Der Name darf auch ausgedacht sein. Beim Geburtsdatum musst du **über 18** sein. Bei der Frage zur Personalisierung reicht **Eigenes**.
+4. ### Geburtsdatum angeben
+   Du musst **über 18** sein.
 
-5. ### Free-Plan wählen
+5. ### Persönlicher Gebrauch
+   Wähle aus, dass du Claude für den **persönlichen Gebrauch** nutzt.
+
+6. ### Free-Plan wählen
    Klicke auf **Claude kostenlos nutzen**. Ein Upgrade ist später jederzeit möglich.
 
    ![Übersicht der Pläne Free, Pro und Max](04-free-plan.png)
 
-6. ### Desktop-App überspringen
-   Die App bitte nur nach Rücksprache mit eurer IT installieren. Klicke erst mal auf **Überspringen** – im Browser funktioniert alles.
+7. ### Desktop-App überspringen
+   Klicke auf **Überspringen** – im Browser funktioniert alles. Die App kannst du später installieren, am besten nach Rücksprache mit eurer IT.
 
    ![Angebot zum Download der Desktop-App mit Knopf Überspringen](05-desktop-app-ueberspringen.png)
 
-7. ### Training ausschalten
-   Lass den Schalter **Help improve our AI models** ==unbedingt aus==. Dann werden deine Chats nicht zum Training künftiger Modelle verwendet. Dann **Weiter**.
+8. ### Training ausschalten
+   Der Schalter **Help improve our AI models** muss ==unbedingt aus== sein – falls er an ist, klick ihn aus. Dann werden deine Chats nicht zum Training künftiger Modelle verwendet. Dann **Weiter**.
 
    ![Schalter Help improve our AI models ist ausgeschaltet](06-training-aus.png)
+
+9. ### Frage zur Arbeit überspringen
+   Die Frage, was deine Arbeit am besten beschreibt, kannst du **überspringen**. Fertig – du landest im ersten Chat.
 :::
+
+<div class="neue-seite"></div>
 
 ## Grundeinstellungen
 
@@ -60,6 +68,8 @@ Die Einstellungen findest du unten links: auf deinen **Namen** klicken, dann **E
 
 2. ### Erinnerungen ausschalten
    **Einstellungen → Erinnerungen:** **Gedächtnisgenerierung aus Chats** ausschalten. So sammelt Claude keine Infos aus deinen Chats an, die du nicht im Blick hast. Was Claude immer wissen soll, schreibst du lieber selbst in die Anweisungen.
+
+   ![Einstellungen, Bereich Erinnerungen mit ausgeschalteter Gedächtnisgenerierung](09-einstellungen-erinnerungen.png)
 
 3. ### Anweisungen für Claude ausfüllen
    **Einstellungen → Konto → Anweisungen für Claude:** Hier steht, was Claude in jedem Chat über dich wissen soll, zum Beispiel:
