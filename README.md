@@ -146,8 +146,24 @@ python build.py --ohne-pdf # nur Webseiten
 
 Einmalig nötig: unter **Settings → Pages → Build and deployment → Source** „GitHub Actions“ auswählen.
 
+## Bereiche auf der Übersicht
+
+Die Übersicht ist in drei farbige Bereiche geteilt: **Starten mit KI** (hellgrün), **Für Fortgeschrittene** (orange) und **Für Organisationen** (dunkelgrün). Welche Karte in welchem Bereich und an welcher Stelle steht, legt `bereiche.yml` fest:
+
+```yaml
+- id: starten                 # Sprungmarke: …/handouts/#starten
+  titel: Starten mit KI
+  beschreibung: Ein Satz unter der Überschrift.
+  farbe: hellgruen            # hellgruen, orange oder dunkelgruen
+  inhalte:
+    - handout: registrierung              # Ordnername unter handouts/ (auch Gruppen)
+    - werkzeug: KI-Standortbestimmung     # Titel aus werkzeuge.yml
+    - demnaechst: Bilder generieren       # Karte „In Arbeit“ ohne Link
+      beschreibung: Ein Satz dazu.
+```
+
+Ein neues Handout musst du dort mit `- handout: <ordner>` eintragen. Fehlt es, steht es unten unter „Weitere Handouts“ und der Build gibt einen Hinweis aus. Ist ein Handout fertig, das bisher als `demnaechst:` angekündigt war, ersetzt du die Zeile durch `handout:`.
+
 ## Online-Werkzeuge auf der Übersicht
 
-Interaktive Seiten wie die [KI-Standortbestimmung](https://juliajunge.github.io/KI-Standortbestimmung/) liegen in eigenen Repos. Auf der Übersichtsseite stehen sie in einem eigenen Bereich „Außerdem: zum Online-Ausfüllen“ unter den Handouts. Sie haben einen Rahmen statt einer Fläche und keinen PDF-Knopf.
-Ein neues Werkzeug kommt mit einem weiteren Eintrag in `werkzeuge.yml` dazu: `titel`, `beschreibung`, `link`, `knopf` und optional `hinweis`.
-
+Interaktive Seiten wie die [KI-Standortbestimmung](https://juliajunge.github.io/KI-Standortbestimmung/) liegen in eigenen Repos. Sie stehen in `werkzeuge.yml` (`titel`, `beschreibung`, `link`, `knopf` und optional `hinweis`) und werden in `bereiche.yml` mit `- werkzeug: <titel>` einem Bereich zugeordnet. Dort haben sie einen Rahmen statt einer Fläche und keinen PDF-Knopf. Ein Werkzeug ohne Bereich erscheint unten unter „Außerdem: zum Online-Ausfüllen“.

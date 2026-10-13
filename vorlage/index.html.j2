@@ -6,17 +6,45 @@
 <title>Handouts – Julia Junge</title>
 <link rel="stylesheet" href="vorlage/handout.css">
 <style>
-  /* Handout-Karten: alle gleich groß, Knöpfe immer unten in derselben Reihenfolge */
-  .liste { list-style: none; padding: 0; margin: 0 0 48px; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); grid-auto-rows: 1fr; gap: 16px; }
-  .liste li { background: var(--jj-offwhite); border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; }
-  .liste a.titel { font-family: var(--font-display); font-weight: 700; font-size: 1.3em; line-height: 1.15; color: var(--jj-green-dark); text-decoration: none; }
-  .liste .titel { font-family: var(--font-display); font-weight: 700; font-size: 1.3em; line-height: 1.15; color: var(--jj-green-dark); }
+  /* Bereiche: je eine Farbe aus dem CD – Streifen an den Karten, Nummer und Sprungmarke */
+  .bereich--hellgruen { --bereich: var(--jj-green-light); --bereich-text: var(--jj-black); }
+  .bereich--orange { --bereich: var(--jj-orange); --bereich-text: var(--jj-black); }
+  .bereich--dunkelgruen { --bereich: var(--jj-green-dark); --bereich-text: var(--jj-white); }
+  .sprungmarken { display: flex; flex-wrap: wrap; gap: 8px; margin: -16px 0 40px; }
+  .sprung { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: .85em; color: var(--jj-black); text-decoration: none; border-radius: 999px; padding: 6px 16px 6px 10px; box-shadow: inset 0 0 0 2px var(--bereich); }
+  .sprung:hover { background: var(--bereich); color: var(--bereich-text); }
+  .sprung .punkt { width: 12px; height: 12px; border-radius: 999px; background: var(--bereich); }
+  .sprung:hover .punkt { background: var(--bereich-text); }
+  .bereich { margin: 0 0 48px; scroll-margin-top: 16px; }
+  .bereich-kopf { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 16px; }
+  .bereich-nr { flex: none; width: 40px; height: 40px; border-radius: 999px; background: var(--bereich, var(--jj-offwhite)); color: var(--bereich-text, var(--jj-black)); font-family: var(--font-display); font-weight: 700; font-size: 1.3em; display: flex; align-items: center; justify-content: center; }
+  .bereich-kopf h2 { font-family: var(--font-display); font-weight: 700; font-size: 1.75em; line-height: 1.1; color: var(--jj-green-dark); margin: 4px 0 4px; }
+  .bereich-kopf p { margin: 0; color: #333; }
+  /* Karten: in einer Reihe gleich groß, Knöpfe immer unten in derselben Reihenfolge */
+  .liste { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+  .liste li { background: var(--jj-offwhite); border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; border-top: 6px solid var(--bereich, var(--jj-offwhite)); }
+  .liste .titel { font-family: var(--font-display); font-weight: 700; font-size: 1.3em; line-height: 1.15; color: var(--jj-green-dark); text-decoration: none; }
   .liste a.titel:hover { text-decoration: underline; }
   .liste p { margin: 0; font-size: .9em; color: #333; }
+  .liste small { font-size: .8em; color: #333; }
   .liste .aktionen { margin-top: auto; padding-top: 8px; flex-wrap: nowrap; gap: 6px; }
   .liste .aktionen--gruppe { flex-wrap: wrap; }
   .liste .knopf { font-size: .8em; padding: 6px 13px; }
-  /* Online-Werkzeuge: bewusst anders als die Handout-Liste – Rahmen statt Fläche, kein PDF */
+  .liste .label { font-size: .65em; padding: 3px 10px; }
+  /* Online-Werkzeug: Rahmen statt Fläche, kein PDF */
+  .liste .karte-werkzeug { background: var(--jj-white); box-shadow: inset 0 0 0 2px var(--bereich, var(--jj-green-dark)); }
+  .liste .karte-werkzeug .label { background: var(--jj-orange); }
+  .liste .karte-werkzeug .knopf { background: var(--jj-orange); }
+  .liste .karte-werkzeug .knopf:hover { background: var(--jj-green-light); }
+  /* In Arbeit: noch kein Link, leise gestrichelt */
+  .liste .karte-demnaechst { background: transparent; box-shadow: inset 0 0 0 2px var(--jj-offwhite); border-top-style: dashed; }
+  .liste .karte-demnaechst .label { background: var(--jj-offwhite); }
+  .liste .karte-demnaechst .titel { color: #555; }
+  .liste .karte-demnaechst p { color: #555; }
+  @media (max-width: 560px) {
+    .bereich-kopf h2 { font-size: 1.5em; }
+  }
+  /* Online-Werkzeuge, die in keinem Bereich stehen */
   .werkzeuge { margin: 0 0 48px; }
   .werkzeuge > h2 { font-family: var(--font-display); font-weight: 700; font-size: 1.75em; line-height: 1.1; color: var(--jj-green-dark); margin: 0 0 6px; }
   .werkzeuge > p { margin: 0 0 16px; }
@@ -43,9 +71,22 @@
       <div class="strich"></div>
     </div>
   </section>
-  <ul class="liste">
-  {% for h in handouts %}
-    {% if h.handouts %}
+  {% macro karte(h) %}
+    {% if h.art == "werkzeug" %}
+    <li class="karte-werkzeug">
+      <span class="label">Online-Werkzeug</span>
+      <a class="titel" href="{{ h.link }}">{{ h.titel }}</a>
+      <p>{{ h.beschreibung }}</p>
+      {% if h.hinweis %}<small>{{ h.hinweis }}</small>{% endif %}
+      <span class="aktionen"><a class="knopf" href="{{ h.link }}">&gt; {{ h.knopf }}</a></span>
+    </li>
+    {% elif h.art == "demnaechst" %}
+    <li class="karte-demnaechst">
+      <span class="label">In Arbeit</span>
+      <span class="titel">{{ h.titel }}</span>
+      {% if h.beschreibung %}<p>{{ h.beschreibung }}</p>{% endif %}
+    </li>
+    {% elif h.handouts %}
     <li>
       <span class="titel">{{ h.titel }}</span>
       {% if h.beschreibung %}<p>{{ h.beschreibung }}</p>{% endif %}
@@ -65,8 +106,35 @@
       </span>
     </li>
     {% endif %}
+  {% endmacro %}
+  {% if bereiche %}
+  <nav class="sprungmarken" aria-label="Bereiche">
+    {% for b in bereiche %}<a class="sprung bereich--{{ b.farbe }}" href="#{{ b.id }}"><span class="punkt"></span>{{ b.titel }}</a>
+    {% endfor %}
+  </nav>
+  {% endif %}
+  {% for b in bereiche %}
+  <section class="bereich bereich--{{ b.farbe }}" id="{{ b.id }}">
+    <div class="bereich-kopf">
+      <span class="bereich-nr">{{ loop.index }}</span>
+      <div>
+        <h2>{{ b.titel }}</h2>
+        {% if b.beschreibung %}<p>{{ b.beschreibung }}</p>{% endif %}
+      </div>
+    </div>
+    <ul class="liste">
+    {% for h in b.karten %}{{ karte(h) }}{% endfor %}
+    </ul>
+  </section>
   {% endfor %}
-  </ul>
+  {% if handouts %}
+  <section class="bereich">
+    {% if bereiche %}<div class="bereich-kopf"><div><h2>Weitere Handouts</h2></div></div>{% endif %}
+    <ul class="liste">
+    {% for h in handouts %}{{ karte(h) }}{% endfor %}
+    </ul>
+  </section>
+  {% endif %}
   {% if werkzeuge %}
   <section class="werkzeuge">
     <h2>Außerdem: zum Online-Ausfüllen</h2>

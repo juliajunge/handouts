@@ -164,15 +164,52 @@ def baue_seiten():
         if name not in gruppen:
             gruppe_datei = HANDOUTS / name / "gruppe.yml"
             gruppe = yaml.safe_load(gruppe_datei.read_text(encoding="utf-8")) if gruppe_datei.exists() else {}
-            gruppen[name] = {"titel": name, "beschreibung": "", **(gruppe or {}), "handouts": []}
+            gruppen[name] = {"titel": name, "beschreibung": "", **(gruppe or {}), "slug": name, "handouts": []}
             eintraege.append(gruppen[name])
         gruppen[name]["handouts"].append(h)
-    werkzeuge = yaml.safe_load(werkzeuge_datei.read_text(encoding="utf-8")) if werkzeuge_datei.exists() else []
+    werkzeuge = (yaml.safe_load(werkzeuge_datei.read_text(encoding="utf-8")) if werkzeuge_datei.exists() else None) or []
+    bereiche, rest_handouts, rest_werkzeuge = ordne_bereiche(eintraege, werkzeuge)
     (SITE / "index.html").write_text(
-        env.get_template("index.html.j2").render(handouts=eintraege, werkzeuge=werkzeuge or []), encoding="utf-8"
+        env.get_template("index.html.j2").render(bereiche=bereiche, handouts=rest_handouts, werkzeuge=rest_werkzeuge),
+        encoding="utf-8",
     )
     (SITE / ".nojekyll").write_text("")
     return alle
+
+
+def ordne_bereiche(eintraege, werkzeuge):
+    """Verteilt Handouts, Gruppen und Werkzeuge auf die Bereiche aus bereiche.yml.
+    Was dort nicht genannt ist, bleibt übrig und erscheint unten auf der Übersicht."""
+    datei = ROOT / "bereiche.yml"
+    bereiche = (yaml.safe_load(datei.read_text(encoding="utf-8")) if datei.exists() else None) or []
+    nach_slug = {h["slug"]: h for h in eintraege}
+    nach_titel = {w["titel"]: w for w in werkzeuge}
+    vergeben = set()
+    for b in bereiche:
+        b["karten"] = []
+        for eintrag in b.get("inhalte") or []:
+            if "handout" in eintrag:
+                ziel = nach_slug.get(eintrag["handout"])
+                if ziel is None:
+                    sys.exit(f"bereiche.yml: Handout '{eintrag['handout']}' gibt es nicht unter handouts/")
+                karte = {"art": "gruppe" if "handouts" in ziel else "handout", **ziel}
+                vergeben.add(("handout", eintrag["handout"]))
+            elif "werkzeug" in eintrag:
+                ziel = nach_titel.get(eintrag["werkzeug"])
+                if ziel is None:
+                    sys.exit(f"bereiche.yml: Werkzeug '{eintrag['werkzeug']}' steht nicht in werkzeuge.yml")
+                karte = {"art": "werkzeug", **ziel}
+                vergeben.add(("werkzeug", eintrag["werkzeug"]))
+            elif "demnaechst" in eintrag:
+                karte = {"art": "demnaechst", "titel": eintrag["demnaechst"], "beschreibung": eintrag.get("beschreibung", "")}
+            else:
+                sys.exit(f"bereiche.yml: unbekannter Eintrag {eintrag} im Bereich '{b.get('titel')}'")
+            b["karten"].append(karte)
+    rest_handouts = [h for h in eintraege if ("handout", h["slug"]) not in vergeben]
+    rest_werkzeuge = [w for w in werkzeuge if ("werkzeug", w["titel"]) not in vergeben]
+    for h in rest_handouts:
+        print(f"Hinweis: '{h['titel']}' steht in keinem Bereich in bereiche.yml und erscheint unter „Weitere Handouts“")
+    return bereiche, rest_handouts, rest_werkzeuge
 
 
 def baue_pdfs(alle):

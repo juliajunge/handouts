@@ -12,7 +12,7 @@ Gestaltungsregeln (Ton, Farben, Drachen) kommen aus dem Skill `julia-junge-desig
 ## Ablauf
 
 1. **Inhalt klären:** Quelle lesen (z. B. Word: `pandoc datei.docx -t markdown`). Titel, Hoch- oder Querformat, Quellenangabe bei adaptierten Inhalten.
-2. **Ordner anlegen:** `handouts/<name>/` – kleine Buchstaben, Bindestriche, keine Umlaute. Der Name wird Teil der Adresse und bleibt danach gleich.
+2. **Ordner anlegen:** `handouts/<name>/` – kleine Buchstaben, Bindestriche, keine Umlaute. Der Name wird Teil der Adresse und bleibt danach gleich. In `bereiche.yml` mit `- handout: <name>` einem Bereich der Übersicht zuordnen (ersetzt ggf. einen `demnaechst:`-Eintrag).
 3. **`handout.md` schreiben** (Aufbau unten), passende Drachen aus `julia-junge-design/assets/` in den Ordner kopieren (Pose nach Anlass). Die Regel heißt ein Drache **pro Seite, nicht pro Handout**: In mehrseitigen Handouts darf jede Seite ihren eigenen Drachen haben.
 4. **Lokal bauen und ansehen:**
    ```bash
@@ -60,7 +60,7 @@ Markdown-Bausteine (Karten, Schritte, Tipp, Canvas, Marker `==…==`) stehen in 
 - **Drachen:** höchstens einer pro Seite, jede Seite darf einen haben – auch Folgeseiten mehrseitiger Handouts.
 - **Newsletter:** Unter jeder Handout-Webseite steht automatisch die Newsletter-Anmeldung (Brevo, `vorlage/newsletter.html.j2`), oben ein Knopf „> Newsletter abonnieren“. Beides nur im Web, nie im PDF. Abschalten pro Handout mit `newsletter: nein`, z. B. bei Auftragsarbeiten. Ändert sich das Formular in Brevo, Formular-Adresse (`action`) und Feldnamen dort anpassen.
 - **Fuß:** Drachenlinie, links „> juliajunge.de“, rechts Autorin/Stand oder `quelle:` plus CC-Logo. Den Namen nicht doppelt nennen. In der Webansicht steht zusätzlich „> Impressum und Datenschutz“ (https://www.juliajunge.de/kontakt-und-impressum/), im PDF nicht.
-- **Online-Werkzeuge** (z. B. KI-Standortbestimmung) sind keine Handouts: Sie stehen nur als Eintrag in `werkzeuge.yml` und erscheinen auf der Übersicht in einem eigenen Bereich, ohne PDF.
+- **Online-Werkzeuge** (z. B. KI-Standortbestimmung) sind keine Handouts: Sie stehen als Eintrag in `werkzeuge.yml`, werden in `bereiche.yml` einem Bereich zugeordnet und erscheinen dort mit Rahmen, ohne PDF.
 - **Tabellen:** grüne Kopfzeile in Versalien, Zeilen abwechselnd #EDEDDF/#F7F7F1, erste Spalte fett. Normal max. 4 Spalten; eine Matrix (z. B. Reifegrade) darf mehr haben, dann `format: quer`.
 - **Schriftgrößen im Druck:** Text 10–11 pt, dichte Matrix 9,5 pt, nichts unter 7,5 pt (Etiketten, Fußzeile).
 - **Ränder im Druck:** Hochformat 14 mm oben/unten, 20 mm links/rechts; Querformat 10 mm. Drache neben dem Titel 32 mm (Querformat 18 mm).
