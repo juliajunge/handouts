@@ -80,10 +80,12 @@ Die Einstellungen findest du unten links: auf deinen **Namen** klicken, dann **E
 
 ## Was Claude kann
 
+Im Gratis-Plan ist alles nur begrenzt nutzbar.
+
 :::: karten
 
 ::: karte Projekte
-Arbeitsbereiche mit eigenen Anweisungen, in denen du Hintergrundinfos in Dateien hinterlegen kannst. Im Gratis-Plan begrenzt.
+Arbeitsbereiche mit eigenen Anweisungen, in denen du Hintergrundinfos in Dateien hinterlegen kannst.
 :::
 
 ::: karte Skills

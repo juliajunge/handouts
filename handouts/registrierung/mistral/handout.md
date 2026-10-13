@@ -64,6 +64,8 @@ Dieses Handout führt dich Schritt für Schritt durch die **Registrierung** und 
 
 ## Was Le Chat kann
 
+Im Gratis-Plan ist alles nur begrenzt nutzbar.
+
 :::: karten
 
 ::: karte Agents
@@ -71,15 +73,15 @@ Assistenzen mit eigener Rolle, eigenen Anweisungen und eigenem Wissen, z. B. fü
 :::
 
 ::: karte Projekte
-Unterarbeitsbereiche, in denen du Hintergrundinfos in Dateien hinterlegen kannst. Im Gratis-Plan begrenzt.
+Unterarbeitsbereiche, in denen du Hintergrundinfos in Dateien hinterlegen kannst.
 :::
 
 ::: karte Bibliotheken
-Unter **Kontext → Bibliotheken** liegen Hintergrunddateien für deine Arbeit. Du kannst sie in Agents oder im normalen Chat nutzen.
+Hintergrunddateien unter **Kontext → Bibliotheken**, nutzbar in Agents und im Chat.
 :::
 
 ::: karte Skills
-Kleine Anleitungen für wiederkehrende Aufgaben, z. B. eine Genderregel oder eine Design-Vorlage. Le Chat nutzt sie automatisch, wenn sie passen.
+Kleine Anleitungen, z. B. eine Genderregel. Le Chat nutzt sie automatisch, wenn sie passen.
 :::
 
 ::::
