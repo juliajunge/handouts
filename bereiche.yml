@@ -6,6 +6,7 @@
 #   - extern: <titel>          Karte mit Link auf eine andere Seite (z. B. juliajunge.de), ohne PDF
 #     link: https://…
 #     knopf: Zur Anleitung     (optional, sonst „Zur Seite“)
+#     etikett: Blog und Webinar (optional, kleines Etikett über dem Titel)
 #     beschreibung: …          (optional)
 #   - demnaechst: <titel>      Karte „In Arbeit“ ohne Link – einfach löschen, sobald das Handout da ist
 #     beschreibung: …          (optional)
@@ -28,7 +29,17 @@
   farbe: orange
   inhalte:
     - handout: ki-arbeitsprofile
+    - extern: Mini-Lernkurs Agentische KI
+      etikett: Mini-Lernkurs
+      link: https://www.juliajunge.de/mini-lernkurs-agentische-ki/
+      knopf: Zum Mini-Lernkurs
+      beschreibung: Bringt dich auf Stand rund um agentische KI – was das ist, was das kann und welche Risiken es birgt.
     - handout: bessere-bilder-mit-ki
+    - extern: Präsentationen mit KI erstellen
+      etikett: Blog und Webinar
+      link: https://www.juliajunge.de/praesentationen-mit-ki-erstellen/
+      knopf: Zu Beitrag und Webinar
+      beschreibung: Von der Idee bis zur fertigen Folie – wo KI bei Entscheidungen und Gestaltung hilft und wo nicht.
     - extern: Reseller-Liste
       link: https://www.juliajunge.de/go/reseller
       knopf: Zur Liste

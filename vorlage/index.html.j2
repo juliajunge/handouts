@@ -82,9 +82,10 @@
     </li>
     {% elif h.art == "extern" %}
     <li>
-      <a class="titel" href="{{ h.link }}">{{ h.titel }}</a>
+      {% if h.etikett %}<span class="label">{{ h.etikett }}</span>{% endif %}
+      <a class="titel" href="{{ h.link }}" target="_blank" rel="noopener">{{ h.titel }}</a>
       {% if h.beschreibung %}<p>{{ h.beschreibung }}</p>{% endif %}
-      <span class="aktionen"><a class="knopf knopf--leise" href="{{ h.link }}">&gt; {{ h.knopf }}</a></span>
+      <span class="aktionen"><a class="knopf knopf--leise" href="{{ h.link }}" target="_blank" rel="noopener">&gt; {{ h.knopf }}</a></span>
     </li>
     {% elif h.art == "demnaechst" %}
     <li class="karte-demnaechst">

@@ -161,11 +161,12 @@ Die Übersicht ist in drei farbige Bereiche geteilt: **Starten mit KI** (hellgr�
     - extern: Reseller-Liste              # Karte mit Link auf eine andere Seite, ohne PDF
       link: https://www.juliajunge.de/go/reseller
       knopf: Zur Liste                    # optional, sonst „Zur Seite“
+      etikett: Blog und Webinar           # optional, kleines Etikett über dem Titel
     - demnaechst: Bilder generieren       # Karte „In Arbeit“ ohne Link
       beschreibung: Ein Satz dazu.
 ```
 
-Ein neues Handout musst du dort mit `- handout: <ordner>` eintragen. Fehlt es, steht es unten unter „Weitere Handouts“ und der Build gibt einen Hinweis aus. Ist ein Handout fertig, das bisher als `demnaechst:` angekündigt war, ersetzt du die Zeile durch `handout:`.
+Externe Links öffnen sich in einem neuen Tab. Ein neues Handout musst du dort mit `- handout: <ordner>` eintragen. Fehlt es, steht es unten unter „Weitere Handouts“ und der Build gibt einen Hinweis aus. Ist ein Handout fertig, das bisher als `demnaechst:` angekündigt war, ersetzt du die Zeile durch `handout:`.
 
 ## Online-Werkzeuge auf der Übersicht
 
