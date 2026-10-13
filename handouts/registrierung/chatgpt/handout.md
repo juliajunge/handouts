@@ -54,7 +54,7 @@ Dieses Handout führt dich Schritt für Schritt durch die **Registrierung** und 
    <img class="klein" src="08-erinnerungen.png" alt="Einstellungen, Bereich Personalisierung mit ausgeschalteten Erinnerungen">
 
 3. ### Benutzerdefinierte Anweisungen einrichten
-   **Einstellungen → Personalisierung**, weiter unten **Benutzerdefinierte Anweisungen**: Wie soll ChatGPT antworten (z. B. einfache Sprache, kritisch, mit Beispielen)? Was soll es über dich wissen (z. B. Beruf, Zielgruppe)? Das spart Zeit, weil du es nicht jedes Mal neu eingeben musst.
+   **Einstellungen → Personalisierung**, weiter unten **Benutzerdefinierte Anweisungen**: Oben schreibst du, wie ChatGPT antworten soll (z. B. einfache Sprache, kritisch, mit Beispielen). Darunter folgen **Spitzname**, **Beruf** und **Mehr über dich** (z. B. Organisation, Zielgruppe).
 
    Ausführliche Anleitung: [juliajunge.de/custom-instruction](https://www.juliajunge.de/custom-instruction)
 
@@ -63,22 +63,24 @@ Dieses Handout führt dich Schritt für Schritt durch die **Registrierung** und 
 
 ## Was ChatGPT kann
 
+Im Gratis-Plan ist alles nur begrenzt nutzbar.
+
 :::: karten
 
-::: karte Suche
-ChatGPT sucht bei Bedarf im Web und nennt die Quellen.
+::: karte Suche und Deep Research
+Websuche mit Quellen. **Deep Research** recherchiert ausführlich und fasst alles in einem Bericht zusammen.
+:::
+
+::: karte Canvas
+Bearbeitbare Textblöcke neben dem Chat. Du änderst direkt im Text oder lässt markierte Stellen überarbeiten.
 :::
 
 ::: karte Bilder
-ChatGPT erstellt und bearbeitet Bilder. Im Gratis-Plan begrenzt.
+ChatGPT erstellt und bearbeitet Bilder.
 :::
 
 ::: karte Projekte
-Arbeitsbereiche mit eigenen Anweisungen, in denen du Hintergrundinfos in Dateien hinterlegen kannst. Im Gratis-Plan begrenzt.
-:::
-
-::: karte GPTs
-Assistenzen für wiederkehrende Aufgaben. Nutzen kannst du sie kostenlos, eigene erstellen nur im Bezahl-Plan.
+Arbeitsbereiche mit eigenen Anweisungen und Dateien.
 :::
 
 ::::
