@@ -495,15 +495,16 @@ body.leitlinien .inhalt > .karte { margin-bottom: 32px; }
   .anleitung .neue-seite { break-before: page; }
   .anleitung .schritte img.klein { max-height: 24mm; }
 }
-/* ---------- Bilder-Handout (stil: bilder): Tabellen, Text neben Beispielbild, Achtung-Kasten ---------- */
+/* ---------- Bilder-Handout (stil: bilder): Tabellen, Bildvergleiche, Bildreihen, Achtung-Kasten ---------- */
 body.bilder .unterzeile { font-weight: 700; margin: -24px 0 12px; }
 body.bilder .inhalt ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; }
 body.bilder .inhalt ul > li { position: relative; padding-left: 22px; }
 body.bilder .inhalt ul > li::before { content: ">"; position: absolute; left: 0; top: 0; color: var(--jj-green-dark); font-weight: 700; }
-body.bilder .inhalt > ul { margin-bottom: 40px; }
+body.bilder .inhalt > ul { margin-bottom: 32px; }
 body.bilder .tabelle-rahmen { overflow-x: auto; margin-bottom: 16px; }
 body.bilder .tabelle { width: 100%; border-collapse: separate; border-spacing: 0; font-size: .9em; line-height: 1.4; margin-bottom: 16px; }
 body.bilder .tabelle-rahmen .tabelle { min-width: 520px; margin-bottom: 0; }
+body.bilder .tabelle-stand { font-size: .75em; margin: 4px 0 0; text-align: right; }
 body.bilder .tabelle th { background: var(--jj-green-dark); color: var(--jj-white); text-align: left; padding: 8px 12px; font-size: .8em; letter-spacing: .1em; text-transform: uppercase; }
 body.bilder .tabelle th:first-child { border-top-left-radius: 8px; }
 body.bilder .tabelle th:last-child { border-top-right-radius: 8px; }
@@ -513,52 +514,78 @@ body.bilder .tabelle tr:nth-child(odd) td { background: var(--jj-offwhite); }
 body.bilder .tabelle tr:nth-child(even) td { background: #F7F7F1; }
 body.bilder .tabelle tr { break-inside: avoid; }
 body.bilder .stichworte { border-radius: 8px; overflow: hidden; }
-body.bilder .beispiel { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; align-items: stretch; margin-bottom: 48px; break-inside: avoid; }
-body.bilder .beispiel .karte p { margin: 0; }
-body.bilder .beispiel img { width: 100%; height: 100%; min-height: 180px; object-fit: cover; border-radius: 16px; display: block; }
-body.bilder .abschnitt-kopf { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 12px; break-after: avoid; }
-body.bilder .abschnitt-kopf h2 { margin: 0; }
-body.bilder .abschnitt-kopf img { width: 110px; height: auto; display: block; }
-body.bilder .text-bild { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; align-items: center; margin-bottom: 24px; break-inside: avoid; }
+body.bilder figure { margin: 0; break-inside: avoid; }
+body.bilder figure img { width: 100%; height: auto; display: block; border-radius: 16px; }
+body.bilder figcaption { font-size: .85em; margin-top: 8px; }
+body.bilder .prompt-label { display: block; font-size: .8em; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 2px; }
+body.bilder .bildvergleich { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; align-items: start; margin-bottom: 12px; }
+body.bilder .fazit { font-weight: 700; margin: 0 0 40px; }
+body.bilder .bildreihe { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; align-items: end; margin-bottom: 32px; }
+body.bilder .bildreihe figcaption { font-weight: 700; }
+body.bilder .text-bild { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; align-items: center; margin-bottom: 32px; }
 body.bilder .text-bild ul, body.bilder .text-bild p { margin: 0 0 10px; }
-body.bilder .text-bild > :not(img) > :last-child, body.bilder .text-bild > ul { margin-bottom: 0; }
-body.bilder .text-bild img { width: 100%; max-width: 300px; height: auto; display: block; justify-self: center; border-radius: 16px; }
-body.bilder .karten { margin-bottom: 40px; }
+body.bilder .text-bild > div > :last-child { margin-bottom: 0; }
+body.bilder .text-bild > img { width: 100%; max-width: 300px; height: auto; display: block; justify-self: center; border-radius: 16px; }
+body.bilder .text-bild--breit > img { max-width: 100%; border-radius: 8px; }
+body.bilder .inhalt .karte { margin-bottom: 24px; }
+body.bilder .karte p { margin: 0 0 8px; }
+body.bilder .karte > :last-child { margin-bottom: 0; }
+body.bilder .karten { margin-bottom: 32px; }
+body.bilder .karten .karte { margin-bottom: 0; }
 body.bilder .karte--rahmen { border-color: var(--jj-black); }
-body.bilder .achtung { border: 2px solid #CA2417; border-radius: 16px; padding: 18px 22px; margin-bottom: 32px; break-inside: avoid; }
+body.bilder .schritte ol { margin-bottom: 16px; }
+body.bilder .achtung { border: 2px solid #CA2417; border-radius: 16px; padding: 18px 22px; margin-bottom: 40px; break-inside: avoid; }
 body.bilder .achtung-label { font-size: .75em; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #CA2417; margin-bottom: 4px; }
 body.bilder .achtung h2 { margin-bottom: 10px; }
-body.bilder .achtung p { margin: 0 0 10px; }
+body.bilder .achtung ul, body.bilder .achtung p { margin: 0 0 10px; }
 body.bilder .achtung > :last-child { margin-bottom: 0; }
-body.bilder .warnung { border: 2px solid #CA2417; border-radius: 16px; padding: 12px 18px; }
-body.bilder .warnung strong { color: #CA2417; }
+body.bilder .klein { font-size: .85em; }
 body.bilder .tipp { margin-bottom: 40px; }
+body.bilder .infografik-beispiel { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; align-items: end; margin-bottom: 32px; }
+body.bilder .infografik-beispiel .karte { margin-bottom: 0; align-self: stretch; }
+body.bilder .infografik-beispiel figcaption { font-weight: 700; }
+body.bilder .kernsatz { background: var(--jj-green-light); padding: 24px 28px; margin: 32px 0 0; font-family: var(--font-display); font-weight: 700; font-size: 1.6em; line-height: 1.15; break-inside: avoid; }
 @media print {
-  body.bilder .unterzeile { margin: 0 0 8pt; font-size: 11pt; }
+  body.bilder .unterzeile { margin: 0 0 6pt; font-size: 11pt; }
   body.bilder .inhalt ul { gap: 3pt; }
   body.bilder .inhalt ul > li { padding-left: 14pt; }
   body.bilder .inhalt > ul { margin-bottom: 8pt; }
   body.bilder .tabelle-rahmen { overflow: visible; margin-bottom: 8pt; }
   body.bilder .tabelle-rahmen .tabelle { min-width: 0; }
+  body.bilder .tabelle-stand { font-size: 7.5pt; margin-top: 2pt; }
   body.bilder .tabelle { font-size: 9.5pt; line-height: 1.3; margin-bottom: 8pt; }
   body.bilder .tabelle th { padding: 1.6mm 2.6mm; font-size: 7.5pt; }
-  body.bilder .tabelle td { padding: 1.8mm 2.6mm; }
+  body.bilder .tabelle td { padding: 1.3mm 2.6mm; }
+  body.bilder .stichworte { line-height: 1.22; }
+  body.bilder .stichworte td { padding: 1.1mm 2.6mm; }
   body.bilder .tipp { margin-bottom: 10pt; }
-  body.bilder .beispiel { gap: 10px; margin-bottom: 0; grid-template-columns: minmax(0, 1fr) 70mm; }
-  body.bilder .beispiel img { min-height: 0; height: 52mm; }
-  body.bilder .abschnitt-kopf { margin-bottom: 6pt; }
-  body.bilder .abschnitt-kopf img { width: 24mm; }
-  body.bilder .text-bild { grid-template-columns: minmax(0, 1fr) 52mm; gap: 18px; margin-bottom: 10pt; }
-  body.bilder .text-bild img { max-width: 52mm; }
+  body.bilder figure img { border-radius: 10px; }
+  body.bilder figcaption { font-size: 8.5pt; margin-top: 3pt; }
+  body.bilder .prompt-label { font-size: 7.5pt; }
+  body.bilder .bildvergleich { grid-template-columns: 1fr; gap: 4pt; margin-bottom: 4pt; }
+  body.bilder .bildvergleich figure { display: grid; grid-template-columns: 44mm minmax(0, 1fr); gap: 0 12px; align-items: center; }
+  body.bilder .bildvergleich img { height: 22mm; object-fit: cover; }
+  body.bilder .bildvergleich figcaption { margin-top: 0; font-size: 9pt; }
+  body.bilder .infografik-beispiel { grid-template-columns: minmax(0, 1fr) 33mm 33mm; gap: 12px; margin-bottom: 8pt; }
+  body.bilder .fazit { margin-bottom: 0; }
+  body.bilder .bildreihe { grid-template-columns: repeat(2, 48mm); justify-content: center; gap: 12mm; margin-bottom: 8pt; }
+  body.bilder .bildreihe--drei { grid-template-columns: repeat(3, 38mm); gap: 10mm; }
+  body.bilder .text-bild { grid-template-columns: minmax(0, 1fr) 58mm; gap: 18px; margin-bottom: 10pt; }
+  body.bilder .text-bild > img { max-width: 58mm; border-radius: 10px; }
+  body.bilder .text-bild--breit { grid-template-columns: minmax(0, 1fr) 66mm; }
+  body.bilder .text-bild--breit > img { max-width: 66mm; }
   body.bilder .text-bild ul, body.bilder .text-bild p { margin-bottom: 6pt; }
+  body.bilder .inhalt .karte { margin-bottom: 10pt; }
+  body.bilder .karte p { margin-bottom: 4pt; }
   body.bilder .karten { margin-bottom: 10pt; }
-  body.bilder .achtung { padding: 10pt 14pt; margin-bottom: 0; }
+  body.bilder .schritte ol { grid-template-columns: repeat(3, 1fr); margin-bottom: 10pt; }
+  body.bilder .achtung { padding: 10pt 14pt; margin-bottom: 10pt; }
   body.bilder .achtung-label { font-size: 7.5pt; }
   body.bilder .achtung h2 { margin-top: 0; margin-bottom: 4pt; }
-  body.bilder .achtung p { margin-bottom: 5pt; }
-  body.bilder .warnung { padding: 6pt 10pt; }
+  body.bilder .achtung ul, body.bilder .achtung p { margin-bottom: 5pt; }
+  body.bilder .klein { font-size: 9pt; }
+  body.bilder .kernsatz { padding: 12pt 16pt; margin-top: 12pt; font-size: 15pt; }
 }
-
 /* ---------- Vergleichstabelle (<table class="vergleich">): grüne Kopfzeile, Zeilen im Wechsel, erste Spalte fett ---------- */
 .vergleich-rahmen { overflow-x: auto; margin-bottom: 32px; }
 .vergleich { width: 100%; min-width: 560px; border-collapse: separate; border-spacing: 0; table-layout: fixed; font-size: .9em; line-height: 1.4; hyphens: auto; }
