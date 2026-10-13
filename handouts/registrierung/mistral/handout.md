@@ -54,7 +54,7 @@ Dieses Handout führt dich Schritt für Schritt durch die **Registrierung** und 
    ![Fenster Anweisungen mit Ton und Feld für zusätzliche Anweisungen](05-anweisungen.png)
 
 3. ### Erinnerungen ausschalten
-   **Intelligenz → Erinnerung:** Ich empfehle, die Erinnerungen auszuschalten. So sammelt Le Chat keine Infos aus deinen Chats an, die du nicht im Blick hast. Wenn du sie doch nutzt: Räum sie regelmäßig auf, damit sich kein Unsinn ansammelt.
+   **Kontext → Knowledge:** Ich empfehle, die Erinnerungen auszuschalten. So sammelt Le Chat keine Infos aus deinen Chats an, die du nicht im Blick hast. Wenn du sie doch nutzt: Räum sie regelmäßig auf, damit sich kein Unsinn ansammelt.
 :::
 
 ## Was Le Chat kann
@@ -70,7 +70,7 @@ Unterarbeitsbereiche, in denen du Hintergrundinfos in Dateien hinterlegen kannst
 :::
 
 ::: karte Bibliothek
-Unter **Intelligenz → Bibliothek** liegen Hintergrunddateien für deine Arbeit. Du kannst sie in Agents oder im normalen Chat nutzen.
+Unter **Kontext → Bibliothek** liegen Hintergrunddateien für deine Arbeit. Du kannst sie in Agents oder im normalen Chat nutzen.
 :::
 
 ::: karte Skills
