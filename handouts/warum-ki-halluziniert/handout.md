@@ -12,7 +12,7 @@ beschreibung: Grundlagen generativer KI – warum Sprachmodelle Antworten erfind
 
 ## 1. Was macht generative KI anders?
 
-Generative KI wie ChatGPT ist ein **LLM** (Large Language Model). Sie hat Millionen Texte gelesen und in Wortbruchstücke zerlegt, sogenannte Token. Diese Token wurden in Wahrscheinlichkeiten zueinander angeordnet („gewichtet“). Ein LLM erinnert sich nicht an Sätze. Es sagt neue Sätze voraus, basierend auf den gelernten Wahrscheinlichkeiten der Wörter zueinander, plus ein bisschen Zufall.
+Generative KI wie ChatGPT ist ein **Large Language Modell (kurz LLM)**. Sie hat Millionen Texte gelesen und in Wortbruchstücke zerlegt, sogenannte Token. Diese Token wurden in Wahrscheinlichkeiten zueinander angeordnet („gewichtet“). Ein LLM erinnert sich nicht an Sätze und auch nicht an Daten hinter den Worten. Es sagt neue Sätze nur voraus, basierend auf den gelernten Wahrscheinlichkeiten der Wörter zueinander, plus ein bisschen Zufall.
 
 ## 2. KI halluziniert: Sie erfindet Antworten, auch Fakten
 
@@ -20,7 +20,7 @@ Generative KI „weiß“ nichts und schlägt auch nicht nach. Als prädiktive (
 
 ## 3. KI ist nicht neutral
 
-KI lernt Verzerrungen (Bias) aus den Trainingsdaten mit. Bilder von „doctor“ zeigen weiße Männer. Menschen mit Behinderung sitzen leidend im Rollstuhl. Frauen sind jung, weiß, zu schlank und gutaussehend. Mit klaren Prompts kannst du teilweise dagegen ankämpfen. Das braucht aber viel Sensibilität und Bewusstsein.
+KI lernt Verzerrungen (Bias) aus den Trainingsdaten mit. Bilder von „doctor“ zeigen weiße Männer. Menschen mit Behinderung sitzen leidend im Rollstuhl. Frauen sind jung, weiß, zu schlank und gutaussehend. Mit klaren Prompts kannst du dagegen ein Stück weit ankämpfen. Das braucht aber viel Sensibilität und Bewusstsein.
 
 ## 4. Das hilft gegen Halluzinationen
 
