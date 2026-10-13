@@ -2,13 +2,11 @@
 titel: Warum ChatGPT halluzinieren muss
 label: Grundlagen
 stand: 13. Oktober 2026
-bild: dragon-bausteine.png
-bild_alt: Drache mit Bausteinen
 pdf_name: warum-ki-halluziniert
 beschreibung: Grundlagen generativer KI – warum Sprachmodelle Antworten erfinden, warum sie nicht neutral sind und was gegen Halluzinationen hilft.
 ---
 
-<div class="vergleich-rahmen"><table class="vergleich ki-arten"><thead><tr><th>Drei Arten von KI</th><th>Regelbasierte KI</th><th>Lernbasierte KI</th><th>Generative KI</th></tr></thead><tbody><tr><th scope="row">Vergleichbar mit</th><td><strong>Zettelkastenprofi</strong></td><td><strong>Bibliothekar*in</strong></td><td><strong>Professor*in</strong></td></tr><tr><th scope="row">Merkmale</th><td>Sucht nach „Wenn – dann“-Regeln</td><td>Findet bekannte Infos wieder</td><td>Erfindet Antworten aus dem Gelernten</td></tr><tr><th scope="row">Nachvollziehbar?</th><td>Ja, jede Entscheidung ist erklärbar</td><td>Bedingt, abhängig von Algorithmus und Daten</td><td>Nein, Antworten entstehen in einer „Black Box“</td></tr></tbody></table></div>
+<div class="vergleich-rahmen"><table class="vergleich ki-arten"><thead><tr><th>Drei Arten von KI</th><th>Regelbasierte KI</th><th>Lernbasierte KI</th><th>Generative KI</th></tr></thead><tbody><tr><th scope="row">Vergleichbar mit</th><td><strong>Zettelkastenprofi</strong><img class="vergleich-bild" src="ki-zettelkasten.jpg" alt="Roboter-Drache sucht eine Karteikarte im Zettelkasten"></td><td><strong>Bibliothekar*in</strong><img class="vergleich-bild" src="ki-bibliothekar.jpg" alt="Drache als Bibliothekar reicht einem Menschen einen Stapel Bücher"></td><td><strong>Professor*in</strong><img class="vergleich-bild" src="ki-professor.jpg" alt="Drache als Professor erklärt an der Tafel, wie neue Ideen entstehen"></td></tr><tr><th scope="row">Beispiele</th><td>ELIZA, Deep Blue</td><td>Google-Suche</td><td>ChatGPT, Mistral, Claude</td></tr><tr><th scope="row">Merkmale</th><td>Sucht nach „Wenn – dann“-Regeln</td><td>Findet bekannte Infos wieder</td><td>Erfindet Antworten aus dem Gelernten</td></tr><tr><th scope="row">Nachvollziehbar?</th><td>Ja, jede Entscheidung ist erklärbar</td><td>Bedingt, abhängig von Algorithmus und Daten</td><td>Nein, Antworten entstehen in einer „Black Box“</td></tr></tbody></table></div>
 
 ## 1. Was macht generative KI anders?
 
@@ -24,22 +22,13 @@ KI lernt Verzerrungen (Bias) aus den Trainingsdaten mit. Bilder von „doctor“
 
 ## 4. Das hilft gegen Halluzinationen
 
-::: schritte
-1. ### Relevanten Kontext liefern
-   Beschreibe Kontext und Anlass. Hänge Dateien an, lass die KI danach suchen oder gib sie als Text mit.
+<div class="pluspunkte">
 
-2. ### Klar prompten
-   Formuliere deine Fragen offen, aber präzise.
+- **Relevanten Kontext liefern:** Beschreibe Kontext und Anlass. Hänge Dateien an, lass die KI danach suchen oder gib sie als Text mit.
+- **Klar prompten:** Formuliere deine Fragen offen, aber präzise.
+- **Nach Unsicherheiten fragen:** Bitte die KI, zu sagen, wenn sie spekuliert. Fordere von Beginn an Belege und Begründungen.
+- **Schrittweise vorgehen:** Stelle eine komplexe Frage in Etappen: erst zusammenfassen, dann ausformulieren usw. („Chain of Thought“).
+- **Die KI abwägen lassen:** Lass dir bewusst mehrere Antworten ausgeben und frage, welche am plausibelsten ist („Tree of Thoughts“).
+- **Doppelt prüfen:** Mach bei kritischen Themen immer einen Faktencheck mit den echten Quellen.
 
-3. ### Nach Unsicherheiten fragen
-   Bitte die KI, zu sagen, wenn sie spekuliert. Fordere von Beginn an Belege und Begründungen.
-
-4. ### Schrittweise vorgehen
-   Stelle eine komplexe Frage in Etappen: erst zusammenfassen, dann ausformulieren usw. („Chain of Thought“).
-
-5. ### Die KI abwägen lassen
-   Lass dir bewusst mehrere Antworten ausgeben und frage, welche am plausibelsten ist („Tree of Thoughts“).
-
-6. ### Doppelt prüfen
-   Mach bei kritischen Themen immer einen Faktencheck mit den echten Quellen.
-:::
+</div>
