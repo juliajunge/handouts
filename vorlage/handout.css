@@ -486,3 +486,9 @@ body.leitlinien .inhalt > .karte { margin-bottom: 32px; }
   .ergaenzung-label { font-size: 7.5pt; margin-bottom: 2pt; }
   .ergaenzung p { margin-bottom: 5pt; }
 }
+
+/* ---------- Anleitung mit Screenshots (stil: anleitung) ---------- */
+.anleitung .schritte img { display: block; width: auto; max-width: 100%; max-height: 360px; margin-top: 10px; border: 1px solid var(--border-content); border-radius: 8px; }
+@media print {
+  .anleitung .schritte img { max-height: 46mm; margin-top: 2mm; }
+}

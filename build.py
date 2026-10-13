@@ -107,7 +107,7 @@ def lies_handout(ordner):
     daten.setdefault("word", "")
     # Newsletter-Anmeldung unten auf der Webseite, abschaltbar mit "newsletter: nein"
     daten["newsletter"] = daten.get("newsletter", "ja").lower() not in ("nein", "false", "no", "aus")
-    daten["slug"] = ordner.name
+    daten["slug"] = ordner.relative_to(HANDOUTS).as_posix()
     daten["pdf_datei"] = (daten.get("pdf_name") or ordner.name) + ".pdf"
     # Word-Download zum Weiterbearbeiten, einschaltbar mit "word: ja"
     ist_word = daten["word"].lower() in ("ja", "true", "yes", "an")
@@ -126,9 +126,13 @@ def baue_seiten():
     md = markdown()
     alle = []
 
-    for ordner in sorted(p for p in HANDOUTS.iterdir() if (p / "handout.md").exists()):
+    # Handouts dürfen in Unterordnern liegen, z. B. handouts/registrierung/claude/
+    for ordner in sorted(p.parent for p in HANDOUTS.rglob("handout.md")):
         daten, text = lies_handout(ordner)
+        # Weg zurück zur Übersicht und zu vorlage/: "../" je Ordnerebene
+        daten["wurzel"] = "../" * len(Path(daten["slug"]).parts)
         html = md.render(text)
+        html = html.replace('src="../vorlage/', f'src="{daten["wurzel"]}vorlage/')
         # ==Text== wird zur Marker-Hervorhebung
         html = re.sub(r"==(.+?)==", r"<mark>\1</mark>", html)
         html = re.sub(r'<a href="([^"]+)">([^<]+)</a>', link_markieren, html)
