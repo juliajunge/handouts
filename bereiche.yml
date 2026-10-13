@@ -3,6 +3,7 @@
 # inhalte: in dieser Reihenfolge erscheinen die Karten. Möglich sind:
 #   - handout: <ordner>        z. B. ki-arbeitsprofile oder registrierung (Gruppe mit gruppe.yml)
 #     kurz: …                  Kartentext, höchstens 3 Zeilen (ca. 100 Zeichen); sonst die beschreibung des Handouts
+#     titel: …                 kürzerer Kartentitel (optional); sonst der Titel des Handouts
 #   - werkzeug: <titel>        Titel genau wie in werkzeuge.yml (kurz: wie oben)
 #   - extern: <titel>          Karte mit Link auf eine andere Seite (z. B. juliajunge.de), ohne PDF
 #     link: https://…
@@ -23,7 +24,8 @@
     - handout: registrierung
       kurz: Schritt für Schritt zum Gratis-Konto – mit den wichtigsten Datenschutz-Einstellungen.
     - handout: ki-training-abschalten
-      kurz: Klickpfade für ChatGPT, Claude, Mistral und Gemini – damit deine Chats nicht ins Training gehen.
+      titel: KI-Training abschalten
+      kurz: Klickpfade für ChatGPT, Claude, Mistral und Gemini – kein Training mit deinen Chats.
     - handout: warum-ki-halluziniert
       kurz: Warum Sprachmodelle Antworten erfinden, nicht neutral sind und was dagegen hilft.
     - handout: bessere-prompts-mit-klaro

@@ -195,6 +195,8 @@ def ordne_bereiche(eintraege, werkzeuge):
                 karte = {"art": "gruppe" if "handouts" in ziel else "handout", **ziel}
                 if eintrag.get("kurz"):
                     karte["beschreibung"] = eintrag["kurz"]
+                if eintrag.get("titel"):
+                    karte["titel"] = eintrag["titel"]
                 vergeben.add(("handout", eintrag["handout"]))
             elif "werkzeug" in eintrag:
                 ziel = nach_titel.get(eintrag["werkzeug"])
