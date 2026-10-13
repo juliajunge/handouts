@@ -38,27 +38,34 @@ Das Abschalten ist ein Pflaster, kein Schutz: Es ist wie eine Postkarte mit „B
 > Schalter an: Aufbewahrung bis zu fünf Jahre. Schalter aus: 30 Tage.
 :::
 
-::: karte Mistral Vibe · Gratis, Pro
-Hier ist das Training standardmäßig an.
+::: karte Mistral Vibe · Gratis, Pro, Organisationen
+Auch beim europäischen Anbieter ist das Training in der Gratisversion und im Pro-Tarif standardmäßig eingeschaltet. Der Schalter sitzt je nach Account an einer anderen Stelle.
+
+**Mit eigenem Account (Free oder Pro)**
 
 1. Links unten auf deinen Namen klicken.
 2. **Datenschutz** wählen.
-3. Die Nutzung deiner Interaktionen zum Trainieren der Mistral-Modelle ausschalten.
+3. „Erlaube die Nutzung deiner Interaktionen mit Vibe zum Trainieren der KI-Modelle von Mistral“ ausschalten.
 
-> Organisationen: Admins klicken links oben auf das Mistral-Zeichen, dann **Admin**, **Vibe**, **Datenschutz**.
+**Für Organisationen (Admins)**
+
+1. Links oben auf das Mistral-Zeichen klicken.
+2. **Admin** wählen.
+3. Zu **Vibe** und dann zu **Datenschutz** gehen.
+4. „Erlauben Sie die Nutzung Ihrer Interaktionen mit Vibe, um die KI-Modelle von Mistral zu trainieren“ ausschalten.
 :::
 
 ::: rahmenkarte Gemini · Sonderfall
 Training und Chatverlauf hängen an einem Schalter: **Gemini-Apps-Aktivitäten**, in Gemini links im Menü unter **Aktivität**. Wer das Training abschaltet, verliert den Chatverlauf und kann nicht zu früheren Chats zurück.
 
+<img src="drache-vergesslich.jpg" alt="Ein grüner Drache schaut verwirrt, über ihm schwebt ein Fragezeichen: Er hat sein Gedächtnis verloren" style="max-height: 42mm; width: auto; max-width: 100%; border-radius: 12px; display: block; margin: 3mm auto 1mm;">
+
+Gemini ohne Verlauf: Datenschutz kostet hier das Gedächtnis.
+
 > Google behält eine Kopie noch bis zu 72 Stunden.
 :::
 
 ::::
-
-<img src="drache-vergesslich.jpg" alt="Ein grüner Drache schaut verwirrt, über ihm schwebt ein Fragezeichen: Er hat sein Gedächtnis verloren" style="max-height: 62mm; width: auto; border-radius: 12px; display: block; margin: 0 auto 2mm;">
-
-<p style="text-align: center; margin: 0 0 6mm;">Gemini ohne Verlauf: Datenschutz kostet hier das Gedächtnis.</p>
 
 ::: tipp
 **Gilt für alle Tools:** Bewerte Antworten nicht mit Daumen hoch oder runter, sonst kann das Gespräch als Feedback beim Anbieter landen. Testmodelle und Funktionen mit „Lab“ oder „Preview“ lernen meist ebenfalls aus deiner Nutzung.
