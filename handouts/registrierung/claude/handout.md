@@ -55,8 +55,6 @@ Dieses Handout führt dich Schritt für Schritt durch die **Registrierung** und 
    Die Frage, was deine Arbeit am besten beschreibt, kannst du **überspringen**. Fertig – du landest im ersten Chat.
 :::
 
-<div class="neue-seite"></div>
-
 ## Grundeinstellungen
 
 Die Einstellungen findest du unten links: auf deinen **Namen** klicken, dann **Einstellungen**.
@@ -79,6 +77,28 @@ Die Einstellungen findest du unten links: auf deinen **Namen** klicken, dann **E
 
    ![Einstellungen, Bereich Konto mit dem Feld Anweisungen für Claude](08-einstellungen-anweisungen.png)
 :::
+
+## Was Claude kann
+
+:::: karten
+
+::: karte Chat
+Der einfache Chat für Fragen, Texte und Ideen. Bei Bedarf sucht Claude auch im Web.
+:::
+
+::: karte Projekte
+Arbeitsbereiche mit eigenen Anweisungen, in denen du Hintergrundinfos in Dateien hinterlegen kannst. Im Free-Plan nur wenige.
+:::
+
+::: karte Artefakte
+Texte, Tabellen oder kleine Webseiten erstellt Claude in einem eigenen Fenster neben dem Chat. Du kannst sie weiterbearbeiten, herunterladen oder teilen.
+:::
+
+::: karte Konnektoren
+Verbindungen zu Diensten wie Google Drive oder Gmail. Nur nach Rücksprache mit eurer IT einrichten.
+:::
+
+::::
 
 ::: tipp
 **Keine sensiblen Daten:** Auch mit diesen Einstellungen gehören personenbezogene Daten, z. B. von Klient\*innen oder Mitgliedern, nicht in die kostenlose Version.
