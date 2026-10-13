@@ -209,6 +209,10 @@ def ordne_bereiche(eintraege, werkzeuge):
                     sys.exit(f"bereiche.yml: '{eintrag['extern']}' braucht eine Angabe 'link'")
                 karte = {"art": "extern", "titel": eintrag["extern"], "link": eintrag["link"],
                          "knopf": eintrag.get("knopf", "Zur Seite"), "etikett": eintrag.get("etikett", ""), "beschreibung": eintrag.get("beschreibung", "")}
+            elif "kurs" in eintrag:
+                karte = {"etikett": "", "bild": "", "bild_alt": "", "knopf": "Zum Kurs", "beschreibung": "",
+                         "hinweis": "", "mehr_link": "", "mehr_knopf": "Mehr erfahren", **eintrag,
+                         "art": "kurs", "titel": eintrag["kurs"]}
             elif "demnaechst" in eintrag:
                 karte = {"art": "demnaechst", "titel": eintrag["demnaechst"], "beschreibung": eintrag.get("beschreibung", "")}
             else:

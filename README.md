@@ -163,6 +163,7 @@ Die Übersicht ist in drei farbige Bereiche geteilt: **Starten mit KI** (hellgr�
       link: https://www.juliajunge.de/go/reseller
       knopf: Zur Liste                    # optional, sonst „Zur Seite“
       etikett: Blog und Webinar           # optional, kleines Etikett über dem Titel
+    - kurs: "Modul 1 – Grundlagen"        # breite Werbekarte mit Bild aus vorlage/bilder/ (siehe bereiche.yml)
     - demnaechst: Bilder generieren       # Karte „In Arbeit“ ohne Link
       beschreibung: Ein Satz dazu.
 ```

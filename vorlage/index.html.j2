@@ -36,6 +36,23 @@
   .liste .karte-werkzeug .label { background: var(--jj-orange); }
   .liste .karte-werkzeug .knopf { background: var(--jj-orange); }
   .liste .karte-werkzeug .knopf:hover { background: var(--jj-green-light); }
+  /* Kurs: breite Karte über die ganze Zeile, Videobild links */
+  .liste .karte-kurs { grid-column: 1 / -1; flex-direction: row; align-items: stretch; gap: 20px; padding: 0; overflow: hidden; background: var(--jj-white); box-shadow: inset 0 0 0 2px var(--jj-offwhite); }
+  .karte-kurs .kurs-bild { flex: 0 0 42%; position: relative; display: block; background: var(--jj-offwhite); }
+  .karte-kurs .kurs-bild img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .karte-kurs .play { position: absolute; right: 14px; bottom: 22px; width: 48px; height: 48px; border-radius: 999px; background: var(--jj-orange); box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+  .karte-kurs .play::after { content: ""; position: absolute; left: 19px; top: 14px; border-style: solid; border-width: 10px 0 10px 15px; border-color: transparent transparent transparent var(--jj-white); }
+  .karte-kurs .kurs-bild:hover .play { background: var(--jj-green-light); }
+  .karte-kurs .kurs-text { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding: 16px 20px 16px 0; }
+  .karte-kurs .label { background: var(--jj-marker); }
+  .liste .karte-kurs .titel { font-size: 1.35em; }
+  .liste .karte-kurs p { -webkit-line-clamp: 4; }
+  .karte-kurs .aktionen { flex-wrap: wrap; }
+  .karte-kurs small { margin-top: 2px; }
+  @media (max-width: 560px) {
+    .liste .karte-kurs { flex-direction: column; gap: 0; }
+    .karte-kurs .kurs-text { padding: 14px 18px 16px; }
+  }
   /* In Arbeit: noch kein Link, leise gestrichelt */
   .liste .karte-demnaechst { background: transparent; box-shadow: inset 0 0 0 2px var(--jj-offwhite); border-top-style: dashed; }
   .liste .karte-demnaechst .label { background: var(--jj-offwhite); }
@@ -86,6 +103,20 @@
       <a class="titel" href="{{ h.link }}" target="_blank" rel="noopener">{{ h.titel }}</a>
       {% if h.beschreibung %}<p>{{ h.beschreibung }}</p>{% endif %}
       <span class="aktionen"><a class="knopf knopf--leise" href="{{ h.link }}" target="_blank" rel="noopener">&gt; {{ h.knopf }}</a></span>
+    </li>
+    {% elif h.art == "kurs" %}
+    <li class="karte-kurs">
+      {% if h.bild %}<a class="kurs-bild" href="{{ h.link }}" target="_blank" rel="noopener"><img src="vorlage/bilder/{{ h.bild }}" alt="{{ h.bild_alt }}"><span class="play" aria-hidden="true"></span></a>{% endif %}
+      <div class="kurs-text">
+        {% if h.etikett %}<span class="label">{{ h.etikett }}</span>{% endif %}
+        <a class="titel" href="{{ h.link }}" target="_blank" rel="noopener">{{ h.titel }}</a>
+        {% if h.beschreibung %}<p>{{ h.beschreibung }}</p>{% endif %}
+        <span class="aktionen">
+          <a class="knopf" href="{{ h.link }}" target="_blank" rel="noopener">&gt; {{ h.knopf }}</a>
+          {% if h.mehr_link %}<a class="knopf knopf--leise" href="{{ h.mehr_link }}" target="_blank" rel="noopener">&gt; {{ h.mehr_knopf }}</a>{% endif %}
+        </span>
+        {% if h.hinweis %}<small>{{ h.hinweis }}</small>{% endif %}
+      </div>
     </li>
     {% elif h.art == "demnaechst" %}
     <li class="karte-demnaechst">

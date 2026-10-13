@@ -9,6 +9,8 @@
 #     knopf: Zur Anleitung     (optional, sonst „Zur Seite“)
 #     etikett: Blog und Webinar (optional, kleines Etikett über dem Titel)
 #     beschreibung: …          (optional)
+#   - kurs: "<titel>"          breite Werbekarte mit Bild (Bild liegt in vorlage/bilder/), Anführungszeichen wegen Doppelpunkt
+#     etikett, bild, bild_alt, link, knopf, beschreibung, hinweis (Kleingedrucktes), mehr_link, mehr_knopf
 #   - demnaechst: <titel>      Karte „In Arbeit“ ohne Link – einfach löschen, sobald das Handout da ist
 #     beschreibung: …          (optional)
 # Handouts, die hier fehlen, landen automatisch unten unter „Weitere Handouts“.
@@ -28,6 +30,16 @@
       kurz: Fünf Elemente für klare, strukturierte Prompts – mit Tipps und zwei Experimenten.
     - handout: gratis-text-tools
       kurz: Die bekanntesten KI-Allrounder im Vergleich – mit Hinweisen zu Gratis-Konten und Datenschutz.
+    - kurs: "Modul 1 – Grundlagen: KI verstehen"
+      etikett: Gratis-Videokurs
+      bild: kurs-modul-1.jpg
+      bild_alt: Julia Junge winkt in die Kamera, daneben der Drache mit Fernglas
+      link: https://www.juliajunge.de/modul-1-grundlagen-ki-verstehen/
+      knopf: Modul 1 gratis ansehen
+      beschreibung: Warum halluziniert ChatGPT, woher kommen seine Vorurteile und wie verlässlich sind die Antworten? Kurze Videos mit Zusammenfassung – dauerhaft gratis.
+      hinweis: Modul 1 gehört zum KI-Selbstlernkurs für NGOs mit 6 Modulen. Ab Modul 2 brauchst du ein Ticket oder eine Share-Lizenz.
+      mehr_link: https://www.juliajunge.de/ki-selbstlernkurs2026/
+      mehr_knopf: Zum ganzen Kurs
 
 - id: fortgeschrittene
   titel: Für Fortgeschrittene
