@@ -39,37 +39,46 @@ Dieses Handout führt dich Schritt für Schritt durch die **Registrierung** und 
 ## Grundeinstellungen
 
 ::: schritte
-1. ### Einstellungen öffnen
-   Klicke links oben auf das **Mistral-Zeichen** → **Admin** → **Einstellungen**. Scrolle nach unten bis zum Bereich **Verwalten** und klicke auf **Le Chat**.
-
-2. ### Training ausschalten
-   Schalte **Erlauben Sie die Verwendung Ihrer Interaktionen zur Schulung unserer Modelle** ==unbedingt aus==. Dann werden deine Chats nicht zum Training künftiger Modelle verwendet.
+1. ### Training ausschalten
+   Klicke links oben auf das **Mistral-Zeichen** → **Admin** → **Einstellungen**. Scrolle nach unten bis zum Bereich **Verwalten** und klicke auf **Le Chat**. Schalte **Erlauben Sie die Verwendung Ihrer Interaktionen zur Schulung unserer Modelle** ==unbedingt aus==. Dann werden deine Chats nicht zum Training künftiger Modelle verwendet.
 
    ![Einstellungen für Le Chat mit dem Schalter zur Schulung der Modelle](04-datenschutz-training.png)
+
+2. ### Anweisungen einrichten
+   **Kontext → Anweisungen:** Unter **Zusätzliche Anweisungen** steht, was Le Chat in jedem Chat über dich wissen soll, zum Beispiel:
+
+   *„Ich arbeite in einem gemeinnützigen Verein im Bereich Jugendarbeit und bin für Öffentlichkeitsarbeit zuständig. Antworte auf Deutsch, duze mich und schreib verständlich. Frag nach, wenn dir Infos fehlen.“*
+
+   Dann **Speichern**.
+
+   ![Fenster Anweisungen mit Ton und Feld für zusätzliche Anweisungen](05-anweisungen.png)
+
+3. ### Erinnerungen ausschalten
+   **Intelligenz → Erinnerung:** Ich empfehle, die Erinnerungen auszuschalten. So sammelt Le Chat keine Infos aus deinen Chats an, die du nicht im Blick hast. Wenn du sie doch nutzt: Räum sie regelmäßig auf, damit sich kein Unsinn ansammelt.
 :::
 
 ## Was Le Chat kann
 
 :::: karten
 
-::: karte Chat
-Der einfache Chat für Fragen, Texte und Ideen.
-:::
-
 ::: karte Agents
-Assistenzen für wiederkehrende Aufgaben.
+Assistenzen mit eigener Rolle, eigenen Anweisungen und eigenem Wissen, z. B. für Newsletter oder Förderanträge.
 :::
 
 ::: karte Projekte
-Unterarbeitsbereiche, in denen du Hintergrundinfos in Dateien hinterlegen kannst.
+Unterarbeitsbereiche, in denen du Hintergrundinfos in Dateien hinterlegen kannst. Im Gratis-Plan begrenzt.
 :::
 
 ::: karte Bibliothek
 Unter **Intelligenz → Bibliothek** liegen Hintergrunddateien für deine Arbeit. Du kannst sie in Agents oder im normalen Chat nutzen.
 :::
 
+::: karte Skills
+Kleine Anleitungen für wiederkehrende Aufgaben, z. B. eine Genderregel oder eine Design-Vorlage. Le Chat nutzt sie automatisch, wenn sie passen.
+:::
+
 ::::
 
 ::: tipp
-**Erinnerung:** Unter **Intelligenz → Erinnerung** speichert Le Chat Infos über deine Chats hinweg. Wenn du das einschaltest, kontrolliere es regelmäßig, damit sich kein Unsinn ansammelt. Du kannst dort auch selbst wichtige Infos über dich eintragen.
+**Keine sensiblen Daten:** Auch mit diesen Einstellungen gehören personenbezogene Daten, z. B. von Klient\*innen oder Mitgliedern, nicht in die kostenlose Version.
 :::

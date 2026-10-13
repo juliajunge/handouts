@@ -66,7 +66,7 @@ Die Einstellungen findest du unten links: auf deinen **Namen** klicken, dann **E
    ![Einstellungen, Bereich Datenschutz mit ausgeschaltetem Training](07-einstellungen-datenschutz.png)
 
 2. ### Erinnerungen ausschalten
-   **Einstellungen → Erinnerungen:** **Gedächtnisgenerierung aus Chats** ausschalten. So sammelt Claude keine Infos aus deinen Chats an, die du nicht im Blick hast. Was Claude immer wissen soll, schreibst du lieber selbst in die Anweisungen.
+   **Einstellungen → Erinnerungen:** Ich empfehle, **Gedächtnisgenerierung aus Chats** auszuschalten. So sammelt Claude keine Infos aus deinen Chats an, die du nicht im Blick hast. Was Claude immer wissen soll, schreibst du lieber selbst in die Anweisungen. Wenn du die Erinnerungen doch nutzt: Räum sie regelmäßig auf, damit sich kein Unsinn ansammelt.
 
    ![Einstellungen, Bereich Erinnerungen mit ausgeschalteter Gedächtnisgenerierung](09-einstellungen-erinnerungen.png)
 
@@ -82,12 +82,12 @@ Die Einstellungen findest du unten links: auf deinen **Namen** klicken, dann **E
 
 :::: karten
 
-::: karte Chat
-Der einfache Chat für Fragen, Texte und Ideen. Bei Bedarf sucht Claude auch im Web.
+::: karte Projekte
+Arbeitsbereiche mit eigenen Anweisungen, in denen du Hintergrundinfos in Dateien hinterlegen kannst. Im Gratis-Plan begrenzt.
 :::
 
-::: karte Projekte
-Arbeitsbereiche mit eigenen Anweisungen, in denen du Hintergrundinfos in Dateien hinterlegen kannst. Im Free-Plan nur wenige.
+::: karte Skills
+Kleine Anleitungen für wiederkehrende Aufgaben, z. B. eine Genderregel oder eine Design-Vorlage. Claude nutzt sie automatisch, wenn sie passen.
 :::
 
 ::: karte Artefakte
