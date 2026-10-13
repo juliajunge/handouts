@@ -558,3 +558,29 @@ body.bilder .tipp { margin-bottom: 40px; }
   body.bilder .achtung p { margin-bottom: 5pt; }
   body.bilder .warnung { padding: 6pt 10pt; }
 }
+
+/* ---------- Vergleichstabelle (<table class="vergleich">): grüne Kopfzeile, Zeilen im Wechsel, erste Spalte fett ---------- */
+.vergleich-rahmen { overflow-x: auto; margin-bottom: 32px; }
+.vergleich { width: 100%; min-width: 560px; border-collapse: separate; border-spacing: 0; table-layout: fixed; font-size: .9em; line-height: 1.4; hyphens: auto; }
+.vergleich th, .vergleich td { padding: 10px 14px; text-align: left; vertical-align: top; }
+.vergleich thead th { background: var(--jj-green-dark); color: var(--jj-white); font-size: .8em; letter-spacing: .1em; text-transform: uppercase; }
+.vergleich thead th:first-child { border-top-left-radius: 8px; }
+.vergleich thead th:last-child { border-top-right-radius: 8px; }
+.vergleich tbody tr:nth-child(odd) > * { background: var(--jj-offwhite); }
+.vergleich tbody tr:nth-child(even) > * { background: #F7F7F1; }
+.vergleich tbody th { font-weight: 700; color: var(--jj-green-dark); }
+.vergleich ul { margin: 0; padding-left: 1.1em; }
+.vergleich li + li { margin-top: 2px; }
+.vergleich .klein { display: block; font-weight: 400; color: var(--jj-black); font-size: .9em; margin-top: 2px; }
+.vergleich tr { break-inside: avoid; }
+@media print {
+  .vergleich-rahmen { overflow: visible; margin-bottom: 14px; }
+  .vergleich { min-width: 0; font-size: 9.5pt; line-height: 1.3; }
+  .vergleich th, .vergleich td { padding: 4pt 8pt; }
+  .vergleich thead th { font-size: 7.5pt; }
+}
+/* Werkzeugliste (stil: werkzeugliste): Abstand nach dem Hinweis-Kasten auch im Druck */
+@media print {
+  body.werkzeugliste .tipp { margin-bottom: 14px; }
+  body.werkzeugliste .inhalt > .tipp:last-child { margin-bottom: 0; }
+}

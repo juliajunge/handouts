@@ -13,10 +13,10 @@
   farbe: hellgruen
   inhalte:
     - handout: registrierung
+    - handout: gratis-text-tools
     - demnaechst: Trainingsdaten abschalten
       beschreibung: So verhinderst du, dass deine Chats zum Training der KI genutzt werden – für ChatGPT, Claude, Gemini und Co.
-    - demnaechst: Grundlagen generativer KI
-      beschreibung: Was Sprachmodelle können und was nicht – die wichtigsten Begriffe auf einen Blick.
+    - handout: warum-ki-halluziniert
     - handout: bessere-prompts-mit-klaro
 
 - id: fortgeschrittene
