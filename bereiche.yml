@@ -9,23 +9,25 @@
 
 - id: starten
   titel: Starten mit KI
-  beschreibung: Konto anlegen, Datenschutz einstellen, die ersten guten Prompts schreiben.
+  beschreibung: Konto anlegen, Datenschutz einstellen, Ergebnisse prüfen, die ersten guten Prompts schreiben.
   farbe: hellgruen
   inhalte:
     - handout: registrierung
-    - handout: gratis-text-tools
     - demnaechst: Trainingsdaten abschalten
       beschreibung: So verhinderst du, dass deine Chats zum Training der KI genutzt werden – für ChatGPT, Claude, Gemini und Co.
     - handout: warum-ki-halluziniert
     - handout: bessere-prompts-mit-klaro
+    - handout: gratis-text-tools
 
 - id: fortgeschrittene
   titel: Für Fortgeschrittene
-  beschreibung: Wiederkehrende Aufgaben abgeben und neue Formate ausprobieren.
+  beschreibung: Wiederkehrende Aufgaben abgeben, neue Formate ausprobieren und die passende Plattform finden.
   farbe: orange
   inhalte:
     - handout: ki-arbeitsprofile
     - handout: bessere-bilder-mit-ki
+    - demnaechst: Reseller-Liste
+      beschreibung: Deutsche KI-Plattformen mit Auftragsverarbeitungsvertrag – für den datenschutzkonformen Einsatz im Team.
 
 - id: organisationen
   titel: Für Organisationen
@@ -36,5 +38,3 @@
     - handout: ki-reifegradmodell
     - handout: leitfaden-ki-einfuehrung
     - handout: leitlinien-ki-nutzung
-    - demnaechst: Reseller-Liste
-      beschreibung: Wo gemeinnützige Organisationen KI-Lizenzen vergünstigt bekommen.
