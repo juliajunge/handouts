@@ -5,6 +5,7 @@ stand: 13. Oktober 2026
 bild: dragon-willkommen.png
 bild_alt: Drache winkt zur Begrüßung
 pdf_name: registrierung-claude
+kurztitel: Claude
 beschreibung: Schritt für Schritt zum kostenlosen Claude-Konto – und zu den wichtigsten Datenschutz-Einstellungen.
 stil: anleitung
 ---

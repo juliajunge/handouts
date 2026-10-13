@@ -21,7 +21,7 @@ Datum unter `stand:` mit ändern, damit es im Fuß stimmt.
 ## Ein neues Handout anlegen
 
 1. Einen neuen Ordner unter `handouts/` anlegen, z. B. `handouts/prompting-grundlagen/`. Der Ordnername wird Teil der Adresse – kleine Buchstaben, Bindestriche, keine Umlaute.
-   Unterordner gehen auch, z. B. `handouts/registrierung/claude/` → Adresse `…/handouts/registrierung/claude/`.
+   Unterordner gehen auch, z. B. `handouts/registrierung/claude/` → Adresse `…/handouts/registrierung/claude/`. Alle Handouts eines Unterordners stehen auf der Übersicht in einer gemeinsamen Karte (nur Links zur Webansicht, Beschriftung aus `kurztitel:`). Titel und Beschreibung der Karte kommen aus `gruppe.yml` im Ordner, z. B. `handouts/registrierung/gruppe.yml`.
 2. Darin eine Datei `handout.md` anlegen (am einfachsten: eine bestehende kopieren).
 3. Bilder in denselben Ordner hochladen.
 

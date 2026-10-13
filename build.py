@@ -105,6 +105,7 @@ def lies_handout(ordner):
     daten.setdefault("lizenz", "")
     daten.setdefault("stil", "")
     daten.setdefault("word", "")
+    daten.setdefault("kurztitel", daten["titel"])
     # Newsletter-Anmeldung unten auf der Webseite, abschaltbar mit "newsletter: nein"
     daten["newsletter"] = daten.get("newsletter", "ja").lower() not in ("nein", "false", "no", "aus")
     daten["slug"] = ordner.relative_to(HANDOUTS).as_posix()
@@ -152,9 +153,23 @@ def baue_seiten():
         print(f"Seite: {ziel / 'index.html'}")
 
     werkzeuge_datei = ROOT / "werkzeuge.yml"
+    # Handouts in Unterordnern (z. B. registrierung/claude) teilen sich auf der Übersicht eine Karte.
+    # Titel und Beschreibung der Karte stehen in gruppe.yml im übergeordneten Ordner.
+    eintraege, gruppen = [], {}
+    for h in alle:
+        if "/" not in h["slug"]:
+            eintraege.append(h)
+            continue
+        name = h["slug"].rsplit("/", 1)[0]
+        if name not in gruppen:
+            gruppe_datei = HANDOUTS / name / "gruppe.yml"
+            gruppe = yaml.safe_load(gruppe_datei.read_text(encoding="utf-8")) if gruppe_datei.exists() else {}
+            gruppen[name] = {"titel": name, "beschreibung": "", **(gruppe or {}), "handouts": []}
+            eintraege.append(gruppen[name])
+        gruppen[name]["handouts"].append(h)
     werkzeuge = yaml.safe_load(werkzeuge_datei.read_text(encoding="utf-8")) if werkzeuge_datei.exists() else []
     (SITE / "index.html").write_text(
-        env.get_template("index.html.j2").render(handouts=alle, werkzeuge=werkzeuge or []), encoding="utf-8"
+        env.get_template("index.html.j2").render(handouts=eintraege, werkzeuge=werkzeuge or []), encoding="utf-8"
     )
     (SITE / ".nojekyll").write_text("")
     return alle
