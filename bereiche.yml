@@ -17,10 +17,7 @@
   farbe: hellgruen
   inhalte:
     - handout: registrierung
-    - extern: Trainingsdaten abschalten
-      link: https://www.juliajunge.de/ki-training-abschalten/
-      knopf: Zur Anleitung
-      beschreibung: So verhinderst du, dass deine Chats zum Training der KI genutzt werden – für ChatGPT, Claude, Gemini und Co.
+    - handout: ki-training-abschalten
     - handout: warum-ki-halluziniert
     - handout: bessere-prompts-mit-klaro
     - handout: gratis-text-tools
