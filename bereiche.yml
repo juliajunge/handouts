@@ -25,8 +25,7 @@
   farbe: orange
   inhalte:
     - handout: ki-arbeitsprofile
-    - demnaechst: Bilder generieren
-      beschreibung: Mit KI Bilder erstellen – Werkzeuge, gute Bild-Prompts und was du rechtlich beachten musst.
+    - handout: bessere-bilder-mit-ki
 
 - id: organisationen
   titel: Für Organisationen
