@@ -30,6 +30,8 @@
       kurz: Warum Sprachmodelle Antworten erfinden, nicht neutral sind und was dagegen hilft.
     - handout: bessere-prompts-mit-klaro
       kurz: Fünf Elemente für klare, strukturierte Prompts – mit Tipps und zwei Experimenten.
+    - handout: custom-instructions
+      kurz: Einmal vorstellen, dauerhaft verstanden werden – mit Leitfragen und Interview-Prompt.
     - handout: gratis-text-tools
       kurz: Die bekanntesten KI-Allrounder im Vergleich – mit Hinweisen zum Datenschutz.
     - kurs: "Modul 1 – Grundlagen: KI verstehen"

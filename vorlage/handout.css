@@ -640,3 +640,10 @@ body.bilder .kernsatz { background: var(--jj-green-light); padding: 24px 28px; m
 @media print {
   .datenschutz .hero { margin-top: 0; padding-top: 10mm; }
 }
+
+/* ---------- Prompt zum Kopieren (Markdown-Codeblock mit ```) ---------- */
+.inhalt pre { background: var(--jj-offwhite); border-left: 4px solid var(--jj-green-light); border-radius: 12px; padding: 14px 18px; margin: 0 0 20px; white-space: pre-wrap; overflow-wrap: anywhere; font-size: .85em; line-height: 1.45; }
+.inhalt pre code { font-family: ui-monospace, Menlo, Consolas, monospace; background: none; padding: 0; }
+@media print {
+  .inhalt pre { font-size: 8pt; line-height: 1.35; padding: 3mm 4mm; margin-bottom: 10px; break-inside: avoid; }
+}
