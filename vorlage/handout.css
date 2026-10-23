@@ -642,12 +642,22 @@ body.bilder .kernsatz { background: var(--jj-green-light); padding: 24px 28px; m
 }
 
 /* ---------- Prompt zum Kopieren (Markdown-Codeblock mit ```, darüber Knopf „Prompt kopieren“ per Skript) ---------- */
+.prompt-kasten { background: var(--jj-offwhite); border-left: 4px solid var(--jj-green-light); border-radius: 12px; padding: 14px 20px 16px; margin: 0 0 24px; }
 .inhalt pre { background: var(--jj-offwhite); border-left: 4px solid var(--jj-green-light); border-radius: 12px; padding: 16px 20px; margin: 0 0 24px; max-width: 100%; box-sizing: border-box; overflow-x: hidden; white-space: pre-wrap; overflow-wrap: anywhere; word-break: normal; font-family: var(--font-body); font-size: .9em; line-height: 1.55; tab-size: 2; }
 .inhalt pre code { font: inherit; white-space: inherit; background: none; padding: 0; }
-.prompt-kopieren { margin: 0 0 8px; border: none; cursor: pointer; }
+.prompt-kopieren { margin: 0 0 12px; border: none; cursor: pointer; }
 @media (max-width: 560px) {
   .inhalt pre { padding: 12px 14px; font-size: .85em; border-radius: 10px; }
+  .prompt-kasten { padding: 12px 14px; border-radius: 10px; }
 }
+/* Links unter dem Handout (<div class="nur-web mehr-links">): mit Chevron, normale Textgröße */
+.mehr-links { margin-top: 40px; padding-top: 8px; border-top: 1px solid var(--border-content); }
+.mehr-links ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.mehr-links li { position: relative; padding-left: 22px; }
+.mehr-links li::before { content: ">"; position: absolute; left: 0; top: 0; font-weight: 700; color: var(--jj-green-dark); }
 @media print {
   .inhalt pre { font-size: 8pt; line-height: 1.35; padding: 3mm 4mm; margin-bottom: 10px; break-inside: avoid; }
+  .prompt-kasten { padding: 3mm 4mm; margin-bottom: 10px; break-inside: avoid; }
 }
+/* Prompt im Kasten: Fläche und Rahmen trägt der Kasten (steht am Ende, damit es die pre-Regeln oben überschreibt) */
+.inhalt .prompt-kasten pre { background: none; border: none; border-radius: 0; padding: 0; margin: 0; }

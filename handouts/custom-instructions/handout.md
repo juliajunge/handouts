@@ -24,7 +24,7 @@ Sag dem Bot, wer du bist, wo du arbeitest, was eure Mission ist, wer eure Zielgr
 
 ## Was sind Custom Instructions?
 
-Custom Instructions sind Informationen, die du **dauerhaft** im KI-Tool hinterlegst. Das Tool schickt sie zu Beginn jedes Chats mit, du musst dich also nicht jedes Mal neu vorstellen. Das geht meist auch in der Gratis-Version, zum Beispiel bei ChatGPT, Claude und Mistral. Suche in den Einstellungen nach „Personalisierung“ oder „Anweisungen“.
+Custom Instructions sind Informationen, die du **dauerhaft** im KI-Tool hinterlegst. Das Tool schickt sie zu Beginn jedes Chats mit. Das geht meist auch gratis, etwa bei ChatGPT, Claude und Mistral: Suche in den Einstellungen nach „Personalisierung“ oder „Anweisungen“. Manche Tools haben zwei Felder wie unten, andere nur eines. Dann schreibst du beides hinein: Infos über dich und Anweisungen an die KI.
 
 :::: karten
 
@@ -105,9 +105,12 @@ Viele Tools bieten zusätzlich eine „Erinnerung“ an. Ist sie eingeschaltet, 
 Video und mehr zum Thema: > [juliajunge.de/custom-instructions](https://www.juliajunge.de/custom-instructions/)
 :::
 
-::: weiterlesen
-### Weiterlesen
-- > [Blogbeitrag mit Video: Custom Instructions Schritt für Schritt](https://www.juliajunge.de/custom-instructions/)
-- > [Handout: Bessere Prompts mit KLARO](https://juliajunge.github.io/handouts/bessere-prompts-mit-klaro/)
-- > [Handout: KI-Arbeitsprofile bauen](https://juliajunge.github.io/handouts/ki-arbeitsprofile/)
-:::
+<div class="nur-web mehr-links">
+
+## Weiterlesen
+
+- [Blogbeitrag mit Video: Custom Instructions Schritt für Schritt](https://www.juliajunge.de/custom-instructions/)
+- [Handout: Bessere Prompts mit KLARO](https://juliajunge.github.io/handouts/bessere-prompts-mit-klaro/)
+- [Handout: KI-Arbeitsprofile bauen](https://juliajunge.github.io/handouts/ki-arbeitsprofile/)
+
+</div>

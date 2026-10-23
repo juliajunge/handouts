@@ -77,7 +77,11 @@ document.querySelectorAll(".inhalt pre").forEach(function (pre) {
       setTimeout(function () { knopf.textContent = "> Prompt kopieren"; }, 2000);
     });
   });
-  pre.parentNode.insertBefore(knopf, pre);
+  var kasten = document.createElement("div");
+  kasten.className = "prompt-kasten";
+  pre.parentNode.insertBefore(kasten, pre);
+  kasten.appendChild(knopf);
+  kasten.appendChild(pre);
 });
 </script>
 </body>
