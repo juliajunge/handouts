@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ titel }} – Handout von Julia Junge</title>
 {% if beschreibung %}<meta name="description" content="{{ beschreibung }}">{% endif %}
-<link rel="stylesheet" href="{{ wurzel }}vorlage/handout.css">
+<link rel="stylesheet" href="{{ wurzel }}vorlage/handout.css?v={{ css_version }}">
 </head>
 <body class="{% if stil %}{{ stil }} {% endif %}{% if format == 'quer' %}quer {% endif %}{% if mehrseitig %}mehrseitig{% endif %}">
 <main class="handout">
@@ -64,5 +64,21 @@
 
   {{ fuss("fuss--web") }}
 </main>
+<script>
+/* Prompt-Kästen (Codeblöcke): Knopf zum Kopieren, nur Webansicht */
+document.querySelectorAll(".inhalt pre").forEach(function (pre) {
+  var knopf = document.createElement("button");
+  knopf.type = "button";
+  knopf.className = "knopf prompt-kopieren nur-web";
+  knopf.textContent = "> Prompt kopieren";
+  knopf.addEventListener("click", function () {
+    navigator.clipboard.writeText(pre.innerText).then(function () {
+      knopf.textContent = "Kopiert";
+      setTimeout(function () { knopf.textContent = "> Prompt kopieren"; }, 2000);
+    });
+  });
+  pre.parentNode.insertBefore(knopf, pre);
+});
+</script>
 </body>
 </html>

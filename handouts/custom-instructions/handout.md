@@ -70,7 +70,7 @@ Interviewe mich mit 5 Fragen nacheinander (nur ein Thema pro Frage), um eine Cus
 # Die 5 Fragen
 1. Organisation: Welche Organisation, wofür setzt ihr euch ein? (Website gern statt Beschreibung)
 2. Rolle: Deine Rolle, wichtigste Themen, Projekte, Zielgruppen?
-3. Arbeitsweise: Wie soll die KI mit dir arbeiten – unterstützend/kritisch, kurz/ausführlich, sachlich/freundlich/motivierend/humorvoll/direkt? 3 Stichworte.
+3. Arbeitsweise: Wie soll die KI mit dir arbeiten – unterstützend/kritisch, kurz/ausführlich, sachlich / freundlich / motivierend / humorvoll / direkt? 3 Stichworte.
 4. Sprache & Stil: Gendergerechte Sprache (wie?), bevorzugte/vermiedene Wörter, Fließtext oder Listen, Schreibstil? Beispiele willkommen.
 5. Arbeitsprinzipien: Welche davon soll die KI beachten (Buchstaben nennen)?
    a) Unsicherheit transparent machen

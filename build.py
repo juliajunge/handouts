@@ -4,6 +4,7 @@ Aufruf:  python build.py            (Webseiten + PDFs)
          python build.py --ohne-pdf (nur Webseiten, schneller zum Testen)
 """
 
+import hashlib
 import os
 import re
 import shutil
@@ -123,6 +124,8 @@ def baue_seiten():
     shutil.copytree(VORLAGE, SITE / "vorlage", ignore=shutil.ignore_patterns("*.j2"))
 
     env = Environment(loader=FileSystemLoader(VORLAGE), autoescape=True)
+    # Prüfsumme hängt an der CSS-Adresse, damit Browser nach Änderungen nicht die alte Datei aus dem Zwischenspeicher nehmen
+    env.globals["css_version"] = hashlib.sha1((VORLAGE / "handout.css").read_bytes()).hexdigest()[:8]
     seite = env.get_template("handout.html.j2")
     md = markdown()
     alle = []
