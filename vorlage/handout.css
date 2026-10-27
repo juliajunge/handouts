@@ -745,3 +745,19 @@ body.bilder .kernsatz { background: var(--jj-green-light); padding: 24px 28px; m
   .funktionen-tabelle thead th:first-child { width: 20%; }
   .funktionen-tabelle td, .funktionen-tabelle tbody th { padding: 8pt 9pt; }
 }
+
+/* ---------- Tipps mit Bild rechts (KI-Arbeitsprofile, Prompt-Seite) ---------- */
+.prompt-tipps { display: grid; grid-template-columns: minmax(0, 1fr) 180px; gap: 24px; align-items: center; margin-bottom: 24px; }
+.prompt-tipps h3 { margin: 0 0 8px; }
+.prompt-tipps ul { list-style: none; padding: 0; margin: 0; }
+.prompt-tipps li { position: relative; padding-left: 26px; margin-bottom: 8px; }
+.prompt-tipps li::before { content: "★"; position: absolute; left: 0; top: 0; color: var(--jj-green-dark); }
+.prompt-tipps img { width: 100%; height: auto; display: block; }
+@media (max-width: 560px) {
+  .prompt-tipps { grid-template-columns: 1fr; }
+  .prompt-tipps img { width: 140px; justify-self: center; grid-row: 1; }
+}
+@media print {
+  .prompt-tipps { grid-template-columns: minmax(0, 1fr) 38mm; gap: 8mm; margin-bottom: 10px; break-inside: avoid; }
+  .prompt-tipps li { margin-bottom: 4pt; padding-left: 16pt; }
+}

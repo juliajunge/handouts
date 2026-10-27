@@ -49,7 +49,7 @@ Die bekanntesten sind **ChatGPT Work** und **Claude Cowork**. Mehr dazu in meine
    Welche Aufgabe wiederholt sich? Was fragen Kolleg*innen dich ständig? Wo denkst du: „Das müsste mir doch KI abnehmen können…“?
 
 2. ### Schreibe einen guten Prompt
-   So konkret wie nötig, so kurz wie möglich. Benenne Rolle, Ziel und Aufgabe klar. Nutze das KLARO-Schema. Lasse dir aus guten Chats Infos für Prompts zusammenfassen. Speichere den Prompt in deinem KI-Tool als Assistenz/Skill/Projekt.
+   So konkret wie nötig, so kurz wie möglich. Benenne Rolle, Ziel und Aufgabe klar. Nutze das KLARO-Schema. Lasse dir aus guten Chats Infos für Prompts zusammenfassen. Speichere den Prompt in deinem KI-Tool als Assistenz/Skill/Projekt. ==Hilfe dafür: zwei fertige Prompts unter „Lass dir von der KI beim Prompt helfen“.==
 
 3. ### Hinterlege Wissen und Beispiele und integriere Rückfragen
    Was braucht die Assistenz, um gut arbeiten zu können? Wenn die KI auf etwas warten oder nachfragen soll – gib das mit an.
@@ -66,7 +66,9 @@ Die bekanntesten sind **ChatGPT Work** und **Claude Cowork**. Mehr dazu in meine
 
 ## Lass dir von der KI beim Prompt helfen
 
-Kopiere einen der beiden Prompts in einen Chat. Die KI schreibt dir daraus die Anweisung für deine Assistenz.
+<div class="prompt-tipps"><div><h3>3 Tipps, damit es schneller geht</h3><ul><li><strong>Reden statt schreiben:</strong> Beantworte die Fragen der KI per Spracheingabe. So erzählst du von selbst mehr Details, als du tippen würdest.</li><li><strong>Frag, was fehlt:</strong> Lass dir von der KI sagen, welche 3 Infos sie braucht, um die Aufgabe zu erledigen.</li><li><strong>Nach guten Arbeitssessions zusammenfassen:</strong> Lass dir eine ausführliche Instruktion zusammenfassen. Damit kannst du neue Chats beginnen oder eine Assistenz, ein Projekt oder einen Skill einrichten.</li></ul></div><img src="drache-spirale.png" alt="Drachen steigen auf einer Spirale nach oben, vom ersten Entwurf bis zum fertigen Ergebnis"></div>
+
+Kopiere einen der beiden Prompts in einen Chat. Variante 1 hilft dir beim Start, Variante 2 macht aus einem gelungenen Chat eine Assistenz.
 
 ### Variante 1: Die KI führt dich mit 5 Fragen
 
