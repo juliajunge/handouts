@@ -2,10 +2,9 @@
 titel: KI-Arbeitsprofile bauen
 label: Handout
 stand: 27. Oktober 2026
-bild: drache-laptop.png
-bild_alt: Drache springt mit Zauberstab aus einem Laptop
 pdf_name: ki-arbeitsprofile-bauen
-beschreibung: Assistenzen, Skills und Co. – was KI-Arbeitsprofile sind und wie du sie für wiederkehrende Aufgaben baust.
+beschreibung: Was Projekte, Assistenzen und Skills sind, wie sie bei dir heißen und wie du sie mit Prompts schnell baust.
+kurzlink: juliajunge.de/go/arbeitsprofile
 format: quer
 stil: arbeitsprofile
 ---
@@ -165,4 +164,8 @@ Recherchiere zuerst im Internet aktuelle Infos dazu, wie gute Skills aufgebaut s
 
 ::: tipp
 **Viele gute Beispiele für Assistenz-Prompts** findest du bei Felix Schlenther unter [ai-first.ai/ai-assistenten](https://ai-first.ai/ai-assistenten) (Gratis-Registrierung erforderlich)
+:::
+
+::: nurdruck
+**> Alle Bausteine zum Kopieren:** juliajunge.de/go/arbeitsprofile
 :::

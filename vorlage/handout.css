@@ -834,3 +834,6 @@ body.bilder .kernsatz { background: var(--jj-green-light); padding: 24px 28px; m
   body.arbeitsprofile .hero-bild { width: 18mm; }
   .canvas-bild img { max-height: 155mm; }
 }
+@media print {
+  body.arbeitsprofile .hero { margin-top: 0; padding-top: 1mm; }
+}
