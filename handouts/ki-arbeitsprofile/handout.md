@@ -162,6 +162,8 @@ Recherchiere zuerst im Internet aktuelle Infos dazu, wie gute Skills aufgebaut s
 
 </div>
 
+<p class="baukasten-danach"><strong>Und dann:</strong> Kopiere die Instruktion beim CustomGPT, Projekt oder Agenten ins Feld für Anweisungen. Die Skill-Datei lädst du in den Einstellungen unter Skills hoch oder speicherst sie direkt aus dem Chat, wenn dein Tool das anbietet.</p>
+
 ::: tipp
 **Viele gute Beispiele für Assistenz-Prompts** findest du bei Felix Schlenther unter [ai-first.ai/ai-assistenten](https://ai-first.ai/ai-assistenten) (Gratis-Registrierung erforderlich)
 :::

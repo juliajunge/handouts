@@ -837,3 +837,16 @@ body.bilder .kernsatz { background: var(--jj-green-light); padding: 24px 28px; m
 @media print {
   body.arbeitsprofile .hero { margin-top: 0; padding-top: 1mm; }
 }
+.baukasten-danach { text-align: center; max-width: 820px; margin: 0 auto 24px; }
+@media print {
+  .baukasten--ziel { margin-bottom: 5mm; }
+  .baukasten-danach { font-size: 10pt; max-width: 210mm; margin-bottom: 5mm; }
+}
+@media print {
+  .baukasten-plus { font-size: 38pt; margin: 1mm 0 0; }
+  body.arbeitsprofile .nur-druck { margin-top: 4pt; }
+}
+.baukasten-danach { text-align: left; }
+@media print {
+  .baukasten-danach { width: 90%; max-width: none; }
+}
