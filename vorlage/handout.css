@@ -711,3 +711,32 @@ body.bilder .kernsatz { background: var(--jj-green-light); padding: 24px 28px; m
   .reseller .karten { grid-template-columns: repeat(3, 1fr); gap: 10pt; margin-bottom: 10pt; font-size: 9pt; }
   body.reseller .tipp { margin-bottom: 0; font-size: 9.5pt; }
 }
+
+/* ---------- Funktionen-Tabelle (KI-Arbeitsprofile) ---------- */
+.funktionen { margin-bottom: 32px; }
+.funktionen-rahmen { overflow-x: auto; }
+.funktionen-tabelle { width: 100%; min-width: 640px; border-collapse: collapse; font-size: .85em; line-height: 1.35; border-radius: 8px; overflow: hidden; }
+.funktionen-tabelle thead th { background: var(--jj-green-dark); color: var(--jj-white); text-align: left; padding: 10px 12px; font-size: .8em; letter-spacing: .1em; text-transform: uppercase; }
+.funktionen-tabelle td, .funktionen-tabelle tbody th { padding: 10px 12px; vertical-align: top; text-align: left; background: #EDEDDF; }
+.funktionen-tabelle tr:nth-child(even) td, .funktionen-tabelle tr:nth-child(even) th { background: #F7F7F1; }
+.funktionen-tabelle tbody th { width: 20%; }
+.funktionen-tabelle td strong { font-weight: 600; }
+.funktionen-tabelle .info { display: block; font-size: .9em; margin-top: 2px; }
+.funktionen .kapsel { display: inline-block; border-radius: 999px; padding: 0 .55em; font-size: .8em; font-weight: 700; line-height: 1.5; white-space: nowrap; }
+.funktionen .kapsel--gratis { background: var(--jj-green-light); }
+.funktionen .kapsel--bezahlt { background: var(--jj-orange); }
+.funktionen .kapsel--angekuendigt { box-shadow: inset 0 0 0 1.5px var(--jj-green-dark); color: var(--jj-green-dark); }
+.funktionen .kapsel sup { font-size: .75em; }
+.funktionen-hinweis { font-size: .8em; margin: 8px 0 0; }
+
+@media print {
+  .funktionen { margin-bottom: 14pt; break-inside: avoid; }
+  .funktionen-tabelle { min-width: 0; font-size: 9pt; line-height: 1.28; }
+  .funktionen-tabelle thead th { padding: 4pt 6pt; font-size: 7.5pt; }
+  .funktionen-tabelle td, .funktionen-tabelle tbody th { padding: 4pt 6pt; }
+  .funktionen .kapsel { font-size: 7.5pt; }
+  .funktionen-hinweis { font-size: 8pt; margin-top: 4pt; }
+}
+.funktionen-tabelle tbody th .kapsel { margin-top: 4px; }
+.funktionen-tabelle tbody th .info { font-weight: 400; }
+.funktionen-tabelle .kopf-zusatz { text-transform: none; letter-spacing: 0; font-weight: 400; }

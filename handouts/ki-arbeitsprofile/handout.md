@@ -1,7 +1,7 @@
 ---
 titel: KI-Arbeitsprofile bauen
 label: Handout
-stand: 9. Oktober 2026
+stand: 27. Oktober 2026
 bild: drache-laptop.png
 bild_alt: Drache springt mit Zauberstab aus einem Laptop
 pdf_name: ki-arbeitsprofile-bauen
@@ -31,7 +31,7 @@ Beispiel: Mein Projekt KI-Lernreise enthält Info-Sheets und Präsentationen und
 ::: karte
 **Skills** sind konkrete, eher kleine Instruktionen, die für viele Arbeitsprozesse gelten (z.B. Genderregel oder Design einer Vorlage). Sie aktivieren sich selbstständig, wenn Triggerworte auftauchen. Sie werden aktuell Tool-übergreifend ausgerollt.
 
-> Skills sind bisher nur in kostenpflichtigen Versionen verfügbar.
+> Skills gibt es bei Claude und Mistral Vibe auch gratis, sonst nur in Bezahlversionen.
 :::
 
 ::: rahmenkarte
@@ -61,6 +61,13 @@ Die bekanntesten sind **ChatGPT Work** und **Claude Cowork**. Mehr dazu in meine
 ::: tipp
 **Viele gute Beispiele für Assistenz-Prompts** findet ihr bei Felix Schlenther unter [ai-first.ai/ai-assistenten](https://ai-first.ai/ai-assistenten) (Gratis-Registrierung erforderlich)
 :::
+
+## So heißen die Funktionen in den gängigen Tools
+
+<div class="funktionen">
+<div class="funktionen-rahmen"><table class="funktionen-tabelle"><thead><tr><th scope="col">Tool</th><th scope="col">Persönliche Anweisungen <span class="kopf-zusatz">(überall gratis)</span></th><th scope="col">Projekt</th><th scope="col">Assistenz</th><th scope="col">Skills</th></tr></thead><tbody><tr><th scope="row">ChatGPT</th><td><strong>Einstellungen &gt; Personalisierung</strong></td><td><strong>Projekte</strong> <span class="kapsel kapsel--gratis">auch gratis</span><span class="info">Gratis: 5 Dateien pro Projekt, Plus: 25, Pro und Business: 40</span></td><td><strong>CustomGPTs</strong><span class="info">In privaten Konten nicht mehr neu anlegbar, die Funktion wird abgeschaltet</span></td><td><strong>Skills</strong> <span class="kapsel kapsel--bezahlt">nur bezahlt</span><span class="info">Nur Business, Enterprise und Edu</span></td></tr><tr><th scope="row">Microsoft 365 Copilot (Basic) <span class="kapsel kapsel--gratis">in Microsoft 365 inklusive</span><span class="info">Was freigeschaltet ist, entscheidet die IT-Administration. Fehlt etwas, frag dort nach.</span></th><td><strong>Einstellungen &gt; Personalisierung &gt; Anpassen von Copilot</strong></td><td><strong>Notizbücher</strong></td><td><strong>Agents</strong><span class="info">Einfache Agents mit Anweisungen und Webseiten. Mit Firmendaten nur mit Lizenz oder gegen Gebühr</span></td><td><strong>Skills</strong> <span class="kapsel kapsel--angekuendigt">angekündigt</span><span class="info">Rollout Oktober bis November 2026</span></td></tr><tr><th scope="row">Langdock <span class="kapsel kapsel--bezahlt">nur bezahlt</span></th><td><strong>Kontoeinstellungen &gt; Custom Instructions</strong></td><td><strong>Projekte</strong></td><td><strong>Agenten</strong></td><td><strong>Skills</strong></td></tr><tr><th scope="row">Claude</th><td><strong>Einstellungen &gt; Profil</strong></td><td><strong>Projekte</strong> <span class="kapsel kapsel--gratis">auch gratis</span><span class="info">Gratis: höchstens 5 Projekte, bezahlt: unbegrenzt</span></td><td></td><td><strong>Skills</strong> <span class="kapsel kapsel--gratis">auch gratis</span><span class="info">Unter Anpassen &gt; Skills</span></td></tr><tr><th scope="row">Mistral Vibe</th><td><strong>Kontext &gt; Anweisungen</strong><span class="info">Memory unter Datenschutz</span></td><td><strong>Projekte</strong> <span class="kapsel kapsel--gratis">auch gratis</span><span class="info">Gratis: höchstens 2 Projekte</span></td><td><strong>Agenten</strong> <span class="kapsel kapsel--bezahlt">nur bezahlt</span></td><td><strong>Skills</strong> <span class="kapsel kapsel--gratis">auch gratis</span></td></tr></tbody></table></div>
+<p class="funktionen-hinweis">Stand: Oktober 2026. Die Anbieter ändern ihre Angebote häufig.</p>
+</div>
 
 ::: canvas
 ## Canvas: So planst du deine Assistenz
