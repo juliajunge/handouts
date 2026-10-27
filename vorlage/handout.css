@@ -761,3 +761,10 @@ body.bilder .kernsatz { background: var(--jj-green-light); padding: 24px 28px; m
   .prompt-tipps { grid-template-columns: minmax(0, 1fr) 38mm; gap: 8mm; margin-bottom: 10px; break-inside: avoid; }
   .prompt-tipps li { margin-bottom: 4pt; padding-left: 16pt; }
 }
+@media print {
+  .prompt-tipps { grid-template-columns: minmax(0, 1fr) 32mm; margin-bottom: 6pt; }
+  .prompt-tipps h3 { margin-bottom: 4pt; }
+  .prompt-tipps ~ h3 { margin: 6pt 0 3pt; }
+  .prompt-tipps ~ pre { margin-bottom: 4pt; padding: 2.5mm 4mm; }
+  .prompt-tipps ~ p { margin-bottom: 4pt; }
+}
