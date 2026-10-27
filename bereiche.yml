@@ -1,5 +1,5 @@
 # Bereiche der Übersichtsseite – Reihenfolge hier = Reihenfolge auf der Seite.
-# farbe: hellgruen, orange oder dunkelgruen (Farbstreifen, Etikett und Sprungmarke)
+# farbe: gelb, hellgruen, orange oder dunkelgruen (Farbstreifen, Etikett und Sprungmarke)
 # inhalte: in dieser Reihenfolge erscheinen die Karten. Möglich sind:
 #   - handout: <ordner>        z. B. ki-arbeitsprofile oder registrierung (Gruppe mit gruppe.yml)
 #     kurz: …                  Kartentext, höchstens 3 Zeilen (ca. 100 Zeichen); sonst die beschreibung des Handouts
@@ -17,24 +17,14 @@
 # Handouts, die hier fehlen, landen automatisch unten unter „Weitere Handouts“.
 
 - id: starten
-  titel: Starten mit KI
-  beschreibung: Konto anlegen, Datenschutz einstellen, Ergebnisse prüfen, die ersten guten Prompts schreiben.
-  farbe: hellgruen
+  titel: KI verstehen
+  beschreibung: Wie Sprachmodelle funktionieren, warum sie Fehler machen und wie du gute Prompts schreibst.
+  farbe: gelb
   inhalte:
-    - handout: registrierung
-      kurz: Schritt für Schritt zum Gratis-Konto – mit den wichtigsten Datenschutz-Einstellungen.
-    - handout: ki-training-abschalten
-      titel: KI-Training abschalten
-      kurz: Klickpfade für ChatGPT, Claude, Mistral und Gemini – kein Training mit deinen Chats.
     - handout: warum-ki-halluziniert
       kurz: Warum Sprachmodelle Antworten erfinden, nicht neutral sind und was dagegen hilft.
     - handout: bessere-prompts-mit-klaro
       kurz: Fünf Elemente für klare, strukturierte Prompts – mit Tipps und zwei Experimenten.
-    - handout: custom-instructions
-      titel: Custom Instructions
-      kurz: Einmal vorstellen, dauerhaft verstanden werden – mit Interview-Prompt.
-    - handout: gratis-text-tools
-      kurz: Die bekanntesten KI-Allrounder im Vergleich – mit Hinweisen zum Datenschutz.
     - kurs: "Modul 1 – Grundlagen: KI verstehen"
       etikett: Gratis-Videokurs
       bild: kurs-modul-1.jpg
@@ -45,6 +35,22 @@
       hinweis: Modul 1 gehört zum KI-Selbstlernkurs für NGOs mit 6 Modulen von den Grundlagen, über Prompting, Personalisierung, Tools bis zu Ethik und Recht. Ab Modul 2 kostenpflichtig.
       mehr_link: https://www.juliajunge.de/ki-selbstlernkurs2026/
       mehr_knopf: Zum ganzen Kurs
+
+- id: einrichten
+  titel: KI einrichten
+  beschreibung: Tool auswählen, Konto anlegen, Datenschutz einstellen und die KI auf dich zuschneiden.
+  farbe: hellgruen
+  inhalte:
+    - handout: gratis-text-tools
+      kurz: Die bekanntesten KI-Allrounder im Vergleich – mit Hinweisen zum Datenschutz.
+    - handout: registrierung
+      kurz: Schritt für Schritt zum Gratis-Konto – mit den wichtigsten Datenschutz-Einstellungen.
+    - handout: ki-training-abschalten
+      titel: KI-Training abschalten
+      kurz: Klickpfade für ChatGPT, Claude, Mistral und Gemini – kein Training mit deinen Chats.
+    - handout: custom-instructions
+      titel: Custom Instructions
+      kurz: Einmal vorstellen, dauerhaft verstanden werden – mit Interview-Prompt.
 
 - id: fortgeschrittene
   titel: Für Fortgeschrittene

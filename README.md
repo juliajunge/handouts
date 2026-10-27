@@ -148,13 +148,13 @@ Einmalig nötig: unter **Settings → Pages → Build and deployment → Source*
 
 ## Bereiche auf der Übersicht
 
-Die Übersicht ist in drei farbige Bereiche geteilt: **Starten mit KI** (hellgrün), **Für Fortgeschrittene** (orange) und **Für Organisationen** (dunkelgrün). Welche Karte in welchem Bereich und an welcher Stelle steht, legt `bereiche.yml` fest:
+Die Übersicht ist in vier farbige Bereiche geteilt: **KI verstehen** (gelb), **KI einrichten** (hellgrün), **Für Fortgeschrittene** (orange) und **Für Organisationen** (dunkelgrün). Welche Karte in welchem Bereich und an welcher Stelle steht, legt `bereiche.yml` fest:
 
 ```yaml
 - id: starten                 # Sprungmarke: …/handouts/#starten
   titel: Starten mit KI
   beschreibung: Ein Satz unter der Überschrift.
-  farbe: hellgruen            # hellgruen, orange oder dunkelgruen
+  farbe: hellgruen            # gelb, hellgruen, orange oder dunkelgruen
   inhalte:
     - handout: registrierung              # Ordnername unter handouts/ (auch Gruppen)
       kurz: Schritt für Schritt …         # Kartentext, höchstens 3 Zeilen (ca. 100 Zeichen)

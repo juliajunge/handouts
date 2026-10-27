@@ -89,7 +89,7 @@ Erstelle danach eine fertige Custom Instruction (max. 1000 Zeichen), passend zu 
 - Sprache, Stil und Formulierungen
 ```
 
-> Dein Tool kann keine Custom Instructions? Speicher deinen Text in einem Dokument auf dem Desktop und kopiere ihn in jeden neuen Chat. Wo du die Einstellung in ChatGPT, Claude und Mistral findest, zeigen dir die > [Registrierungs-Handouts](https://juliajunge.github.io/handouts/#starten).
+> Dein Tool kann keine Custom Instructions? Speicher deinen Text in einem Dokument auf dem Desktop und kopiere ihn in jeden neuen Chat. Wo du die Einstellung in ChatGPT, Claude und Mistral findest, zeigen dir die > [Registrierungs-Handouts](https://juliajunge.github.io/handouts/#einrichten).
 
 ## Und die Memory-Funktion?
 
