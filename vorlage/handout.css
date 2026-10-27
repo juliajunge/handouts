@@ -713,7 +713,7 @@ body.bilder .kernsatz { background: var(--jj-green-light); padding: 24px 28px; m
 }
 
 /* ---------- KI-Arbeitsprofile (stil: arbeitsprofile, Querformat mit breiteren Rändern) ---------- */
-@page arbeitsprofile { size: A4 landscape; margin: 12mm 18mm 11mm; }
+@page arbeitsprofile { size: A4 landscape; margin: 10mm; }
 
 /* Funktionen-Tabelle */
 .funktionen { margin-bottom: 32px; }
@@ -826,4 +826,11 @@ body.bilder .kernsatz { background: var(--jj-green-light); padding: 24px 28px; m
 }
 @media print {
   .baukasten--ziel { width: 90%; }
+}
+@media print {
+  /* Außenränder wie andere Querformat-Handouts, dafür Abstand zwischen Inhalt und Fußzeile */
+  body.arbeitsprofile .seite { min-height: 189mm; }
+  body.arbeitsprofile .seite > .inhalt { padding-bottom: 7mm; }
+  body.arbeitsprofile .hero-bild { width: 18mm; }
+  .canvas-bild img { max-height: 155mm; }
 }
