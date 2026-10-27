@@ -62,6 +62,50 @@ Die bekanntesten sind **ChatGPT Work** und **Claude Cowork**. Mehr dazu in meine
 **Viele gute Beispiele für Assistenz-Prompts** findet ihr bei Felix Schlenther unter [ai-first.ai/ai-assistenten](https://ai-first.ai/ai-assistenten) (Gratis-Registrierung erforderlich)
 :::
 
+<!--seitenumbruch-->
+
+## Lass dir von der KI beim Prompt helfen
+
+Kopiere einen der beiden Prompts in einen Chat. Die KI schreibt dir daraus die Anweisung für deine Assistenz.
+
+### Variante 1: Die KI führt dich mit 5 Fragen
+
+```
+# Leitziel
+Ich will eine KI-Assistenz anlegen, z. B. einen CustomGPT oder einen Skill.
+
+# Aufgabe
+Hilf mir durch den Klärungsprozess: Was genau soll die KI-Assistenz tun, und welche Infos braucht sie oder soll sie erfragen?
+
+# Regeln
+Stelle immer nur eine Frage auf einmal. Erfrage auch nötiges Fachwissen oder biete eine Recherche an. Stelle höchstens 5 Fragen. Die letzte Frage ist, ob die KI noch etwas Besonderes wissen soll.
+
+# Output
+Erzeuge am Ende eine kopierfähige Instruktion in Raw Markdown mit höchstens 7.500 Zeichen. Mache dazu Vorschläge, welche Dokumente als Wissensbasis oder Beispiele hinterlegt werden sollten.
+
+Bevor du startest, recherchiere im Internet aktuelle Infos dazu, was gute Assistenz-Prompts ausmacht.
+```
+
+### Variante 2: Die KI fasst einen früheren Arbeitsprozess zusammen
+
+Nutze diesen Prompt am Ende eines Chats, in dem eine Aufgabe gut geklappt hat.
+
+```
+# Leitziel
+Ich will aus diesem Chat eine KI-Assistenz machen, z. B. einen CustomGPT oder einen Skill, damit ich den Arbeitsprozess wiederholen kann.
+
+# Aufgabe
+Fasse den Arbeitsprozess in diesem Chat zusammen: Was war das Ziel? Welche Schritte haben wir gemacht? Welche Infos und Rückfragen waren nötig? Was habe ich korrigiert? Wie sah das Ergebnis aus?
+
+# Regeln
+Übernimm nur, was sich bewährt hat. Lass Umwege und verworfene Ideen weg, aber mach aus meinen Korrekturen Regeln. Wenn etwas unklar ist, stelle mir höchstens 3 Rückfragen, immer nur eine auf einmal.
+
+# Output
+Erzeuge eine kopierfähige Instruktion in Raw Markdown mit höchstens 7.500 Zeichen. Mache dazu Vorschläge, welche Dokumente als Wissensbasis oder Beispiele hinterlegt werden sollten.
+
+Bevor du startest, recherchiere im Internet aktuelle Infos dazu, was gute Assistenz-Prompts ausmacht.
+```
+
 ::: canvas
 ## So heißen die Funktionen in den gängigen Tools
 
