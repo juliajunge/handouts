@@ -712,7 +712,8 @@ body.bilder .kernsatz { background: var(--jj-green-light); padding: 24px 28px; m
   body.reseller .tipp { margin-bottom: 0; font-size: 9.5pt; }
 }
 
-/* ---------- Funktionen-Tabelle (KI-Arbeitsprofile) ---------- */
+/* ---------- KI-Arbeitsprofile (stil: arbeitsprofile, Querformat) ---------- */
+/* Funktionen-Tabelle */
 .funktionen { margin-bottom: 32px; }
 .funktionen-rahmen { overflow-x: auto; }
 .funktionen-tabelle { width: 100%; min-width: 640px; border-collapse: collapse; font-size: .85em; line-height: 1.35; border-radius: 8px; overflow: hidden; }
@@ -722,49 +723,93 @@ body.bilder .kernsatz { background: var(--jj-green-light); padding: 24px 28px; m
 .funktionen-tabelle tbody th { width: 20%; }
 .funktionen-tabelle td strong { font-weight: 600; }
 .funktionen-tabelle .info { display: block; font-size: .9em; margin-top: 2px; }
+.funktionen-tabelle tbody th .info { font-weight: 400; }
+.funktionen-tabelle tbody th .kapsel { margin-top: 4px; }
+.funktionen-tabelle .kopf-zusatz { text-transform: none; letter-spacing: 0; font-weight: 400; }
 .funktionen .kapsel { display: inline-block; border-radius: 999px; padding: 0 .55em; font-size: .8em; font-weight: 700; line-height: 1.5; white-space: nowrap; }
 .funktionen .kapsel--gratis { background: var(--jj-green-light); }
 .funktionen .kapsel--bezahlt { background: var(--jj-orange); }
 .funktionen .kapsel--angekuendigt { box-shadow: inset 0 0 0 1.5px var(--jj-green-dark); color: var(--jj-green-dark); }
-.funktionen .kapsel sup { font-size: .75em; }
 .funktionen-hinweis { font-size: .8em; margin: 8px 0 0; }
 
-@media print {
-  .funktionen { margin-bottom: 0; break-inside: avoid; }
-  .funktionen-tabelle { min-width: 0; font-size: 10pt; line-height: 1.3; }
-  .funktionen-tabelle thead th { padding: 6pt 8pt; font-size: 8pt; }
-  .funktionen-tabelle td, .funktionen-tabelle tbody th { padding: 6pt 8pt; }
-  .funktionen .kapsel { font-size: 8pt; }
-  .funktionen-hinweis { font-size: 8.5pt; margin-top: 6pt; }
-}
-.funktionen-tabelle tbody th .kapsel { margin-top: 4px; }
-.funktionen-tabelle tbody th .info { font-weight: 400; }
-.funktionen-tabelle .kopf-zusatz { text-transform: none; letter-spacing: 0; font-weight: 400; }
-@media print {
-  .funktionen-tabelle { table-layout: fixed; font-size: 11pt; }
-  .funktionen-tabelle thead th:first-child { width: 20%; }
-  .funktionen-tabelle td, .funktionen-tabelle tbody th { padding: 8pt 9pt; }
-}
-
-/* ---------- Tipps mit Bild rechts (KI-Arbeitsprofile, Prompt-Seite) ---------- */
-.prompt-tipps { display: grid; grid-template-columns: minmax(0, 1fr) 180px; gap: 24px; align-items: center; margin-bottom: 24px; }
+/* Anleitung: Schritte links, Tipps mit Drachen-Spirale rechts */
+.anleitung { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 32px; align-items: start; margin-bottom: 32px; }
+.prompt-tipps { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; background: var(--jj-offwhite); border-radius: 16px; padding: 18px 22px; }
 .prompt-tipps h3 { margin: 0 0 8px; }
 .prompt-tipps ul { list-style: none; padding: 0; margin: 0; }
 .prompt-tipps li { position: relative; padding-left: 26px; margin-bottom: 8px; }
 .prompt-tipps li::before { content: "★"; position: absolute; left: 0; top: 0; color: var(--jj-green-dark); }
-.prompt-tipps img { width: 100%; height: auto; display: block; }
-@media (max-width: 560px) {
-  .prompt-tipps { grid-template-columns: 1fr; }
-  .prompt-tipps img { width: 140px; justify-self: center; grid-row: 1; }
+.prompt-tipps img { width: 100%; max-width: 260px; height: auto; display: block; justify-self: center; }
+
+/* Canvas als eigene Seite */
+.canvas-bild img { width: 100%; height: auto; display: block; }
+
+/* Prompt-Baukasten: drei Starts + zwei Ziele */
+.baukasten { display: grid; gap: 16px; }
+.baukasten--start { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.baukasten--ziel { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 24px; }
+.baustein h3 { margin: 0 0 6px; }
+.baustein p { margin: 0 0 6px; font-size: .9em; }
+.baustein pre { margin-bottom: 0; }
+.baukasten-plus { font-family: var(--font-display); font-weight: 700; font-size: 56px; line-height: 1; color: var(--jj-orange); text-align: center; margin: 8px 0 4px; }
+
+@media (max-width: 760px) {
+  .anleitung, .baukasten--start, .baukasten--ziel { grid-template-columns: 1fr; }
+}
+
+@media print {
+  body.arbeitsprofile .handout { font-size: 9.5pt; }
+  body.arbeitsprofile .seite { min-height: 190mm; }
+  body.arbeitsprofile .inhalt h2 { font-size: 14pt; margin: 0 0 4pt; }
+  body.arbeitsprofile .karten { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-bottom: 8px; }
+  body.arbeitsprofile .karte { padding: 8px 14px; }
+  body.arbeitsprofile .karten:has(> :only-child) { grid-template-columns: 1fr; margin-bottom: 10pt; }
+
+  .funktionen { margin-bottom: 0; break-inside: avoid; }
+  .funktionen-tabelle { min-width: 0; table-layout: fixed; font-size: 8.5pt; line-height: 1.25; }
+  .funktionen-tabelle thead th { padding: 3pt 6pt; font-size: 7.5pt; }
+  .funktionen-tabelle thead th:first-child { width: 20%; }
+  .funktionen-tabelle td, .funktionen-tabelle tbody th { padding: 3pt 6pt; }
+  .funktionen-tabelle .info { margin-top: 0; }
+  .funktionen .kapsel { font-size: 7.5pt; }
+  .funktionen-hinweis { font-size: 7.5pt; margin-top: 3pt; }
+
+  .anleitung { gap: 10mm; margin-bottom: 0; }
+  body.arbeitsprofile .schritte--untereinander ol { gap: 12pt; }
+  .prompt-tipps { padding: 4mm 5mm; gap: 3mm; break-inside: avoid; }
+  .prompt-tipps li { margin-bottom: 4pt; padding-left: 14pt; }
+  .prompt-tipps img { max-width: 52mm; }
+
+  .canvas-bild img { max-height: 150mm; width: auto; max-width: 100%; margin: 0 auto; }
+
+  body.arbeitsprofile .inhalt pre { font-size: 8pt; line-height: 1.3; padding: 2.5mm 3.5mm; margin-bottom: 0; }
+  .baukasten { gap: 4mm; }
+  .baukasten--ziel { margin-bottom: 6mm; }
+  .baustein { break-inside: avoid; }
+  .baustein h3 { margin-bottom: 2pt; font-size: 10pt; }
+  .baustein p { font-size: 8.5pt; margin-bottom: 2pt; }
+  .baukasten-plus { font-size: 30pt; margin: 1mm 0 0; }
+}
+.baustein { display: flex; flex-direction: column; }
+.baustein pre { flex: 1; }
+@media print {
+  .funktionen-tabelle { font-size: 9.5pt; }
+  .funktionen-tabelle td, .funktionen-tabelle tbody th { padding: 4pt 7pt; }
+  .anleitung { font-size: 11pt; }
+  .anleitung .schritte h3 { font-size: 12pt; }
+  body.arbeitsprofile .anleitung .schritte--untereinander ol { gap: 16pt; }
+  .prompt-tipps img { max-width: 70mm; }
+  body.arbeitsprofile .inhalt .baustein pre { font-size: 9pt; padding: 3mm 4mm; }
+  .baustein h3 { font-size: 11pt; }
+  .baukasten-plus { font-size: 40pt; margin: 2mm 0 1mm; }
+}
+.baustein .prompt-kasten { flex: 1; margin-bottom: 0; }
+.baustein .prompt-kasten pre { background: none; border-left: 0; border-radius: 0; padding: 0; margin: 0; }
+@media print {
+  body.arbeitsprofile .inhalt .baustein .prompt-kasten pre { padding: 0; }
+  .baustein .prompt-kasten { padding: 3mm 4mm; }
 }
 @media print {
-  .prompt-tipps { grid-template-columns: minmax(0, 1fr) 38mm; gap: 8mm; margin-bottom: 10px; break-inside: avoid; }
-  .prompt-tipps li { margin-bottom: 4pt; padding-left: 16pt; }
-}
-@media print {
-  .prompt-tipps { grid-template-columns: minmax(0, 1fr) 32mm; margin-bottom: 6pt; }
-  .prompt-tipps h3 { margin-bottom: 4pt; }
-  .prompt-tipps ~ h3 { margin: 6pt 0 3pt; }
-  .prompt-tipps ~ pre { margin-bottom: 4pt; padding: 2.5mm 4mm; }
-  .prompt-tipps ~ p { margin-bottom: 4pt; }
+  body.arbeitsprofile .inhalt .baustein pre { font-size: 10pt; line-height: 1.35; }
+  .baukasten-plus { font-size: 48pt; margin: 3mm 0 1mm; }
 }
