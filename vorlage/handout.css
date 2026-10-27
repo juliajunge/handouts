@@ -661,3 +661,53 @@ body.bilder .kernsatz { background: var(--jj-green-light); padding: 24px 28px; m
 }
 /* Prompt im Kasten: Fläche und Rahmen trägt der Kasten (steht am Ende, damit es die pre-Regeln oben überschreibt) */
 .inhalt .prompt-kasten pre { background: none; border: none; border-radius: 0; padding: 0; margin: 0; }
+
+/* ---------- KI-Reseller-Vergleich (stil: reseller): breite Vergleichstabelle mit Emojis in der Hosting-Spalte ---------- */
+.reseller .unterzeile { font-weight: 700; margin: -24px 0 8px; }
+.reseller .hinweis { margin: 0 0 20px; max-width: 70em; }
+.reseller .vergleich { min-width: 980px; }
+.reseller .vergleich .sp-plattform { width: 11%; }
+.reseller .vergleich .sp-modelle { width: 21%; }
+.reseller .vergleich .sp-hosting { width: 35%; }
+.reseller .vergleich .sp-preis { width: 12%; }
+.reseller .vergleich .sp-besonders { width: 21%; }
+.reseller .hosting .zeile { display: block; padding-left: 1.6em; text-indent: -1.6em; }
+.reseller .hosting .zeile + .zeile { margin-top: 3px; }
+.reseller .emoji { width: 1.15em; height: 1.15em; vertical-align: -.2em; margin-right: .45em; }
+.reseller .kapsel { display: inline-block; border-radius: 999px; padding: 0 .55em; font-size: .85em; font-weight: 700; line-height: 1.5; text-indent: 0; }
+.reseller .kapsel--ja { background: var(--jj-green-light); }
+.reseller .kapsel--nein { background: var(--jj-orange); }
+.reseller .kapsel--unklar { box-shadow: inset 0 0 0 1.5px var(--jj-green-dark); color: var(--jj-green-dark); }
+.reseller .legende-titel { font-weight: 700; color: var(--jj-green-dark); margin: 0 0 6px; }
+.reseller .legende ul { list-style: none; padding: 0; margin: 0 0 40px; }
+.reseller .legende li { margin-bottom: 4px; padding-left: 1.6em; text-indent: -1.6em; }
+.reseller .achtung { border: 2px solid #CA2417; border-radius: 16px; padding: 18px 22px; margin-bottom: 40px; break-inside: avoid; }
+.reseller .achtung-label { font-size: .75em; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #CA2417; margin: 0 0 4px; }
+.reseller .achtung h2 { margin: 0 0 10px; }
+.reseller .achtung p { margin: 0 0 10px; }
+.reseller .achtung > :last-child { margin-bottom: 0; }
+.reseller .karte ul { margin: 0; padding-left: 1.1em; }
+.reseller .karte li + li { margin-top: 4px; }
+
+@media print {
+  body.reseller .hero-bild { width: 18mm; }
+  .reseller .unterzeile { margin: 0 0 3pt; font-size: 10pt; }
+  .reseller .hinweis { margin: 0 0 6pt; font-size: 9pt; max-width: none; }
+  .reseller .vergleich { min-width: 0; font-size: 8.5pt; line-height: 1.28; }
+  .reseller .vergleich th, .reseller .vergleich td { padding: 3pt 6pt; }
+  .reseller .vergleich tbody th { font-size: 9.5pt; }
+  .reseller .hosting .zeile + .zeile { margin-top: 1pt; }
+  .reseller .kapsel { font-size: 7.5pt; }
+  .reseller .vergleich-rahmen { margin-bottom: 6pt; }
+  .reseller .legende { font-size: 8.5pt; }
+  .reseller .legende-titel { margin-bottom: 2pt; }
+  .reseller .legende ul { display: flex; flex-wrap: wrap; gap: 0 16pt; margin-bottom: 0; }
+  .reseller .legende li { margin-bottom: 1pt; }
+  .reseller .achtung { padding: 9pt 13pt; margin-bottom: 10pt; font-size: 9.5pt; }
+  .reseller .achtung-label { font-size: 7.5pt; }
+  .reseller .achtung h2 { margin-bottom: 4pt; }
+  .reseller .achtung p { margin-bottom: 5pt; }
+  .reseller--einordnung h2 { margin-top: 0; }
+  .reseller .karten { grid-template-columns: repeat(3, 1fr); gap: 10pt; margin-bottom: 10pt; font-size: 9pt; }
+  body.reseller .tipp { margin-bottom: 0; font-size: 9.5pt; }
+}

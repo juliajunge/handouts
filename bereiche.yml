@@ -70,10 +70,9 @@
       link: https://padlet.com/juliajunge/tools-tools-tools-und-alle-mit-ki-81srx41p3gtw5w31
       knopf: Zur Tool-Liste
       beschreibung: Tools, Tools, Tools – und alle mit KI. Meine Sammlung zum Stöbern und Ausprobieren.
-    - extern: Reseller-Liste
-      link: https://www.juliajunge.de/go/reseller
-      knopf: Zur Liste
-      beschreibung: Deutsche KI-Plattformen mit Auftragsverarbeitungsvertrag für den Einsatz im Team.
+    - handout: ki-reseller-vergleich
+      titel: Reseller-Liste
+      kurz: Deutsche KI-Plattformen mit Auftragsverarbeitungsvertrag für den Einsatz im Team.
 
 - id: organisationen
   titel: Für Organisationen
