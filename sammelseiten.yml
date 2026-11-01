@@ -1,0 +1,34 @@
+# Sammelseiten: kleine Übersichten mit ausgewählten Handouts, z. B. zum Verlinken im Workshop.
+# Sie sind von der Hauptübersicht aus NICHT verlinkt – nur wer die Adresse kennt, findet sie.
+#   pfad:        Adresse unter …/handouts/, z. B. registrierung → https://juliajunge.github.io/handouts/registrierung/
+#                (darf nicht schon ein Handout sein)
+#   titel, label (Etikett über dem Titel), einleitung (optional)
+#   bild, bild_alt: optional, Pfad zu einem Bild in einem Handout-Ordner
+#   bereiche:    genau wie in bereiche.yml; einzelne Handouts einer Gruppe gehen auch, z. B. - handout: registrierung/claude
+
+- pfad: registrierung
+  titel: Registrierung bei KI-Tools
+  label: Anleitungen
+  einleitung: Hier findest du die Schritt-für-Schritt-Anleitungen für dein Gratis-Konto bei ChatGPT, Claude oder Mistral – und wie du das KI-Training mit deinen Chats abschaltest.
+  bild: registrierung/claude/dragon-willkommen.png
+  bild_alt: Drache winkt zur Begrüßung
+  bereiche:
+    - id: konto
+      titel: Konto anlegen
+      beschreibung: Such dir ein Tool aus und folge den Schritten – mit den wichtigsten Datenschutz-Einstellungen.
+      farbe: hellgruen
+      inhalte:
+        - handout: registrierung/chatgpt
+          titel: ChatGPT
+        - handout: registrierung/claude
+          titel: Claude
+        - handout: registrierung/mistral
+          titel: Mistral (Le Chat)
+    - id: training
+      titel: KI-Training abschalten
+      beschreibung: Zwei Minuten, die sich lohnen – auch in den Gratisversionen.
+      farbe: orange
+      inhalte:
+        - handout: ki-training-abschalten
+          titel: KI-Training abschalten
+          kurz: Klickpfade für ChatGPT, Claude, Mistral und Gemini – kein Training mit deinen Chats.

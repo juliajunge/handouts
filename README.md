@@ -170,6 +170,12 @@ Die Übersicht ist in vier farbige Bereiche geteilt: **KI verstehen** (gelb), **
 
 Ohne `kurz:` steht auf der Karte die `beschreibung` aus dem Handout – längere Texte werden nach drei Zeilen abgeschnitten. Externe Links öffnen sich in einem neuen Tab. Ein neues Handout musst du dort mit `- handout: <ordner>` eintragen. Fehlt es, steht es unten unter „Weitere Handouts“ und der Build gibt einen Hinweis aus. Ist ein Handout fertig, das bisher als `demnaechst:` angekündigt war, ersetzt du die Zeile durch `handout:`.
 
+## Sammelseiten (nicht verlinkt)
+
+Kleine Übersichten mit ausgewählten Handouts, z. B. zum Verlinken im Workshop, stehen in `sammelseiten.yml`. Von der Hauptübersicht aus sind sie nicht verlinkt – nur wer die Adresse kennt, kommt hin. Aufbau wie `bereiche.yml`, plus `pfad` (Adresse), `titel`, `label`, `einleitung` und optional `bild`. Einzelne Handouts aus einer Gruppe trägst du mit `- handout: registrierung/claude` ein.
+
+- Registrierung + KI-Training abschalten: https://juliajunge.github.io/handouts/registrierung/
+
 ## Online-Werkzeuge auf der Übersicht
 
 Interaktive Seiten wie die [KI-Standortbestimmung](https://juliajunge.github.io/KI-Standortbestimmung/) liegen in eigenen Repos. Sie stehen in `werkzeuge.yml` (`titel`, `beschreibung`, `link`, `knopf` und optional `hinweis`) und werden in `bereiche.yml` mit `- werkzeug: <titel>` einem Bereich zugeordnet. Dort haben sie einen Rahmen statt einer Fläche und keinen PDF-Knopf. Ein Werkzeug ohne Bereich erscheint unten unter „Außerdem: zum Online-Ausfüllen“.

@@ -3,14 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Handouts – Julia Junge</title>
-<link rel="stylesheet" href="vorlage/handout.css?v={{ css_version }}">
+<title>{{ titel }} – Julia Junge</title>
+<link rel="stylesheet" href="{{ basis }}vorlage/handout.css?v={{ css_version }}">
 <style>
   /* Bereiche: je eine Farbe aus dem CD – Streifen an den Karten, Nummer und Sprungmarke */
   .bereich--gelb { --bereich: var(--jj-marker); --bereich-text: var(--jj-black); }
   .bereich--hellgruen { --bereich: var(--jj-green-light); --bereich-text: var(--jj-black); }
   .bereich--orange { --bereich: var(--jj-orange); --bereich-text: var(--jj-black); }
   .bereich--dunkelgruen { --bereich: var(--jj-green-dark); --bereich-text: var(--jj-white); }
+  .hero .einleitung { margin: 0; max-width: 40em; }
   .sprungmarken { display: flex; flex-wrap: wrap; gap: 8px; margin: -16px 0 40px; }
   .sprung { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: .85em; color: var(--jj-black); text-decoration: none; border-radius: 999px; padding: 6px 16px 6px 10px; box-shadow: inset 0 0 0 2px var(--bereich); }
   .sprung:hover { background: var(--bereich); color: var(--bereich-text); }
@@ -79,15 +80,17 @@
 <body>
 <main class="handout">
   <header class="kopf">
-    <a href="https://juliajunge.de"><img class="logo" src="vorlage/bilder/logo-julia-junge.svg" alt="Julia Junge"></a>
-    <div class="aktionen"><a class="knopf knopf--leise" href="#newsletter">&gt; Newsletter abonnieren</a></div>
+    <a href="https://juliajunge.de"><img class="logo" src="{{ basis }}vorlage/bilder/logo-julia-junge.svg" alt="Julia Junge"></a>
+    <div class="aktionen">{% if basis %}<a class="knopf knopf--leise" href="{{ basis }}">&gt; Alle Handouts</a>{% endif %}<a class="knopf knopf--leise" href="#newsletter">&gt; Newsletter abonnieren</a></div>
   </header>
   <section class="hero">
     <div class="hero-text">
-      <span class="label">Material</span>
-      <h1>Handouts</h1>
+      <span class="label">{{ label }}</span>
+      <h1>{{ titel }}</h1>
       <div class="strich"></div>
+      {% if einleitung %}<p class="einleitung">{{ einleitung }}</p>{% endif %}
     </div>
+    {% if bild %}<img class="hero-bild" src="{{ basis }}{{ bild }}" alt="{{ bild_alt }}">{% endif %}
   </section>
   {% macro karte(h) %}
     {% if h.art == "werkzeug" %}
@@ -107,7 +110,7 @@
     </li>
     {% elif h.art == "kurs" %}
     <li class="karte-kurs">
-      {% if h.bild %}<a class="kurs-bild" href="{{ h.link }}" target="_blank" rel="noopener"><img src="vorlage/bilder/{{ h.bild }}" alt="{{ h.bild_alt }}"><span class="play" aria-hidden="true"></span></a>{% endif %}
+      {% if h.bild %}<a class="kurs-bild" href="{{ h.link }}" target="_blank" rel="noopener"><img src="{{ basis }}vorlage/bilder/{{ h.bild }}" alt="{{ h.bild_alt }}"><span class="play" aria-hidden="true"></span></a>{% endif %}
       <div class="kurs-text">
         {% if h.etikett %}<span class="label">{{ h.etikett }}</span>{% endif %}
         <a class="titel" href="{{ h.link }}" target="_blank" rel="noopener">{{ h.titel }}</a>
@@ -130,23 +133,23 @@
       <span class="titel">{{ h.titel }}</span>
       {% if h.beschreibung %}<p>{{ h.beschreibung }}</p>{% endif %}
       <span class="aktionen aktionen--gruppe">
-        {% for u in h.handouts %}<a class="knopf knopf--leise" href="{{ u.slug }}/">&gt; {{ u.kurztitel }}</a>
+        {% for u in h.handouts %}<a class="knopf knopf--leise" href="{{ basis }}{{ u.slug }}/">&gt; {{ u.kurztitel }}</a>
         {% endfor %}
       </span>
     </li>
     {% else %}
     <li>
-      <a class="titel" href="{{ h.slug }}/">{{ h.titel }}</a>
+      <a class="titel" href="{{ basis }}{{ h.slug }}/">{{ h.titel }}</a>
       {% if h.beschreibung %}<p>{{ h.beschreibung }}</p>{% endif %}
       <span class="aktionen">
-        <a class="knopf knopf--leise" href="{{ h.slug }}/">&gt; Webansicht</a>
-        <a class="knopf" href="{{ h.slug }}/{{ h.pdf_datei }}" download>&gt; PDF</a>
-        {% if h.word_datei %}<a class="knopf" href="{{ h.slug }}/{{ h.word_datei }}" download>&gt; Word</a>{% endif %}
+        <a class="knopf knopf--leise" href="{{ basis }}{{ h.slug }}/">&gt; Webansicht</a>
+        <a class="knopf" href="{{ basis }}{{ h.slug }}/{{ h.pdf_datei }}" download>&gt; PDF</a>
+        {% if h.word_datei %}<a class="knopf" href="{{ basis }}{{ h.slug }}/{{ h.word_datei }}" download>&gt; Word</a>{% endif %}
       </span>
     </li>
     {% endif %}
   {% endmacro %}
-  {% if bereiche %}
+  {% if bereiche|length > 1 and sprungmarken %}
   <nav class="sprungmarken" aria-label="Bereiche">
     {% for b in bereiche %}<a class="sprung bereich--{{ b.farbe }}" href="#{{ b.id }}"><span class="punkt"></span>{{ b.titel }}</a>
     {% endfor %}
@@ -189,11 +192,11 @@
     {% endfor %}
   </section>
   {% endif %}
-  {% set basis = "" %}{% include "newsletter.html.j2" %}
+  {% include "newsletter.html.j2" %}
   <footer class="fuss">
-    <div class="drachenlinie" aria-hidden="true"><span></span><img src="vorlage/bilder/logo-julia-junge.svg" alt=""></div>
+    <div class="drachenlinie" aria-hidden="true"><span></span><img src="{{ basis }}vorlage/bilder/logo-julia-junge.svg" alt=""></div>
     <span><a href="https://juliajunge.de">&gt; juliajunge.de</a><a class="fuss-impressum" href="https://www.juliajunge.de/kontakt-und-impressum/">&gt; Impressum</a><a class="fuss-impressum" href="https://www.juliajunge.de/datenschutzerklaerung/">&gt; Datenschutz</a></span>
-    <span class="fuss-rechts"><span>Autorin: Julia Junge</span><img src="vorlage/bilder/cc-by-sa.png" alt="Lizenz CC BY-SA"></span>
+    <span class="fuss-rechts"><span>Autorin: Julia Junge</span><img src="{{ basis }}vorlage/bilder/cc-by-sa.png" alt="Lizenz CC BY-SA"></span>
   </footer>
 </main>
 </body>

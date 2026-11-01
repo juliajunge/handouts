@@ -171,21 +171,58 @@ def baue_seiten():
             eintraege.append(gruppen[name])
         gruppen[name]["handouts"].append(h)
     werkzeuge = (yaml.safe_load(werkzeuge_datei.read_text(encoding="utf-8")) if werkzeuge_datei.exists() else None) or []
-    bereiche, rest_handouts, rest_werkzeuge = ordne_bereiche(eintraege, werkzeuge)
+    uebersicht = env.get_template("index.html.j2")
+    bereiche_datei = ROOT / "bereiche.yml"
+    bereiche = (yaml.safe_load(bereiche_datei.read_text(encoding="utf-8")) if bereiche_datei.exists() else None) or []
+    bereiche, rest_handouts, rest_werkzeuge = ordne_bereiche(bereiche, eintraege, alle, werkzeuge, "bereiche.yml")
+    for h in rest_handouts:
+        print(f"Hinweis: '{h['titel']}' steht in keinem Bereich in bereiche.yml und erscheint unter „Weitere Handouts“")
     (SITE / "index.html").write_text(
-        env.get_template("index.html.j2").render(bereiche=bereiche, handouts=rest_handouts, werkzeuge=rest_werkzeuge),
+        uebersicht.render(titel="Handouts", label="Material", basis="", sprungmarken=True,
+                          bereiche=bereiche, handouts=rest_handouts, werkzeuge=rest_werkzeuge),
         encoding="utf-8",
     )
+    baue_sammelseiten(uebersicht, eintraege, alle, werkzeuge)
     (SITE / ".nojekyll").write_text("")
     return alle
 
 
-def ordne_bereiche(eintraege, werkzeuge):
-    """Verteilt Handouts, Gruppen und Werkzeuge auf die Bereiche aus bereiche.yml.
+def baue_sammelseiten(vorlage, eintraege, alle, werkzeuge):
+    """Baut die Sammelseiten aus sammelseiten.yml – kleine Übersichten mit ausgewählten Handouts
+    (z. B. zum Verlinken im Workshop). Sie sind von der Hauptübersicht aus nicht verlinkt."""
+    datei = ROOT / "sammelseiten.yml"
+    seiten = (yaml.safe_load(datei.read_text(encoding="utf-8")) if datei.exists() else None) or []
+    for s in seiten:
+        for pflicht in ("pfad", "titel", "bereiche"):
+            if not s.get(pflicht):
+                sys.exit(f"sammelseiten.yml: Angabe '{pflicht}' fehlt bei '{s.get('titel', s.get('pfad'))}'")
+        pfad = s["pfad"].strip("/")
+        ziel = SITE / pfad
+        if (ziel / "index.html").exists():
+            sys.exit(f"sammelseiten.yml: unter '{pfad}/' liegt schon ein Handout")
+        ziel.mkdir(parents=True, exist_ok=True)
+        bereiche, _, _ = ordne_bereiche(s["bereiche"], eintraege, alle, werkzeuge, "sammelseiten.yml")
+        basis = "../" * len(Path(pfad).parts)
+        bild = ""
+        if s.get("bild"):
+            # Bild liegt in einem Handout-Ordner (z. B. registrierung/claude/dragon-willkommen.png)
+            bild = s["bild"]
+            if not (SITE / bild).exists():
+                sys.exit(f"sammelseiten.yml: Bild '{bild}' gibt es nicht unter handouts/")
+        (ziel / "index.html").write_text(
+            vorlage.render(titel=s["titel"], label=s.get("label", "Material"), einleitung=s.get("einleitung", ""),
+                           bild=bild, bild_alt=s.get("bild_alt", ""), basis=basis, sprungmarken=False,
+                           bereiche=bereiche, handouts=[], werkzeuge=[]),
+            encoding="utf-8",
+        )
+        print(f"Sammelseite: {ziel / 'index.html'}")
+
+
+def ordne_bereiche(bereiche, eintraege, alle, werkzeuge, dateiname):
+    """Verteilt Handouts, Gruppen und Werkzeuge auf die Bereiche (aus bereiche.yml oder sammelseiten.yml).
     Was dort nicht genannt ist, bleibt übrig und erscheint unten auf der Übersicht."""
-    datei = ROOT / "bereiche.yml"
-    bereiche = (yaml.safe_load(datei.read_text(encoding="utf-8")) if datei.exists() else None) or []
-    nach_slug = {h["slug"]: h for h in eintraege}
+    # einzelne Handouts aus Gruppen sind auch direkt ansprechbar, z. B. registrierung/claude
+    nach_slug = {**{h["slug"]: h for h in alle}, **{h["slug"]: h for h in eintraege}}
     nach_titel = {w["titel"]: w for w in werkzeuge}
     vergeben = set()
     for b in bereiche:
@@ -194,7 +231,7 @@ def ordne_bereiche(eintraege, werkzeuge):
             if "handout" in eintrag:
                 ziel = nach_slug.get(eintrag["handout"])
                 if ziel is None:
-                    sys.exit(f"bereiche.yml: Handout '{eintrag['handout']}' gibt es nicht unter handouts/")
+                    sys.exit(f"{dateiname}: Handout '{eintrag['handout']}' gibt es nicht unter handouts/")
                 karte = {"art": "gruppe" if "handouts" in ziel else "handout", **ziel}
                 if eintrag.get("kurz"):
                     karte["beschreibung"] = eintrag["kurz"]
@@ -204,14 +241,14 @@ def ordne_bereiche(eintraege, werkzeuge):
             elif "werkzeug" in eintrag:
                 ziel = nach_titel.get(eintrag["werkzeug"])
                 if ziel is None:
-                    sys.exit(f"bereiche.yml: Werkzeug '{eintrag['werkzeug']}' steht nicht in werkzeuge.yml")
+                    sys.exit(f"{dateiname}: Werkzeug '{eintrag['werkzeug']}' steht nicht in werkzeuge.yml")
                 karte = {"art": "werkzeug", **ziel}
                 if eintrag.get("kurz"):
                     karte["beschreibung"], karte["hinweis"] = eintrag["kurz"], ""
                 vergeben.add(("werkzeug", eintrag["werkzeug"]))
             elif "extern" in eintrag:
                 if not eintrag.get("link"):
-                    sys.exit(f"bereiche.yml: '{eintrag['extern']}' braucht eine Angabe 'link'")
+                    sys.exit(f"{dateiname}: '{eintrag['extern']}' braucht eine Angabe 'link'")
                 karte = {"art": "extern", "titel": eintrag["extern"], "link": eintrag["link"],
                          "knopf": eintrag.get("knopf", "Zur Seite"), "etikett": eintrag.get("etikett", ""), "beschreibung": eintrag.get("beschreibung", "")}
             elif "kurs" in eintrag:
@@ -221,12 +258,10 @@ def ordne_bereiche(eintraege, werkzeuge):
             elif "demnaechst" in eintrag:
                 karte = {"art": "demnaechst", "titel": eintrag["demnaechst"], "beschreibung": eintrag.get("beschreibung", "")}
             else:
-                sys.exit(f"bereiche.yml: unbekannter Eintrag {eintrag} im Bereich '{b.get('titel')}'")
+                sys.exit(f"{dateiname}: unbekannter Eintrag {eintrag} im Bereich '{b.get('titel')}'")
             b["karten"].append(karte)
     rest_handouts = [h for h in eintraege if ("handout", h["slug"]) not in vergeben]
     rest_werkzeuge = [w for w in werkzeuge if ("werkzeug", w["titel"]) not in vergeben]
-    for h in rest_handouts:
-        print(f"Hinweis: '{h['titel']}' steht in keinem Bereich in bereiche.yml und erscheint unter „Weitere Handouts“")
     return bereiche, rest_handouts, rest_werkzeuge
 
 
