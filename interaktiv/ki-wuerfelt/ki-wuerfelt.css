@@ -79,24 +79,16 @@ q { quotes: "„" "“"; font-weight: 700; }
 .eingabe { font: inherit; width: 100%; box-sizing: border-box; padding: 10px 16px; border: 2px solid var(--jj-white); border-radius: 12px; background: var(--jj-white); margin-bottom: 16px; }
 .eingabe:focus { outline: none; border-color: var(--jj-green-dark); }
 
-/* Zahlenreihen */
-.vektor-box { background: var(--jj-white); border-radius: 16px; padding: 16px; margin-top: 16px; }
-.vektor-kopf { margin-bottom: 8px; }
-.vektor { display: grid; grid-template-columns: repeat(24, 1fr); gap: 2px; height: 64px; align-items: stretch; }
-.vektor i { position: relative; display: block; }
-.vektor i::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--border-content); }
-.vektor i b { position: absolute; left: 0; right: 0; display: block; border-radius: 2px; }
-.vektor i b.plus { bottom: 50%; background: var(--jj-green-dark); }
-.vektor i b.minus { top: 50%; background: var(--jj-orange); }
-.vektor--klein { height: 40px; }
-.legende { display: flex; flex-wrap: wrap; gap: 16px; font-size: .8em; margin-top: 8px; }
-.legende i { display: inline-block; width: 12px; height: 12px; border-radius: 2px; vertical-align: -1px; margin-right: 4px; }
-.legende-plus { background: var(--jj-green-dark); }
-.legende-minus { background: var(--jj-orange); }
-.vergleich-titel { margin: 0 0 12px; }
-.vergleich-vektoren { display: grid; gap: 8px; }
-.vergleich-zeile { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 12px; align-items: center; background: var(--jj-white); border-radius: 8px; padding: 8px 12px; }
-.vergleich-zeile strong { font-size: .9em; }
+/* Station 2: Nummern und Landkarte */
+.buehne-h3 { font-size: 1em; margin: 0 0 4px; color: var(--jj-green-dark); }
+.buehne-text { margin: 0 0 16px; }
+.landkarte { position: relative; aspect-ratio: 16 / 10; background: var(--jj-white); border-radius: 16px; margin-top: 8px; overflow: hidden; }
+.landkarte-gebiet { position: absolute; font-size: .7em; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--jj-brown); }
+.token--karte { position: absolute; transform: translate(-50%, -50%); padding: 4px 10px; font-size: .85em; cursor: pointer; }
+.token--karte[aria-pressed="true"] { border-color: var(--jj-green-dark); background: var(--jj-green-light); z-index: 1; }
+#token-eigen:empty { min-height: 0; }
+.landkarte-info { margin: 12px 0 0; min-height: 3em; }
+.rad-text { pointer-events: none; }
 
 /* Aufmerksamkeit */
 .stufe-1 { background: var(--jj-white); }
@@ -148,32 +140,35 @@ q { quotes: "„" "“"; font-weight: 700; }
 .kreislauf li + li::before { content: "> "; color: var(--jj-green-dark); }
 .kreislauf li.an { background: var(--jj-green-light); }
 
-.wuerfel-bereich { display: flex; gap: 20px; align-items: center; margin-bottom: 16px; }
-.wuerfel {
-  flex: none; width: 72px; height: 72px; box-sizing: border-box; padding: 10px;
-  background: var(--jj-white); border: 3px solid var(--jj-green-dark); border-radius: 16px;
-  display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); place-items: center;
-}
-.wuerfel i { width: 11px; height: 11px; border-radius: 999px; background: transparent; }
-.wuerfel i.auge { background: var(--jj-black); }
-.wuerfel.rollt { border-color: var(--jj-orange); }
+/* Glücksrad */
+.gluecksrad-bereich { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 24px; align-items: start; }
+.gluecksrad { position: relative; width: 100%; max-width: 300px; padding-top: 18px; margin: 0 auto; }
+.rad-drehteil { will-change: transform; }
+.rad { display: block; width: 100%; height: auto; }
+.rad-text { font-family: var(--font-body); font-weight: 700; font-size: 8.5px; fill: var(--jj-black); }
+.rad-prozent { font-weight: 400; font-size: 7.5px; }
+.rad-strich { stroke: var(--jj-green-dark); stroke-width: 1.2; }
+.rad-rand { stroke: var(--jj-green-dark); stroke-width: 2.5; }
+.rad-nabe { fill: var(--jj-green-dark); }
+/* Zeiger oben, zeigt nach unten aufs Rad */
+.rad-zeiger { position: absolute; top: 0; left: 50%; width: 0; height: 0; transform: translateX(-50%); z-index: 1;
+  border-left: 13px solid transparent; border-right: 13px solid transparent; border-top: 28px solid var(--jj-green-dark); }
 .wurf-ergebnis { font-weight: 700; margin: 0; font-size: 1.05em; }
-.wuerfel-text .buehne-notiz { margin-top: 4px; }
-
-.streifen-rahmen { position: relative; padding-top: 28px; }
-.streifen { display: flex; height: 44px; border-radius: 8px; overflow: hidden; gap: 2px; background: var(--jj-white); }
-.streifen-teil { min-width: 0; display: flex; align-items: center; justify-content: center; font-size: .75em; font-weight: 700; overflow: hidden; white-space: nowrap; transition: flex-grow .35s ease-out; }
-.streifen-teil[data-farbe="1"] { background: var(--modul-1); }
-.streifen-teil[data-farbe="2"] { background: var(--modul-2); }
-.streifen-teil[data-farbe="3"] { background: var(--modul-3); }
-.streifen-teil[data-farbe="4"] { background: var(--modul-4); }
-.streifen-teil[data-farbe="5"] { background: var(--modul-5); }
-.streifen-teil[data-farbe="6"] { background: var(--modul-6); }
-.streifen-teil.getroffen { background: var(--jj-orange); }
-.zeiger { position: absolute; top: 0; bottom: 0; width: 0; transition: left .5s ease-out; }
-.zeiger::before { content: attr(data-zahl); position: absolute; top: 0; left: 0; transform: translateX(-50%); font-size: .75em; font-weight: 700; background: var(--jj-green-dark); color: var(--jj-white); border-radius: 999px; padding: 1px 8px; white-space: nowrap; }
-.zeiger::after { content: ""; position: absolute; top: 22px; bottom: -4px; left: -1.5px; width: 3px; background: var(--jj-green-dark); }
-.streifen-notiz { margin-top: 8px; }
+.rad-seite .buehne-notiz:first-of-type { margin-top: 4px; min-height: 1.5em; }
+.rad-legende { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 4px; font-size: .9em; }
+.rad-legende li { display: grid; grid-template-columns: 14px minmax(0, 1fr) 48px; gap: 8px; align-items: center; padding: 3px 8px; border-radius: 8px; }
+.rad-legende .strichliste { display: none; }
+.rad-legende.mit-strichen li { grid-template-columns: 14px minmax(0, 1fr) 48px minmax(0, 1.2fr); }
+.rad-legende.mit-strichen .strichliste { display: flex; }
+.rad-legende li.gewonnen { background: var(--jj-white); font-weight: 700; }
+.rad-farbe { width: 14px; height: 14px; border-radius: 4px; display: block; }
+.rad-wort { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rad-wert { text-align: right; font-variant-numeric: tabular-nums; }
+.strichliste { display: flex; align-items: center; flex-wrap: wrap; gap: 2px; min-height: 16px; }
+.strichliste b { display: block; width: 2px; height: 14px; background: var(--jj-black); }
+.strichliste b.fuenfter { margin-right: 6px; }
+.strichliste small { margin-left: 4px; color: var(--jj-brown); font-weight: 700; }
+.rad-notiz { margin-top: 8px; }
 
 .temperatur { margin-top: 24px; }
 .temperatur input { width: 100%; accent-color: var(--jj-green-dark); }
@@ -194,18 +189,20 @@ q { quotes: "„" "“"; font-weight: 700; }
   .buehne { padding: 16px; }
   .balken, .balken-liste--klein .balken { grid-template-columns: 110px minmax(0, 1fr) 48px; gap: 8px; }
   .balken-wort { font-size: .9em; }
-  .vergleich-zeile { grid-template-columns: 1fr; gap: 4px; }
+  .landkarte { aspect-ratio: 3 / 4; }
+  .token--karte { font-size: .75em; padding: 3px 8px; }
   .schicht { grid-template-columns: 64px minmax(0, 1fr); }
   .station-nr { width: 44px; height: 44px; font-size: 1.6em; }
   .inhalt .station h2 { font-size: 1.75em; }
   .merksatz p { font-size: 1.45em; }
-  .wuerfel { width: 60px; height: 60px; padding: 8px; }
+  .gluecksrad-bereich { grid-template-columns: 1fr; }
+  .gluecksrad { max-width: 280px; }
   .karten { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .station.neu, .satz .cursor { animation: none; }
-  .balken-fuellung, .streifen-teil, .zeiger { transition: none; }
+  .balken-fuellung, .rad-drehteil { transition: none !important; }
 }
 
 /* Druck: alles aufgedeckt, ohne Bedienelemente */

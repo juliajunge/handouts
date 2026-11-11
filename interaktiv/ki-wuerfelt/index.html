@@ -62,7 +62,7 @@
         <p class="buehne-notiz"><strong>6 Token</strong> für 5 Wörter: „dringend“ wird in zwei Stücke geteilt.</p>
         <hr class="buehne-trenner">
         <label class="feld-label" for="eigener-text">Probier es mit einem eigenen Satz</label>
-        <input class="eingabe" id="eigener-text" type="text" value="Ehrenamtliche Nachbarschaftshilfe braucht Unterstützung." autocomplete="off">
+        <input class="eingabe" id="eigener-text" type="text" value="" placeholder="Schreib hier einen eigenen Satz" autocomplete="off">
         <div class="token-reihe" id="token-eigen" aria-live="polite"></div>
         <p class="buehne-notiz" id="token-zaehler"></p>
       </div>
@@ -80,21 +80,23 @@
           <h2>Übersetzen</h2>
         </div>
       </div>
-      <p>Mit Buchstaben kann die KI nicht rechnen. Jedes Token hat deshalb eine feste <strong>Nummer</strong>. Zu jeder Nummer gehört eine lange <strong>Zahlenreihe</strong>. Sie ist im Training entstanden und beschreibt, in welchen Zusammenhängen das Token vorkommt.</p>
+      <p>Rechnen kann die KI nur mit Zahlen. Deshalb übersetzt sie jedes Token in Zahlen – in zwei Schritten.</p>
       <div class="buehne">
-        <div class="token-reihe token-reihe--ids" id="token-ids" role="group" aria-label="Token mit Nummer, zum Auswählen"></div>
-        <p class="buehne-notiz">Tipp ein Token an, um seine Zahlenreihe zu sehen.</p>
-        <div class="vektor-box">
-          <div class="vektor-kopf"><strong id="vektor-titel">„Verein“</strong> als Zahlenreihe <span class="klein">(Ausschnitt: 24 von mehreren Tausend Zahlen)</span></div>
-          <div class="vektor" id="vektor-gewaehlt" aria-hidden="true"></div>
-          <div class="legende"><span><i class="legende-plus"></i> positiv</span><span><i class="legende-minus"></i> negativ</span></div>
-        </div>
+        <h3 class="buehne-h3">Schritt 1: Jedes Token hat eine Nummer</h3>
+        <p class="buehne-text">Die KI hat eine feste Liste aller Bausteine, die sie kennt – wie ein Wörterbuch mit rund 100.000 Einträgen. Jeder Eintrag hat eine Nummer. Die Nummer selbst bedeutet nichts. Sie sagt nur, wo das Token in der Liste steht.</p>
+        <div class="token-reihe token-reihe--ids" id="token-ids" aria-label="Die Token des Beispielsatzes mit ihrer Nummer"></div>
         <hr class="buehne-trenner">
-        <p class="vergleich-titel"><strong>Ähnliche Bedeutung, ähnliche Zahlen</strong></p>
-        <div class="vergleich-vektoren" id="vergleich" aria-hidden="true"></div>
-        <p class="buehne-notiz">„Ehrenamtliche“ und „Helfer*innen“ haben ähnliche Muster. „Räume“ sieht ganz anders aus. So erkennt die KI Bedeutung – ohne zu verstehen, was ein Ehrenamt ist.</p>
+        <h3 class="buehne-h3">Schritt 2: Jede Nummer hat einen Platz auf einer Landkarte</h3>
+        <p class="buehne-text">Zu jeder Nummer gehört ein Platz auf einer Art <strong>Landkarte der Bedeutungen</strong>. Wörter, die in ähnlichen Sätzen vorkommen, liegen nah beieinander. Diesen Platz hat die KI im Training selbst gefunden – niemand hat ihn festgelegt.</p>
+        <div class="landkarte" id="landkarte" role="group" aria-label="Landkarte der Bedeutungen: Wörter zum Antippen">
+          <span class="landkarte-gebiet" style="left:4%;top:4%">Menschen</span>
+          <span class="landkarte-gebiet" style="right:4%;top:4%">Veranstaltungen</span>
+          <span class="landkarte-gebiet" style="right:4%;bottom:4%">Orte</span>
+        </div>
+        <p class="landkarte-info" id="landkarte-info" aria-live="polite"></p>
+        <p class="buehne-notiz">Unsere Karte hat zwei Richtungen, also zwei Zahlen pro Wort. Die Karte der KI hat Tausende Richtungen. Darum besteht der Platz eines Tokens aus Tausenden Zahlen – und mit genau diesen Zahlen rechnet die KI weiter.</p>
       </div>
-      <div class="merksatz"><span class="kleinlabel">Merksatz</span><p>Ab hier sieht die KI nur noch Zahlen.</p></div>
+      <div class="merksatz"><span class="kleinlabel">Merksatz</span><p>Bedeutung ist für die KI Nähe auf einer Landkarte aus Zahlen.</p></div>
       <button type="button" class="knopf weiter" data-oeffnet="3">&gt; Station 3 aufdecken</button>
     </section>
 
@@ -153,7 +155,8 @@
           <h2>Würfeln</h2>
         </div>
       </div>
-      <p>Jetzt kommt der Zufall: Die KI nimmt <strong>nicht immer</strong> das wahrscheinlichste Wort. Sie würfelt – mit einem gezinkten Würfel. Wahrscheinliche Wörter bekommen viel Fläche, seltene wenig. Das gewürfelte Wort wird angehängt, und <mark>die ganze Kette beginnt von vorn</mark>.</p>
+      <p>Jetzt kommt der Zufall: Die KI nimmt <strong>nicht immer</strong> das wahrscheinlichste Wort. Sie würfelt – aber nicht fair, sondern mit einem <strong>gezinkten Würfel</strong>, der öfter auf bestimmte Wörter fällt.</p>
+      <p>Stell dir dafür ein <strong>Glücksrad</strong> vor: Jedes mögliche Wort bekommt ein Stück. Wahrscheinliche Wörter bekommen große Stücke, seltene ganz schmale. Wo das Rad stehen bleibt, ist Zufall. Das gewonnene Wort wird angehängt, und <mark>die ganze Kette beginnt von vorn</mark>.</p>
 
       <div class="buehne buehne--wuerfeln">
         <div class="satz-zeile">
@@ -165,42 +168,43 @@
           <li>Zerlegen</li><li>Übersetzen</li><li>Rechnen</li><li>Abwägen</li><li>Würfeln</li>
         </ol>
 
-        <div class="wuerfel-bereich">
-          <div class="wuerfel" id="wuerfel" aria-hidden="true"></div>
-          <div class="wuerfel-text">
-            <p class="wurf-ergebnis" id="wurf-ergebnis" aria-live="polite">Noch nicht gewürfelt.</p>
+        <div class="gluecksrad-bereich">
+          <div class="gluecksrad">
+            <div class="rad-zeiger" aria-hidden="true"></div>
+            <div class="rad-drehteil" id="rad-drehteil">
+              <svg class="rad" id="rad" viewBox="-104 -104 208 208" role="img" aria-label="Glücksrad mit den möglichen nächsten Wörtern"></svg>
+            </div>
+          </div>
+          <div class="rad-seite">
+            <p class="wurf-ergebnis" id="wurf-ergebnis" aria-live="polite">Das Rad steht noch.</p>
             <p class="buehne-notiz" id="wurf-erklaerung"></p>
+            <ul class="rad-legende" id="rad-legende"></ul>
+            <p class="buehne-notiz rad-notiz">Die Striche am Rand stehen für je 5 Prozent.</p>
           </div>
         </div>
 
-        <div class="streifen-rahmen">
-          <div class="streifen" id="streifen" aria-hidden="true"></div>
-          <div class="zeiger" id="zeiger" hidden></div>
-        </div>
-        <p class="buehne-notiz streifen-notiz">Der Streifen ist der gezinkte Würfel: Eine Zufallszahl zwischen 0 und 1 landet irgendwo darauf.</p>
-
-        <div class="balken-liste balken-liste--klein" id="kandidaten"></div>
-
         <div class="temperatur">
-          <label class="feld-label" for="temperatur">Temperatur: <output id="temperatur-wert">0,7</output> <span id="temperatur-text">üblich</span></label>
-          <input type="range" id="temperatur" min="0" max="2" step="0.1" value="0.7">
+          <label class="feld-label" for="temperatur">Temperatur: <output id="temperatur-wert">1,0</output> <span id="temperatur-text">üblich</span></label>
+          <input type="range" id="temperatur" min="0" max="2" step="0.1" value="1">
           <div class="temperatur-skala"><span>0 · kein Zufall</span><span>1 · normal</span><span>2 · wild</span></div>
         </div>
 
         <div class="knopf-reihe">
-          <button type="button" class="knopf knopf--orange" id="einmal-wuerfeln">&gt; Ein Wort würfeln</button>
-          <button type="button" class="knopf" id="satz-wuerfeln">&gt; Satz zu Ende würfeln</button>
+          <button type="button" class="knopf knopf--orange" id="einmal-wuerfeln">&gt; Glücksrad drehen</button>
+          <button type="button" class="knopf" id="zwanzig-drehen">&gt; 20-mal drehen</button>
+          <button type="button" class="knopf" id="satz-wuerfeln">&gt; Satz zu Ende drehen</button>
           <button type="button" class="knopf knopf--leise" id="neu-starten">&gt; Von vorn</button>
         </div>
+        <p class="buehne-notiz">„Glücksrad drehen“ hängt ein Wort an. „20-mal drehen“ zählt nur mit, wo das Rad stehen bleibt – der Satz bleibt, wie er ist.</p>
 
         <div class="verlauf" id="verlauf-box" hidden>
           <span class="kleinlabel">Deine gewürfelten Sätze</span>
           <ol class="verlauf-liste" id="verlauf"></ol>
-          <p class="buehne-notiz">Gleicher Anfang, gleiche Rechnung – trotzdem andere Sätze. Das liegt nur am Würfeln.</p>
+          <p class="buehne-notiz">Gleicher Anfang, gleiche Rechnung – trotzdem andere Sätze. Das liegt nur am Zufall.</p>
         </div>
       </div>
 
-      <p>Mit der <strong>Temperatur</strong> legen die Anbieter fest, wie stark gewürfelt wird. Bei 0 nimmt die KI immer das wahrscheinlichste Wort, die Antworten werden starr und wiederholen sich. Je höher die Temperatur, desto öfter gewinnen seltene Wörter – kreativer, aber auch fehleranfälliger. Chatbots arbeiten meist mit einer Einstellung zwischen 0,6 und 1.</p>
+      <p>Mit der <strong>Temperatur</strong> legen die Anbieter fest, wie stark gewürfelt wird. Auf dem Glücksrad siehst du das sofort: Bei 0 gibt es nur noch ein einziges Stück, die KI nimmt immer das wahrscheinlichste Wort, die Antworten werden starr und wiederholen sich. Je höher die Temperatur, desto ähnlicher werden die Stücke und desto öfter gewinnen seltene Wörter – kreativer, aber auch fehleranfälliger. Chatbots arbeiten meist mit einer Einstellung zwischen 0,6 und 1.</p>
       <div class="merksatz"><span class="kleinlabel">Merksatz</span><p>Jedes Wort einer KI-Antwort ist gewürfelt. Immer wieder, bis der Text fertig ist.</p></div>
       <button type="button" class="knopf weiter" data-oeffnet="6">&gt; Was heißt das für dich?</button>
     </section>

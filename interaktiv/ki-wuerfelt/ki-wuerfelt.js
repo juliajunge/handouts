@@ -30,11 +30,10 @@
   /* ---------- Station 1: Zerlegen ---------- */
   function tokenChip(text, i, mitId, id) {
     var anschluss = i > 0 && text.charAt(0) !== " " && /^[\wäöüÄÖÜß*-]/.test(text);
-    var chip = el(mitId ? "button" : "span", "token" + (anschluss ? " token--anschluss" : ""));
+    var chip = el("span", "token" + (anschluss ? " token--anschluss" : ""));
     chip.dataset.farbe = (i % 6) + 1;
     chip.appendChild(el("span", "token-text", text.trim() || "␣"));
     if (mitId) {
-      chip.type = "button";
       chip.appendChild(el("span", "token-id", "Nr. " + zahl(id)));
     }
     return chip;
@@ -94,13 +93,15 @@
     var tokens = tokenisiere(eingabe.value);
     zeigeTokens($("token-eigen"), tokens);
     var woerter = (eingabe.value.match(/[A-Za-zÄÖÜäöüß\d*-]+/g) || []).length;
-    $("token-zaehler").innerHTML = "<strong>" + tokens.length + " Token</strong> für " + woerter + (woerter === 1 ? " Wort" : " Wörter");
+    $("token-zaehler").innerHTML = tokens.length
+      ? "<strong>" + tokens.length + " Token</strong> für " + woerter + (woerter === 1 ? " Wort" : " Wörter")
+      : "Hier erscheinen die Bausteine, sobald du tippst.";
   }
   eingabe.addEventListener("input", eigeneTokens);
   eigeneTokens();
 
   /* ---------- Station 2: Übersetzen ---------- */
-  // Pseudo-Zufall mit festem Startwert: jedes Token hat immer dieselbe Zahlenreihe
+  // Pseudo-Zufall mit festem Startwert (für das Flackern in Station 3)
   function zufallAus(text) {
     var h = 2166136261;
     for (var i = 0; i < text.length; i++) { h ^= text.charCodeAt(i); h = Math.imul(h, 16777619); }
@@ -112,51 +113,47 @@
       return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
     };
   }
-  function vektorAus(text, n) {
-    var r = zufallAus(text), v = [];
-    for (var i = 0; i < n; i++) v.push(r() * 2 - 1);
-    return v;
-  }
-  function zeichneVektor(ziel, werte) {
-    ziel.textContent = "";
-    werte.forEach(function (w) {
-      var spalte = el("i");
-      var balken = el("b", w >= 0 ? "plus" : "minus");
-      balken.style.height = Math.max(4, Math.abs(w) * 50) + "%";
-      spalte.appendChild(balken);
-      ziel.appendChild(spalte);
-    });
-  }
 
-  var idReihe = $("token-ids");
-  START.forEach(function (t, i) {
-    var chip = tokenChip(t.t, i, true, t.id);
-    chip.classList.add("token--wahl");
-    chip.setAttribute("aria-pressed", i === 1 ? "true" : "false");
-    chip.addEventListener("click", function () {
-      idReihe.querySelectorAll(".token").forEach(function (c) { c.setAttribute("aria-pressed", "false"); });
-      chip.setAttribute("aria-pressed", "true");
-      waehleVektor(t);
-    });
-    idReihe.appendChild(chip);
-  });
-  function waehleVektor(t) {
-    $("vektor-titel").textContent = "„" + t.t.trim() + "“ (Nr. " + zahl(t.id) + ")";
-    zeichneVektor($("vektor-gewaehlt"), vektorAus(t.t, 24));
-  }
-  waehleVektor(START[1]);
+  // Schritt 1: Nummern
+  START.forEach(function (t, i) { $("token-ids").appendChild(tokenChip(t.t, i, true, t.id)); });
 
-  // Vergleich: ähnliche Wörter bekommen ähnliche Muster
-  var basis = vektorAus("Ehrenamt", 24);
-  var helfer = basis.map(function (w, i) { var r = vektorAus("Helfer", 24)[i]; return Math.max(-1, Math.min(1, w * 0.85 + r * 0.2)); });
-  [["Ehrenamtliche", basis], ["Helfer*innen", helfer], ["Räume", vektorAus("Raum", 24)]].forEach(function (paar) {
-    var zeile = el("div", "vergleich-zeile");
-    zeile.appendChild(el("strong", null, paar[0]));
-    var v = el("div", "vektor vektor--klein");
-    zeichneVektor(v, paar[1]);
-    zeile.appendChild(v);
-    $("vergleich").appendChild(zeile);
+  // Schritt 2: Landkarte der Bedeutungen. x nach rechts, y nach oben, jeweils 0 bis 1 (ausgedacht)
+  var KARTE = [
+    ["Ehrenamtliche", 0.12, 0.76], ["Helfer*innen", 0.20, 0.62], ["Mitglieder", 0.08, 0.48],
+    ["Spender*innen", 0.22, 0.90], ["Verein", 0.30, 0.34],
+    ["Sommerfest", 0.80, 0.86], ["Mittagstisch", 0.76, 0.72], ["Repair-Café", 0.88, 0.58],
+    ["Räume", 0.70, 0.20], ["Kita", 0.88, 0.32], ["Stadtteil", 0.54, 0.08]
+  ];
+
+
+  function komma(z) { return z.toFixed(2).replace(".", ","); }
+  var karte = $("landkarte"), kartenKnoepfe = [];
+  KARTE.forEach(function (w, i) {
+    var k = el("button", "token token--karte", w[0]);
+    k.type = "button";
+    k.dataset.farbe = i < 5 ? 1 : i < 8 ? 2 : 4;
+    // 10 % Abstand zum Rand, damit kein Wort abgeschnitten wird
+    k.style.left = (10 + w[1] * 80) + "%";
+    k.style.top = (10 + (1 - w[2]) * 80) + "%";
+    k.setAttribute("aria-pressed", "false");
+    k.addEventListener("click", function () { waehleOrt(i); });
+    karte.appendChild(k);
+    kartenKnoepfe.push(k);
   });
+  function waehleOrt(i) {
+    var w = KARTE[i];
+    kartenKnoepfe.forEach(function (k, j) { k.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+    // nächster Nachbar auf der Karte
+    var naechster = null, abstand = 9;
+    KARTE.forEach(function (v, j) {
+      if (j === i) return;
+      var d = Math.hypot(v[1] - w[1], v[2] - w[2]);
+      if (d < abstand) { abstand = d; naechster = v; }
+    });
+    $("landkarte-info").innerHTML = "<strong>„" + w[0] + "“</strong> liegt bei " + komma(w[1]) + " | " + komma(w[2]) +
+      ". Ganz in der Nähe: „" + naechster[0] + "“ (" + komma(naechster[1]) + " | " + komma(naechster[2]) + "). Ähnliche Zahlen, ähnliche Bedeutung.";
+  }
+  waehleOrt(0);
 
   /* ---------- Station 3: Rechnen ---------- */
   START.forEach(function (t, i) {
@@ -260,6 +257,7 @@
     return liste.map(function (k, i) { return { t: k.t, p: gew[i] / summe }; });
   }
   function istEnde(t) { return t === "." || t === "!"; }
+  function anzeige(t) { t = t.trim(); return t === "." ? "Punkt" : t === "!" ? "Ausrufezeichen" : t; }
 
   /* ---------- Station 4: Abwägen ---------- */
   function zeichneBalken(ziel, liste, gewaehlt) {
@@ -280,17 +278,23 @@
   }
   zeichneBalken($("wahrscheinlichkeiten"), kandidaten(START.map(function (t) { return t.t; })));
 
-  /* ---------- Station 5: Würfeln ---------- */
-  var AUGEN = { 1: [4], 2: [0, 8], 3: [0, 4, 8], 4: [0, 2, 6, 8], 5: [0, 2, 4, 6, 8], 6: [0, 2, 3, 5, 6, 8] };
-  var wuerfel = $("wuerfel");
-  for (var w = 0; w < 9; w++) wuerfel.appendChild(el("i"));
-  function zeigeAugen(n) {
-    wuerfel.querySelectorAll("i").forEach(function (punkt, i) { punkt.classList.toggle("auge", AUGEN[n].indexOf(i) >= 0); });
+  /* ---------- Station 5: Würfeln mit dem Glücksrad ---------- */
+  var SVG = "http://www.w3.org/2000/svg";
+  var FARBEN = ["#DDE9A8", "#FDF0A6", "#CFE6D8", "#D6E4F0", "#F4C2D4", "#E3DAEF", "#E8D3B5"];
+  var ORANGE = "#E3780C";
+  function svg(tag, attr) {
+    var e = document.createElementNS(SVG, tag);
+    for (var k in attr) e.setAttribute(k, attr[k]);
+    return e;
   }
-  zeigeAugen(5);
+  function punkt(winkel, r) { // 0 Grad = oben, im Uhrzeigersinn
+    var b = (winkel - 90) * Math.PI / 180;
+    return [Math.cos(b) * r, Math.sin(b) * r];
+  }
 
-  var satz, letzterNeu, aktuelle, beschaeftigt = false;
+  var satz, letzterNeu, aktuelle, beschaeftigt = false, drehung = 0, striche = [];
   var tempRegler = $("temperatur");
+  var drehteil = $("rad-drehteil");
   function temperatur() { return parseFloat(tempRegler.value); }
 
   function zeigeSatz() {
@@ -304,40 +308,96 @@
     if (!istEnde(satz[satz.length - 1].trim())) p.appendChild(el("span", "cursor"));
   }
 
-  function zeigeKandidaten(getroffen) {
-    var fertig = istEnde(satz[satz.length - 1].trim());
-    if (fertig) return;
-    aktuelle = mitTemperatur(kandidaten(satz), temperatur());
-    zeichneBalken($("kandidaten"), aktuelle, getroffen);
-    var streifen = $("streifen");
-    streifen.textContent = "";
+  // Zeichnet das Rad: ein Tortenstück pro Wort, Größe = Wahrscheinlichkeit
+  function zeichneRad(getroffen) {
+    var rad = $("rad");
+    rad.textContent = "";
+    var start = 0;
     aktuelle.forEach(function (k, i) {
-      var teil = el("div", "streifen-teil", k.p > 0.07 ? k.t.trim() : "");
-      teil.dataset.farbe = (i % 6) + 1;
-      teil.style.flexGrow = k.p;
-      teil.style.flexBasis = "0";
-      teil.style.display = k.p === 0 ? "none" : "";
-      if (i === getroffen) teil.classList.add("getroffen");
-      teil.title = k.t.trim() + ": " + prozent(k.p);
-      streifen.appendChild(teil);
+      if (k.p <= 0) { k.von = k.bis = start; return; }
+      var ende = start + k.p * 360;
+      k.von = start; k.bis = ende;
+      var farbe = i === getroffen ? ORANGE : FARBEN[i % FARBEN.length];
+      if (k.p >= 0.9999) {
+        rad.appendChild(svg("circle", { cx: 0, cy: 0, r: 100, fill: farbe }));
+      } else {
+        var a = punkt(start, 100), b = punkt(ende, 100);
+        rad.appendChild(svg("path", {
+          d: "M0 0 L" + a[0] + " " + a[1] + " A100 100 0 " + (ende - start > 180 ? 1 : 0) + " 1 " + b[0] + " " + b[1] + " Z",
+          fill: farbe, stroke: "#FFFFFF", "stroke-width": 1.5
+        }));
+      }
+      start = ende;
     });
+    // Beschriftung entlang des Radius, nur auf Stücken, die groß genug sind
+    aktuelle.forEach(function (k) {
+      if (k.p < 0.075) return;
+      var mitte = (k.von + k.bis) / 2;
+      var links = mitte > 180;
+      var drehen = links ? mitte + 90 : mitte - 90;
+      var pos = k.p >= 0.9999 ? [0, -50] : punkt(mitte, 58);
+      var text = svg("text", {
+        x: 0, y: 0, "text-anchor": "middle", "class": "rad-text",
+        transform: "translate(" + pos[0] + " " + pos[1] + ") rotate(" + (k.p >= 0.9999 ? 0 : drehen) + ")"
+      });
+      var wort = svg("tspan", { x: 0, dy: "-0.15em" });
+      wort.textContent = anzeige(k.t);
+      var wert = svg("tspan", { x: 0, dy: "1.15em", "class": "rad-prozent" });
+      wert.textContent = prozent(k.p);
+      text.appendChild(wort);
+      text.appendChild(wert);
+      rad.appendChild(text);
+    });
+    // Striche am Rand alle 5 Prozent
+    for (var s = 0; s < 20; s++) {
+      var aussen = punkt(s * 18, 100), innen = punkt(s * 18, s % 5 === 0 ? 90 : 94);
+      rad.appendChild(svg("line", { x1: innen[0], y1: innen[1], x2: aussen[0], y2: aussen[1], "class": "rad-strich" }));
+    }
+    rad.appendChild(svg("circle", { cx: 0, cy: 0, r: 100, fill: "none", "class": "rad-rand" }));
+    rad.appendChild(svg("circle", { cx: 0, cy: 0, r: 7, "class": "rad-nabe" }));
+  }
+
+  function zeichneLegende(getroffen) {
+    var liste = $("rad-legende");
+    liste.textContent = "";
+    var summe = striche.reduce(function (s, n) { return s + n; }, 0);
+    aktuelle.forEach(function (k, i) {
+      var li = el("li", i === getroffen ? "gewonnen" : "");
+      var farbe = el("i", "rad-farbe");
+      farbe.style.background = i === getroffen ? ORANGE : FARBEN[i % FARBEN.length];
+      li.appendChild(farbe);
+      li.appendChild(el("span", "rad-wort", anzeige(k.t)));
+      li.appendChild(el("span", "rad-wert", prozent(k.p)));
+      var strichliste = el("span", "strichliste");
+      for (var n = 0; n < (striche[i] || 0); n++) strichliste.appendChild(el("b", (n + 1) % 5 === 0 ? "fuenfter" : ""));
+      if (summe) strichliste.appendChild(el("small", null, (striche[i] || 0) + "×"));
+      li.appendChild(strichliste);
+      liste.appendChild(li);
+    });
+    liste.classList.toggle("mit-strichen", summe > 0);
+  }
+
+  function neuesRad() {
+    if (istEnde(satz[satz.length - 1].trim())) return;
+    aktuelle = mitTemperatur(kandidaten(satz), temperatur());
+    striche = aktuelle.map(function () { return 0; });
+    zeichneRad();
+    zeichneLegende();
   }
 
   function neuStart() {
     satz = START.map(function (t) { return t.t; });
     letzterNeu = -1;
-    $("zeiger").hidden = true;
-    $("wurf-ergebnis").textContent = "Noch nicht gewürfelt.";
-    $("wurf-erklaerung").textContent = "Drück auf „Ein Wort würfeln“.";
+    $("wurf-ergebnis").textContent = "Das Rad steht noch.";
+    $("wurf-erklaerung").textContent = "Drück auf „Glücksrad drehen“.";
     zeigeSatz();
-    zeigeKandidaten();
+    neuesRad();
     setzeKnoepfe();
   }
 
   function setzeKnoepfe() {
     var fertig = istEnde(satz[satz.length - 1].trim());
-    $("einmal-wuerfeln").disabled = fertig || beschaeftigt;
-    $("satz-wuerfeln").disabled = fertig || beschaeftigt;
+    ["einmal-wuerfeln", "zwanzig-drehen", "satz-wuerfeln"].forEach(function (id) { $(id).disabled = fertig || beschaeftigt; });
     $("neu-starten").disabled = beschaeftigt;
     tempRegler.disabled = beschaeftigt;
   }
@@ -359,49 +419,76 @@
     return kette;
   }
 
-  function rolle(schnell) {
-    wuerfel.classList.add("rollt");
-    var runden = schnell ? 4 : 9, n = 0;
-    return new Promise(function (fertig) {
-      (function weiter() {
-        zeigeAugen(1 + Math.floor(Math.random() * 6));
-        if (++n >= runden || ruhig) { wuerfel.classList.remove("rollt"); fertig(); }
-        else setTimeout(weiter, 70);
-      })();
-    });
+  // Dreht das Rad und liefert das gewonnene Stück. Der Zufall: eine Stelle auf dem Rand, jede gleich wahrscheinlich.
+  function drehe(dauer, runden) {
+    var stelle = Math.random() * 360;
+    var treffer = aktuelle.length - 1;
+    for (var i = 0; i < aktuelle.length; i++) {
+      if (aktuelle[i].p > 0 && stelle >= aktuelle[i].von && stelle < aktuelle[i].bis) { treffer = i; break; }
+    }
+    // Die Stelle soll unter dem Zeiger oben landen
+    var ziel = ((360 - stelle) % 360);
+    var bisher = ((drehung % 360) + 360) % 360;
+    drehung += runden * 360 + ((ziel - bisher + 360) % 360);
+    dauer = ruhig ? 0 : dauer;
+    drehteil.style.transition = dauer ? "transform " + dauer + "ms cubic-bezier(.12,.6,.15,1)" : "none";
+    drehteil.style.transform = "rotate(" + drehung + "deg)";
+    return new Promise(function (fertig) { setTimeout(function () { fertig(treffer); }, dauer + 30); });
+  }
+
+  function beschreibe(treffer) {
+    var gewaehlt = aktuelle[treffer];
+    var rang = aktuelle.slice().sort(function (a, b) { return b.p - a.p; }).indexOf(gewaehlt) + 1;
+    $("wurf-ergebnis").textContent = "Gewonnen: „" + anzeige(gewaehlt.t) + "“ (" + prozent(gewaehlt.p) + ")";
+    $("wurf-erklaerung").textContent = rang === 1
+      ? "Das größte Stück hat gewonnen."
+      : "Diesmal hat nicht das größte Stück gewonnen, sondern Platz " + rang + ".";
   }
 
   function einWurf(schnell) {
     if (istEnde(satz[satz.length - 1].trim())) return Promise.resolve(true);
-    zeigeKandidaten();
-    $("zeiger").hidden = true;
-    return kreislauf(schnell).then(function () { return rolle(schnell); }).then(function () {
-      var r = Math.random(), summe = 0, treffer = aktuelle.length - 1;
-      for (var i = 0; i < aktuelle.length; i++) {
-        summe += aktuelle[i].p;
-        if (r < summe) { treffer = i; break; }
-      }
-      var zeiger = $("zeiger");
-      zeiger.hidden = false;
-      zeiger.dataset.zahl = r.toFixed(2).replace(".", ",");
-      zeiger.style.left = (r * 100) + "%";
-      zeigeKandidaten(treffer);
-      var gewaehlt = aktuelle[treffer];
-      var rang = aktuelle.slice().sort(function (a, b) { return b.p - a.p; }).indexOf(gewaehlt) + 1;
-      $("wurf-ergebnis").textContent = "Gewürfelt: „" + gewaehlt.t.trim() + "“ (" + prozent(gewaehlt.p) + ")";
-      $("wurf-erklaerung").textContent = "Zufallszahl " + zeiger.dataset.zahl + (rang === 1
-        ? " – das wahrscheinlichste Wort hat gewonnen."
-        : " – diesmal hat Platz " + rang + " gewonnen, nicht das wahrscheinlichste Wort.");
-      return warte(schnell ? 450 : 700).then(function () {
+    return kreislauf(schnell).then(function () { return drehe(schnell ? 1400 : 3600, schnell ? 2 : 4); }).then(function (treffer) {
+      striche[treffer] = (striche[treffer] || 0) + 1;
+      zeichneRad(treffer);
+      zeichneLegende(treffer);
+      beschreibe(treffer);
+      return warte(schnell ? 600 : 1200).then(function () {
+        var gewaehlt = aktuelle[treffer];
         satz.push(gewaehlt.t);
         letzterNeu = satz.length - 1;
         zeigeSatz();
         var fertig = istEnde(gewaehlt.t);
         if (fertig) satzFertig();
-        else zeigeKandidaten();
+        else neuesRad();
         return fertig;
       });
     });
+  }
+
+  function zwanzigMal() {
+    var runde = 0;
+    function naechste() {
+      if (runde++ >= 20) {
+        var oft = aktuelle.map(function (k, i) { return { t: anzeige(k.t), n: striche[i] }; })
+          .filter(function (x) { return x.n; }).sort(function (a, b) { return b.n - a.n; })
+          .map(function (x) { return x.t + " " + x.n + "×"; });
+        $("wurf-ergebnis").textContent = "20-mal gedreht: " + oft.join(", ");
+        $("wurf-erklaerung").textContent = "Große Stücke gewinnen oft, kleine selten – aber nicht nie. Genau so entstehen unterschiedliche Antworten.";
+        return Promise.resolve();
+      }
+      return drehe(380, 1).then(function (treffer) {
+        striche[treffer] = (striche[treffer] || 0) + 1;
+        zeichneRad(treffer);
+        zeichneLegende(treffer);
+        $("wurf-ergebnis").textContent = "Drehung " + runde + " von 20: „" + anzeige(aktuelle[treffer].t) + "“";
+        $("wurf-erklaerung").textContent = "";
+        return warte(120).then(naechste);
+      });
+    }
+    // Strichliste beginnt bei null
+    striche = aktuelle.map(function () { return 0; });
+    zeichneLegende();
+    return naechste();
   }
 
   function satzFertig() {
@@ -412,7 +499,7 @@
     li.appendChild(el("small", null, "(Temperatur " + tempRegler.value.replace(".", ",") + ")"));
     liste.insertBefore(li, liste.firstChild);
     while (liste.children.length > 8) liste.removeChild(liste.lastChild);
-    $("wurf-erklaerung").textContent = "Satz fertig. Drück auf „Von vorn“ und würfle noch einmal.";
+    $("wurf-erklaerung").textContent = "Satz fertig. Drück auf „Von vorn“ und dreh noch einmal.";
   }
 
   function sperren(fn) {
@@ -423,6 +510,7 @@
   }
 
   $("einmal-wuerfeln").addEventListener("click", function () { sperren(function () { return einWurf(false); }); });
+  $("zwanzig-drehen").addEventListener("click", function () { sperren(zwanzigMal); });
   $("satz-wuerfeln").addEventListener("click", function () {
     sperren(function () {
       function schleife(runde) {
@@ -439,7 +527,7 @@
     for (var i = 0; i < TEMP_TEXTE.length; i++) { if (t <= TEMP_TEXTE[i][0]) { text = TEMP_TEXTE[i][1]; break; } }
     $("temperatur-wert").textContent = t.toFixed(1).replace(".", ",");
     $("temperatur-text").textContent = "· " + text;
-    if (satz) { $("zeiger").hidden = true; zeigeKandidaten(); }
+    if (satz) neuesRad();
   }
   tempRegler.addEventListener("input", tempAnzeige);
   tempAnzeige();
