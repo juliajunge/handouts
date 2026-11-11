@@ -83,6 +83,13 @@ q { quotes: "„" "“"; font-weight: 700; }
 .buehne-h3 { font-size: 1em; margin: 0 0 4px; color: var(--jj-green-dark); }
 .buehne-text { margin: 0 0 16px; }
 .landkarte { position: relative; aspect-ratio: 16 / 10; background: var(--jj-white); border-radius: 16px; margin-top: 8px; overflow: hidden; }
+/* Drei Pastellwolken im Hintergrund; multiply macht die Überschneidungen sichtbar */
+.landkarte-wolken { position: absolute; inset: 0; width: 100%; height: 100%; }
+.wolke { mix-blend-mode: multiply; }
+.wolke--menschen { fill: #DDE9A8; }
+.wolke--veranstaltungen { fill: #FDF0A6; }
+.wolke--orte { fill: #D6E4F0; }
+.wolke-name { position: absolute; z-index: 1; font-size: .7em; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--jj-brown); }
 .landkarte-linien { position: absolute; inset: 0; width: 100%; height: 100%; }
 .landkarte-linien line { vector-effect: non-scaling-stroke; stroke-linecap: round; }
 .linie-eng { stroke: var(--jj-green-dark); stroke-width: 4; }
@@ -94,8 +101,8 @@ q { quotes: "„" "“"; font-weight: 700; }
 .legende.legende--linien i.linie-mittel { border-top: 2px solid var(--jj-green-light); }
 .legende.legende--linien i.linie-lose { border-top: 2px dashed #8C8C7C; }
 .buehne-notiz--oben { margin: -8px 0 8px; }
-.token--karte { position: absolute; transform: translate(-50%, -50%); padding: 4px 10px; font-size: .85em; cursor: pointer; z-index: 1; }
-.token--karte[aria-pressed="true"] { border-color: var(--jj-green-dark); background: var(--jj-green-light); z-index: 2; }
+.token--karte { position: absolute; transform: translate(-50%, -50%); padding: 4px 10px; font-size: .85em; cursor: pointer; z-index: 1; background: var(--jj-white) !important; border-color: rgba(0, 0, 0, .15); }
+.token--karte[aria-pressed="true"] { border-color: var(--jj-green-dark); background: var(--jj-green-light) !important; z-index: 2; }
 .landkarte-info { margin: 12px 0 0; min-height: 3em; }
 /* Zahlenreihen */
 .zahlenreihen { display: grid; gap: 8px; }

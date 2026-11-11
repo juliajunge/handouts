@@ -87,16 +87,24 @@
         <div class="token-reihe token-reihe--ids" id="token-ids" aria-label="Die Token des Beispielsatzes mit ihrer Nummer"></div>
         <hr class="buehne-trenner">
         <h3 class="buehne-h3">Schritt 2: Zu jeder Nummer gehört ein Platz in einer Wortwolke</h3>
-        <p class="buehne-text">Beim Training hat die KI unvorstellbar viele Texte gelesen. Dabei hat sie für jedes Token Zahlen gelernt, die <strong>Gewichte</strong>. Sie legen fest, wo das Token in einer riesigen Wortwolke liegt. Tokens, die oft im gleichen Zusammenhang vorkommen, liegen nah beieinander: Sie sind <strong>eng verbunden</strong>. Tokens, die selten miteinander zu tun haben, liegen weit auseinander: Ihre Verbindung ist <strong>lose</strong>.</p>
-        <p class="buehne-notiz buehne-notiz--oben">Tipp ein Wort an, um seine Verbindungen zu sehen.</p>
+        <p class="buehne-text">Beim Training hat die KI unvorstellbar viele Texte gelesen. Dabei hat sie für jedes Token Zahlen gelernt, die <strong>Gewichte</strong>. Sie legen fest, wo das Token in einer riesigen Wortwolke liegt. Token, die oft im gleichen Zusammenhang vorkommen, liegen nah beieinander: Sie sind <strong>eng verbunden</strong>. Token, die selten miteinander zu tun haben, liegen weit auseinander: Ihre Verbindung ist <strong>lose</strong>.</p>
+        <p class="buehne-text"><strong>Zur Vereinfachung</strong> zeigen wir in der Wolke ganze Wörter. In echt hat jedes Token einen eigenen Platz – auch Wortstücke wie „dring“ und „end“. Tipp ein Wort an, um seine Verbindungen zu sehen.</p>
         <div class="landkarte" id="landkarte" role="group" aria-label="Wortwolke: Wörter zum Antippen">
+          <svg class="landkarte-wolken" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <g class="wolke wolke--menschen"><circle cx="22" cy="30" r="14"/><circle cx="15" cy="45" r="13"/><circle cx="29" cy="47" r="15"/><circle cx="22" cy="61" r="12"/><circle cx="37" cy="58" r="12"/><circle cx="42" cy="31" r="10"/></g>
+            <g class="wolke wolke--veranstaltungen"><circle cx="70" cy="25" r="12"/><circle cx="81" cy="30" r="13"/><circle cx="74" cy="41" r="13"/><circle cx="85" cy="44" r="10"/><circle cx="58" cy="32" r="11"/></g>
+            <g class="wolke wolke--orte"><circle cx="61" cy="76" r="13"/><circle cx="72" cy="69" r="13"/><circle cx="81" cy="61" r="11"/><circle cx="51" cy="82" r="10"/><circle cx="67" cy="84" r="10"/><circle cx="47" cy="68" r="11"/></g>
+          </svg>
+          <span class="wolke-name" style="left:6%;top:6%">Menschen</span>
+          <span class="wolke-name" style="right:6%;top:6%">Veranstaltungen</span>
+          <span class="wolke-name" style="right:6%;bottom:5%">Orte</span>
           <svg class="landkarte-linien" id="landkarte-linien" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
         </div>
         <div class="legende legende--linien"><span><i class="linie-eng"></i> eng verbunden</span><span><i class="linie-mittel"></i> mittel</span><span><i class="linie-lose"></i> lose verbunden</span></div>
         <p class="landkarte-info" id="landkarte-info" aria-live="polite"></p>
         <hr class="buehne-trenner">
         <h3 class="buehne-h3">So sieht der Platz in echt aus</h3>
-        <p class="buehne-text">Unsere Wolke hat zwei Richtungen: links–rechts und oben–unten. Die Wolke der KI hat Tausende. Darum besteht der Platz eines Tokens aus Tausenden Zahlen, einer langen Zahlenreihe. Die Verbindungen sind also keine festen Fäden, sondern Rechenwerte: Je ähnlicher die Zahlenreihen zweier Tokens, desto enger ihre Verbindung.</p>
+        <p class="buehne-text">Unsere Wolke hat zwei Richtungen: links–rechts und oben–unten. Die Wolke der KI hat Tausende. Darum besteht der Platz eines Tokens aus Tausenden Zahlen, einer langen Zahlenreihe. Bei einem kleinen Modell wie Llama 3.1 8B sind es 4.096 Zahlen pro Token, bei den größten Modellen über 10.000. Jedes Token hat gleich viele. Die Verbindungen sind also keine festen Fäden, sondern Rechenwerte: Je ähnlicher die Zahlenreihen zweier Token, desto enger ihre Verbindung.</p>
         <div class="zahlenreihen" id="zahlenreihen" aria-hidden="true"></div>
         <div class="legende"><span><i class="legende-plus"></i> positive Zahl</span><span><i class="legende-minus"></i> negative Zahl</span><span>Ausschnitt: 24 von mehreren Tausend Zahlen</span></div>
       </div>
@@ -121,7 +129,7 @@
         <hr class="buehne-trenner">
         <div class="schichten" id="schichten" aria-hidden="true"></div>
         <div class="zaehler">
-          <span class="kleinlabel">Rechenschritte für ein einziges Wort</span>
+          <span class="kleinlabel">Rechenschritte für ein einziges Token</span>
           <span class="zaehler-zahl" id="rechenschritte" aria-live="polite">0</span>
         </div>
         <button type="button" class="knopf" id="rechnen-starten">&gt; Rechnen lassen</button>
@@ -144,7 +152,7 @@
       <div class="buehne">
         <p class="buehne-titel"><q>Unser Verein sucht dringend neue …</q></p>
         <div class="balken-liste" id="wahrscheinlichkeiten"></div>
-        <p class="buehne-notiz">… und rund 100.000 weitere Token mit fast 0 Prozent.</p>
+        <p class="buehne-notiz">… und rund 100.000 weitere Token mit fast 0 Prozent. In unserem Beispiel sind die wahrscheinlichsten Token ganze Wörter – deshalb sprechen wir ab hier von Wörtern.</p>
       </div>
       <div class="merksatz"><span class="kleinlabel">Merke</span><p>Die KI weiß nicht, was stimmt. Sie berechnet, was wahrscheinlich als Nächstes kommt.</p></div>
       <button type="button" class="knopf weiter" data-oeffnet="5">&gt; Station 5 aufdecken</button>
@@ -231,7 +239,7 @@
         </div>
         <div class="karte">
           <div class="karte-label">Das Modell allein kann wenig</div>
-          <p>Es berechnet nur das nächste Wort. Suchen, Dateien lesen oder sich an frühere Chats erinnern übernehmen Programme rund um das Modell.</p>
+          <p>Es berechnet nur das nächste Token. Suchen, Dateien lesen oder sich an frühere Chats erinnern übernehmen Programme rund um das Modell.</p>
         </div>
       </div>
       <p class="weiterlesen-links"><a href="../warum-ki-halluziniert/">&gt; Handout: Warum ChatGPT halluzinieren muss</a><br><a href="../bessere-prompts-mit-klaro/">&gt; Handout: Bessere Prompts mit KLARO</a></p>
