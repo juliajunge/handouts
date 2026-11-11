@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wie KI ihre Antworten würfelt – interaktiv von Julia Junge</title>
+<meta name="description" content="Schritt für Schritt aufdecken, wie ein Sprachmodell Text in Token und Zahlen übersetzt, Wahrscheinlichkeiten berechnet und dann würfelt.">
+<link rel="stylesheet" href="../vorlage/handout.css">
+<link rel="stylesheet" href="ki-wuerfelt.css">
+</head>
+<body class="ki-wuerfelt">
+<main class="handout">
+
+  <nav class="zurueck nur-web"><a href="../">&larr; zurück zur Übersicht</a></nav>
+
+  <header class="kopf">
+    <a href="https://juliajunge.de"><img class="logo" src="../vorlage/bilder/logo-julia-junge.svg" alt="Julia Junge"></a>
+    <div class="aktionen">
+      <button type="button" class="knopf knopf--leise" id="alles-aufdecken">&gt; Alles aufdecken</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <span class="label">Interaktiv</span>
+      <h1>Wie KI ihre Antworten würfelt</h1>
+      <div class="strich"></div>
+    </div>
+    <img class="hero-bild" src="dragon-bausteine.png" alt="Drache baut mit Bausteinen">
+  </section>
+
+  <div class="inhalt">
+
+    <p class="einstieg"><strong>KI sucht nicht. Sie rechnet – und würfelt.</strong> Ein Sprachmodell wie ChatGPT schreibt seine Antwort Wort für Wort. Für jedes einzelne Wort läuft dieselbe Kette ab. Deck sie hier Station für Station auf.</p>
+
+    <ol class="fahrplan" aria-label="Die fünf Stationen">
+      <li data-ziel="1"><span>1</span> Zerlegen</li>
+      <li data-ziel="2"><span>2</span> Übersetzen</li>
+      <li data-ziel="3"><span>3</span> Rechnen</li>
+      <li data-ziel="4"><span>4</span> Abwägen</li>
+      <li data-ziel="5"><span>5</span> Würfeln</li>
+      <li class="fahrplan-schleife">&gt; und wieder von vorn</li>
+    </ol>
+
+    <div class="startsatz">
+      <span class="kleinlabel">Unser Beispiel</span>
+      <p>Die KI hat schon angefangen zu schreiben: <q>Unser Verein sucht dringend neue …</q> Welches Wort kommt als Nächstes?</p>
+    </div>
+
+    <!-- Station 1 -->
+    <section class="station" id="station-1" data-station="1">
+      <div class="station-kopf">
+        <span class="station-nr" aria-hidden="true">1</span>
+        <div>
+          <span class="kleinlabel">Station 1 · Text wird zu Token</span>
+          <h2>Zerlegen</h2>
+        </div>
+      </div>
+      <p>Die KI liest keine Wörter. Sie zerlegt Text in <strong>Token</strong>: ganze Wörter, Wortstücke oder Satzzeichen. Häufige Wörter sind ein Token, seltene und lange Wörter werden zerschnitten.</p>
+      <div class="buehne">
+        <div class="token-reihe" id="token-beispiel" aria-label="Der Beispielsatz in Token zerlegt"></div>
+        <p class="buehne-notiz"><strong>6 Token</strong> für 5 Wörter: „dringend“ wird in zwei Stücke geteilt.</p>
+        <hr class="buehne-trenner">
+        <label class="feld-label" for="eigener-text">Probier es mit einem eigenen Satz</label>
+        <input class="eingabe" id="eigener-text" type="text" value="Ehrenamtliche Nachbarschaftshilfe braucht Unterstützung." autocomplete="off">
+        <div class="token-reihe" id="token-eigen" aria-live="polite"></div>
+        <p class="buehne-notiz" id="token-zaehler"></p>
+      </div>
+      <div class="merksatz"><span class="kleinlabel">Merksatz</span><p>Für die KI ist Text eine Kette aus Bausteinen.</p></div>
+      <p class="hinweis">Vereinfacht: Echte Modelle schneiden etwas anders, je nach Vokabular. Ein typisches Vokabular hat rund 100.000 bis 200.000 solcher Bausteine. Deutsche Wörter werden öfter zerschnitten als englische.</p>
+      <button type="button" class="knopf weiter" data-oeffnet="2">&gt; Station 2 aufdecken</button>
+    </section>
+
+    <!-- Station 2 -->
+    <section class="station" id="station-2" data-station="2" hidden>
+      <div class="station-kopf">
+        <span class="station-nr" aria-hidden="true">2</span>
+        <div>
+          <span class="kleinlabel">Station 2 · Token werden zu Zahlen</span>
+          <h2>Übersetzen</h2>
+        </div>
+      </div>
+      <p>Mit Buchstaben kann die KI nicht rechnen. Jedes Token hat deshalb eine feste <strong>Nummer</strong>. Zu jeder Nummer gehört eine lange <strong>Zahlenreihe</strong>. Sie ist im Training entstanden und beschreibt, in welchen Zusammenhängen das Token vorkommt.</p>
+      <div class="buehne">
+        <div class="token-reihe token-reihe--ids" id="token-ids" role="group" aria-label="Token mit Nummer, zum Auswählen"></div>
+        <p class="buehne-notiz">Tipp ein Token an, um seine Zahlenreihe zu sehen.</p>
+        <div class="vektor-box">
+          <div class="vektor-kopf"><strong id="vektor-titel">„Verein“</strong> als Zahlenreihe <span class="klein">(Ausschnitt: 24 von mehreren Tausend Zahlen)</span></div>
+          <div class="vektor" id="vektor-gewaehlt" aria-hidden="true"></div>
+          <div class="legende"><span><i class="legende-plus"></i> positiv</span><span><i class="legende-minus"></i> negativ</span></div>
+        </div>
+        <hr class="buehne-trenner">
+        <p class="vergleich-titel"><strong>Ähnliche Bedeutung, ähnliche Zahlen</strong></p>
+        <div class="vergleich-vektoren" id="vergleich" aria-hidden="true"></div>
+        <p class="buehne-notiz">„Ehrenamtliche“ und „Helfer*innen“ haben ähnliche Muster. „Räume“ sieht ganz anders aus. So erkennt die KI Bedeutung – ohne zu verstehen, was ein Ehrenamt ist.</p>
+      </div>
+      <div class="merksatz"><span class="kleinlabel">Merksatz</span><p>Ab hier sieht die KI nur noch Zahlen.</p></div>
+      <button type="button" class="knopf weiter" data-oeffnet="3">&gt; Station 3 aufdecken</button>
+    </section>
+
+    <!-- Station 3 -->
+    <section class="station" id="station-3" data-station="3" hidden>
+      <div class="station-kopf">
+        <span class="station-nr" aria-hidden="true">3</span>
+        <div>
+          <span class="kleinlabel">Station 3 · Zusammenhänge berechnen</span>
+          <h2>Rechnen</h2>
+        </div>
+      </div>
+      <p>Jetzt wird gerechnet. Zuerst schaut die KI, welche Token für das nächste Wort wichtig sind (<strong>Attention</strong>). Dann schickt sie alle Zahlenreihen durch viele <strong>Schichten</strong>. Jede Schicht verrechnet sie mit gelernten Gewichten und gibt das Ergebnis an die nächste weiter.</p>
+      <div class="buehne">
+        <p class="buehne-titel"><strong>Worauf achtet die KI?</strong></p>
+        <div class="token-reihe" id="aufmerksamkeit"></div>
+        <div class="legende legende--stufen"><span><i class="stufe-3"></i> sehr wichtig</span><span><i class="stufe-2"></i> wichtig</span><span><i class="stufe-1"></i> weniger wichtig</span></div>
+        <hr class="buehne-trenner">
+        <div class="schichten" id="schichten" aria-hidden="true"></div>
+        <div class="zaehler">
+          <span class="kleinlabel">Rechenschritte für ein einziges Wort</span>
+          <span class="zaehler-zahl" id="rechenschritte" aria-live="polite">0</span>
+        </div>
+        <button type="button" class="knopf" id="rechnen-starten">&gt; Rechnen lassen</button>
+      </div>
+      <p>Schon ein kleines Modell wie Llama 3.1 8B hat <strong>8 Milliarden</strong> gelernte Zahlen in <strong>32 Schichten</strong>. Für jedes einzelne Wort rechnet es rund 16 Milliarden Mal. Die großen Modelle hinter ChatGPT, Claude oder Gemini sind noch deutlich größer.</p>
+      <div class="merksatz"><span class="kleinlabel">Merksatz</span><p>Diese Rechnung kann niemand Schritt für Schritt nachvollziehen. Darum heißt KI auch Black Box.</p></div>
+      <button type="button" class="knopf weiter" data-oeffnet="4">&gt; Station 4 aufdecken</button>
+    </section>
+
+    <!-- Station 4 -->
+    <section class="station" id="station-4" data-station="4" hidden>
+      <div class="station-kopf">
+        <span class="station-nr" aria-hidden="true">4</span>
+        <div>
+          <span class="kleinlabel">Station 4 · Wahrscheinlichkeiten</span>
+          <h2>Abwägen</h2>
+        </div>
+      </div>
+      <p>Am Ende der Rechnung steht <strong>keine Antwort</strong>, sondern eine Liste: Jedes Token im Vokabular bekommt eine Wahrscheinlichkeit, das nächste zu sein. Zusammen ergeben sie 100 Prozent.</p>
+      <div class="buehne">
+        <p class="buehne-titel"><q>Unser Verein sucht dringend neue …</q></p>
+        <div class="balken-liste" id="wahrscheinlichkeiten"></div>
+        <p class="buehne-notiz">… und rund 100.000 weitere Token mit fast 0 Prozent.</p>
+      </div>
+      <div class="merksatz"><span class="kleinlabel">Merksatz</span><p>Die KI weiß nicht, was stimmt. Sie berechnet, was oft so geschrieben wird.</p></div>
+      <button type="button" class="knopf weiter" data-oeffnet="5">&gt; Station 5 aufdecken</button>
+    </section>
+
+    <!-- Station 5 -->
+    <section class="station" id="station-5" data-station="5" hidden>
+      <div class="station-kopf">
+        <span class="station-nr" aria-hidden="true">5</span>
+        <div>
+          <span class="kleinlabel">Station 5 · Der Zufall entscheidet</span>
+          <h2>Würfeln</h2>
+        </div>
+      </div>
+      <p>Jetzt kommt der Zufall: Die KI nimmt <strong>nicht immer</strong> das wahrscheinlichste Wort. Sie würfelt – mit einem gezinkten Würfel. Wahrscheinliche Wörter bekommen viel Fläche, seltene wenig. Das gewürfelte Wort wird angehängt, und <mark>die ganze Kette beginnt von vorn</mark>.</p>
+
+      <div class="buehne buehne--wuerfeln">
+        <div class="satz-zeile">
+          <span class="kleinlabel">Der Satz bisher</span>
+          <p class="satz" id="satz" aria-live="polite"></p>
+        </div>
+
+        <ol class="kreislauf" id="kreislauf" aria-hidden="true">
+          <li>Zerlegen</li><li>Übersetzen</li><li>Rechnen</li><li>Abwägen</li><li>Würfeln</li>
+        </ol>
+
+        <div class="wuerfel-bereich">
+          <div class="wuerfel" id="wuerfel" aria-hidden="true"></div>
+          <div class="wuerfel-text">
+            <p class="wurf-ergebnis" id="wurf-ergebnis" aria-live="polite">Noch nicht gewürfelt.</p>
+            <p class="buehne-notiz" id="wurf-erklaerung"></p>
+          </div>
+        </div>
+
+        <div class="streifen-rahmen">
+          <div class="streifen" id="streifen" aria-hidden="true"></div>
+          <div class="zeiger" id="zeiger" hidden></div>
+        </div>
+        <p class="buehne-notiz streifen-notiz">Der Streifen ist der gezinkte Würfel: Eine Zufallszahl zwischen 0 und 1 landet irgendwo darauf.</p>
+
+        <div class="balken-liste balken-liste--klein" id="kandidaten"></div>
+
+        <div class="temperatur">
+          <label class="feld-label" for="temperatur">Temperatur: <output id="temperatur-wert">0,7</output> <span id="temperatur-text">üblich</span></label>
+          <input type="range" id="temperatur" min="0" max="2" step="0.1" value="0.7">
+          <div class="temperatur-skala"><span>0 · kein Zufall</span><span>1 · normal</span><span>2 · wild</span></div>
+        </div>
+
+        <div class="knopf-reihe">
+          <button type="button" class="knopf knopf--orange" id="einmal-wuerfeln">&gt; Ein Wort würfeln</button>
+          <button type="button" class="knopf" id="satz-wuerfeln">&gt; Satz zu Ende würfeln</button>
+          <button type="button" class="knopf knopf--leise" id="neu-starten">&gt; Von vorn</button>
+        </div>
+
+        <div class="verlauf" id="verlauf-box" hidden>
+          <span class="kleinlabel">Deine gewürfelten Sätze</span>
+          <ol class="verlauf-liste" id="verlauf"></ol>
+          <p class="buehne-notiz">Gleicher Anfang, gleiche Rechnung – trotzdem andere Sätze. Das liegt nur am Würfeln.</p>
+        </div>
+      </div>
+
+      <p>Mit der <strong>Temperatur</strong> legen die Anbieter fest, wie stark gewürfelt wird. Bei 0 nimmt die KI immer das wahrscheinlichste Wort, die Antworten werden starr und wiederholen sich. Je höher die Temperatur, desto öfter gewinnen seltene Wörter – kreativer, aber auch fehleranfälliger. Chatbots arbeiten meist mit einer Einstellung zwischen 0,6 und 1.</p>
+      <div class="merksatz"><span class="kleinlabel">Merksatz</span><p>Jedes Wort einer KI-Antwort ist gewürfelt. Immer wieder, bis der Text fertig ist.</p></div>
+      <button type="button" class="knopf weiter" data-oeffnet="6">&gt; Was heißt das für dich?</button>
+    </section>
+
+    <!-- Fazit -->
+    <section class="station station--fazit" id="station-6" data-station="6" hidden>
+      <h2>Was heißt das für dich?</h2>
+      <div class="karten">
+        <div class="karte">
+          <div class="karte-label">Gleiche Frage, andere Antwort</div>
+          <p>Weil gewürfelt wird, antwortet die KI auf dieselbe Frage jedes Mal etwas anders. Lass dir ruhig mehrere Varianten geben und wähle aus.</p>
+        </div>
+        <div class="karte">
+          <div class="karte-label">Flüssig heißt nicht richtig</div>
+          <p>Ein gewürfeltes Wort klingt immer überzeugend – auch wenn es falsch ist. So entstehen Halluzinationen. Prüfe Fakten, Zahlen und Quellen selbst.</p>
+        </div>
+        <div class="karte">
+          <div class="karte-label">Dein Kontext zinkt den Würfel</div>
+          <p>Alles, was du in den Prompt schreibst, verschiebt die Wahrscheinlichkeiten. Je klarer dein Kontext, desto eher landet der Würfel bei dem, was du brauchst.</p>
+        </div>
+        <div class="karte">
+          <div class="karte-label">Das Modell allein kann wenig</div>
+          <p>Es berechnet nur das nächste Wort. Suchen, Dateien lesen oder sich an frühere Chats erinnern übernehmen Programme rund um das Modell.</p>
+        </div>
+      </div>
+      <p class="weiterlesen-links"><a href="../warum-ki-halluziniert/">&gt; Handout: Warum ChatGPT halluzinieren muss</a><br><a href="../bessere-prompts-mit-klaro/">&gt; Handout: Bessere Prompts mit KLARO</a></p>
+      <p class="hinweis">Alle Zahlen und Wahrscheinlichkeiten auf dieser Seite sind zur Veranschaulichung vereinfacht oder ausgedacht. Das Prinzip stimmt. Die Angaben zu Llama 3.1 8B (8 Milliarden Gewichte, 32 Schichten) sind echt.</p>
+    </section>
+
+  </div>
+
+  <footer class="fuss fuss--web">
+    <div class="drachenlinie" aria-hidden="true"><span></span><img src="../vorlage/bilder/logo-julia-junge.svg" alt=""></div>
+    <span><a href="https://juliajunge.de">&gt; juliajunge.de</a><a class="fuss-impressum" href="https://www.juliajunge.de/kontakt-und-impressum/">&gt; Impressum</a><a class="fuss-impressum" href="https://www.juliajunge.de/datenschutzerklaerung/">&gt; Datenschutz</a></span>
+    <span class="fuss-rechts"><span>Autorin: Julia Junge · Stand: 11. November 2026 · keine Gewähr</span><img src="../vorlage/bilder/cc-by-sa.png" alt="Lizenz CC BY-SA"></span>
+  </footer>
+</main>
+<script src="ki-wuerfelt.js"></script>
+</body>
+</html>

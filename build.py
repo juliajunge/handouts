@@ -23,6 +23,7 @@ ROOT = Path(__file__).parent
 HANDOUTS = ROOT / "handouts"
 VORLAGE = ROOT / "vorlage"
 SITE = ROOT / "site"
+INTERAKTIV = ROOT / "interaktiv"
 
 
 def container(md, name, oeffnen, schliessen="</div>\n"):
@@ -122,6 +123,7 @@ def baue_seiten():
         shutil.rmtree(SITE)
     SITE.mkdir()
     shutil.copytree(VORLAGE, SITE / "vorlage", ignore=shutil.ignore_patterns("*.j2"))
+    kopiere_interaktiv()
 
     env = Environment(loader=FileSystemLoader(VORLAGE), autoescape=True)
     # Prüfsumme hängt an der CSS-Adresse, damit Browser nach Änderungen nicht die alte Datei aus dem Zwischenspeicher nehmen
@@ -185,6 +187,20 @@ def baue_seiten():
     baue_sammelseiten(uebersicht, eintraege, alle, werkzeuge)
     (SITE / ".nojekyll").write_text("")
     return alle
+
+
+def kopiere_interaktiv():
+    """Interaktive Seiten (interaktiv/<name>/) sind eigene kleine Projekte aus HTML, CSS und JavaScript.
+    Sie werden unverändert nach site/<name>/ kopiert, nutzen aber Schriften und Farben aus vorlage/."""
+    if not INTERAKTIV.exists():
+        return
+    for ordner in sorted(p for p in INTERAKTIV.iterdir() if p.is_dir()):
+        if (HANDOUTS / ordner.name).exists():
+            sys.exit(f"interaktiv/{ordner.name}: Unter handouts/ gibt es schon einen Ordner mit diesem Namen")
+        if not (ordner / "index.html").exists():
+            sys.exit(f"interaktiv/{ordner.name}: index.html fehlt")
+        shutil.copytree(ordner, SITE / ordner.name, ignore=shutil.ignore_patterns("*.md"))
+        print(f"Interaktiv: {SITE / ordner.name / 'index.html'}")
 
 
 def baue_sammelseiten(vorlage, eintraege, alle, werkzeuge):

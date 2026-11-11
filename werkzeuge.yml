@@ -5,3 +5,9 @@
   link: https://juliajunge.github.io/KI-Standortbestimmung/
   knopf: Standortbestimmung starten
   hinweis: Online ausfüllen · etwa 7 Minuten
+
+- titel: Wie KI ihre Antworten würfelt
+  beschreibung: Station für Station aufdecken, wie ein Sprachmodell Text in Token und Zahlen übersetzt, Wahrscheinlichkeiten berechnet und dann würfelt – zum Selbstausprobieren.
+  link: https://juliajunge.github.io/handouts/ki-wuerfelt/
+  knopf: Ausprobieren
+  hinweis: Interaktiv · etwa 10 Minuten

@@ -21,6 +21,8 @@
   beschreibung: Wie Sprachmodelle funktionieren, warum sie Fehler machen und wie du gute Prompts schreibst.
   farbe: gelb
   inhalte:
+    - werkzeug: Wie KI ihre Antworten würfelt
+      kurz: Zerlegen, übersetzen, rechnen, abwägen, würfeln – zum Aufdecken und Selbstausprobieren.
     - handout: warum-ki-halluziniert
       kurz: Warum Sprachmodelle Antworten erfinden, nicht neutral sind und was dagegen hilft.
     - handout: bessere-prompts-mit-klaro

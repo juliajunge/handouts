@@ -179,3 +179,9 @@ Kleine Übersichten mit ausgewählten Handouts, z. B. zum Verlinken im Workshop,
 ## Online-Werkzeuge auf der Übersicht
 
 Interaktive Seiten wie die [KI-Standortbestimmung](https://juliajunge.github.io/KI-Standortbestimmung/) liegen in eigenen Repos. Sie stehen in `werkzeuge.yml` (`titel`, `beschreibung`, `link`, `knopf` und optional `hinweis`) und werden in `bereiche.yml` mit `- werkzeug: <titel>` einem Bereich zugeordnet. Dort haben sie einen Rahmen statt einer Fläche und keinen PDF-Knopf. Ein Werkzeug ohne Bereich erscheint unten unter „Außerdem: zum Online-Ausfüllen“.
+
+## Interaktive Seiten im Repo
+
+Interaktive Seiten, die du hier im Repo pflegen willst, liegen als eigenes kleines Projekt unter `interaktiv/<name>/` (HTML, CSS, JavaScript). `build.py` kopiert sie unverändert nach `…/handouts/<name>/`; Schriften, Farben, Kopf und Fuß kommen aus `vorlage/handout.css`. Auf die Übersicht kommen sie wie Online-Werkzeuge über `werkzeuge.yml` und `bereiche.yml`.
+
+- [Wie KI ihre Antworten würfelt](https://juliajunge.github.io/handouts/ki-wuerfelt/) – `interaktiv/ki-wuerfelt/`
