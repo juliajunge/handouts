@@ -83,11 +83,36 @@ q { quotes: "„" "“"; font-weight: 700; }
 .buehne-h3 { font-size: 1em; margin: 0 0 4px; color: var(--jj-green-dark); }
 .buehne-text { margin: 0 0 16px; }
 .landkarte { position: relative; aspect-ratio: 16 / 10; background: var(--jj-white); border-radius: 16px; margin-top: 8px; overflow: hidden; }
-.landkarte-gebiet { position: absolute; font-size: .7em; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--jj-brown); }
-.token--karte { position: absolute; transform: translate(-50%, -50%); padding: 4px 10px; font-size: .85em; cursor: pointer; }
-.token--karte[aria-pressed="true"] { border-color: var(--jj-green-dark); background: var(--jj-green-light); z-index: 1; }
-#token-eigen:empty { min-height: 0; }
+.landkarte-linien { position: absolute; inset: 0; width: 100%; height: 100%; }
+.landkarte-linien line { vector-effect: non-scaling-stroke; stroke-linecap: round; }
+.linie-eng { stroke: var(--jj-green-dark); stroke-width: 4; }
+.linie-mittel { stroke: var(--jj-green-light); stroke-width: 2; }
+.linie-lose { stroke: #B9B9A8; stroke-width: 1; stroke-dasharray: 3 4; }
+.legende--linien { margin-top: 8px; }
+.legende.legende--linien i { width: 28px; height: 0; border-radius: 0; vertical-align: 4px; background: none; }
+.legende.legende--linien i.linie-eng { border-top: 4px solid var(--jj-green-dark); }
+.legende.legende--linien i.linie-mittel { border-top: 2px solid var(--jj-green-light); }
+.legende.legende--linien i.linie-lose { border-top: 2px dashed #8C8C7C; }
+.buehne-notiz--oben { margin: -8px 0 8px; }
+.token--karte { position: absolute; transform: translate(-50%, -50%); padding: 4px 10px; font-size: .85em; cursor: pointer; z-index: 1; }
+.token--karte[aria-pressed="true"] { border-color: var(--jj-green-dark); background: var(--jj-green-light); z-index: 2; }
 .landkarte-info { margin: 12px 0 0; min-height: 3em; }
+/* Zahlenreihen */
+.zahlenreihen { display: grid; gap: 8px; }
+.zahlenreihe-zeile { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 12px; align-items: center; background: var(--jj-white); border-radius: 8px; padding: 8px 12px; }
+.zahlenreihe-name { display: flex; flex-direction: column; line-height: 1.2; }
+.zahlenreihe-name strong { font-size: .9em; }
+.zahlenreihe-name small { font-size: .75em; color: var(--jj-brown); }
+.vektor { display: grid; grid-template-columns: repeat(24, 1fr); gap: 2px; height: 44px; }
+.vektor i { position: relative; display: block; }
+.vektor i::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--border-content); }
+.vektor i b { position: absolute; left: 0; right: 0; display: block; border-radius: 2px; }
+.vektor i b.plus { bottom: 50%; background: var(--jj-green-dark); }
+.vektor i b.minus { top: 50%; background: var(--jj-orange); }
+.legende { display: flex; flex-wrap: wrap; gap: 16px; font-size: .8em; margin-top: 8px; }
+.legende i { display: inline-block; width: 12px; height: 12px; border-radius: 2px; vertical-align: -1px; margin-right: 4px; }
+.legende-plus { background: var(--jj-green-dark); }
+.legende-minus { background: var(--jj-orange); }
 .rad-text { pointer-events: none; }
 
 /* Aufmerksamkeit */
@@ -190,6 +215,7 @@ q { quotes: "„" "“"; font-weight: 700; }
   .balken, .balken-liste--klein .balken { grid-template-columns: 110px minmax(0, 1fr) 48px; gap: 8px; }
   .balken-wort { font-size: .9em; }
   .landkarte { aspect-ratio: 3 / 4; }
+  .zahlenreihe-zeile { grid-template-columns: 1fr; gap: 4px; }
   .token--karte { font-size: .75em; padding: 3px 8px; }
   .schicht { grid-template-columns: 64px minmax(0, 1fr); }
   .station-nr { width: 44px; height: 44px; font-size: 1.6em; }

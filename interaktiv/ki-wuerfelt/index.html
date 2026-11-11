@@ -31,7 +31,7 @@
 
   <div class="inhalt">
 
-    <p class="einstieg"><strong>KI sucht nicht. Sie rechnet – und würfelt.</strong> Ein Sprachmodell wie ChatGPT schreibt seine Antwort Wort für Wort. Für jedes einzelne Wort läuft dieselbe Kette ab. Deck sie hier Station für Station auf.</p>
+    <p class="einstieg"><strong>KI sucht nicht. Sie rechnet – und würfelt.</strong> Generative KI wie ChatGPT schreibt ihre Antwort Stück für Stück. Für jedes einzelne Stück läuft dieselbe Kette ab. Deck sie hier Station für Station auf.</p>
 
     <ol class="fahrplan" aria-label="Die fünf Stationen">
       <li data-ziel="1"><span>1</span> Zerlegen</li>
@@ -56,7 +56,7 @@
           <h2>Zerlegen</h2>
         </div>
       </div>
-      <p>Die KI liest keine Wörter. Sie zerlegt Text in <strong>Token</strong>: ganze Wörter, Wortstücke oder Satzzeichen. Häufige Wörter sind ein Token, seltene und lange Wörter werden zerschnitten.</p>
+      <p>Die KI liest Text nicht Wort für Wort wie wir. Sie zerlegt ihn zuerst in <strong>Token</strong>: ganze Wörter, Wortstücke oder Satzzeichen. Häufige Wörter sind ein Token, seltene und lange Wörter werden zerschnitten.</p>
       <div class="buehne">
         <div class="token-reihe" id="token-beispiel" aria-label="Der Beispielsatz in Token zerlegt"></div>
         <p class="buehne-notiz"><strong>6 Token</strong> für 5 Wörter: „dringend“ wird in zwei Stücke geteilt.</p>
@@ -66,8 +66,8 @@
         <div class="token-reihe" id="token-eigen" aria-live="polite"></div>
         <p class="buehne-notiz" id="token-zaehler"></p>
       </div>
-      <div class="merksatz"><span class="kleinlabel">Merksatz</span><p>Für die KI ist Text eine Kette aus Bausteinen.</p></div>
-      <p class="hinweis">Vereinfacht: Echte Modelle schneiden etwas anders, je nach Vokabular. Ein typisches Vokabular hat rund 100.000 bis 200.000 solcher Bausteine. Deutsche Wörter werden öfter zerschnitten als englische.</p>
+      <div class="merksatz"><span class="kleinlabel">Merke</span><p>Für die KI ist Text eine Kette aus Bausteinen.</p></div>
+      <p class="hinweis">Vereinfacht: Echte Modelle schneiden etwas anders, je nach Modell. Ein Modell kennt meist rund 100.000 bis 200.000 solcher Bausteine. Deutsche Wörter werden öfter zerschnitten als englische.</p>
       <button type="button" class="knopf weiter" data-oeffnet="2">&gt; Station 2 aufdecken</button>
     </section>
 
@@ -80,23 +80,27 @@
           <h2>Übersetzen</h2>
         </div>
       </div>
-      <p>Rechnen kann die KI nur mit Zahlen. Deshalb übersetzt sie jedes Token in Zahlen – in zwei Schritten.</p>
+      <p>Rechnen kann die KI nur mit Zahlen. Deshalb übersetzt sie jedes Token in Zahlen.</p>
       <div class="buehne">
         <h3 class="buehne-h3">Schritt 1: Jedes Token hat eine Nummer</h3>
-        <p class="buehne-text">Die KI hat eine feste Liste aller Bausteine, die sie kennt – wie ein Wörterbuch mit rund 100.000 Einträgen. Jeder Eintrag hat eine Nummer. Die Nummer selbst bedeutet nichts. Sie sagt nur, wo das Token in der Liste steht.</p>
+        <p class="buehne-text">Die KI hat eine feste Liste aller Token, die sie kennt – wie ein Wörterbuch mit rund 100.000 Einträgen. Jeder Eintrag hat eine Nummer. Die Nummer selbst bedeutet nichts. Sie sagt nur, wo das Token in der Liste steht.</p>
         <div class="token-reihe token-reihe--ids" id="token-ids" aria-label="Die Token des Beispielsatzes mit ihrer Nummer"></div>
         <hr class="buehne-trenner">
-        <h3 class="buehne-h3">Schritt 2: Jede Nummer hat einen Platz auf einer Landkarte</h3>
-        <p class="buehne-text">Zu jeder Nummer gehört ein Platz auf einer Art <strong>Landkarte der Bedeutungen</strong>. Wörter, die in ähnlichen Sätzen vorkommen, liegen nah beieinander. Diesen Platz hat die KI im Training selbst gefunden – niemand hat ihn festgelegt.</p>
-        <div class="landkarte" id="landkarte" role="group" aria-label="Landkarte der Bedeutungen: Wörter zum Antippen">
-          <span class="landkarte-gebiet" style="left:4%;top:4%">Menschen</span>
-          <span class="landkarte-gebiet" style="right:4%;top:4%">Veranstaltungen</span>
-          <span class="landkarte-gebiet" style="right:4%;bottom:4%">Orte</span>
+        <h3 class="buehne-h3">Schritt 2: Zu jeder Nummer gehört ein Platz in einer Wortwolke</h3>
+        <p class="buehne-text">Beim Training hat die KI unvorstellbar viele Texte gelesen. Dabei hat sie für jedes Token Zahlen gelernt, die <strong>Gewichte</strong>. Sie legen fest, wo das Token in einer riesigen Wortwolke liegt. Tokens, die oft im gleichen Zusammenhang vorkommen, liegen nah beieinander: Sie sind <strong>eng verbunden</strong>. Tokens, die selten miteinander zu tun haben, liegen weit auseinander: Ihre Verbindung ist <strong>lose</strong>.</p>
+        <p class="buehne-notiz buehne-notiz--oben">Tipp ein Wort an, um seine Verbindungen zu sehen.</p>
+        <div class="landkarte" id="landkarte" role="group" aria-label="Wortwolke: Wörter zum Antippen">
+          <svg class="landkarte-linien" id="landkarte-linien" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
         </div>
+        <div class="legende legende--linien"><span><i class="linie-eng"></i> eng verbunden</span><span><i class="linie-mittel"></i> mittel</span><span><i class="linie-lose"></i> lose verbunden</span></div>
         <p class="landkarte-info" id="landkarte-info" aria-live="polite"></p>
-        <p class="buehne-notiz">Unsere Karte hat zwei Richtungen, also zwei Zahlen pro Wort. Die Karte der KI hat Tausende Richtungen. Darum besteht der Platz eines Tokens aus Tausenden Zahlen – und mit genau diesen Zahlen rechnet die KI weiter.</p>
+        <hr class="buehne-trenner">
+        <h3 class="buehne-h3">So sieht der Platz in echt aus</h3>
+        <p class="buehne-text">Unsere Wolke hat zwei Richtungen: links–rechts und oben–unten. Die Wolke der KI hat Tausende. Darum besteht der Platz eines Tokens aus Tausenden Zahlen, einer langen Zahlenreihe. Die Verbindungen sind also keine festen Fäden, sondern Rechenwerte: Je ähnlicher die Zahlenreihen zweier Tokens, desto enger ihre Verbindung.</p>
+        <div class="zahlenreihen" id="zahlenreihen" aria-hidden="true"></div>
+        <div class="legende"><span><i class="legende-plus"></i> positive Zahl</span><span><i class="legende-minus"></i> negative Zahl</span><span>Ausschnitt: 24 von mehreren Tausend Zahlen</span></div>
       </div>
-      <div class="merksatz"><span class="kleinlabel">Merksatz</span><p>Bedeutung ist für die KI Nähe auf einer Landkarte aus Zahlen.</p></div>
+      <div class="merksatz"><span class="kleinlabel">Merke</span><p>Für die KI ist Bedeutung Nähe in einer Wolke aus Zahlen.</p></div>
       <button type="button" class="knopf weiter" data-oeffnet="3">&gt; Station 3 aufdecken</button>
     </section>
 
@@ -109,7 +113,7 @@
           <h2>Rechnen</h2>
         </div>
       </div>
-      <p>Jetzt wird gerechnet. Zuerst schaut die KI, welche Token für das nächste Wort wichtig sind (<strong>Attention</strong>). Dann schickt sie alle Zahlenreihen durch viele <strong>Schichten</strong>. Jede Schicht verrechnet sie mit gelernten Gewichten und gibt das Ergebnis an die nächste weiter.</p>
+      <p>Jetzt wird gerechnet, und zwar in vielen <strong>Schichten</strong> hintereinander. In jeder Schicht passiert zweierlei: Erst vergleicht die KI jedes Token mit den Token davor und prüft, welche für den Zusammenhang wichtig sind (<strong>Attention</strong>, auf Deutsch Aufmerksamkeit). Dann verrechnet sie jede Zahlenreihe mit weiteren gelernten Gewichten. So steckt in jedem Token nach und nach mehr vom ganzen Satz. Das Ergebnis geht an die nächste Schicht.</p>
       <div class="buehne">
         <p class="buehne-titel"><strong>Worauf achtet die KI?</strong></p>
         <div class="token-reihe" id="aufmerksamkeit"></div>
@@ -122,8 +126,8 @@
         </div>
         <button type="button" class="knopf" id="rechnen-starten">&gt; Rechnen lassen</button>
       </div>
-      <p>Schon ein kleines Modell wie Llama 3.1 8B hat <strong>8 Milliarden</strong> gelernte Zahlen in <strong>32 Schichten</strong>. Für jedes einzelne Wort rechnet es rund 16 Milliarden Mal. Die großen Modelle hinter ChatGPT, Claude oder Gemini sind noch deutlich größer.</p>
-      <div class="merksatz"><span class="kleinlabel">Merksatz</span><p>Diese Rechnung kann niemand Schritt für Schritt nachvollziehen. Darum heißt KI auch Black Box.</p></div>
+      <p>Schon ein kleines Modell wie Llama 3.1 8B hat <strong>8 Milliarden</strong> gelernte Zahlen in <strong>32 Schichten</strong>. Für jedes einzelne Token braucht es rund 16 Milliarden Rechenschritte. Die großen Modelle hinter ChatGPT, Claude oder Gemini sind noch deutlich größer.</p>
+      <div class="merksatz"><span class="kleinlabel">Merke</span><p>Diese Rechnung kann niemand Schritt für Schritt nachvollziehen – auch die Entwickler*innen nicht. Darum bezeichnet man generative KI auch als Black Box.</p></div>
       <button type="button" class="knopf weiter" data-oeffnet="4">&gt; Station 4 aufdecken</button>
     </section>
 
@@ -136,13 +140,13 @@
           <h2>Abwägen</h2>
         </div>
       </div>
-      <p>Am Ende der Rechnung steht <strong>keine Antwort</strong>, sondern eine Liste: Jedes Token im Vokabular bekommt eine Wahrscheinlichkeit, das nächste zu sein. Zusammen ergeben sie 100 Prozent.</p>
+      <p>Am Ende der Rechnung steht <strong>keine Antwort</strong>, sondern eine Liste: Jedes Token aus dem Wörterbuch der KI bekommt eine Wahrscheinlichkeit, das nächste zu sein. Zusammen ergeben sie 100 Prozent. Diese Liste ist das Ergebnis aller Verbindungen: Je enger ein Token mit dem bisherigen Satz verbunden ist, desto höher seine Wahrscheinlichkeit.</p>
       <div class="buehne">
         <p class="buehne-titel"><q>Unser Verein sucht dringend neue …</q></p>
         <div class="balken-liste" id="wahrscheinlichkeiten"></div>
         <p class="buehne-notiz">… und rund 100.000 weitere Token mit fast 0 Prozent.</p>
       </div>
-      <div class="merksatz"><span class="kleinlabel">Merksatz</span><p>Die KI weiß nicht, was stimmt. Sie berechnet, was oft so geschrieben wird.</p></div>
+      <div class="merksatz"><span class="kleinlabel">Merke</span><p>Die KI weiß nicht, was stimmt. Sie berechnet, was wahrscheinlich als Nächstes kommt.</p></div>
       <button type="button" class="knopf weiter" data-oeffnet="5">&gt; Station 5 aufdecken</button>
     </section>
 
@@ -204,8 +208,8 @@
         </div>
       </div>
 
-      <p>Mit der <strong>Temperatur</strong> legen die Anbieter fest, wie stark gewürfelt wird. Auf dem Glücksrad siehst du das sofort: Bei 0 gibt es nur noch ein einziges Stück, die KI nimmt immer das wahrscheinlichste Wort, die Antworten werden starr und wiederholen sich. Je höher die Temperatur, desto ähnlicher werden die Stücke und desto öfter gewinnen seltene Wörter – kreativer, aber auch fehleranfälliger. Chatbots arbeiten meist mit einer Einstellung zwischen 0,6 und 1.</p>
-      <div class="merksatz"><span class="kleinlabel">Merksatz</span><p>Jedes Wort einer KI-Antwort ist gewürfelt. Immer wieder, bis der Text fertig ist.</p></div>
+      <p>Mit der <strong>Temperatur</strong> legen die Anbieter fest, wie stark gewürfelt wird. Auf dem Glücksrad siehst du das sofort: Bei 0 gibt es nur noch ein einziges Stück, die KI nimmt immer das wahrscheinlichste Wort, die Antworten werden starr und wiederholen sich. Je höher die Temperatur, desto ähnlicher werden die Stücke und desto öfter gewinnen seltene Wörter – kreativer, aber auch fehleranfälliger. Chatbots arbeiten meist mit einer Einstellung zwischen 0,6 und 1. Ändern kannst du sie dort in der Regel nicht.</p>
+      <div class="merksatz"><span class="kleinlabel">Merke</span><p>Eine KI-Antwort entsteht Token für Token – und jedes davon ist gewürfelt.</p></div>
       <button type="button" class="knopf weiter" data-oeffnet="6">&gt; Was heißt das für dich?</button>
     </section>
 
@@ -219,11 +223,11 @@
         </div>
         <div class="karte">
           <div class="karte-label">Flüssig heißt nicht richtig</div>
-          <p>Ein gewürfeltes Wort klingt immer überzeugend – auch wenn es falsch ist. So entstehen Halluzinationen. Prüfe Fakten, Zahlen und Quellen selbst.</p>
+          <p>Die KI wählt Wörter, die gut passen – nicht Wörter, die geprüft sind. Darum klingen falsche Antworten genauso überzeugend wie richtige. So entstehen Halluzinationen. Prüfe Fakten, Zahlen und Quellen selbst.</p>
         </div>
         <div class="karte">
-          <div class="karte-label">Dein Kontext zinkt den Würfel</div>
-          <p>Alles, was du in den Prompt schreibst, verschiebt die Wahrscheinlichkeiten. Je klarer dein Kontext, desto eher landet der Würfel bei dem, was du brauchst.</p>
+          <div class="karte-label">Dein Kontext verändert das Glücksrad</div>
+          <p>Alles, was du in den Prompt schreibst, fließt in die Rechnung ein und verschiebt die Stücke. Je klarer dein Kontext, desto eher bleibt das Rad bei dem stehen, was du brauchst.</p>
         </div>
         <div class="karte">
           <div class="karte-label">Das Modell allein kann wenig</div>

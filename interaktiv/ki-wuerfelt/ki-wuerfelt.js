@@ -117,41 +117,91 @@
   // Schritt 1: Nummern
   START.forEach(function (t, i) { $("token-ids").appendChild(tokenChip(t.t, i, true, t.id)); });
 
-  // Schritt 2: Landkarte der Bedeutungen. x nach rechts, y nach oben, jeweils 0 bis 1 (ausgedacht)
+  // Schritt 2: Wortwolke. Platz x nach rechts, y nach oben, jeweils 0 bis 1 (ausgedacht)
   var KARTE = [
     ["Ehrenamtliche", 0.12, 0.76], ["Helfer*innen", 0.20, 0.62], ["Mitglieder", 0.08, 0.48],
     ["Spender*innen", 0.22, 0.90], ["Verein", 0.30, 0.34],
     ["Sommerfest", 0.80, 0.86], ["Mittagstisch", 0.76, 0.72], ["Repair-Café", 0.88, 0.58],
     ["Räume", 0.70, 0.20], ["Kita", 0.88, 0.32], ["Stadtteil", 0.54, 0.08]
   ];
-
-
   function komma(z) { return z.toFixed(2).replace(".", ","); }
-  var karte = $("landkarte"), kartenKnoepfe = [];
+  function abstand(v, w) { return Math.hypot(v[1] - w[1], v[2] - w[2]); }
+  function staerke(d) { return d < 0.2 ? "eng" : d < 0.45 ? "mittel" : "lose"; }
+  function links(x) { return 10 + x * 80; }      // 10 % Abstand zum Rand, damit kein Wort abgeschnitten wird
+  function oben(y) { return 10 + (1 - y) * 80; }
+
+  var karte = $("landkarte"), linien = $("landkarte-linien"), kartenKnoepfe = [];
   KARTE.forEach(function (w, i) {
     var k = el("button", "token token--karte", w[0]);
     k.type = "button";
     k.dataset.farbe = i < 5 ? 1 : i < 8 ? 2 : 4;
-    // 10 % Abstand zum Rand, damit kein Wort abgeschnitten wird
-    k.style.left = (10 + w[1] * 80) + "%";
-    k.style.top = (10 + (1 - w[2]) * 80) + "%";
+    k.style.left = links(w[1]) + "%";
+    k.style.top = oben(w[2]) + "%";
     k.setAttribute("aria-pressed", "false");
     k.addEventListener("click", function () { waehleOrt(i); });
     karte.appendChild(k);
     kartenKnoepfe.push(k);
   });
+
+  // Zahlenreihe aus dem Platz in der Wolke: nahe Plätze ergeben ähnliche Muster
+  var MUSTER = (function () {
+    var r = zufallAus("wortwolke"), m = [];
+    for (var d = 0; d < 24; d++) m.push([r() * 9 - 4.5, r() * 9 - 4.5, r() * 6.28]);
+    return m;
+  })();
+  function zahlenreihe(w) {
+    var rausch = zufallAus(w[0]);
+    return MUSTER.map(function (m) {
+      return Math.max(-1, Math.min(1, Math.sin(m[0] * w[1] + m[1] * w[2] + m[2]) * 0.9 + (rausch() - 0.5) * 0.15));
+    });
+  }
+  function zeichneReihe(ziel, werte) {
+    werte.forEach(function (wert) {
+      var spalte = el("i");
+      var balken = el("b", wert >= 0 ? "plus" : "minus");
+      balken.style.height = Math.max(4, Math.abs(wert) * 50) + "%";
+      spalte.appendChild(balken);
+      ziel.appendChild(spalte);
+    });
+  }
+
   function waehleOrt(i) {
     var w = KARTE[i];
     kartenKnoepfe.forEach(function (k, j) { k.setAttribute("aria-pressed", j === i ? "true" : "false"); });
-    // nächster Nachbar auf der Karte
-    var naechster = null, abstand = 9;
-    KARTE.forEach(function (v, j) {
-      if (j === i) return;
-      var d = Math.hypot(v[1] - w[1], v[2] - w[2]);
-      if (d < abstand) { abstand = d; naechster = v; }
+    var andere = KARTE.map(function (v, j) { return { v: v, j: j, d: abstand(v, w) }; })
+      .filter(function (x) { return x.j !== i; })
+      .sort(function (a, b) { return a.d - b.d; });
+
+    // Linien: dick = eng, dünn = mittel, gestrichelt = lose
+    linien.textContent = "";
+    andere.slice().reverse().forEach(function (x) {
+      var l = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      l.setAttribute("x1", links(w[1])); l.setAttribute("y1", oben(w[2]));
+      l.setAttribute("x2", links(x.v[1])); l.setAttribute("y2", oben(x.v[2]));
+      l.setAttribute("class", "linie-" + staerke(x.d));
+      linien.appendChild(l);
     });
-    $("landkarte-info").innerHTML = "<strong>„" + w[0] + "“</strong> liegt bei " + komma(w[1]) + " | " + komma(w[2]) +
-      ". Ganz in der Nähe: „" + naechster[0] + "“ (" + komma(naechster[1]) + " | " + komma(naechster[2]) + "). Ähnliche Zahlen, ähnliche Bedeutung.";
+
+    var eng = andere.filter(function (x) { return staerke(x.d) === "eng"; }).map(function (x) { return x.v[0]; });
+    var lose = andere.filter(function (x) { return staerke(x.d) === "lose"; }).map(function (x) { return x.v[0]; });
+    $("landkarte-info").innerHTML = "<strong>„" + w[0] + "“</strong> liegt bei " + komma(w[1]) + " | " + komma(w[2]) + ". " +
+      (eng.length ? "Eng verbunden mit: " + eng.join(", ") + ". " : "Eng verbunden: " + andere[0].v[0] + ". ") +
+      (lose.length ? "Lose verbunden mit: " + lose.slice(-3).reverse().join(", ") + "." : "");
+
+    // Zahlenreihen: gewähltes Wort, engster Nachbar, fernstes Wort
+    var reihen = $("zahlenreihen");
+    reihen.textContent = "";
+    [[w, "gewählt"], [andere[0].v, "eng verbunden"], [andere[andere.length - 1].v, "lose verbunden"]].forEach(function (paar) {
+      var zeile = el("div", "zahlenreihe-zeile");
+      var name = el("div", "zahlenreihe-name");
+      name.appendChild(el("strong", null, paar[0][0]));
+      name.appendChild(el("small", null, paar[1]));
+      zeile.appendChild(name);
+      var v = el("div", "vektor");
+      zeichneReihe(v, zahlenreihe(paar[0]));
+      zeile.appendChild(v);
+      reihen.appendChild(zeile);
+    });
   }
   waehleOrt(0);
 
