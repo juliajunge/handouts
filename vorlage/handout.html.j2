@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ titel }} – Handout von Julia Junge</title>
 {% if beschreibung %}<meta name="description" content="{{ beschreibung }}">{% endif %}
+<link rel="icon" href="{{ wurzel }}vorlage/bilder/favicon.ico" sizes="48x48">
+<link rel="icon" href="{{ wurzel }}vorlage/bilder/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{{ wurzel }}vorlage/bilder/apple-touch-icon.png">
 <link rel="stylesheet" href="{{ wurzel }}vorlage/handout.css?v={{ css_version }}">
 </head>
 <body class="{% if stil %}{{ stil }} {% endif %}{% if format == 'quer' %}quer {% endif %}{% if mehrseitig %}mehrseitig{% endif %}">
