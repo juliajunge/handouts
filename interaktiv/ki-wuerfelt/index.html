@@ -121,18 +121,33 @@
           <h2>Rechnen</h2>
         </div>
       </div>
-      <p>Jetzt wird gerechnet, und zwar in vielen <strong>Schichten</strong> hintereinander. In jeder Schicht passiert zweierlei: Erst vergleicht die KI jedes Token mit den Token davor und prüft, welche für den Zusammenhang wichtig sind (<strong>Attention</strong>, auf Deutsch Aufmerksamkeit). Dann verrechnet sie jede Zahlenreihe mit weiteren gelernten Gewichten. So steckt in jedem Token nach und nach mehr vom ganzen Satz. Das Ergebnis geht an die nächste Schicht.</p>
+      <p>Bisher hat jedes Token nur seine eigene Zahlenreihe. „neue“ weiß also nur, dass es „neue“ ist – nicht, <strong>wer</strong> hier etwas Neues sucht. Das ändert sich jetzt, in drei Schritten.</p>
       <div class="buehne">
-        <p class="buehne-titel"><strong>Worauf achtet die KI?</strong></p>
-        <div class="token-reihe" id="aufmerksamkeit"></div>
-        <div class="legende legende--stufen"><span><i class="stufe-3"></i> sehr wichtig</span><span><i class="stufe-2"></i> wichtig</span><span><i class="stufe-1"></i> weniger wichtig</span></div>
+        <h3 class="buehne-h3">Schritt 1: Zurückschauen (Attention)</h3>
+        <p class="buehne-text">Jedes Token schaut auf die Token vor sich und fragt: Wer von euch ist für mich wichtig? Dafür vergleicht die KI ihre Zahlenreihen. Passen zwei gut zusammen, übernimmt das Token viel vom anderen. Passen sie schlecht, übernimmt es fast nichts. Danach steckt in „neue“ auch etwas von „Verein“ und „sucht“.</p>
+        <div class="zurueck-szene" id="zurueck-szene">
+          <svg class="boegen" id="boegen" aria-hidden="true"></svg>
+          <div class="token-reihe token-reihe--szene" id="aufmerksamkeit"></div>
+        </div>
+        <p class="zurueck-text" id="zurueck-text" aria-live="polite"></p>
+        <div class="balken-liste balken-liste--klein" id="neue-liste"></div>
+        <div class="knopf-reihe">
+          <button type="button" class="knopf knopf--orange" id="zurueck-weiter">&gt; Zurückschauen</button>
+          <button type="button" class="knopf knopf--leise" id="zurueck-neu">&gt; Von vorn</button>
+        </div>
+        <p class="buehne-notiz">Die Listen sind zur Veranschaulichung ausgedacht. In echt berechnet die KI die Wahrscheinlichkeiten erst nach der letzten Schicht (Station 4).</p>
         <hr class="buehne-trenner">
+        <h3 class="buehne-h3">Schritt 2: Anreichern</h3>
+        <p class="buehne-text">Danach wird jede Zahlenreihe für sich mit weiteren gelernten Gewichten verrechnet. Dabei kommt hinzu, was die KI im Training gelernt hat – etwa, dass Vereine Mitglieder und Ehrenamtliche suchen. Das nächste Wort steht damit noch nicht fest.</p>
+        <hr class="buehne-trenner">
+        <h3 class="buehne-h3">Schritt 3: Wiederholen</h3>
+        <p class="buehne-text">Zurückschauen und Anreichern bilden zusammen eine <strong>Schicht</strong>. Ein kleines Modell wie Llama 3.1 8B hat 32 Schichten, die größten Modelle über hundert. Mit jeder Schicht passt die Zahlenreihe besser zum ganzen Satz. Erst nach der letzten Schicht berechnet die KI daraus, welches Token als Nächstes kommen könnte (Station 4).</p>
         <div class="schichten" id="schichten" aria-hidden="true"></div>
         <div class="zaehler">
           <span class="kleinlabel">Rechenschritte für ein einziges Token</span>
           <span class="zaehler-zahl" id="rechenschritte" aria-live="polite">0</span>
         </div>
-        <button type="button" class="knopf" id="rechnen-starten">&gt; Rechnen lassen</button>
+        <button type="button" class="knopf" id="rechnen-starten">&gt; Alle 32 Schichten rechnen lassen</button>
       </div>
       <p>Schon ein kleines Modell wie Llama 3.1 8B hat <strong>8 Milliarden</strong> gelernte Zahlen in <strong>32 Schichten</strong>. Für jedes einzelne Token braucht es rund 16 Milliarden Rechenschritte. Die großen Modelle hinter ChatGPT, Claude oder Gemini sind noch deutlich größer.</p>
       <div class="merksatz"><span class="kleinlabel">Merke</span><p>Diese Rechnung kann niemand Schritt für Schritt nachvollziehen – auch die Entwickler*innen nicht. Darum bezeichnet man generative KI auch als Black Box.</p></div>

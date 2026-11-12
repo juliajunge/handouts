@@ -25,7 +25,6 @@
     { t: "Unser", id: 52134 }, { t: " Verein", id: 31877 }, { t: " sucht", id: 48210 },
     { t: " dring", id: 67301 }, { t: "end", id: 437 }, { t: " neue", id: 22918 }
   ];
-  var AUFMERKSAMKEIT = [1, 3, 3, 2, 2, 3];
 
   /* ---------- Station 1: Zerlegen ---------- */
   function tokenChip(text, i, mitId, id) {
@@ -206,15 +205,82 @@
   waehleOrt(0);
 
   /* ---------- Station 3: Rechnen ---------- */
-  START.forEach(function (t, i) {
-    var chip = el("span", "token stufe-" + AUFMERKSAMKEIT[i]);
+  // Schritt 1: Zurückschauen. Anteile, die „neue“ von den Token davor übernimmt (ausgedacht, zusammen 100 %)
+  var ANTEILE = [5, 35, 30, 10, 10, 10];   // der letzte Wert: was „neue“ von sich selbst behält
+  var VORHER = [["Schuhe", 18], ["Wohnung", 15], ["Ideen", 12], ["Mitglieder", 6], ["Räume", 5], ["Helfer*innen", 3], ["Ehrenamtliche", 2]];
+  var NACHHER = [["Ehrenamtliche", 38], ["Mitglieder", 27], ["Helfer*innen", 14], ["Räume", 8], ["Ideen", 4], ["Wohnung", 1], ["Schuhe", 0.5]];
+  var szeneChips = START.map(function (t, i) {
+    var chip = el("span", "token");
+    chip.dataset.farbe = (i % 6) + 1;
     chip.appendChild(el("span", "token-text", t.t.trim()));
     if (i > 0 && t.t.charAt(0) !== " ") chip.classList.add("token--anschluss");
     $("aufmerksamkeit").appendChild(chip);
+    return chip;
   });
-  var naechstes = el("span", "token token--naechstes", "?");
-  naechstes.setAttribute("aria-label", "nächstes Wort");
-  $("aufmerksamkeit").appendChild(naechstes);
+  szeneChips[5].classList.add("token--fokus");
+  var szeneSchritt = 0;
+
+  function zeichneBoegen() {
+    var boegen = $("boegen"), szene = $("zurueck-szene");
+    boegen.textContent = "";
+    if (szeneSchritt === 0) return;
+    var rahmen = szene.getBoundingClientRect();
+    var ns = "http://www.w3.org/2000/svg";
+    boegen.setAttribute("viewBox", "0 0 " + rahmen.width + " " + rahmen.height);
+    function mitte(chip) { var r = chip.getBoundingClientRect(); return [r.left - rahmen.left + r.width / 2, r.top - rahmen.top]; }
+    var ziel = mitte(szeneChips[5]);
+    var selbst = document.createElementNS(ns, "text");
+    selbst.setAttribute("x", ziel[0]);
+    selbst.setAttribute("y", ziel[1] + szeneChips[5].offsetHeight + 16);
+    selbst.setAttribute("text-anchor", "middle");
+    selbst.setAttribute("class", "bogen-wert bogen-wert--selbst");
+    selbst.textContent = ANTEILE[5] + " %";
+    boegen.appendChild(selbst);
+    for (var i = 0; i < 5; i++) {
+      var start = mitte(szeneChips[i]);
+      var hoehe = Math.min(ziel[1] - 6, 14 + (ziel[0] - start[0]) * 0.24);
+      var spitze = start[1] - hoehe;
+      var w = ANTEILE[i];
+      var bogen = document.createElementNS(ns, "path");
+      bogen.setAttribute("d", "M" + start[0] + " " + start[1] + " C" + start[0] + " " + spitze + " " + ziel[0] + " " + spitze + " " + ziel[0] + " " + ziel[1]);
+      bogen.setAttribute("class", w >= 25 ? "linie-eng" : w >= 10 ? "linie-mittel" : "linie-lose");
+      bogen.setAttribute("stroke-width", w >= 25 ? 2 + w / 7 : w >= 10 ? 2.5 : 1.5);
+      boegen.appendChild(bogen);
+      var text = document.createElementNS(ns, "text");
+      text.setAttribute("x", start[0]);
+      text.setAttribute("y", start[1] + szeneChips[i].offsetHeight + 16);
+      text.setAttribute("text-anchor", "middle");
+      text.setAttribute("class", "bogen-wert");
+      text.textContent = w + " %";
+      boegen.appendChild(text);
+    }
+  }
+  function zeigeListe(daten) {
+    zeichneBalken($("neue-liste"), daten.map(function (d) { return { t: d[0], p: d[1] / 100 }; }));
+  }
+  function zeigeSzene() {
+    var knopf = $("zurueck-weiter");
+    $("zurueck-szene").classList.toggle("mit-boegen", szeneSchritt > 0);
+    if (szeneSchritt === 0) {
+      $("zurueck-text").innerHTML = "<strong>Vorher:</strong> Allein weiß „neue“ nur, dass es „neue“ ist. Danach könnte vieles kommen:";
+      zeigeListe(VORHER);
+      knopf.textContent = "> Zurückschauen";
+    } else if (szeneSchritt === 1) {
+      $("zurueck-text").innerHTML = "<strong>Zurückschauen:</strong> „neue“ vergleicht seine Zahlenreihe mit denen davor. Am besten passen „Verein“ (35 %) und „sucht“ (30 %) – davon übernimmt es am meisten. Von „Unser“ übernimmt es kaum etwas, 10 % behält es von sich selbst.";
+      knopf.textContent = "> Ergebnis zeigen";
+    } else {
+      $("zurueck-text").innerHTML = "<strong>Nachher:</strong> Jetzt steckt in „neue“: Hier sucht ein Verein. Wörter für Menschen wie „Ehrenamtliche“ rücken nach oben, „Schuhe“ und „Wohnung“ fallen fast auf null.";
+      zeigeListe(NACHHER);
+      knopf.textContent = "> Nochmal ansehen";
+    }
+    zeichneBoegen();
+  }
+  $("zurueck-weiter").addEventListener("click", function () { szeneSchritt = (szeneSchritt + 1) % 3; zeigeSzene(); });
+  $("zurueck-neu").addEventListener("click", function () { szeneSchritt = 0; zeigeSzene(); });
+  window.addEventListener("resize", zeichneBoegen);
+  // Bögen erst zeichnen, wenn die Station sichtbar ist (vorher hat sie keine Maße)
+  document.addEventListener("station-offen", zeichneBoegen);
+  zeigeSzene();
 
   var SCHICHTEN = ["Schicht 1", "Schicht 2", "Schicht 3", "…", "Schicht 31", "Schicht 32"];
   var schichtZeilen = SCHICHTEN.map(function (name) {
@@ -255,7 +321,7 @@
       else {
         $("rechenschritte").textContent = "rund " + zahl(ZIEL_RECHENSCHRITTE);
         knopf.disabled = false;
-        knopf.textContent = "> Nochmal rechnen";
+        knopf.textContent = "> Nochmal rechnen lassen";
         rechnetGerade = false;
       }
     }
@@ -592,6 +658,7 @@
       station.hidden = false;
       station.classList.add("neu");
     }
+    document.dispatchEvent(new Event("station-offen"));
     var vorher = $("station-" + (nr - 1));
     if (vorher) { var k = vorher.querySelector(".weiter"); if (k) k.hidden = true; }
     fahrplan.forEach(function (li) {

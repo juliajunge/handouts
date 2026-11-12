@@ -146,6 +146,21 @@ q { quotes: "„" "“"; font-weight: 700; }
 .zaehler { display: flex; flex-direction: column; gap: 2px; margin-bottom: 16px; }
 .zaehler-zahl { font-family: var(--font-display); font-weight: 700; font-size: 2.2em; line-height: 1.05; color: var(--jj-green-dark); font-variant-numeric: tabular-nums; }
 
+
+/* Station 3: Zurückschauen */
+.zurueck-szene { position: relative; padding: 96px 16px 16px; background: var(--jj-white); border-radius: 16px; }
+.zurueck-szene.mit-boegen { padding-bottom: 36px; }
+.bogen-wert--selbst { font-weight: 400; }
+.boegen { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.boegen path { fill: none; stroke-linecap: round; }
+.boegen .linie-eng { stroke: var(--jj-green-dark); }
+.boegen .linie-mittel { stroke: var(--jj-green-light); }
+.boegen .linie-lose { stroke: #8C8C7C; stroke-dasharray: 3 4; }
+.bogen-wert { font-family: var(--font-body); font-size: 12px; font-weight: 700; fill: var(--jj-black); paint-order: stroke; stroke: var(--jj-white); stroke-width: 4px; }
+.token-reihe--szene { flex-wrap: nowrap; gap: 6px; position: relative; }
+.token--fokus { border-color: var(--jj-green-dark); }
+.zurueck-text { margin: 16px 0 8px; min-height: 3em; }
+
 /* Wahrscheinlichkeiten */
 .balken-liste { display: grid; gap: 6px; }
 .balken { display: grid; grid-template-columns: 160px minmax(0, 1fr) 56px; gap: 12px; align-items: center; }
@@ -222,6 +237,11 @@ q { quotes: "„" "“"; font-weight: 700; }
   .balken, .balken-liste--klein .balken { grid-template-columns: 110px minmax(0, 1fr) 48px; gap: 8px; }
   .balken-wort { font-size: .9em; }
   .landkarte { aspect-ratio: 3 / 4; }
+  .zurueck-szene { padding: 84px 8px 12px; }
+  .zurueck-szene.mit-boegen { padding-bottom: 32px; }
+  .token-reihe--szene { gap: 3px; }
+  .token-reihe--szene .token { font-size: .75em; padding: 4px 6px; }
+  .token-reihe--szene .token--anschluss { margin-left: -2px; }
   .zahlenreihe-zeile { grid-template-columns: 1fr; gap: 4px; }
   .token--karte { font-size: .75em; padding: 3px 8px; }
   .schicht { grid-template-columns: 64px minmax(0, 1fr); }
