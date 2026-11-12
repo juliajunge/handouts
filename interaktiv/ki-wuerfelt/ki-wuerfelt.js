@@ -207,8 +207,6 @@
   /* ---------- Station 3: Rechnen ---------- */
   // Schritt 1: Zurückschauen. Anteile, die „neue“ von den Token davor übernimmt (ausgedacht, zusammen 100 %)
   var ANTEILE = [5, 35, 30, 10, 10, 10];   // der letzte Wert: was „neue“ von sich selbst behält
-  var VORHER = [["Schuhe", 18], ["Wohnung", 15], ["Ideen", 12], ["Mitglieder", 6], ["Räume", 5], ["Helfer*innen", 3], ["Ehrenamtliche", 2]];
-  var NACHHER = [["Ehrenamtliche", 38], ["Mitglieder", 27], ["Helfer*innen", 14], ["Räume", 8], ["Ideen", 4], ["Wohnung", 1], ["Schuhe", 0.5]];
   var szeneChips = START.map(function (t, i) {
     var chip = el("span", "token");
     chip.dataset.farbe = (i % 6) + 1;
@@ -255,28 +253,18 @@
       boegen.appendChild(text);
     }
   }
-  function zeigeListe(daten) {
-    zeichneBalken($("neue-liste"), daten.map(function (d) { return { t: d[0], p: d[1] / 100 }; }));
-  }
   function zeigeSzene() {
-    var knopf = $("zurueck-weiter");
     $("zurueck-szene").classList.toggle("mit-boegen", szeneSchritt > 0);
     if (szeneSchritt === 0) {
-      $("zurueck-text").innerHTML = "<strong>Vorher:</strong> Allein weiß „neue“ nur, dass es „neue“ ist. Danach könnte vieles kommen:";
-      zeigeListe(VORHER);
-      knopf.textContent = "> Zurückschauen";
-    } else if (szeneSchritt === 1) {
-      $("zurueck-text").innerHTML = "<strong>Zurückschauen:</strong> „neue“ vergleicht seine Zahlenreihe mit denen davor. Am besten passen „Verein“ (35 %) und „sucht“ (30 %) – davon übernimmt es am meisten. Von „Unser“ übernimmt es kaum etwas, 10 % behält es von sich selbst.";
-      knopf.textContent = "> Ergebnis zeigen";
+      $("zurueck-text").innerHTML = "„neue“ steht noch für sich allein. Drück auf „Zurückschauen“.";
+      $("zurueck-weiter").textContent = "> Zurückschauen";
     } else {
-      $("zurueck-text").innerHTML = "<strong>Nachher:</strong> Jetzt steckt in „neue“: Hier sucht ein Verein. Wörter für Menschen wie „Ehrenamtliche“ rücken nach oben, „Schuhe“ und „Wohnung“ fallen fast auf null.";
-      zeigeListe(NACHHER);
-      knopf.textContent = "> Nochmal ansehen";
+      $("zurueck-text").innerHTML = "„neue“ vergleicht seine Zahlenreihe mit denen davor. Am besten passen „Verein“ (35 %) und „sucht“ (30 %) – davon übernimmt es am meisten. Von „Unser“ übernimmt es kaum etwas, 10 % behält es von sich selbst. Danach steckt in „neue“ auch etwas von „Verein“ und „sucht“.";
+      $("zurueck-weiter").textContent = "> Nochmal von vorn";
     }
     zeichneBoegen();
   }
-  $("zurueck-weiter").addEventListener("click", function () { szeneSchritt = (szeneSchritt + 1) % 3; zeigeSzene(); });
-  $("zurueck-neu").addEventListener("click", function () { szeneSchritt = 0; zeigeSzene(); });
+  $("zurueck-weiter").addEventListener("click", function () { szeneSchritt = szeneSchritt ? 0 : 1; zeigeSzene(); });
   window.addEventListener("resize", zeichneBoegen);
   // Bögen erst zeichnen, wenn die Station sichtbar ist (vorher hat sie keine Maße)
   document.addEventListener("station-offen", zeichneBoegen);

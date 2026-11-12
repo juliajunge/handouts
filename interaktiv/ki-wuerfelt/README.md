@@ -9,7 +9,7 @@ Interaktive Seite für Kurse und Workshops: In fünf Stationen deckst du auf, wi
 
 1. **Zerlegen** – Text wird zu Token (mit Eingabefeld für eigene Sätze)
 2. **Übersetzen** – Schritt 1: jedes Token hat eine Nummer (Wörterbuch). Schritt 2: Platz in einer Wortwolke, beim Antippen Linien für enge und lose Verbindungen. Darunter die echte Darstellung als Zahlenreihen: gewähltes Wort, engster Nachbar, fernstes Wort
-3. **Rechnen** – Zurückschauen (Attention) in drei Klicks: „neue“ allein, Bögen mit Anteilen, verschobene Liste; dann Anreichern und Wiederholen mit Schichten und Zähler
+3. **Rechnen** – Zurückschauen (Attention): Bögen mit Anteilen von „neue“ zu den Token davor; dann Anreichern und Wiederholen mit Schichten und Zähler
 4. **Abwägen** – Wahrscheinlichkeiten für das nächste Wort
 5. **Würfeln** – Einstieg mit dem gezinkten Würfel, dann Glücksrad: ein Tortenstück pro Wort, Striche alle 5 %, Temperatur-Regler verändert die Stücke live, „20-mal drehen“ mit Strichliste, Satz zu Ende drehen, Verlauf der Sätze
 

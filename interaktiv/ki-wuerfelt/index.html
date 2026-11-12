@@ -130,15 +130,13 @@
           <div class="token-reihe token-reihe--szene" id="aufmerksamkeit"></div>
         </div>
         <p class="zurueck-text" id="zurueck-text" aria-live="polite"></p>
-        <div class="balken-liste balken-liste--klein" id="neue-liste"></div>
         <div class="knopf-reihe">
           <button type="button" class="knopf knopf--orange" id="zurueck-weiter">&gt; Zurückschauen</button>
-          <button type="button" class="knopf knopf--leise" id="zurueck-neu">&gt; Von vorn</button>
         </div>
-        <p class="buehne-notiz">Die Listen sind zur Veranschaulichung ausgedacht. In echt berechnet die KI die Wahrscheinlichkeiten erst nach der letzten Schicht (Station 4).</p>
+        <p class="buehne-notiz">Die Anteile sind zur Veranschaulichung ausgedacht.</p>
         <hr class="buehne-trenner">
         <h3 class="buehne-h3">Schritt 2: Anreichern</h3>
-        <p class="buehne-text">Danach wird jede Zahlenreihe für sich mit weiteren gelernten Gewichten verrechnet. Dabei kommt hinzu, was die KI im Training gelernt hat – etwa, dass Vereine Mitglieder und Ehrenamtliche suchen. Das nächste Wort steht damit noch nicht fest.</p>
+        <p class="buehne-text">Danach wird jede Zahlenreihe für sich mit weiteren Gewichten verrechnet. In diesen Gewichten steckt, welche Wortkombinationen in den Trainingstexten besonders oft vorkamen – etwa „Verein“ zusammen mit „Mitglieder“ oder „Ehrenamtliche“. Die KI weiß also nicht, was ein Verein braucht. Sie hat nur gelesen, welche Wörter häufig miteinander auftauchen. Das nächste Wort steht damit noch nicht fest.</p>
         <hr class="buehne-trenner">
         <h3 class="buehne-h3">Schritt 3: Wiederholen</h3>
         <p class="buehne-text">Zurückschauen und Anreichern bilden zusammen eine <strong>Schicht</strong>. Ein kleines Modell wie Llama 3.1 8B hat 32 Schichten, die größten Modelle über hundert. Mit jeder Schicht passt die Zahlenreihe besser zum ganzen Satz. Erst nach der letzten Schicht berechnet die KI daraus, welches Token als Nächstes kommen könnte (Station 4).</p>
@@ -169,7 +167,7 @@
         <div class="balken-liste" id="wahrscheinlichkeiten"></div>
         <p class="buehne-notiz">… und rund 100.000 weitere Token mit fast 0 Prozent. In unserem Beispiel sind die wahrscheinlichsten Token ganze Wörter – deshalb sprechen wir ab hier von Wörtern.</p>
       </div>
-      <div class="merksatz"><span class="kleinlabel">Merke</span><p>Die KI weiß nicht, was stimmt. Sie berechnet, was wahrscheinlich als Nächstes kommt.</p></div>
+      <div class="merksatz"><span class="kleinlabel">Merke</span><p>Die KI berechnet, welche Wörter wahrscheinlich folgen werden.</p></div>
       <button type="button" class="knopf weiter" data-oeffnet="5">&gt; Station 5 aufdecken</button>
     </section>
 
