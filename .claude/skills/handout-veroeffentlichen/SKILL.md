@@ -1,9 +1,11 @@
 ---
 name: handout-veroeffentlichen
-description: Neues Handout anlegen oder bestehendes ändern und als Webseite + PDF über GitHub Pages veröffentlichen (Repo juliajunge/handouts). Immer verwenden, wenn Julia ein Handout, einen Leitfaden, ein Arbeitsblatt oder eine Übersicht zum Teilen/Ausdrucken möchte – auch wenn sie eine Word-Datei schickt und nur „mach daraus ein Handout“ sagt.
+description: Neues Handout anlegen oder bestehendes ändern und als Webseite + PDF über GitHub Pages veröffentlichen (Repo juliajunge/handouts). Immer verwenden, wenn Julia ein Handout, einen Leitfaden, ein Arbeitsblatt oder eine Übersicht zum Teilen/Ausdrucken möchte oder „mein Handout“ prüfen, aktualisieren oder korrigieren lassen will – auch wenn sie eine Word-Datei schickt und nur „mach daraus ein Handout“ sagt.
 ---
 
 # Handout veröffentlichen
+
+**Julias Handouts liegen immer in GitHub: https://github.com/juliajunge/handouts** (Ordner `handouts/<name>/handout.md`). Nicht in Google Drive suchen, wenn Julia „mein Handout“ sagt: zuerst das Repo ansehen (anhängen mit `add_repo` mit Push-Zugriff, dann `git clone --depth 1 https://github.com/juliajunge/handouts`, großzügiges Timeout) und den Ordner über Titel oder Stichwort finden (`grep -ril "<stichwort>" handouts/*/handout.md`). Drive-Dokumente und Kurstexte (z. B. Selbstlernkurse) sind andere Dinge; sie können dieselben Aussagen enthalten und müssen bei inhaltlichen Änderungen separat geprüft werden (nur melden, nicht ändern, solange Julia das nicht bittet).
 
 Jedes Handout ist ein Ordner `handouts/<name>/` mit einer `handout.md` und den Bildern daneben. `build.py` macht daraus Webseite und A4-PDF, der Workflow `.github/workflows/veroeffentlichen.yml` veröffentlicht bei jedem Push auf `main`. **Nie** ein eigenständiges HTML/PDF außerhalb dieses Systems bauen.
 
@@ -22,8 +24,10 @@ Gestaltungsregeln (Ton, Farben, Drachen) kommen aus dem Skill `julia-junge-desig
    pdftoppm -r 60 -png site/<name>/<pdf>.pdf vorschau        # Seiten als Bild prüfen
    ```
    Prüfen: Seitenzahl wie geplant, nichts abgeschnitten, Fuß mit Drachenlinie unten. Bei Änderungen an `vorlage/` auch die anderen Handouts neu prüfen – ihre Seitenzahl darf sich nicht ändern.
-5. **Veröffentlichen:** auf `main` committen und pushen (Julia arbeitet direkt auf `main`). Danach den Lauf „Handouts bauen und veröffentlichen“ unter Actions abwarten.
-6. **Links nennen:**
+5. **Veröffentlichen:** auf `main` committen und pushen (Julia arbeitet direkt auf `main`). Danach den Lauf „Handouts bauen und veröffentlichen“ unter Actions abwarten (`gh run list --repo juliajunge/handouts`, `gh run watch <id> --exit-status`).
+   **Nur vorbereiten, später veröffentlichen:** Veröffentlicht wird ausschließlich bei Push auf `main`. Soll eine Änderung erst später online gehen (z. B. Anbieter rollt eine Einstellung erst in Wochen aus), den Entwurf auf einen eigenen Branch legen (`git checkout -b <thema>-update`), dort committen und den Branch pushen, nicht `main`. Unbekannte Angaben als Platzhalter `[[PRÜFEN: …]]` markieren, damit sie sich per `grep PRÜFEN` finden lassen, und vor dem Veröffentlichen alle ersetzen. Zum Veröffentlichen den Branch per `git merge --ff-only` auf `main` bringen und pushen. Für den späteren Termin eine geplante Aufgabe anlegen, deren Auftrag vollständig im Prompt steht.
+6. **Gleiche Aussagen anderswo prüfen:** Ändert sich der Inhalt eines Handouts (z. B. eine Einstellung bei einem KI-Anbieter), in den anderen Handouts desselben Repos (`grep -ril "<stichwort>" handouts/`) und in dazugehörigen Kursen oder Folien nach derselben Aussage suchen und Julia melden, wo sie ebenfalls veraltet ist.
+7. **Links nennen:**
    - Webseite: `https://juliajunge.github.io/handouts/<name>/` (mit Knopf „> PDF herunterladen“)
    - PDF: `https://juliajunge.github.io/handouts/<name>/<pdf_name>.pdf`
    - Übersicht: `https://juliajunge.github.io/handouts/`
