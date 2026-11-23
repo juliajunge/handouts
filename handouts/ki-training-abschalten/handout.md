@@ -1,7 +1,7 @@
 ---
 titel: KI-Training in unter 2 min abschalten
 label: Handout
-stand: [[PRÜFEN: Veröffentlichungsdatum eintragen]]
+stand: 23. November 2026
 pdf_name: ki-training-abschalten
 stil: datenschutz
 beschreibung: Klickpfade für ChatGPT, Claude, Mistral und Gemini, damit deine Chats nicht fürs Training der nächsten KI-Modelle genutzt werden – und eine ehrliche Einordnung.
@@ -61,9 +61,9 @@ Auch beim europäischen Anbieter ist das Training in der Gratisversion und im Pr
 :::
 
 ::: karte Gemini · Training und Verlauf getrennt
-1. Öffne Gemini und klick links im Menü auf **Aktivität** [[PRÜFEN: Menüpfad nach der Umstellung]].
-2. Schalte „[[PRÜFEN: genaue Bezeichnung der Trainings-Einstellung]]“ aus.
-3. Lass „[[PRÜFEN: genaue Bezeichnung der Verlauf-Einstellung]]“ an, wenn du deine alten Chats behalten willst.
+1. Öffne Gemini und klick links im Menü auf **Aktivitäten**.
+2. Dort findest du zwei getrennte Einstellungen: **Verlauf** und die Einstellung, ob deine Chats zum Training generativer KI-Modelle genutzt werden dürfen.
+3. Schalte die Trainings-Einstellung aus. Lass **Verlauf** an, wenn du deine alten Chats behalten willst.
 
 Neu: Google hat die frühere Einstellung „Gemini-Apps-Aktivitäten“ aufgeteilt. Verlauf und Training lassen sich jetzt getrennt steuern. Du musst für das Training-Aus also nicht mehr auf deinen Chatverlauf verzichten.
 
