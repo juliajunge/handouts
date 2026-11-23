@@ -1,13 +1,13 @@
 ---
 titel: KI-Training in unter 2 min abschalten
 label: Handout
-stand: 13. Oktober 2026
+stand: [[PRÜFEN: Veröffentlichungsdatum eintragen]]
 pdf_name: ki-training-abschalten
 stil: datenschutz
 beschreibung: Klickpfade für ChatGPT, Claude, Mistral und Gemini, damit deine Chats nicht fürs Training der nächsten KI-Modelle genutzt werden – und eine ehrliche Einordnung.
 ---
 
-Bei ChatGPT, Claude und Mistral kannst du mit wenigen Klicks verbieten, dass deine Chats fürs KI-Training der nächsten KI-Modelle genutzt werden. Auch in den Gratisversionen. ==Kein echter Datenschutz, aber besser als nichts.==
+Bei ChatGPT, Claude, Mistral und Gemini kannst du mit wenigen Klicks verbieten, dass deine Chats fürs KI-Training der nächsten KI-Modelle genutzt werden. Auch in den Gratisversionen. ==Kein echter Datenschutz, aber besser als nichts.==
 
 Hier findest du die Klickpfade zum Nachmachen. Und eine ehrliche Einordnung.
 
@@ -60,16 +60,16 @@ Auch beim europäischen Anbieter ist das Training in der Gratisversion und im Pr
 4. Schalte „Erlauben Sie die Nutzung Ihrer Interaktionen mit Vibe, um die KI-Modelle von Mistral zu trainieren“ aus.
 :::
 
-::: rahmenkarte Gemini · Sonderfall: Datenschutz nur mit Gedächtnisverlust
-Bei Gemini hängen Training und Chatverlauf an einem einzigen Schalter. Wenn du verbietest, dass Google mit deinen Chats trainiert, speichert Gemini auch keinen Verlauf mehr. Du kannst also nicht zu einem früheren Chat zurückkehren und dort weiterarbeiten.
+::: karte Gemini · Training und Verlauf getrennt
+1. Öffne Gemini und klick links im Menü auf **Aktivität** [[PRÜFEN: Menüpfad nach der Umstellung]].
+2. Schalte „[[PRÜFEN: genaue Bezeichnung der Trainings-Einstellung]]“ aus.
+3. Lass „[[PRÜFEN: genaue Bezeichnung der Verlauf-Einstellung]]“ an, wenn du deine alten Chats behalten willst.
 
-Der Schalter heißt **Gemini-Apps-Aktivitäten**. Du findest ihn in Gemini links im Menü unter **Aktivität**. Dort kannst du die Aktivität deaktivieren.
+Neu: Google hat die frühere Einstellung „Gemini-Apps-Aktivitäten“ aufgeteilt. Verlauf und Training lassen sich jetzt getrennt steuern. Du musst für das Training-Aus also nicht mehr auf deinen Chatverlauf verzichten.
 
-Ganz weg sind die Chats auch dann nicht sofort: Google behält eine Kopie bis zu 72 Stunden.
+Prüf trotzdem nach: Wer die alte Einstellung eingeschaltet hatte, hat nach der Umstellung automatisch beide neuen Einstellungen an. Wer sie ausgeschaltet hatte, hat beide aus und damit auch keinen Verlauf mehr.
 
-<img src="drache-vergesslich.jpg" alt="Ein grüner Drache schaut verwirrt, über ihm schwebt ein Fragezeichen: Er hat sein Gedächtnis verloren" style="max-height: 42mm; width: auto; max-width: 100%; border-radius: 12px; display: block; margin: 3mm auto 1mm;">
-
-Gemini ohne Verlauf: Datenschutz kostet hier das Gedächtnis.
+Ganz weg sind die Chats bei ausgeschaltetem Verlauf nicht: Google speichert sie dann noch etwa zwei Monate, unter anderem für Feedback und Sicherheit, auch mit Hilfe menschlicher Prüfer:innen.
 :::
 
 ::::
@@ -82,7 +82,7 @@ Bewerte Antworten nicht mit Daumen hoch oder runter. Das Gespräch kann sonst al
 
 ## Pflaster ≠ ausreichender Datenschutz
 
-Der Schalter verhindert KI-Training mit deinen Daten. Er verhindert nicht, dass deine Daten gespeichert werden. Deine Chats, deine hochgeladenen Dateien und deine Benutzerdaten liegen weiter beim Anbieter, meist mindestens 30 Tage. (Übrigens auch, wenn du das Tool ohne Login nutzt!)
+Der Schalter verhindert KI-Training mit deinen Daten. Er verhindert nicht, dass deine Daten gespeichert werden. Deine Chats, deine hochgeladenen Dateien und deine Benutzerdaten liegen weiter beim Anbieter, meist mindestens 30 Tage, bei Gemini ohne Verlauf etwa zwei Monate. (Übrigens auch, wenn du das Tool ohne Login nutzt!)
 
 Bei ChatGPT, Claude und Gemini liegen sie bei US-amerikanischen Unternehmen. Für diese gilt der US Cloud Act: US-Behörden können Zugriff verlangen, auch wenn die Server in Europa stehen.
 
